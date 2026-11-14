@@ -10,7 +10,10 @@
   "models": {
     "expression": "g0-expression-8192",
     "promoter": "g0-promoter-2000bp",
-    "chromatin": "g0-deepsea"
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
   },
   "locus": {
     "ensembl_id": "ENSG00000160293",
@@ -21,7 +24,9 @@
     "tss_matches_ensembl": true,
     "expression_window": "9:133951365-134033284",
     "tss_window": "9:133991325-133993324",
-    "tss_window_strand": -1
+    "tss_window_strand": -1,
+    "splice_window": "9:133977325-133992324",
+    "annotation_window": "9:133952324-134032323"
   },
   "expression": {
     "target": {
@@ -272,5 +277,45 @@
       }
     ],
     "request_id": "6e5f58d5-eead-4805-83e2-0aa6dcf48c04"
+  },
+  "enhancer": {
+    "dev_score_max": -1.0168,
+    "hk_score_max": -0.4066,
+    "dev_score_mean": -1.2663,
+    "hk_score_mean": -1.2911,
+    "windows": 9,
+    "request_id": "db58e12e-4bf6-4142-bbec-699ea687c5ce"
+  },
+  "splice": {
+    "junctions_in_window": 1,
+    "junctions_recovered": 1,
+    "recall": 1.0,
+    "sites_called": 1,
+    "precision": 1.0,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 249,
+        "score": 0.9999
+      }
+    ],
+    "request_id": "984115f8-e05d-4e83-88fe-93e197982d41"
+  },
+  "annotation": {
+    "transcripts_found": 1,
+    "found_at_tss": false,
+    "confidence": 0.0,
+    "transcript_type": null,
+    "transcript_type_score": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "818c5cc7-dff1-4f59-8181-bfd2c03768fb"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 1,
+    "found_at_tss": false,
+    "log_tpm": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "d67fe018-ebff-4400-a852-941cdea0f323"
   }
 }

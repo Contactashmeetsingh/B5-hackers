@@ -6,13 +6,27 @@
     "phase": "Phase 2",
     "status": "RECRUITING",
     "url": "",
-    "trial_score": 0.8089,
+    "trial_score": 0.839,
     "biomarker_directness": 1.0,
-    "genomic_match": 0.6815,
+    "genomic_match": 0.7316,
     "matched_genes": [
       {
+        "gene": "ERBB3",
+        "combined_score": 0.8996,
+        "paper_ids": [
+          "39020378",
+          "30057690",
+          "39062682",
+          "17274834",
+          "15568014",
+          "18056992",
+          "20103628",
+          "39137598"
+        ]
+      },
+      {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",
@@ -46,22 +60,8 @@
         ]
       },
       {
-        "gene": "ERBB3",
-        "combined_score": 0.7957,
-        "paper_ids": [
-          "39020378",
-          "30057690",
-          "39062682",
-          "17274834",
-          "15568014",
-          "18056992",
-          "20103628",
-          "39137598"
-        ]
-      },
-      {
         "gene": "GRB7",
-        "combined_score": 0.5674,
+        "combined_score": 0.5636,
         "paper_ids": [
           "7907978",
           "23593540",
@@ -82,13 +82,13 @@
     "phase": "Phase 2",
     "status": "RECRUITING",
     "url": "",
-    "trial_score": 0.764,
+    "trial_score": 0.7803,
     "biomarker_directness": 1.0,
-    "genomic_match": 0.6066,
+    "genomic_match": 0.6339,
     "matched_genes": [
       {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",
@@ -123,7 +123,7 @@
       },
       {
         "gene": "PIK3CA",
-        "combined_score": 0.6066,
+        "combined_score": 0.6339,
         "paper_ids": [
           "30057690",
           "15324695",
@@ -145,13 +145,13 @@
     "phase": "Phase 2",
     "status": "RECRUITING",
     "url": "",
-    "trial_score": 0.6506,
+    "trial_score": 0.6808,
     "biomarker_directness": 1.0,
-    "genomic_match": 0.4176,
+    "genomic_match": 0.468,
     "matched_genes": [
       {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",
@@ -186,7 +186,7 @@
       },
       {
         "gene": "ESR1",
-        "combined_score": 0.4176,
+        "combined_score": 0.468,
         "paper_ids": [
           "39062682",
           "37258523",
@@ -207,13 +207,13 @@
     "phase": "N/A",
     "status": "RECRUITING",
     "url": "",
-    "trial_score": 0.4471,
+    "trial_score": 0.4321,
     "biomarker_directness": 0.5,
-    "genomic_match": 0.4119,
+    "genomic_match": 0.3868,
     "matched_genes": [
       {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",
@@ -248,7 +248,7 @@
       },
       {
         "gene": "PTEN",
-        "combined_score": 0.4119,
+        "combined_score": 0.3868,
         "paper_ids": [
           "21399647",
           "15324695"
@@ -274,7 +274,7 @@
     "matched_genes": [
       {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",
@@ -327,7 +327,7 @@
     "matched_genes": [
       {
         "gene": "ERBB2",
-        "combined_score": 0.8108,
+        "combined_score": 0.84,
         "paper_ids": [
           "39020378",
           "30057690",

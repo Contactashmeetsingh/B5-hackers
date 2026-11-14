@@ -10,7 +10,10 @@
   "models": {
     "expression": "g0-expression-8192",
     "promoter": "g0-promoter-2000bp",
-    "chromatin": "g0-deepsea"
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
   },
   "locus": {
     "ensembl_id": "ENSG00000103266",
@@ -21,7 +24,9 @@
     "tss_matches_ensembl": true,
     "expression_window": "16:639450-721369",
     "tss_window": "16:679410-681409",
-    "tss_window_strand": 1
+    "tss_window_strand": 1,
+    "splice_window": "16:680410-695409",
+    "annotation_window": "16:640410-720409"
   },
   "expression": {
     "target": {
@@ -343,5 +348,95 @@
       }
     ],
     "request_id": "84ef7488-8081-4d74-bb67-928b23b25527"
+  },
+  "enhancer": {
+    "dev_score_max": -0.7348,
+    "hk_score_max": 0.1563,
+    "dev_score_mean": -1.1274,
+    "hk_score_mean": -0.9498,
+    "windows": 9,
+    "request_id": "3ec24f18-8c27-42d0-9ae5-cb1026832e02"
+  },
+  "splice": {
+    "junctions_in_window": 12,
+    "junctions_recovered": 11,
+    "recall": 0.9167,
+    "sites_called": 11,
+    "precision": 1.0,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 274,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 940,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 742,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1193,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1028,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1470,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1383,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1666,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1610,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1871,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1755,
+        "score": 0.9999
+      }
+    ],
+    "request_id": "fae483cb-ebc3-4fe0-a9b4-a518adc086f4"
+  },
+  "annotation": {
+    "transcripts_found": 8,
+    "found_at_tss": true,
+    "confidence": 0.998,
+    "transcript_type": "mRNA",
+    "transcript_type_score": 0.9976,
+    "distance_to_canonical_tss_bp": -2,
+    "request_id": "18592f4a-3882-41cf-9385-407b89c959c5"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 8,
+    "found_at_tss": true,
+    "log_tpm": 3.4994,
+    "distance_to_canonical_tss_bp": -2,
+    "request_id": "cd350ec9-7cde-49ec-b03c-cdddafc1c9f2"
   }
 }

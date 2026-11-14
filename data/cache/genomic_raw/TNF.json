@@ -10,7 +10,10 @@
   "models": {
     "expression": "g0-expression-8192",
     "promoter": "g0-promoter-2000bp",
-    "chromatin": "g0-deepsea"
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
   },
   "locus": {
     "ensembl_id": "ENSG00000232810",
@@ -21,7 +24,9 @@
     "tss_matches_ensembl": true,
     "expression_window": "6:31534605-31616524",
     "tss_window": "6:31574565-31576564",
-    "tss_window_strand": 1
+    "tss_window_strand": 1,
+    "splice_window": "6:31575565-31590564",
+    "annotation_window": "6:31535565-31615564"
   },
   "expression": {
     "target": {
@@ -237,5 +242,70 @@
       }
     ],
     "request_id": "212bd5ab-752c-48dd-85a7-6d3fe1f475ad"
+  },
+  "enhancer": {
+    "dev_score_max": 3.1246,
+    "hk_score_max": 1.3448,
+    "dev_score_mean": -0.091,
+    "hk_score_mean": -0.4632,
+    "windows": 9,
+    "request_id": "3eaa012f-d995-4b6a-ba1a-3e353d43a6a1"
+  },
+  "splice": {
+    "junctions_in_window": 6,
+    "junctions_recovered": 6,
+    "recall": 1.0,
+    "sites_called": 14,
+    "precision": 0.4286,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 362,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1014,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 969,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 1249,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1202,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 1551,
+        "score": 0.9999
+      }
+    ],
+    "request_id": "8eb1f126-3b5c-4415-963c-6d24c2001719"
+  },
+  "annotation": {
+    "transcripts_found": 10,
+    "found_at_tss": true,
+    "confidence": 0.9963,
+    "transcript_type": "mRNA",
+    "transcript_type_score": 0.9937,
+    "distance_to_canonical_tss_bp": 2,
+    "request_id": "5460b6a4-cf0a-4a53-8c2a-cadf66ae5148"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 10,
+    "found_at_tss": true,
+    "log_tpm": 1.2317,
+    "distance_to_canonical_tss_bp": 2,
+    "request_id": "26a3776d-7bde-4f3e-845c-71e6d39bfb01"
   }
 }

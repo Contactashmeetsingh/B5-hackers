@@ -3,9 +3,8 @@
 **Owner:** Contactashmeetsingh
 
 **Status, 2026-11-14:**
-- **v0 (3 tasks) is complete.** It uses expression, promoter and chromatin, and has real model output for all 30 genes with 0 mocks. It is the `genomic_context.json` committed now, and today's `rankings.json` is built from it.
-- **v1 (all 7 GI tasks) is in progress.** The code is merged and tested; it adds composite, enhancer, splice and annotation. The full 30-gene run is still going on the shared demo key. Each gene is checkpointed in `data/cache/genomic_raw/<GENE>.json`; 6 of 30 genes have all 7 tasks so far. Re-running `python -m backend.pipeline.genomic` resumes and sends only the missing tasks to GI.
-- **Next:** finish the v1 run. Then add per-task scores to the ranking rows, and compare the GI ranking against the Keenable literature evidence (see "Next" below).
+- **Done:** all 7 GI tasks (v1) on real model output, 30/30 genes, 0 mocks. The tasks are expression, find genes + expression, promoter, chromatin, enhancer, splice and annotation. The committed `genomic_context.json` and today's `rankings.json` are built from it.
+- **Next:** add per-task scores to the ranking rows. Then compare the GI ranking against the Keenable literature evidence (see Status below).
 
 Lane B asks the Genomic Intelligence (GI) DNA language models what the genome says about each candidate gene, and turns the answers into a `model_score` in [0, 1]. Stage 4 blends that score 50/50 with the literature (Keenable) evidence.
 
@@ -36,7 +35,7 @@ flowchart LR
 
 - **Lane A:** add or remove genes in `gene_candidates.json`, then re-run stage 3. Only uncached genes and tasks are sent to GI. Old HGNC symbols are fine (`SLC9A3R1` resolves to `NHERF1`).
 - **Lane C:** read only `gene`, `model_score` and `source`. `model_score` is `null` on mock rows, so treat it as 0.0. Per-task scores are in `model_output.task_scores` (v1) if you want to show them.
-- **Lane D:** everything the evidence drawer needs is in `model_output` (shape below). Show a "mock data" tag when `source == "mock"`. Rows written by v0 have `model_output.components` (3 keys); rows written by v1 have `model_output.task_scores` (7 keys). Handle both until the v1 file is committed.
+- **Lane D:** everything the evidence drawer needs is in `model_output` (shape below). Show a "mock data" tag when `source == "mock"`. Per-task scores are in `model_output.task_scores` (7 keys, each [0,1] or null).
 - **New biomarker:** add a row with its own `model_context`. No code change is needed.
 
 ## Run it
@@ -74,9 +73,9 @@ Probabilities and fractions are used as-is. Unbounded readouts are min-max norma
 
 **In one sentence for judges:** a gene scores high when the DNA models agree it looks like a well-formed, active gene in HER2-positive breast cells. That means expressed (more than in liver), with an open promoter and enhancer-like activity at its start site, and a structure the splice and gene-finder models recognise.
 
-### v0 (what the committed `genomic_context.json` still uses)
+### v0 (superseded)
 
-`model_score` = mean of three components: expression and specificity (as above), and a regulatory component (0.5 × promoter + 0.5 × minmax(chromatin)). The v1 run replaces this.
+The first run scored three components: expression and specificity (as above), and regulatory = 0.5 × promoter + 0.5 × minmax(chromatin). v1 replaced it. The v0 numbers are still in each gene's `genomic_raw` digest.
 
 ### Model ids are resolved, not hard-coded
 
@@ -114,9 +113,9 @@ From `sanity_check.json` and the runs so far, all on 2026-11-14 on the demo key.
 - **Tissue control works:** ALB, a liver gene, scores 9.69 in "liver tissue" and 0.52 in the HER2+ breast context. HBB scores 3.53 vs 0.74. ERBB2 scores 3.17 in breast vs 1.87 in liver.
 - **Deterministic:** the same request twice gives the same value (ERBB2: 3.168 and 3.168).
 - **Strand handling is right:** for 5 of 6 minus-strand genes, the gene-sense TSS window looks more promoter-like than its reverse complement. JUN is the exception; it is a single-exon gene with a CpG-island promoter.
-- **The splice model recovers real gene structure:** for ERBB2, all 17 canonical splice junctions in the first 15 kb were called, with no extra sites.
+- **The splice model recovers real gene structure:** for ERBB2, all 17 canonical splice junctions in the first 15 kb were called, with no extra sites. Across the 30 genes, 25 had every junction in their window recovered. IGF1R's single junction in the window was missed, because the model called no sites there. JUN is single-exon, so it has no splice readout.
 - **The gene finder rediscovers the 17q12 amplicon** (`amplicon_context.json`, ERBB2 ± 100 kb). It found 9 transcripts with TSSs within 1 bp of ERBB2's canonical TSS, 21 bp of GRB7's, 18 bp of PGAP3's and 8 bp of MIEN1's, plus transcripts within 600 bp of TCAP and PNMT. It missed STARD3, NEUROD2 and PPP1R1B, whose TSSs are inside the window.
-- **The gene finder is gene-dependent.** It finds ERBB2, GRB7 and HSP90AA1 with high confidence, but misses STAT3, EZR and PIK3CA in their ± 40 kb windows. A window spanning the whole transcript did no better on 5 test genes. Read a low annotation score as "the model did not recognise this locus", not as biology.
+- **The gene finder is gene-dependent.** It finds ERBB2, GRB7 and HSP90AA1 with high confidence, but misses STAT3, EZR and PIK3CA in their ± 40 kb windows. A window spanning the whole transcript did no better on 5 test genes. Read a low annotation score as "the model did not recognise this locus", not as biology. Across all 30 genes the gene finder placed a transcript at the canonical TSS for 19.
 - **Description wording matters.** Bare cell-line names gave unreliable numbers: `"MCF-7"` gave ESR1 0.16, which is wrong for an ER+ line. We use full phrases and keep them fixed across runs, as GI's docs advise.
 
 ## Known limits (say these out loud if asked)
@@ -136,7 +135,7 @@ From `sanity_check.json` and the runs so far, all on 2026-11-14 on the demo key.
 - [x] v1 code: all 7 GI tasks, per-task scores, per-gene and per-task cache, parallel workers, smoke test updated
 - [x] Optional amplicon scan around the biomarker gene, labelled with Ensembl genes
 - [x] Biology sanity checks (`sanity_check.py`)
-- [ ] **v1 full run** (in progress: 6/30 genes done). Then commit the new `genomic_context.json` and re-run `python -m backend.pipeline.run --from-stage 4`.
+- [x] **v1 full run:** 30/30 genes with all 7 tasks, committed, and stages 4–6 re-run
 - [ ] **Per-task scores in the ranking:** add `model_task_scores` to `gene_scores.json` and `matched_genes`, plus a per-trial breakdown of which task drove `genomic_match`. This touches lane C's `scoring.py` and `backend/schemas.py`, so agree it with lane C.
 - [ ] **Compare GI with Keenable:** a new output, `data/output/model_vs_literature.json`. It will hold the per-gene literature rank (Keenable paper count) vs the GI model rank, the Spearman correlation overall and per task, and agreement labels: both high, literature only, model only, both low. Plus `GET /api/comparison` for lane D.
 - [ ] Get our own `GI_API_KEY` for private quota (same code path)
