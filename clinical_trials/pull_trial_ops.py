@@ -3,20 +3,23 @@
 Pull lung, breast, colon and stomach cancer studies from ClinicalTrials.gov (API v2)
 into a trial-operations schema, one JSON record per study (JSONL) plus a flat CSV.
 
+Keeps only studies whose registered primary purpose is TREATMENT, unless --any-purpose is given.
+
 Usage:
-    python pull_trial_ops.py                # open studies only
+    python pull_trial_ops.py                # open treatment studies only
     python pull_trial_ops.py --all          # every status
     python pull_trial_ops.py --interventional
+    python pull_trial_ops.py --any-purpose  # also keep supportive care, screening, diagnostic, ...
 """
 import argparse, csv, json, re, time, urllib.parse, urllib.request
 
 API = "https://clinicaltrials.gov/api/v2/studies"
-OPEN = "RECRUITING|ENROLLING_BY_INVITATION|AVAILABLE"
+OPEN = "RECRUITING|NOT_YET_RECRUITING|ENROLLING_BY_INVITATION|AVAILABLE"
 CANCERS = {
-    # "lung": "lung cancer OR non-small cell lung cancer OR small cell lung cancer",
+    "lung": "lung cancer OR non-small cell lung cancer OR small cell lung cancer",
     "breast": "breast cancer",
-    # "colon": "colon cancer OR colorectal cancer",
-    # "stomach": "stomach cancer OR gastric cancer OR gastroesophageal junction cancer",
+    "colon": "colon cancer OR colorectal cancer",
+    "stomach": "stomach cancer OR gastric cancer OR gastroesophageal junction cancer",
 }
 # Module names: restricts the response to the sections we need
 MODULES = ("IdentificationModule|StatusModule|ConditionsModule|DesignModule|"
@@ -31,7 +34,6 @@ BIOMARKERS = {
     "TNBC": r"triple[- ]negative", "BRCA": r"\bBRCA\s?[12]?\b", "PIK3CA": r"\bPIK3CA\b",
     "PD-L1": r"\bPD-?L1\b", "MSI/dMMR": r"\bMSI-?H\b|\bdMMR\b|microsatellite", "CLDN18.2": r"\bCLDN ?18\.?2\b|claudin ?18",
     "TMB": r"\bTMB\b|tumou?r mutational burden", "ctDNA": r"\bctDNA\b|circulating tumou?r DNA",
-    "ESR1": r"\bESR1\b", "TNBC": r"\bTNBC\b", "BRCA": r"\bBRCA\b", "PIK3CA": r"\bPIK3CA\b"
 }
 SPECIMENS = {
     "archival_tissue": r"archival|archived|formalin|\bFFPE\b|paraffin",
@@ -93,6 +95,7 @@ def flatten(study):
         "interventions": [{"name": i.get("name"), "type": i.get("type")}
                           for i in arms.get("interventions", [])],
         "phase": design.get("phases", []),
+        "primary_purpose": design.get("designInfo", {}).get("primaryPurpose", ""),
         "recruitment_status": status.get("overallStatus", ""),
         "age_min": elig.get("minimumAge", ""),
         "age_max": elig.get("maximumAge", ""),
@@ -124,8 +127,9 @@ def fetch(params):
         return json.load(r)
 
 
-def pull(key, term, all_status, interventional):
-    p = {"query.cond": term, "pageSize": 500, "countTotal": "true", "fields": MODULES}
+def pull(key, term, all_status, interventional, treatment_only=True):
+    p = {"query.cond": term, "query.locn": "United States", "pageSize": 100,
+         "countTotal": "true", "fields": MODULES}
     if not all_status:
         p["filter.overallStatus"] = OPEN
     if interventional:
@@ -138,7 +142,20 @@ def pull(key, term, all_status, interventional):
         if first:
             print(f"[{key}] {d.get('totalCount')} studies matched"); first = False
         for s in d.get("studies", []):
-            r = flatten(s); r["cancer_group"] = [key]; rows.append(r)
+            try:
+                r = flatten(s); r["cancer_group"] = [key]
+                # Keep only treatment trials (drops supportive care, screening, diagnostic, ...)
+                if treatment_only and r["primary_purpose"] != "TREATMENT":
+                    continue
+                # Keep only US sites; drop studies with no US site listed
+                r["locations"] = [l for l in r["locations"] if l.get("country") == "United States"]
+                if not r["locations"]:
+                    continue
+                rows.append(r)
+            except Exception as e:
+                nid = s.get("protocolSection", {}).get("identificationModule", {}).get("nctId")
+                print(f"  ! skipped {nid}: {type(e).__name__}: {e}")
+        print(f"  [{key}] fetched {len(rows)} so far", flush=True)
         token = d.get("nextPageToken")
         if not token:
             return rows
@@ -149,6 +166,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--interventional", action="store_true")
+    ap.add_argument("--any-purpose", action="store_true",
+                    help="keep every primary purpose (default: TREATMENT only)")
     ap.add_argument("--out", default="trial_ops")
     ap.add_argument("--cancers", nargs="+", choices=list(CANCERS), default=list(CANCERS),
                     help="which cancer groups to pull, e.g. --cancers breast")
@@ -156,7 +175,7 @@ def main():
 
     merged = {}
     for k, t in ((k, CANCERS[k]) for k in a.cancers):
-        for r in pull(k, t, a.all, a.interventional):
+        for r in pull(k, t, a.all, a.interventional, treatment_only=not a.any_purpose):
             if r["nct_id"] in merged:
                 merged[r["nct_id"]]["cancer_group"].append(k)
             else:
@@ -167,7 +186,7 @@ def main():
             f.write(json.dumps(r) + "\n")
 
     j = lambda v: "; ".join(map(str, v)) if isinstance(v, list) else v
-    flat_cols = ["nct_id", "cancer_group", "title", "therapeutic_area", "phase", "recruitment_status",
+    flat_cols = ["nct_id", "cancer_group", "title", "therapeutic_area", "phase", "primary_purpose", "recruitment_status",
                  "age_min", "age_max", "sex", "biomarker_requirements", "specimen_requirements", "url"]
     with open(a.out + ".csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(flat_cols + ["n_locations", "countries", "n_inclusion", "n_exclusion", "has_protocol_doc"])

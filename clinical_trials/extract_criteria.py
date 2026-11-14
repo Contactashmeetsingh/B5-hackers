@@ -8,15 +8,17 @@ Output: extracted.jsonl   (one structured record per study; resumable)
 Usage:
     pip install anthropic
     export ANTHROPIC_API_KEY=...
-    python extract_criteria.py                       # all studies, default model
-    python extract_criteria.py --limit 50            # test on a small sample first
+    python extract_criteria.py                       # all studies, default model (Claude Haiku 5.5)
+    python extract_criteria.py --limit 5 --out extracted_test.jsonl   # test on a small sample first
     python extract_criteria.py --model claude-sonnet-5-5 --workers 4
 """
 import argparse, hashlib, json, os, threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import anthropic
 
-DEFAULT_MODEL = "claude-haiku-5-5"  # cheap first pass; use sonnet for harder/oncology-dense text
+DEFAULT_MODEL = "claude-haiku-5-5"  # low cost for hundreds of trials; pass --model claude-opus-5-5 for harder text
+# Models that accept server-side refusal fallbacks (a declined request is retried on another model)
+FALLBACK_MODELS = {"claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5", "claude-fable-5-2", "claude-fable-5-1"}
 
 SYSTEM = """You convert clinical trial eligibility text into structured data for patient-trial matching.
 
@@ -80,6 +82,22 @@ TOOL = {
     },
 }
 
+def _closed(schema):
+    """Structured outputs require additionalProperties: false on every object."""
+    if isinstance(schema, list):
+        return [_closed(v) for v in schema]
+    if not isinstance(schema, dict):
+        return schema
+    out = {k: _closed(v) for k, v in schema.items()}
+    if out.get("type") == "object":
+        out["additionalProperties"] = False
+    return out
+
+
+# The response is constrained to this JSON schema (forced tool calls are not
+# supported on Opus 5.5 / Sonnet 5.5, so structured outputs replace them).
+SCHEMA = _closed(TOOL["input_schema"])
+
 write_lock = threading.Lock()
 
 
@@ -93,14 +111,23 @@ def extract_one(client, model, rec):
             f"Phase: {'; '.join(rec.get('phase', []))}\n"
             f"Stated age: {rec.get('age_min','')} to {rec.get('age_max','')}; sex: {rec.get('sex','')}\n\n"
             f"ELIGIBILITY CRITERIA TEXT:\n{rec['eligibility_raw']}")
-    resp = client.messages.create(
-        model=model, max_tokens=4000, system=SYSTEM,
-        tools=[TOOL], tool_choice={"type": "tool", "name": "record_eligibility"},
+    extra = ({"betas": ["server-side-fallback-2026-07-01"], "fallbacks": "default"}
+             if model in FALLBACK_MODELS else {})
+    resp = client.beta.messages.create(
+        model=model, max_tokens=16000, system=SYSTEM,
+        output_config={"effort": "medium",
+                       "format": {"type": "json_schema", "schema": SCHEMA}},
         messages=[{"role": "user", "content": user}],
+        **extra,
     )
-    block = next(b for b in resp.content if b.type == "tool_use")
-    return {"nct_id": rec["nct_id"], "criteria_hash": crit_hash(rec), "model": model,
-            "extracted": block.input,
+    if resp.stop_reason == "refusal":
+        cat = getattr(resp.stop_details, "category", None) if resp.stop_details else None
+        raise RuntimeError(f"model declined (category: {cat})")
+    if resp.stop_reason == "max_tokens":
+        raise RuntimeError("hit max_tokens before the JSON was complete")
+    text = next(b.text for b in resp.content if b.type == "text")
+    return {"nct_id": rec["nct_id"], "criteria_hash": crit_hash(rec), "model": resp.model,
+            "extracted": json.loads(text),
             "usage": {"in": resp.usage.input_tokens, "out": resp.usage.output_tokens}}
 
 
