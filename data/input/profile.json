@@ -1,0 +1,22 @@
+{
+  "tissue": "Breast",
+  "biomarkers": [
+    {
+      "biomarker": "HER2",
+      "gene": "ERBB2",
+      "alteration": "overexpression / amplification",
+      "status": "positive",
+      "variant": null,
+      "aliases": ["HER2", "ERBB2", "HER-2", "HER2/neu", "ErbB-2", "ErbB2"]
+    },
+    {
+      "biomarker": "PIK3CA mutation",
+      "gene": "PIK3CA",
+      "alteration": "mutation",
+      "status": "mutated",
+      "variant": null,
+      "aliases": ["PIK3CA", "PI3KCA", "p110alpha", "p110α"]
+    }
+  ],
+  "sequence_gene": "ERBB2"
+}

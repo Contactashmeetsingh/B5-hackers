@@ -1,4 +1,4 @@
-"""Stage 7 API: serves the stage output files to the dashboard.
+"""Stage 7 API: serves the profile and the stage output files to the frontend.
 
 Run:  uvicorn backend.app.main:app --reload     (docs at http://localhost:8000/docs)
 
@@ -19,14 +19,14 @@ from pydantic import BaseModel, Field
 
 from backend import config
 from backend.pipeline.biomarker import load_biomarker
+from backend.pipeline.profile import load_profile
 from backend.schemas import (
     MOCK,
     Biomarker,
     GeneCandidate,
-    GeneScore,
     GenomicContext,
     Paper,
-    Ranking,
+    Profile,
     Trial,
 )
 from backend.store import read_rows
@@ -38,16 +38,14 @@ DISCLAIMER = "Research prototype. Not medical advice."
 # time, so tests can monkeypatch them.
 CONTRACTS: dict[str, tuple[str, type[BaseModel], str, str]] = {
     "papers": ("PAPERS_PATH", Paper, "stage 1 (literature)", "python -m backend.pipeline.literature"),
-    "gene_candidates": ("GENE_CANDIDATES_PATH", GeneCandidate, "stage 2 (gene targets)", "python -m backend.pipeline.targets"),
-    "genomic_context": ("GENOMIC_CONTEXT_PATH", GenomicContext, "stage 3 (genomic context)", "python -m backend.pipeline.genomic"),
-    "gene_scores": ("GENE_SCORES_PATH", GeneScore, "stage 4 (gene scoring)", "python -m backend.pipeline.scoring"),
-    "trials": ("TRIALS_PATH", Trial, "stage 5 (trials)", "python -m backend.pipeline.trials"),
-    "rankings": ("RANKINGS_PATH", Ranking, "stage 6 (trial scoring)", "python -m backend.pipeline.scoring"),
+    "gene_candidates": ("GENE_CANDIDATES_PATH", GeneCandidate, "stage 2 (gene candidates)", "python -m backend.pipeline.targets"),
+    "trials": ("TRIALS_PATH", Trial, "stage 3 (trials)", "python -m backend.pipeline.trials"),
+    "genomic_context": ("GENOMIC_CONTEXT_PATH", GenomicContext, "stage 5 (genomic intelligence)", "python -m backend.pipeline.genomic"),
 }
 # Contracts whose rows carry a `source` field, checked by /api/meta for mocks.
 SOURCED = ("papers", "gene_candidates", "genomic_context", "trials")
 
-app = FastAPI(title="B5 trial ranking API", version="0.1")
+app = FastAPI(title="B5 personalized medicine research API", version="0.2")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],  # Next.js dev server
@@ -108,13 +106,12 @@ def _load_if_present(name: str) -> list:
 
 # ---------------------------------------------------------------- API-only views
 class GeneDetail(BaseModel):
-    """Everything the evidence drawer shows for one gene, joined from four files."""
+    """Everything known about one gene, joined from three files."""
 
     gene: str
-    score: Optional[GeneScore] = None              # gene_scores.json row
     candidate: Optional[GeneCandidate] = None      # gene_candidates.json row
     genomic_context: Optional[GenomicContext] = None  # genomic_context.json row, incl. model_output
-    papers: list[Paper] = Field(default_factory=list)  # the papers behind literature_score
+    papers: list[Paper] = Field(default_factory=list)  # the papers that link the gene to the biomarker
     mock_inputs: list[str] = Field(default_factory=list)  # which of the above are mocks
 
 
@@ -122,15 +119,13 @@ class Meta(BaseModel):
     has_mock_data: bool
     mock_inputs: list[str]
     disclaimer: str
-    # Exposed so the UI can explain each score in one sentence without copying weights.
-    weights: dict[str, int | float]
 
 
 # ---------------------------------------------------------------- endpoints
 @app.get("/api/health")
 def health() -> dict[str, Any]:
     """Liveness plus which contract files exist (never 503, so it works on a fresh clone)."""
-    files = {"biomarker": config.BIOMARKER_PATH.exists()}
+    files = {"profile": config.PROFILE_PATH.exists(), "biomarker": config.BIOMARKER_PATH.exists()}
     files.update({name: getattr(config, attr).exists() for name, (attr, *_) in CONTRACTS.items()})
     return {"status": "ok", "files": files}
 
@@ -139,26 +134,22 @@ def health() -> dict[str, Any]:
 def meta() -> Meta:
     """Global mock flag for the UI banner. Looks only at files that exist."""
     mocks: set[str] = set()
-    for row in _load_if_present("rankings"):
-        mocks.update(row.mock_inputs)
-        if row.source == MOCK:  # Ranking.source is the trial's own source
-            mocks.add("trials")
     for name in SOURCED:
         if any(row.is_mock for row in _load_if_present(name)):
             mocks.add(name)
-    return Meta(
-        has_mock_data=bool(mocks),
-        mock_inputs=sorted(mocks),
-        disclaimer=DISCLAIMER,
-        weights={
-            "W_LIT": config.W_LIT,
-            "W_MODEL": config.W_MODEL,
-            "W_DIRECT": config.W_DIRECT,
-            "W_GENOMIC": config.W_GENOMIC,
-            "LIT_SATURATION": config.LIT_SATURATION,
-            "TOP_N_MATCHED": config.TOP_N_MATCHED,
-        },
-    )
+    return Meta(has_mock_data=bool(mocks), mock_inputs=sorted(mocks), disclaimer=DISCLAIMER)
+
+
+@app.get("/api/profile", response_model=Profile)
+def profile() -> Profile:
+    """The platform input: tissue plus the biomarkers (HER2 + PIK3CA for the PoC)."""
+    path = config.PROFILE_PATH
+    if not path.exists():
+        raise _missing("profile", path, "stage 0 (input)", "restore data/input/profile.json")
+    try:
+        return load_profile(path)
+    except ValueError as exc:
+        raise _malformed("profile", path, exc)
 
 
 @app.get("/api/biomarker", response_model=Biomarker)
@@ -172,33 +163,30 @@ def biomarker() -> Biomarker:
         raise _malformed("biomarker", path, exc)
 
 
-@app.get("/api/rankings", response_model=list[Ranking])
-def rankings() -> list[Ranking]:
-    """The ranked trial list, exactly as stage 6 wrote it (plain array, per the contract)."""
-    return sorted(_load("rankings"), key=lambda r: r.rank)
+@app.get("/api/trials", response_model=list[Trial])
+def trials() -> list[Trial]:
+    """The hard-coded clinical trials dataset, as stage 3 wrote it."""
+    return _load("trials")
 
 
-@app.get("/api/genes", response_model=list[GeneScore])
-def genes() -> list[GeneScore]:
-    """Per-gene scores, highest combined_score first."""
-    return sorted(_load("gene_scores"), key=lambda g: g.combined_score, reverse=True)
+@app.get("/api/genes", response_model=list[GeneCandidate])
+def genes() -> list[GeneCandidate]:
+    """Candidate genes linked to the biomarker by the literature (stage 2 order)."""
+    return _load("gene_candidates")
 
 
 @app.get("/api/genes/{gene}", response_model=GeneDetail)
 def gene_detail(gene: str) -> GeneDetail:
-    """Joined view for the evidence drawer. Gene symbols are matched case-insensitively."""
+    """Joined view for one gene. Gene symbols are matched case-insensitively."""
     symbol = gene.upper()
     # Load everything first so a missing file is a 503 even for an unknown gene.
-    scores, candidates, contexts, papers = (
-        _load(n) for n in ("gene_scores", "gene_candidates", "genomic_context", "papers")
-    )
-    score = next((r for r in scores if r.gene.upper() == symbol), None)
+    candidates, contexts, papers = (_load(n) for n in ("gene_candidates", "genomic_context", "papers"))
     candidate = next((r for r in candidates if r.gene.upper() == symbol), None)
     context = next((r for r in contexts if r.gene.upper() == symbol), None)
-    if not (score or candidate or context):
+    if not (candidate or context):
         raise HTTPException(status_code=404, detail={"message": f"{gene} is not a candidate gene"})
 
-    # Show the papers that literature_score counted (the candidate's paper_ids). A gene
+    # Show the papers behind the candidate (its paper_ids). A gene
     # with no candidate row (e.g. reached only through drug_targets.json) falls back to
     # papers that mention it.
     if candidate:
@@ -213,7 +201,6 @@ def gene_detail(gene: str) -> GeneDetail:
 
     return GeneDetail(
         gene=symbol,
-        score=score,
         candidate=candidate,
         genomic_context=context,
         papers=gene_papers,

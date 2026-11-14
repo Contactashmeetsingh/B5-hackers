@@ -56,6 +56,26 @@ class Biomarker(_Row):
     model_context: ModelContext
 
 
+class ProfileBiomarker(_Row):
+    """One biomarker of the input profile, e.g. HER2 positive or PIK3CA mutated."""
+
+    biomarker: str                 # display name, e.g. "HER2"
+    gene: str                      # HGNC symbol, e.g. "ERBB2"
+    alteration: str                # what is measured: "overexpression / amplification", "mutation"
+    status: str                    # the profile's value: "positive", "mutated"
+    variant: Optional[str] = None  # optional detail, e.g. "H1047R"
+    aliases: list[str] = Field(default_factory=list)  # spellings used to spot it in trial and paper text
+
+
+class Profile(_Row):
+    """The platform input: a tissue and its biomarkers (HER2 + PIK3CA for the PoC)."""
+
+    tissue: str
+    biomarkers: list[ProfileBiomarker]
+    # Gene whose DNA sequence feeds Approach 2. Its model conditioning is biomarker.json.
+    sequence_gene: str
+
+
 class DrugTarget(_Row):
     drug: str
     aliases: list[str] = Field(default_factory=list)
@@ -81,25 +101,19 @@ class GeneCandidate(_Sourced):
     paper_ids: list[str] = Field(default_factory=list)
 
 
-# ---------------------------------------------------------------- stage 3
+# ---------------------------------------------------------------- stage 5
 class GenomicContext(_Sourced):
     gene: str
     assembly: str = "GRCh38"
     region: str = ""                 # "chr17:39687914-39730426", gene body, 1-based inclusive
     model_task: str = ""
     model_output: dict[str, Any] = Field(default_factory=dict)
-    model_score: Optional[float] = None  # [0, 1]; None only when the gene could not be scored
+    # GI activity summary in [0, 1]: mean of the task readouts. A model summary only;
+    # nothing is ranked by it. None when GI could not read the gene.
+    model_score: Optional[float] = None
 
 
-# ---------------------------------------------------------------- stage 4
-class GeneScore(_Row):
-    gene: str
-    literature_score: float
-    model_score: float
-    combined_score: float
-
-
-# ---------------------------------------------------------------- stage 5
+# ---------------------------------------------------------------- stage 3
 class Trial(_Sourced):
     nct_id: str
     title: str
@@ -109,27 +123,3 @@ class Trial(_Sourced):
     conditions: list[str] = Field(default_factory=list)
     interventions: list[str] = Field(default_factory=list)
     eligibility_text: str = ""
-
-
-# ---------------------------------------------------------------- stage 6
-class MatchedGene(_Row):
-    gene: str
-    combined_score: float
-    paper_ids: list[str] = Field(default_factory=list)
-
-
-class Ranking(_Row):
-    rank: int
-    nct_id: str
-    title: str
-    phase: str = ""
-    status: str = ""
-    url: str = ""
-    trial_score: float
-    biomarker_directness: float
-    genomic_match: float
-    matched_genes: list[MatchedGene] = Field(default_factory=list)
-    source: str = ""  # the trial's own source, copied from trials.json
-    # Which upstream inputs behind this row are mocks, e.g. ["trials", "genomic_context"].
-    # The dashboard shows a "mock data" tag whenever this is non-empty.
-    mock_inputs: list[str] = Field(default_factory=list)

@@ -1,8 +1,13 @@
-"""Run the whole pipeline, stage 1 to 6, in order.
+"""Run the platform pipeline, stage by stage, in order.
 
   python -m backend.pipeline.run                    # cache first: no network if caches exist
   python -m backend.pipeline.run --refresh          # every stage re-fetches / recomputes
-  python -m backend.pipeline.run --from-stage 4     # rescore only (after lane B updates genomic_context)
+  python -m backend.pipeline.run --from-stage 3     # skip earlier stages, use their cached output
+
+Approach 1 (papers -> trials):   1 literature, 3 trials, 4 trial matching
+Approach 2 (DNA model -> atlas): 2 gene candidates, 5 genomic intelligence, 6 atlas mapping
+Stages 4 and 6 are added to STAGES as they are built (HUMAN.md tracks progress).
+The old scoring stages (gene scores, trial rankings) were removed.
 
 Stage modules are imported inside each stage function, so a module that is
 missing or half-written breaks only its own stage, not importing this file.
@@ -27,39 +32,27 @@ def _targets(refresh: bool):
     return targets.run(refresh=refresh), config.GENE_CANDIDATES_PATH
 
 
-def _genomic(refresh: bool):
-    from backend.pipeline import genomic
-    return genomic.run(refresh=refresh), config.GENOMIC_CONTEXT_PATH
-
-
-def _gene_scores(refresh: bool):
-    from backend.pipeline import scoring
-    return scoring.run_gene_scores(refresh=refresh), config.GENE_SCORES_PATH
-
-
 def _trials(refresh: bool):
     from backend.pipeline import trials
     return trials.run(refresh=refresh), config.TRIALS_PATH
 
 
-def _rankings(refresh: bool):
-    from backend.pipeline import scoring
-    return scoring.run_trial_rankings(refresh=refresh), config.RANKINGS_PATH
+def _genomic(refresh: bool):
+    from backend.pipeline import genomic
+    return genomic.run(refresh=refresh), config.GENOMIC_CONTEXT_PATH
 
 
-# Order matters: 4 needs 1-3, and 6 needs 4 and 5 (AGENTS.md section 4).
+# Stage numbers follow AGENTS.md section 4.
 STAGES = [
     (1, "literature", _literature),
-    (2, "gene targets", _targets),
-    (3, "genomic context", _genomic),
-    (4, "gene scores", _gene_scores),
-    (5, "trials", _trials),
-    (6, "trial rankings", _rankings),
+    (2, "gene candidates", _targets),
+    (3, "trials", _trials),
+    (5, "genomic intel", _genomic),
 ]
 
 
 def _mock_count(rows) -> str:
-    """How many rows are mock, or rest on mock inputs (rankings). "-" if rows carry no source."""
+    """How many rows are mock. "-" if rows carry no source."""
     if rows and hasattr(rows[0], "is_mock"):
         return str(sum(r.is_mock for r in rows))
     if rows and hasattr(rows[0], "mock_inputs"):
@@ -75,7 +68,7 @@ def _rel(path: Path) -> str:
 
 
 def main(argv: list[str] | None = None) -> None:
-    ap = argparse.ArgumentParser(description="Build every cache and data/output/rankings.json")
+    ap = argparse.ArgumentParser(description="Build every cache and the two result files in data/output/")
     ap.add_argument("--refresh", action="store_true", help="ignore caches and call the network")
     ap.add_argument("--from-stage", type=int, default=1, choices=[n for n, _, _ in STAGES],
                     help="skip earlier stages and use their cached output")

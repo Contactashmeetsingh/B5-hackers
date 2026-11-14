@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from backend import config
 from backend.app.main import app
 from backend.pipeline.biomarker import load_biomarker
-from backend.schemas import GeneCandidate, GeneScore, GenomicContext, Paper, Ranking, Trial
+from backend.schemas import GeneCandidate, GenomicContext, Paper, Trial
 from backend.store import write_rows
 
 
@@ -21,16 +21,7 @@ def test_api_smoke(tmp_path, monkeypatch):
         "GENOMIC_CONTEXT_PATH": [
             GenomicContext(gene="MOCKGENE", model_task="mock", model_output={"expression": 0.5}, model_score=0.5, source="mock")
         ],
-        "GENE_SCORES_PATH": [GeneScore(gene="MOCKGENE", literature_score=0.2, model_score=0.5, combined_score=0.35)],
         "TRIALS_PATH": [Trial(nct_id="MOCK-NCT-0001", title="Mock trial", source="mock")],
-        "RANKINGS_PATH": [
-            Ranking(
-                rank=1, nct_id="MOCK-NCT-0001", title="Mock trial", trial_score=0.61,
-                biomarker_directness=1.0, genomic_match=0.35,
-                matched_genes=[{"gene": "MOCKGENE", "combined_score": 0.35, "paper_ids": ["MOCK-PMID-0001"]}],
-                source="mock", mock_inputs=["trials", "genomic_context"],
-            )
-        ],
     }
     for attr, rows in fixtures.items():
         path = tmp_path / f"{attr.lower()}.json"
@@ -44,20 +35,22 @@ def test_api_smoke(tmp_path, monkeypatch):
 
     assert client.get("/api/biomarker").json()["gene"] == load_biomarker(config.BIOMARKER_PATH).gene
 
-    rankings = client.get("/api/rankings", headers={"Origin": "http://localhost:3000"})
-    assert rankings.status_code == 200
-    assert rankings.headers["access-control-allow-origin"] == "http://localhost:3000"
-    row = rankings.json()[0]  # plain array, per the contract
-    assert row["nct_id"] == "MOCK-NCT-0001" and row["mock_inputs"] == ["trials", "genomic_context"]
-    assert row["matched_genes"][0]["gene"] == "MOCKGENE"
+    profile = client.get("/api/profile").json()
+    assert [b["gene"] for b in profile["biomarkers"]] == ["ERBB2", "PIK3CA"]
 
-    assert client.get("/api/genes").json()[0]["combined_score"] == 0.35
+    trials = client.get("/api/trials", headers={"Origin": "http://localhost:3000"})
+    assert trials.status_code == 200
+    assert trials.headers["access-control-allow-origin"] == "http://localhost:3000"
+    assert trials.json()[0]["nct_id"] == "MOCK-NCT-0001"  # plain array, per the contract
+
+    assert client.get("/api/genes").json()[0]["gene"] == "MOCKGENE"
+    assert client.get("/api/rankings").status_code == 404  # the scoring system is gone
     assert client.get("/api/papers").json()[0]["paper_id"] == "MOCK-PMID-0001"
 
     detail = client.get("/api/genes/mockgene")  # case-insensitive
     assert detail.status_code == 200
     detail = detail.json()
-    assert detail["score"]["combined_score"] == 0.35
+    assert "score" not in detail
     assert detail["candidate"]["paper_ids"] == ["MOCK-PMID-0001"]
     assert detail["genomic_context"]["model_output"] == {"expression": 0.5}
     assert [p["paper_id"] for p in detail["papers"]] == ["MOCK-PMID-0001"]
@@ -70,11 +63,11 @@ def test_api_smoke(tmp_path, monkeypatch):
     assert meta["disclaimer"] == "Research prototype. Not medical advice."
 
     # A stage that has not run yet is a 503 that names the command to run, not a 500.
-    monkeypatch.setattr(config, "RANKINGS_PATH", tmp_path / "absent" / "rankings.json")
-    missing = client.get("/api/rankings")
+    monkeypatch.setattr(config, "TRIALS_PATH", tmp_path / "absent" / "trials.json")
+    missing = client.get("/api/trials")
     assert missing.status_code == 503
-    assert "backend.pipeline.scoring" in missing.json()["detail"]["run"]
-    assert client.get("/api/health").json()["files"]["rankings"] is False
+    assert "backend.pipeline.trials" in missing.json()["detail"]["run"]
+    assert client.get("/api/health").json()["files"]["trials"] is False
 
     # A malformed file (bad JSON, or a schema mismatch) is a JSON 500 naming the file, CORS intact.
     bad_json, bad_schema = tmp_path / "bad.json", tmp_path / "bad_biomarker.json"

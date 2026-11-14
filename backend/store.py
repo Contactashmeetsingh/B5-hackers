@@ -1,7 +1,7 @@
 """Read and write the JSON contract files, validated against backend.schemas.
 
 Every stage goes through these two functions, so a malformed file fails at the
-boundary with the file name in the error rather than deep inside scoring code.
+boundary with the file name in the error rather than deep inside pipeline code.
 """
 
 from __future__ import annotations

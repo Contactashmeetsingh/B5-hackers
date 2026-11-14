@@ -1,7 +1,8 @@
-"""Paths, weights and service settings for the pipeline.
+"""Paths and service settings for the pipeline.
 
-Every tunable number lives here (AGENTS.md section 5). Pipeline functions import
-these names; they never hard-code a weight.
+Every tunable setting lives here. Pipeline functions import these names; they
+never hard-code one. The old trial/gene scoring weights were removed with the
+scoring system (AGENTS.md section 5).
 """
 
 from __future__ import annotations
@@ -23,46 +24,35 @@ INPUT_DIR = DATA_DIR / "input"
 CACHE_DIR = DATA_DIR / "cache"
 OUTPUT_DIR = DATA_DIR / "output"
 
-BIOMARKER_PATH = INPUT_DIR / "biomarker.json"
+PROFILE_PATH = INPUT_DIR / "profile.json"            # the biomarker profile (HER2 + PIK3CA)
+BIOMARKER_PATH = INPUT_DIR / "biomarker.json"        # model conditioning for the sequence gene (ERBB2)
 DRUG_TARGETS_PATH = INPUT_DIR / "drug_targets.json"
+ATLAS_PATH = ROOT / "pancancer_atlas" / "her2_dependence_tcga_pancan.csv"  # TCGA PanCancer Atlas table
 
 PAPERS_PATH = CACHE_DIR / "papers.json"                    # stage 1
 GENE_CANDIDATES_PATH = CACHE_DIR / "gene_candidates.json"  # stage 2
-GENOMIC_CONTEXT_PATH = CACHE_DIR / "genomic_context.json"  # stage 3
-GENE_SCORES_PATH = CACHE_DIR / "gene_scores.json"          # stage 4
-TRIALS_PATH = CACHE_DIR / "trials.json"                    # stage 5
-RANKINGS_PATH = OUTPUT_DIR / "rankings.json"               # stage 6
+TRIALS_PATH = CACHE_DIR / "trials.json"                    # stage 3
+GENOMIC_CONTEXT_PATH = CACHE_DIR / "genomic_context.json"  # stage 5
 
-# Stage 3 keeps every raw Genomic Intelligence response, one file per gene, so a
+TRIAL_MATCHES_PATH = OUTPUT_DIR / "trial_matches.json"          # stage 4, Approach 1 result
+GENE_ASSOCIATIONS_PATH = OUTPUT_DIR / "gene_associations.json"  # stage 6, Approach 2 result
+
+# Stage 5 keeps every raw Genomic Intelligence response, one file per gene, so a
 # re-run never re-spends quota and every score can be traced to a request_id.
 GI_RAW_DIR = CACHE_DIR / "genomic_raw"
-# Optional stage 3 extra: genes found in the biomarker's own amplicon region.
+# Optional stage 5 extra: genes found in the biomarker's own amplicon region.
 AMPLICON_CONTEXT_PATH = CACHE_DIR / "amplicon_context.json"
 
-# ---------------------------------------------------------------- gene level (stage 4)
-LIT_SATURATION = 5      # papers needed for literature_score = 1.0
-W_LIT = 0.5             # combined_score weight on literature_score
-W_MODEL = 0.5           # combined_score weight on model_score
-
-# ---------------------------------------------------------------- trial level (stage 6)
-W_DIRECT = 0.4          # trial_score weight on biomarker_directness
-W_GENOMIC = 0.6         # trial_score weight on genomic_match
-TOP_N_MATCHED = 3       # genomic_match = mean combined_score of the top N matched genes
-DIRECTNESS_REQUIRED = 1.0   # biomarker status is an eligibility requirement
-DIRECTNESS_MENTIONED = 0.5  # biomarker only mentioned
-DIRECTNESS_ABSENT = 0.0
-STATUS_WINDOW_CHARS = 25    # "required" heuristic: max chars after a biomarker alias (same line) for a status word
-
-# ---------------------------------------------------------------- trial snapshot (stage 5)
+# ---------------------------------------------------------------- trial snapshot (stage 3)
 TRIALS_CONDITION_TEMPLATE = "{tissue} Cancer"                  # ClinicalTrials.gov query.cond
 TRIALS_PAGE_SIZE = 100
 TRIALS_MAX_STUDIES = 200
 TRIALS_STATUSES = ["RECRUITING", "NOT_YET_RECRUITING"]         # only trials a user could still join
 
-# ---------------------------------------------------------------- Keenable (stages 1 and 2)
+# ---------------------------------------------------------------- Keenable (stage 1)
 KEENABLE_API_KEY = os.getenv("KEENABLE_API_KEY") or None
 
-# ---------------------------------------------------------------- Genomic Intelligence (stage 3)
+# ---------------------------------------------------------------- Genomic Intelligence (stage 5)
 # Transport: the hosted MCP server. It answers anonymously on a shared demo key;
 # set GI_API_KEY in .env to use your own key and caps instead.
 GI_MCP_URL = os.getenv("GI_MCP_URL", "https://mcp.genomicintelligence.ai/mcp")
@@ -73,7 +63,8 @@ GI_BACKOFF_CAP_S = 30.0
 GI_SPECIES = "human"
 GI_ASSEMBLY = "GRCh38"
 
-# model_score is built from one readout per Genomic Intelligence task, each
+# The GI activity summary (the `model_score` field of genomic_context.json; a model
+# summary only, nothing is ranked by it) is built from one readout per Genomic Intelligence task, each
 # measured at the gene's canonical TSS (see backend/pipeline/genomic.py):
 #   expression  predicted log(TPM+1) in the target context, blended with
 #               specificity (target minus reference context)
