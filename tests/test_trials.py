@@ -31,7 +31,7 @@ def test_spreadsheet_import(tmp_path, monkeypatch):
     monkeypatch.setattr(clinicaltrials, "fetch_studies", no_network)
 
     rows = trials.run()  # no cache: import the spreadsheet
-    assert len(rows) == 7 and not any(t.is_mock for t in rows)
+    assert len(rows) == 10 and not any(t.is_mock for t in rows)  # the curated sheet as merged from main
     assert all(t.nct_id.startswith("NCT") and len(t.nct_id) == 11 for t in rows)
     assert all(t.source == trials.SPREADSHEET_SOURCE and t.url.endswith(t.nct_id) for t in rows)
     first = rows[0]

@@ -17,7 +17,7 @@ flowchart TD
 
     subgraph A1["Approach 1: papers → clinical trials"]
         K["Keenable<br/>finds research papers"]
-        T["Clinical trials<br/>fixed list of 7 open HER2 trials"]
+        T["Clinical trials<br/>fixed list of 10 open HER2 trials"]
         M["Matching<br/>which trials need these biomarkers,<br/>and why, with the papers behind it"]
         K --> M
         T --> M
@@ -80,7 +80,7 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 | `data/cache/` | Saved stage outputs, so everything runs offline |
 | `data/output/` | The two results: `trial_matches.json` (Approach 1, built) and `gene_associations.json` (Approach 2, being built) |
 | `pancancer_atlas/` | TCGA Pan-Cancer Atlas table for 30 genes |
-| `clinical_trials/` | Spreadsheet of 7 open HER2 trials: the fixed trial list |
+| `clinical_trials/` | Spreadsheet of 10 open HER2 trials (plus notes on excluded ones): the fixed trial list |
 | `keenable/` | Literature notes found with Keenable |
 | `backend/` | The pipeline (`pipeline/`), one wrapper per outside service (`clients/`), and the API (`app/`) |
 | `frontend/` | Owned by Sumaya. Holds API types for the UI. |

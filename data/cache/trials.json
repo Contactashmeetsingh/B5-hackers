@@ -110,5 +110,53 @@
     "status_detail": "Recruiting (record updated Jun 2026)",
     "status_as_of": "2026-11-14",
     "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
+  },
+  {
+    "source": "curated spreadsheet",
+    "nct_id": "NCT07683754",
+    "title": "DB-Guide: T-DXd-based therapy followed by palbociclib, endocrine therapy and dual HER2 blockade in first-line HER2+/HR+ metastatic breast cancer",
+    "phase": "Phase 3b",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07683754",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "Histologically confirmed HER2+ and HR+ (ER+ and/or PR+) metastatic breast cancer",
+    "sponsor": "Daiichi Sankyo",
+    "curated_markers": "ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting; started 2026-09-18",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
+  },
+  {
+    "source": "curated spreadsheet",
+    "nct_id": "NCT07616427",
+    "title": "TAYLOR-003: fovinaciclib + aromatase inhibitors + dual HER2 blockade, response-adapted neoadjuvant, HR+/HER2+ early breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07616427",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "HR-positive (ER >10%) and HER2-positive (IHC 3+ or IHC 2+/ISH+) early-stage or locally advanced invasive breast cancer; female 18-75",
+    "sponsor": "Second Affiliated Hospital, Zhejiang University School of Medicine",
+    "curated_markers": "ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting (per trial-listing site; not confirmed on ClinicalTrials.gov)",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
+  },
+  {
+    "source": "curated spreadsheet",
+    "nct_id": "NCT05063786",
+    "title": "ALPHABET: trastuzumab + alpelisib +/- fulvestrant vs trastuzumab + chemotherapy in PIK3CA-mutated, previously treated HER2+ advanced breast cancer",
+    "phase": "Phase 3",
+    "status": "Ongoing, recruiting per EU register",
+    "url": "https://clinicaltrials.gov/study/NCT05063786",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "HER2-positive advanced breast cancer with a PIK3CA mutation, previously treated including trastuzumab",
+    "sponsor": "Spanish Breast Cancer Research Group",
+    "curated_markers": "PIK3CA",
+    "status_detail": "Ongoing, recruiting per EU register (target ~27 patients); ClinicalTrials.gov record is older, so confirm still enrolling",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   }
 ]

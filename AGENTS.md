@@ -42,7 +42,7 @@ flowchart TD
 
     subgraph A1["Approach 1: research papers → clinical trial matching"]
         K["1. Keenable<br/>find papers on HER2 and PIK3CA"]
-        T["3. Clinical trials<br/>hard-coded list (7 open HER2 trials)"]
+        T["3. Clinical trials<br/>hard-coded list (10 open HER2 trials)"]
         M["4. Trial matching<br/>rule-based tiers, no scores<br/>+ plain-language reasons"]
         K --> M
         T --> M
@@ -70,7 +70,7 @@ flowchart TD
 **Approach 1: research papers → clinical trial matching**
 
 1. **Literature.** Use Keenable to find papers about each profile biomarker. Output: papers with the genes they mention.
-3. **Trials.** A hard-coded list of clinical trials (the 7 open HER2 trials in `clinical_trials/her2_candidate_marker_open_trials.xlsx`). No live search.
+3. **Trials.** A hard-coded list of clinical trials (the 10 open HER2 trials in `clinical_trials/her2_candidate_marker_open_trials.xlsx`, sheet "Open HER2 trials"). No live search.
 4. **Trial matching.** For each trial, check which profile biomarkers its criteria require or mention, which drugs it uses and what they target, and which papers support those genes. Group trials into tiers and write a plain-language reason. **No numeric score.**
 
 **Approach 2: Genomic Intelligence → Pan-Cancer Atlas**
@@ -95,7 +95,7 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 | 0 | Input | both | `backend/pipeline/profile.py`, `biomarker.py` | `data/input/profile.json`, `biomarker.json` | (in memory) | yes |
 | 1 | Literature | 1 | `backend/pipeline/literature.py` | profile, drug_targets, gene_candidates (vocabulary only); Keenable + PubMed on `--refresh` | `data/cache/papers.json` (+ `keenable_queries.json`) | yes: 29 curated + 33 merged Keenable hits |
 | 2 | Gene candidates | 2 | `backend/pipeline/targets.py` | biomarker, papers, drug_targets, Ensembl cache | `data/cache/gene_candidates.json` | yes |
-| 3 | Trials | 1 | `backend/pipeline/trials.py` | `clinical_trials/her2_candidate_marker_open_trials.xlsx` (both sheets); biomarker for `--ctgov` / mock | `data/cache/trials.json` | yes: 7 real trials |
+| 3 | Trials | 1 | `backend/pipeline/trials.py` | `clinical_trials/her2_candidate_marker_open_trials.xlsx` (both sheets); biomarker for `--ctgov` / mock | `data/cache/trials.json` | yes: 10 real trials |
 | 4 | Trial matching | 1 | `backend/pipeline/matching.py` | profile, papers, gene_candidates, trials, drug_targets, gene_terms | `data/output/trial_matches.json` | yes |
 | 5 | Genomic Intelligence | 2 | `backend/pipeline/genomic.py` | gene_candidates, biomarker | `data/cache/genomic_context.json` (+ side caches) | per-gene profiles yes; sequence/FASTA input *planned (Task 3)* |
 | 6 | Atlas mapping | 2 | `backend/pipeline/atlas.py` | genomic_context, sequence scan, atlas CSV, profile | `data/output/gene_associations.json` | *planned (Task 3)* |
@@ -318,7 +318,7 @@ The UI is not built in this repo's backend work. Our job is to give it:
 - **Gene targets dataset:** `gene_candidates.json` rows are still tagged mock because the "targets dataset" field is a stand-in (`drug_targets.json`). Drop the field, or name a real dataset?
 - **Atlas coverage:** the atlas table covers only the 30 candidate genes. Locus genes outside it (e.g. MIEN1, TCAP, PNMT) will show "not in atlas table". Extend the table, or leave as is?
 - **Reviewing merged papers:** the 33 Keenable hits are `reviewed: false`. Who checks them, and do reviewed ones get a hand-written `relation`?
-- **ER/PR in the profile:** five trials require hormone receptor status (a sixth names it for one cohort), which the profile does not record. Add ESR1/PGR status to the profile?
+- **ER/PR in the profile:** seven of the 10 trials require hormone receptor status (an eighth names it for one cohort), which the profile does not record. Add ESR1/PGR status to the profile?
 - **Old experiment:** keep `poc/compare_glm_vs_keenable.py` and `data/output/glm_vs_keenable.*`, or delete them?
 
 ### Resolved

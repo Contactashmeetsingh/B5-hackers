@@ -277,7 +277,11 @@ def _explain(tier: str, matches: list[BiomarkerMatch], drug_hits: list[DrugHit],
         s.append(f"The profile does not record {_join(unchecked, 'or')} status, so check those criteria.")
     if support:
         n_rev = sum(p.reviewed is True for p in support)
-        p = next((x for x in support if x.reviewed), support[0])  # cite a hand-checked paper when there is one
+        # Cite a hand-checked paper, preferably one on a profile biomarker other than the primary
+        # (for a HER2 + PIK3CA trial: a PIK3CA paper, not an ER review).
+        other_profile = [names[g].split()[0] for g in by_gene if g != profile.biomarkers[0].gene]
+        about_profile = [x for x in support if x.reviewed and any(o in w for w in x.why for o in other_profile)]
+        p = next(iter(about_profile), None) or next((x for x in support if x.reviewed), support[0])
         year = f" ({p.year})" if p.year else ""
         if p.reviewed and p.relation:
             what = p.relation
