@@ -13,8 +13,8 @@ flowchart TD
     IN["Input biomarker<br/>Breast · HER2 · gene ERBB2<br/>IHC score ± ISH"]
 
     subgraph W1["Way 1: evidence and genomic scoring"]
-        P["1. Kleenable<br/>find research papers linking<br/>HER2 to other genes"]
-        G["2. Kleenable<br/>gene targets dataset"]
+        P["1. Keenable<br/>find research papers linking<br/>HER2 to other genes"]
+        G["2. Keenable<br/>gene targets dataset"]
         C["Candidate genes"]
         M["3. Genomic Intelligence model<br/>run each gene's region"]
         S1["Stored per gene:<br/>genomic context + model score"]
@@ -68,7 +68,7 @@ Four lanes that only touch each other through JSON files, so nobody blocks anybo
 
 | Lane | Owns | Done when | Owner |
 |---|---|---|---|
-| A. Literature and targets | Kleenable client, stages 1 and 2 | `papers.json` and `gene_candidates.json` hold real results | TBD |
+| A. Literature and targets | Keenable client, stages 1 and 2 | `papers.json` and `gene_candidates.json` hold real results | TBD |
 | B. Genomic model | Genomic Intelligence client, stage 3 | `genomic_context.json` has a context and score per gene | TBD |
 | C. Trials and scoring | Trial snapshot, stages 4 to 6 | `rankings.json` is sorted and explainable | TBD |
 | D. Dashboard | FastAPI endpoints, Next.js UI | Ranked list with evidence drawer runs locally | TBD |
@@ -78,7 +78,7 @@ Four lanes that only touch each other through JSON files, so nobody blocks anybo
 ```mermaid
 flowchart LR
     H1["Hour 0 to 1<br/>scaffold + mock every stage<br/>fake rankings.json exists"] --> H2["Hour 1 to 3<br/>UI renders mocks<br/>trial snapshot saved"]
-    H2 --> H3["Middle<br/>swap mocks for real<br/>Kleenable, then model"]
+    H2 --> H3["Middle<br/>swap mocks for real<br/>Keenable, then model"]
     H3 --> H4["Last stretch<br/>tune weights, evidence drawer<br/>rehearse demo"]
 ```
 
@@ -89,12 +89,12 @@ The rule: something demoable exists from hour one, and it only gets more real.
 1. "HER2 is tested in every one of the 1,290 breast cases in our dataset. Which trial fits?"
 2. Show the biomarker card, then the ranked trials.
 3. Open the top trial. Point at the gene chips: "these are the genes this trial adds on top of HER2."
-4. Open one gene: papers from Kleenable on the left, the Genomic Intelligence score on the right.
+4. Open one gene: papers from Keenable on the left, the Genomic Intelligence score on the right.
 5. Close: "one biomarker today, the same pipeline works for any row in the table."
 
 ## Decisions we still need
 
-- Kleenable: exact name, docs link, and login. Lane A cannot start real calls without it.
+- Keenable: name and web app resolved (https://app.keenable.ai). Still need API access for the client. Lane A cannot start real calls without it.
 - Which Genomic Intelligence task gives us the "likelihood" number, and what high means.
 - Which gene targets dataset we use.
 - Are the 50/50 and 60/40 weights fine for the demo.
