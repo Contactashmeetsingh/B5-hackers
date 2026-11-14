@@ -9,7 +9,7 @@
       "ERBB3"
     ],
     "relation": "Review: HER3 lacks strong kinase activity and pairs with HER2 to form the most transforming ErbB dimer, driving PI3K/AKT signaling in breast cancer.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "30057690",
@@ -23,7 +23,7 @@
       "PIK3CA"
     ],
     "relation": "Review: HER2 activates HER3 through heterodimerization; blocking HER2 upregulates HER3 as compensation, and a HER2/HER3/IGF-1R complex is linked to trastuzumab resistance.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "39062682",
@@ -39,7 +39,7 @@
       "PGR"
     ],
     "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "17274834",
@@ -53,7 +53,7 @@
       "HSP90AA1"
     ],
     "relation": "Review of how HER2 forms active heterodimers with EGFR and HER3 and how HSP90 binding stabilizes HER2 and limits HER2/HER3 pairing.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "19855434",
@@ -65,7 +65,7 @@
       "HSP90AA1"
     ],
     "relation": "Full-length and truncated p95-HER2 are HSP90 client proteins; HSP90 inhibitors degrade them and halt trastuzumab-resistant breast tumor growth.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "15568014",
@@ -78,7 +78,7 @@
       "HSP90AA1"
     ],
     "relation": "HSP90 bound to HER2 holds back its signaling by limiting formation of HER2/HER3 heterodimers.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "18056992",
@@ -91,7 +91,7 @@
       "ERBB3"
     ],
     "relation": "Cell-surface HSP90 binds the HER2 extracellular domain; blocking this contact reduces heregulin-driven HER2/HER3 activation and breast cancer cell invasion.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "34439093",
@@ -104,7 +104,7 @@
       "HSP90AA1"
     ],
     "relation": "The E3 ligase CHIP/STUB1 ubiquitinates newly made HSP90-bound HER2 for proteasomal degradation, lowering surface HER2 in breast cancer cells.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "25881002",
@@ -117,7 +117,7 @@
       "HSP90AA1"
     ],
     "relation": "ATM stabilizes HER2 by promoting the HER2-HSP90 complex and preventing HER2 ubiquitination, sustaining AKT signaling in HER2-positive breast cancer.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "7907978",
@@ -130,7 +130,7 @@
       "SHC1"
     ],
     "relation": "GRB7 is co-amplified with HER2 in breast cancer and binds phosphorylated HER2 tightly through its SH2 domain.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "23593540",
@@ -144,7 +144,7 @@
       "VAV2"
     ],
     "relation": "In HER2-positive breast cancer cells, GRB7 couples HER2 to SHC/RAS for proliferation and to FAK/VAV2/RAC1 for migration.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "23253899",
@@ -159,7 +159,7 @@
       "PGAP3"
     ],
     "relation": "RNAi screen of 17q12 amplicon genes shows several genes co-amplified with HER2 (STARD3, GRB7, PSMD3, PERLD1/PGAP3) support HER2-positive breast cancer cell growth.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "27698002",
@@ -172,7 +172,7 @@
       "TNF"
     ],
     "relation": "TNF-alpha induces MUC4, which reduces trastuzumab binding to HER2 and causes resistance; MUC4 predicts poorer disease-free survival in HER2-positive patients.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "28915583",
@@ -184,7 +184,7 @@
       "MUC4"
     ],
     "relation": "In mouse models of HER2-positive breast cancer, MUC4 overexpression blocks trastuzumab access to HER2, and N-acetylcysteine restores response.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "16322262",
@@ -196,7 +196,7 @@
       "IGF1R"
     ],
     "relation": "In trastuzumab-resistant breast cancer cells, IGF-1R binds and transactivates HER2; breaking the heterodimer restores trastuzumab sensitivity.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "20103628",
@@ -209,7 +209,7 @@
       "IGF1R"
     ],
     "relation": "HER2, HER3 and IGF-1R form a three-receptor complex in trastuzumab-resistant breast cancer cells.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "21399647",
@@ -222,7 +222,7 @@
       "PTEN"
     ],
     "relation": "SRC activation is a shared downstream node of several trastuzumab-resistance routes in HER2-positive breast cancer, and SRC inhibition restores response.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "25892239",
@@ -235,7 +235,7 @@
       "SRC"
     ],
     "relation": "CDCP1 binds HER2 through its intracellular domain and increases HER2-SRC interaction, enhancing HER2 signaling and trastuzumab resistance.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "15324695",
@@ -249,7 +249,7 @@
       "PIK3CA"
     ],
     "relation": "Trastuzumab acts partly by activating PTEN through SRC inhibition; PTEN-deficient breast cancers respond poorly to trastuzumab.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "23940356",
@@ -261,7 +261,7 @@
       "PIK3CA"
     ],
     "relation": "An activating PIK3CA mutation speeds up HER2-driven mouse mammary tumors and makes them resistant to combined anti-HER2 therapy.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "27358378",
@@ -273,7 +273,7 @@
       "PIK3CA"
     ],
     "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "17259984",
@@ -285,7 +285,7 @@
       "PTPN1"
     ],
     "relation": "Loss or inhibition of PTP1B delays HER2-driven mammary tumors and lung metastasis in mice, so PTP1B acts as a positive regulator of HER2 signaling.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "16901783",
@@ -299,7 +299,7 @@
       "JUN"
     ],
     "relation": "Beta-4 integrin forms a complex with HER2 and amplifies its signaling to STAT3 and c-Jun, driving mammary tumor onset in mice.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "15156151",
@@ -312,7 +312,7 @@
       "SHC1"
     ],
     "relation": "MEMO1 binds the phospho-Y1227 site of HER2, likely through SHC, and is needed for HER2-driven breast carcinoma cell migration.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "10878805",
@@ -324,7 +324,7 @@
       "ERBIN"
     ],
     "relation": "ERBIN's PDZ domain binds HER2 directly and keeps the receptor at the basolateral membrane of epithelial cells.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "40390040",
@@ -339,7 +339,7 @@
       "HSP90AA1"
     ],
     "relation": "Erbin joins NHERF1, Ezrin and HSP90 in a membrane complex that keeps HER2 active; losing Erbin lowers HER2 signaling.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "37258523",
@@ -351,7 +351,7 @@
       "ESR1"
     ],
     "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "27800032",
@@ -364,7 +364,7 @@
       "PGR"
     ],
     "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
-    "source": "kleenable"
+    "source": "keenable"
   },
   {
     "paper_id": "39137598",
@@ -378,6 +378,6 @@
       "ERBB4"
     ],
     "relation": "Review of HER2 structure, its dimerization with other HER family receptors, and HER2-targeted drugs.",
-    "source": "kleenable"
+    "source": "keenable"
   }
 ]
