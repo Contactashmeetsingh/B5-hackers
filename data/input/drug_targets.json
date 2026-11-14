@@ -1,0 +1,11 @@
+[
+  {"drug": "trastuzumab", "aliases": ["Herceptin"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "pertuzumab", "aliases": ["Perjeta"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "trastuzumab deruxtecan", "aliases": ["Enhertu", "T-DXd", "DS-8201"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "trastuzumab emtansine", "aliases": ["Kadcyla", "T-DM1"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "tucatinib", "aliases": ["Tukysa"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "lapatinib", "aliases": ["Tykerb"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "neratinib", "aliases": ["Nerlynx"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "margetuximab", "aliases": ["Margenza"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
+  {"drug": "alpelisib", "aliases": ["Piqray"], "target_genes": ["PIK3CA"], "source": "AGENTS.md section 5 example"}
+]

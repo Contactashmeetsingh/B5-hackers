@@ -1,0 +1,15 @@
+{
+  "tissue": "Breast",
+  "biomarker": "HER2",
+  "gene": "ERBB2",
+  "measurement": "HER2 receptor (IHC score ± ISH)",
+  "source_field": "labels.diagnosis.Biomarkers",
+  "coverage": "1,290 / 1,290 cases",
+  "aliases": ["HER2", "ERBB2", "HER-2", "HER2/neu", "ErbB-2", "ErbB2"],
+  "sanity_genes": ["PIK3CA", "ERBB3", "EGFR", "GRB7", "CDK12", "TOP2A", "PTEN", "TP53", "ESR1"],
+  "model_context": {
+    "expression_target": "HER2-positive breast cancer cell line",
+    "expression_reference": "liver tissue",
+    "chromatin_cell_types": ["HMEC", "MCF-7", "T-47D"]
+  }
+}
