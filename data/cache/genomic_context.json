@@ -6,7 +6,7 @@
     "region": "chr14:102080738-102139773",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 5.5041 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.511 in 'liver tissue'; promoter p=0.9844; 46 breast-lineage chromatin calls; enhancer peak 1.0838; splice junctions recovered 20/20; gene finder found the TSS (confidence 0.9985).",
+      "summary": "Expression 5.5041 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.511 in 'liver tissue'; promoter p=0.9844; 46 breast-lineage chromatin calls; enhancer peak 1.0838; splice sites recovered 20/20; gene finder found the TSS (confidence 0.9985).",
       "task_scores": {
         "expression": 0.7589,
         "composite": 1.0,
@@ -233,7 +233,7 @@
     "region": "chr17:39980800-39997960",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9763; 56 breast-lineage chromatin calls; enhancer peak 1.0022; splice junctions recovered 17/17; gene finder found the TSS (confidence 0.9965).",
+      "summary": "Expression 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9763; 56 breast-lineage chromatin calls; enhancer peak 1.0022; splice sites recovered 17/17; gene finder found the TSS (confidence 0.9965).",
       "task_scores": {
         "expression": 0.5176,
         "composite": 0.5993,
@@ -460,7 +460,7 @@
     "region": "chr12:56076799-56103505",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2026 in 'liver tissue'; promoter p=0.9302; 38 breast-lineage chromatin calls; enhancer peak 1.6291; splice junctions recovered 29/29; gene finder found the TSS (confidence 0.9957).",
+      "summary": "Expression 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2026 in 'liver tissue'; promoter p=0.9302; 38 breast-lineage chromatin calls; enhancer peak 1.6291; splice sites recovered 29/29; gene finder found the TSS (confidence 0.9957).",
       "task_scores": {
         "expression": 0.4547,
         "composite": 0.5931,
@@ -686,7 +686,7 @@
     "region": "chr17:39637058-39664201",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.5601 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8267 in 'liver tissue'; promoter p=0.99; 42 breast-lineage chromatin calls; enhancer peak 0.2511; splice junctions recovered 1/1; gene finder found the TSS (confidence 0.9918).",
+      "summary": "Expression 3.5601 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8267 in 'liver tissue'; promoter p=0.99; 42 breast-lineage chromatin calls; enhancer peak 0.2511; splice sites recovered 1/1; gene finder found the TSS (confidence 0.9918).",
       "task_scores": {
         "expression": 0.5291,
         "composite": 0.5411,
@@ -912,7 +912,7 @@
     "region": "chr17:75721190-75757821",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9891; 16 breast-lineage chromatin calls; enhancer peak 0.4506; splice junctions recovered 28/29; gene finder found the TSS (confidence 0.9948).",
+      "summary": "Expression 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9891; 16 breast-lineage chromatin calls; enhancer peak 0.4506; splice sites recovered 28/29; gene finder found the TSS (confidence 0.9948).",
       "task_scores": {
         "expression": 0.8703,
         "composite": 0.6825,
@@ -1136,7 +1136,7 @@
     "region": "chr1:58776845-58784048",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 5.2552 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.3483 in 'liver tissue'; promoter p=0.3121; 46 breast-lineage chromatin calls; enhancer peak 0.5626; splice junctions recovered 0/0; gene finder found the TSS (confidence 0.9992).",
+      "summary": "Expression 5.2552 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.3483 in 'liver tissue'; promoter p=0.3121; 46 breast-lineage chromatin calls; enhancer peak 0.5626; splice sites recovered 0/0; gene finder found the TSS (confidence 0.9992).",
       "task_scores": {
         "expression": 0.844,
         "composite": 0.8689,
@@ -1362,7 +1362,7 @@
     "region": "chr17:74748607-74769360",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2334 in 'liver tissue'; promoter p=0.9883; 36 breast-lineage chromatin calls; enhancer peak -0.2749; splice junctions recovered 5/5; gene finder found the TSS (confidence 0.9888).",
+      "summary": "Expression 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2334 in 'liver tissue'; promoter p=0.9883; 36 breast-lineage chromatin calls; enhancer peak -0.2749; splice sites recovered 5/5; gene finder found the TSS (confidence 0.9888).",
       "task_scores": {
         "expression": 0.5092,
         "composite": 0.6516,
@@ -1588,7 +1588,7 @@
     "region": "chr17:39687914-39730426",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.168 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.8704 in 'liver tissue'; promoter p=0.9877; 21 breast-lineage chromatin calls; enhancer peak 1.2314; splice junctions recovered 17/17; gene finder found the TSS (confidence 0.9941).",
+      "summary": "Expression 3.168 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.8704 in 'liver tissue'; promoter p=0.9877; 21 breast-lineage chromatin calls; enhancer peak 1.2314; splice sites recovered 17/17; gene finder found the TSS (confidence 0.9941).",
       "task_scores": {
         "expression": 0.5573,
         "composite": 0.4353,
@@ -1813,7 +1813,7 @@
     "region": "chr11:108222788-108369102",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 1.8113 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.6949 in 'liver tissue'; promoter p=0.9743; 49 breast-lineage chromatin calls; enhancer peak 1.2677; splice junctions recovered 9/9; gene finder found the TSS (confidence 0.9425).",
+      "summary": "Expression 1.8113 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.6949 in 'liver tissue'; promoter p=0.9743; 49 breast-lineage chromatin calls; enhancer peak 1.2677; splice sites recovered 9/9; gene finder found the TSS (confidence 0.9425).",
       "task_scores": {
         "expression": 0.1552,
         "composite": 0.2074,
@@ -2040,7 +2040,7 @@
     "region": "chr16:679980-682870",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.4994 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8708 in 'liver tissue'; promoter p=0.8577; 37 breast-lineage chromatin calls; enhancer peak 0.1563; splice junctions recovered 11/12; gene finder found the TSS (confidence 0.998).",
+      "summary": "Expression 3.4994 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8708 in 'liver tissue'; promoter p=0.8577; 37 breast-lineage chromatin calls; enhancer peak 0.1563; splice sites recovered 11/12; gene finder found the TSS (confidence 0.998).",
       "task_scores": {
         "expression": 0.5103,
         "composite": 0.5168,
@@ -2266,7 +2266,7 @@
     "region": "chr6:31575558-31578336",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 1.3247 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.254 in 'liver tissue'; promoter p=0.9015; 22 breast-lineage chromatin calls; enhancer peak 3.1246; splice junctions recovered 6/6; gene finder found the TSS (confidence 0.9963).",
+      "summary": "Expression 1.3247 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.254 in 'liver tissue'; promoter p=0.9015; 22 breast-lineage chromatin calls; enhancer peak 3.1246; splice sites recovered 6/6; gene finder found the TSS (confidence 0.9963).",
       "task_scores": {
         "expression": 0.2209,
         "composite": 0.062,
@@ -2491,7 +2491,7 @@
     "region": "chr1:154962284-154974452",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.2279 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9891 in 'liver tissue'; promoter p=0.9193; 23 breast-lineage chromatin calls; enhancer peak 0.6003; splice junctions recovered 22/22; gene finder found the TSS (confidence 0.996).",
+      "summary": "Expression 3.2279 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9891 in 'liver tissue'; promoter p=0.9193; 23 breast-lineage chromatin calls; enhancer peak 0.6003; splice sites recovered 22/22; gene finder found the TSS (confidence 0.996).",
       "task_scores": {
         "expression": 0.4354,
         "composite": 0.4653,
@@ -2715,7 +2715,7 @@
     "region": "chr6:158765738-158819418",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.8955 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9003 in 'liver tissue'; promoter p=0.99; 35 breast-lineage chromatin calls; enhancer peak 0.9684; splice junctions recovered 3/3; gene finder missed the TSS.",
+      "summary": "Expression 3.8955 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9003 in 'liver tissue'; promoter p=0.99; 35 breast-lineage chromatin calls; enhancer peak 0.9684; splice sites recovered 3/3; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.595,
         "composite": null,
@@ -2940,7 +2940,7 @@
     "region": "chr17:42313322-42388574",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.6513 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.8344 in 'liver tissue'; promoter p=0.9882; 49 breast-lineage chromatin calls; enhancer peak 0.4436; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 3.6513 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.8344 in 'liver tissue'; promoter p=0.9882; 49 breast-lineage chromatin calls; enhancer peak 0.4436; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.4277,
         "composite": null,
@@ -3166,7 +3166,7 @@
     "region": "chr17:39737490-39747292",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.273 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.4069 in 'liver tissue'; promoter p=0.9753; 15 breast-lineage chromatin calls; enhancer peak 0.0873; splice junctions recovered 28/28; gene finder found the TSS (confidence 0.8679).",
+      "summary": "Expression 3.273 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.4069 in 'liver tissue'; promoter p=0.9753; 15 breast-lineage chromatin calls; enhancer peak 0.0873; splice sites recovered 28/28; gene finder found the TSS (confidence 0.8679).",
       "task_scores": {
         "expression": 0.5159,
         "composite": 0.4533,
@@ -3389,7 +3389,7 @@
     "region": "chr20:50510321-50585241",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 2.5213 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.9909; 43 breast-lineage chromatin calls; enhancer peak 0.9026; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 2.5213 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.9909; 43 breast-lineage chromatin calls; enhancer peak 0.9026; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.3275,
         "composite": null,
@@ -3615,7 +3615,7 @@
     "region": "chr5:65883128-66082546",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 2.6804 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.1082 in 'liver tissue'; promoter p=0.9747; 41 breast-lineage chromatin calls; enhancer peak 1.3212; splice junctions recovered 1/1; gene finder found the TSS (confidence 0.0049).",
+      "summary": "Expression 2.6804 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.1082 in 'liver tissue'; promoter p=0.9747; 41 breast-lineage chromatin calls; enhancer peak 1.3212; splice sites recovered 1/1; gene finder found the TSS (confidence 0.0049).",
       "task_scores": {
         "expression": 0.299,
         "composite": 0.4503,
@@ -3841,7 +3841,7 @@
     "region": "chr17:39671120-39696797",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 2.5933 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.3785 in 'liver tissue'; promoter p=0.9485; 43 breast-lineage chromatin calls; enhancer peak 0.5142; splice junctions recovered 12/12; gene finder missed the TSS.",
+      "summary": "Expression 2.5933 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.3785 in 'liver tissue'; promoter p=0.9485; 43 breast-lineage chromatin calls; enhancer peak 0.5142; splice sites recovered 12/12; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.3678,
         "composite": null,
@@ -4067,7 +4067,7 @@
     "region": "chr3:179148114-179240093",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 2.21 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5069 in 'liver tissue'; promoter p=0.9889; 41 breast-lineage chromatin calls; enhancer peak 0.8766; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 2.21 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5069 in 'liver tissue'; promoter p=0.9889; 41 breast-lineage chromatin calls; enhancer peak 0.8766; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.2668,
         "composite": null,
@@ -4293,7 +4293,7 @@
     "region": "chr2:31865060-32011230",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 2.9891 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.168 in 'liver tissue'; promoter p=0.9891; 40 breast-lineage chromatin calls; enhancer peak 0.7399; splice junctions recovered 1/3; gene finder found the TSS (confidence 0.7133).",
+      "summary": "Expression 2.9891 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.168 in 'liver tissue'; promoter p=0.9891; 40 breast-lineage chromatin calls; enhancer peak 0.7399; splice sites recovered 1/3; gene finder found the TSS (confidence 0.7133).",
       "task_scores": {
         "expression": 0.3606,
         "composite": 0.3584,
@@ -4520,7 +4520,7 @@
     "region": "chr7:55018820-55211628",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6513 in 'liver tissue'; promoter p=0.975; 21 breast-lineage chromatin calls; enhancer peak -0.2436; splice junctions recovered 1/1; gene finder found the TSS (confidence 0.397).",
+      "summary": "Expression 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6513 in 'liver tissue'; promoter p=0.975; 21 breast-lineage chromatin calls; enhancer peak -0.2436; splice sites recovered 1/1; gene finder found the TSS (confidence 0.397).",
       "task_scores": {
         "expression": 0.3923,
         "composite": 0.4744,
@@ -4745,7 +4745,7 @@
     "region": "chr10:87862638-87971930",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.9262 in 'liver tissue'; promoter p=0.7213; 38 breast-lineage chromatin calls; enhancer peak 0.5611; splice junctions recovered 1/1; gene finder found the TSS (confidence 0.0061).",
+      "summary": "Expression 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.9262 in 'liver tissue'; promoter p=0.7213; 38 breast-lineage chromatin calls; enhancer peak 0.5611; splice sites recovered 1/1; gene finder found the TSS (confidence 0.0061).",
       "task_scores": {
         "expression": 0.3591,
         "composite": 0.5016,
@@ -4971,7 +4971,7 @@
     "region": "chr20:37344673-37406050",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.1231 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9884; 23 breast-lineage chromatin calls; enhancer peak -0.2446; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 3.1231 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9884; 23 breast-lineage chromatin calls; enhancer peak -0.2446; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.6228,
         "composite": null,
@@ -5196,7 +5196,7 @@
     "region": "chr3:195746765-195811973",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 0.8259 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.193 in 'liver tissue'; promoter p=0.9443; 9 breast-lineage chromatin calls; enhancer peak 2.2772; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 0.8259 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.193 in 'liver tissue'; promoter p=0.9443; 9 breast-lineage chromatin calls; enhancer peak 2.2772; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.2379,
         "composite": null,
@@ -5409,7 +5409,7 @@
     "region": "chr6:151651284-152129619",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 0.9074 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.3009 in 'liver tissue'; promoter p=0.9461; 18 breast-lineage chromatin calls; enhancer peak 1.2862; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 0.9074 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.3009 in 'liver tissue'; promoter p=0.9461; 18 breast-lineage chromatin calls; enhancer peak 1.2862; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.243,
         "composite": null,
@@ -5633,7 +5633,7 @@
     "region": "chr3:45082277-45146483",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.4086 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.8627 in 'liver tissue'; promoter p=0.9894; 15 breast-lineage chromatin calls; enhancer peak -0.4611; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 3.4086 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.8627 in 'liver tissue'; promoter p=0.9894; 15 breast-lineage chromatin calls; enhancer peak -0.4611; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.7327,
         "composite": null,
@@ -5857,7 +5857,7 @@
     "region": "chr9:133761892-133992854",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.0337 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9739; 27 breast-lineage chromatin calls; enhancer peak -0.4066; splice junctions recovered 1/1; gene finder missed the TSS.",
+      "summary": "Expression 3.0337 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9739; 27 breast-lineage chromatin calls; enhancer peak -0.4066; splice sites recovered 1/1; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.3084,
         "composite": null,
@@ -6081,7 +6081,7 @@
     "region": "chr15:98648539-98964530",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 3.3031 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.2938 in 'liver tissue'; promoter p=0.9531; 29 breast-lineage chromatin calls; enhancer peak 1.4039; splice junctions recovered 0/1; gene finder found the TSS (confidence 0.0407).",
+      "summary": "Expression 3.3031 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.2938 in 'liver tissue'; promoter p=0.9531; 29 breast-lineage chromatin calls; enhancer peak 1.4039; splice sites recovered 0/1; gene finder found the TSS (confidence 0.0407).",
       "task_scores": {
         "expression": 0.5362,
         "composite": 0.4323,
@@ -6307,7 +6307,7 @@
     "region": "chr11:101029624-101129817",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 0.6051 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.9838 in 'liver tissue'; promoter p=0.8682; 16 breast-lineage chromatin calls; enhancer peak 0.7594; splice junctions recovered 3/3; gene finder missed the TSS.",
+      "summary": "Expression 0.6051 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.9838 in 'liver tissue'; promoter p=0.8682; 16 breast-lineage chromatin calls; enhancer peak 0.7594; splice sites recovered 3/3; gene finder missed the TSS.",
       "task_scores": {
         "expression": 0.0931,
         "composite": null,
@@ -6530,7 +6530,7 @@
     "region": "chr2:211375717-212539266",
     "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea) + enhancer (g0-deepstarr) + splice (g0-splice-bigbird) + annotation (g0-annotation) + composite (annotation->expression)",
     "model_output": {
-      "summary": "Expression 1.4298 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.7728; 17 breast-lineage chromatin calls; enhancer peak -0.5502; splice junctions recovered 1/1; gene finder found the TSS (confidence 0.0106).",
+      "summary": "Expression 1.4298 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.7728; 17 breast-lineage chromatin calls; enhancer peak -0.5502; splice sites recovered 1/1; gene finder found the TSS (confidence 0.0106).",
       "task_scores": {
         "expression": 0.0842,
         "composite": 0.0,

@@ -127,4 +127,5 @@ def test_scoring(tmp_path, monkeypatch):
 
     assert directness("* HER2+ disease") == directness("* HR-/HER2+ early breast cancer") == 1.0
     assert directness("* HER2 not overexpressed") == directness("* HER2 non-amplified by ISH") == 0.5
+    assert directness("* ER[+] and HER2[-] (0-1+ by IHC)") == 0.5 and directness("* HER2[+] disease") == 1.0
     assert directness("* HER2-low (IHC 1+ or 2+/ISH-)\n* HER2-negative per ASCO/CAP") == 1.0

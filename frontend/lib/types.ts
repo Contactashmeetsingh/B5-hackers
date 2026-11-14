@@ -58,9 +58,10 @@ export interface GeneCandidate {
 // time; everything stays optional so a shape change cannot crash the drawer.
 export interface GenomicModelOutput {
   summary?: string; // one human-readable line per gene
-  components?: Record<string, number>; // normalised [0, 1]: expression, specificity, regulatory
-  raw?: Record<string, number>; // un-normalised model values behind the components
-  weights?: Record<string, number>; // how components combine into model_score
+  task_scores?: Record<string, number | null>; // [0, 1] per GI task: expression, composite, promoter, chromatin, enhancer, splice, annotation
+  task_raw?: Record<string, number | null>; // un-normalised readouts behind the task scores
+  tasks_used?: string[]; // tasks that produced a readout for this gene
+  weights?: Record<string, number>; // how task scores combine into model_score
   [key: string]: unknown; // per-task detail (locus, expression, promoter, chromatin, request ids)
 }
 

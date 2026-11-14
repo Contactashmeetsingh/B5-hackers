@@ -16,7 +16,7 @@ its canonical transcription start site (TSS), and reduced to one readout:
 | promoter    | TSS +/- 1 kb                       | max promoter probability                             |
 | chromatin   | TSS +/- 1 kb                       | DeepSEA features called in on-tissue cell types      |
 | enhancer    | TSS +/- 1 kb                       | peak dev/hk enhancer activity (Drosophila-trained)   |
-| splice      | TSS .. TSS + 15 kb                 | share of canonical splice junctions recovered        |
+| splice      | TSS .. TSS + 15 kb                 | share of canonical splice sites recovered            |
 | annotation  | TSS +/- 40 kb, plus strand         | confidence of the transcript found at the TSS (0 if  |
 |             |                                    | the gene finder misses the gene)                     |
 
@@ -440,7 +440,7 @@ def _summary(d: dict, s: dict) -> str:
         f"Expression {e['target']['log_tpm']} log(TPM+1) in '{e['target']['description']}' vs "
         f"{e['reference']['log_tpm']} in '{e['reference']['description']}'; promoter p={r['promoter']}; "
         f"{int(r['chromatin'] or 0)} breast-lineage chromatin calls; enhancer peak {r['enhancer']}; "
-        f"splice junctions recovered {spl['junctions_recovered']}/{spl['junctions_in_window']}; "
+        f"splice sites recovered {spl['junctions_recovered']}/{spl['junctions_in_window']}; "
         f"gene finder {'found' if ann['found_at_tss'] else 'missed'} the TSS"
         + (f" (confidence {ann['confidence']})" if ann["found_at_tss"] else "") + "."
     )

@@ -135,9 +135,10 @@ _STATUS_WORDS = re.compile(
     r"(?i:positiv|over-?express|amplif|\b(?:ultra-?)?low\b)|IHC|ISH\b|\b[0-3]\+"
 )
 # Right after the alias: "HER2-negative", "HER2 negative", "HER2 neg", or a bare minus as in "ER+/HER2-".
-_NEGATED = re.compile(r"\s*-?\s*neg(?:ative)?\b|-(?![A-Za-z0-9])", re.IGNORECASE)
+# "HER2-", "HER2 negative", and the bracket form "HER2[-]" used in some eligibility text.
+_NEGATED = re.compile(r"\s*-?\s*neg(?:ative)?\b|-(?![A-Za-z0-9])|\[\s*-\s*\]", re.IGNORECASE)
 # Right after the alias, the positive shorthand: "HER2+", "ER+/HER2+", "HR-/HER2+".
-_POSITIVE_SIGN = re.compile(r"\+(?![0-9])")
+_POSITIVE_SIGN = re.compile(r"\+(?![0-9])|\[\s*\+\s*\]")  # "HER2+" or "HER2[+]"
 # Between the alias and its status word (or anywhere in the window if there is none).
 # A "neg" cue makes the occurrence a negation: "HER2 not overexpressed", "HER2 non-amplified",
 # "HER2 status negative by IHC", "HER2 expression is negative". A hedge ("equivocal",

@@ -11,10 +11,10 @@ Give us a biomarker (HER2 in breast cancer) and we return the clinical trials th
 You need Python 3.11 and [`uv`](https://docs.astral.sh/uv/). Everything runs offline from the committed data; no API keys are needed.
 
 ```bash
-uv venv --python 3.11 .venv
+[ -d .venv ] || uv venv --python 3.11 .venv            # skip if .venv already exists
 uv pip install --python .venv/bin/python -r requirements.txt
 
-.venv/bin/python -m pytest tests -q                      # 6 smoke tests, should all pass
+.venv/bin/python -m pytest tests -q                      # 6 smoke tests, should all pass (1 Starlette deprecation warning is expected)
 .venv/bin/python -m backend.pipeline.run --from-stage 4  # rebuild gene scores + trial ranking from the caches
 .venv/bin/python poc/compare_glm_vs_keenable.py          # PoC 3: model vs literature
 ```
@@ -23,14 +23,28 @@ uv pip install --python .venv/bin/python -r requirements.txt
 
 | # | Question | Status | Run it | Look at |
 |---|---|---|---|---|
-| 1 | Can **Keenable** find genes linked to HER2 in the literature? | **Papers real; gene list labeled mock.** 29 PubMed-checked papers name 30 genes. `gene_candidates.json` is tagged mock because the gene targets dataset is still a stand-in. 26 papers have lab evidence: 21 of the 29, plus 5 new ones not yet in `papers.json`. | Curated by hand with Keenable, checked against PubMed | [`keenable/`](keenable/), `data/cache/papers.json` |
-| 2 | Can a **genomic language model** (Genomic Intelligence) score those genes? | **Done, real data.** All 7 GI tasks for all 30 genes | `.venv/bin/python -m backend.pipeline.genomic --offline` | [`lanes/B-genomic/README.md`](lanes/B-genomic/README.md), `data/cache/genomic_context.json` |
-| 2b | Does the model "see" the HER2 amplicon? | **Done.** Its gene finder puts start sites within 1–21 bp of the real ERBB2, GRB7, PGAP3 and MIEN1 start sites. | `.venv/bin/python -m backend.pipeline.genomic --amplicon` | `data/cache/amplicon_context.json` |
-| 3 | Does the model **agree with the literature**? | **Done, first result:** barely (rank correlation about 0), so the two are complementary signals | `.venv/bin/python poc/compare_glm_vs_keenable.py` | [`data/output/glm_vs_keenable.md`](data/output/glm_vs_keenable.md) |
+| 1 | Can **Keenable** (an AI web-search tool) find genes linked to HER2 in the literature? | **Papers real; gene list labeled mock.** 29 PubMed-checked papers (8 of them reviews or editorials) name 29 partner genes plus ERBB2. `gene_candidates.json` is tagged mock only because its targets-dataset field is a stand-in. The genes and papers themselves are real. 26 papers have lab evidence: 21 of the 29, plus 5 new ones not yet in `papers.json`. | Curated by hand with Keenable, checked against PubMed | [`keenable/`](keenable/), `data/cache/papers.json` |
+| 2 | Can a **genomic language model** (Genomic Intelligence) score those genes? | **Done, real data.** All 7 GI tasks run for all 30 genes. 18 genes have all 7 readouts: the gene finder missed 11 start sites, and JUN has no splice sites. | `.venv/bin/python -m backend.pipeline.genomic --offline` | [`lanes/B-genomic/README.md`](lanes/B-genomic/README.md), `data/cache/genomic_context.json` |
+| 2b | Does the gene finder place the genes around ERBB2 correctly? | **Done, partly.** On the reference genome (this is gene annotation, not copy number), 4 of its calls land within 1–21 bp of the ERBB2, GRB7, PGAP3 and MIEN1 start sites. It missed STARD3, NEUROD2 and PPP1R1B. | `.venv/bin/python -c "import json; [print(g.get('nearest_known_gene'), g.get('distance_to_known_tss_bp'), 'bp') for g in json.load(open('data/cache/amplicon_context.json'))['genes']]"` | `data/cache/amplicon_context.json` |
+| 3 | Does the model **agree with the literature**? | **Done, first result:** no significant agreement (rank correlations −0.20 to 0.12, n = 29). The two may be complementary, but this test can't show it. | `.venv/bin/python poc/compare_glm_vs_keenable.py` | [`data/output/glm_vs_keenable.md`](data/output/glm_vs_keenable.md) |
 | 4 | Can we **rank trials** by the genes they add on top of HER2? | **Works, but on 6 mock trials,** and the gene list is still tagged mock. | `.venv/bin/python -m backend.pipeline.run --from-stage 4` | `data/output/rankings.json` |
 | 5 | Can the results feed a UI? | **API only.** The web page is parked. | `.venv/bin/uvicorn backend.app.main:app` | http://localhost:8000/api/rankings |
 
 "Mock" always means labeled placeholder data (`"source": "mock"`, IDs like `MOCK-NCT-0001`). Nothing is invented and presented as real.
+
+## Glossary
+
+| Term | Meaning |
+|---|---|
+| GI | Genomic Intelligence, the hackathon sponsor whose DNA models we call |
+| GLM | Genomic language model: a transformer trained on DNA (not a "generalized linear model") |
+| Keenable | AI web-search tool (app.keenable.ai), used to find the papers |
+| TSS | Transcription start site, where a gene's RNA begins. Every model readout is anchored here. |
+| log(TPM+1) | Predicted expression level: transcripts per million, log-scaled |
+| min-max | Rescale a set of numbers so the lowest becomes 0 and the highest 1 |
+| Spearman rho | Rank correlation: +1 = same order, 0 = no relation, −1 = opposite order |
+| MCP | Model Context Protocol, the API style GI's hosted server uses |
+| IHC / ISH | The two standard HER2 tests: protein staining score (0 to 3+), and gene-copy test |
 
 ## What is in this repo
 
@@ -53,7 +67,7 @@ uv pip install --python .venv/bin/python -r requirements.txt
 
 ```mermaid
 flowchart TD
-    IN["Input biomarker<br/>Breast · HER2 · gene ERBB2<br/>IHC score ± ISH"]
+    IN["Input biomarker<br/>Breast · HER2 · gene ERBB2<br/>HER2 test: IHC staining score ± ISH copy test"]
 
     subgraph W1["Way 1: evidence and genomic scoring"]
         P["1. Keenable<br/>papers linking HER2 to other genes"]
@@ -78,12 +92,12 @@ flowchart TD
     P -. "PoC 3" .-> CMP
 ```
 
-**Why two ways:** a trial is almost never about HER2 alone. It adds a second drug, a second target, or extra eligibility genes. Way 1 says which genes around HER2 matter most, from both papers and the genome model. Way 2 ranks trials by how well their extras line up with those genes. HER2 itself is left out of that match, because every trial has it.
+**Why two ways:** a trial is almost never about HER2 alone. It adds a second drug, a second target, or extra eligibility genes. Way 1 says which genes around HER2 matter most, from both papers and the genome model. Way 2 ranks trials by how well their extras line up with those genes. HER2 itself is listed in each trial's matched genes but left out of the score, because every trial has it.
 
 **The scores, in plain words** (all between 0 and 1; weights in `backend/config.py`):
 
 - **Literature score:** how many papers support the gene. 5 or more papers gives 1.0.
-- **Model score:** the average of 7 Genomic Intelligence readouts at the gene's start site:
+- **Model score:** the average of the Genomic Intelligence task scores a gene has at its start site (up to 7; a missing readout is skipped), then rescaled across the 30 genes so the top one is 1 and the bottom one is 0. The tasks:
   - expression in HER2+ breast cells, and how breast-specific it is compared with liver
   - promoter strength
   - open chromatin in breast cell lines

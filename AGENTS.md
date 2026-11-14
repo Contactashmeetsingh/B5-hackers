@@ -6,7 +6,7 @@ Ground truth for every coding agent working in this repo. Read this file fully b
 
 ## 1. Mission
 
-Build a hackathon proof of concept that takes one cancer biomarker and returns a ranked list of clinical trials, with the evidence behind each rank visible in a dashboard.
+Build a hackathon proof of concept that takes one cancer biomarker and returns a ranked list of clinical trials, with the evidence behind each rank visible in the output files (dashboard parked for the PoC phase).
 
 The demo must run end to end for one biomarker. Breadth, polish, and scale are out of scope.
 
@@ -141,7 +141,7 @@ These formulas are a starting point for a demo, not a validated method. Keep the
 | Service | Used for | Notes |
 |---|---|---|
 | **Keenable** (hackathon sponsor) | Stage 1 paper search, stage 2 gene targets dataset | Web app: https://app.keenable.ai (search, fetch, API keys). API auth not yet recorded here. See open questions. All calls go through `backend/clients/keenable.py`. |
-| **Genomic Intelligence** (hackathon sponsor) | Stage 3 genomic context and model score | Docs: https://docs.genomicintelligence.ai (llms.txt index, `AGENTS.md`, OpenAPI at `api.genomicintelligence.ai/v1/openapi.json`). We call the hosted MCP server `https://mcp.genomicintelligence.ai/mcp` (MCP Streamable HTTP). It answers on a shared demo key, so no key is needed; set `GI_API_KEY` to use our own key on the same server. Tools used: `list_models`, `fetch_gene_for_expression`, `fetch_region`, `predict_expression`, `predict_promoter`, `predict_chromatin`, `find_genes_and_predict_expression`. Sequences are fetched server-side and passed as handles, so DNA never transits our code. Switch on `error.code`, never the message. All calls go through `backend/clients/genomic_intelligence.py`. |
+| **Genomic Intelligence** (hackathon sponsor) | Stage 3 genomic context and model score | Docs: https://docs.genomicintelligence.ai (llms.txt index, `AGENTS.md`, OpenAPI at `api.genomicintelligence.ai/v1/openapi.json`). We call the hosted MCP server `https://mcp.genomicintelligence.ai/mcp` (MCP Streamable HTTP). It answers on a shared demo key, so no key is needed; set `GI_API_KEY` to use our own key on the same server. Tools used: `list_models`, `fetch_gene_for_expression`, `fetch_region`, `predict_expression`, `predict_promoter`, `predict_chromatin`, `predict_enhancer`, `predict_splice`, `find_genes`, `find_genes_and_predict_expression`. Sequences are fetched server-side and passed as handles, so DNA never transits our code. Switch on `error.code`, never the message. All calls go through `backend/clients/genomic_intelligence.py`. |
 | **Ensembl REST** | Gene symbol to Ensembl ID, GRCh38 coordinates, canonical TSS | Fetch coordinates, do not type them from memory. All calls go through `backend/clients/ensembl.py` (cached in `data/cache/ensembl_genes.json`; resolves old HGNC symbols). |
 | **ClinicalTrials.gov API v2** | One-time snapshot for stage 5 | Run once, save to `data/cache/trials.json`, commit it. The demo never calls it live. |
 
@@ -157,7 +157,7 @@ Rules for all clients:
 - **Backend:** Python 3.11, FastAPI, pydantic models that mirror the schemas above, `httpx` for clients
 - **Frontend:** Next.js (App Router), TypeScript, Tailwind, shadcn/ui
 - **Storage:** JSON files in `data/`. No database.
-- **Run:** `python -m backend.pipeline.run` builds every cache and `rankings.json`. `uvicorn backend.app.main:app` serves it. `npm run dev` in `frontend/`.
+- **Run:** `.venv/bin/python -m backend.pipeline.run` builds every cache and `rankings.json`. `.venv/bin/uvicorn backend.app.main:app` serves it. The frontend is parked and not scaffolded (no `package.json`); see `frontend/README.md`.
 
 ```
 AGENTS.md  CLAUDE.md  README.md (the plan for people, formerly HUMAN.md)
@@ -210,6 +210,8 @@ Setup: `uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python 
 6. **Ask, do not guess,** on anything listed under open questions.
 
 ## 11. Build order
+
+*PoC phase: skip steps 3 and 5 (dashboard parked). New work goes in `poc/` scripts that read committed data and write `data/output/`.*
 
 1. Scaffold repo layout, `config.py`, pydantic schemas, `biomarker.json`.
 2. Write mock versions of every stage so `run.py` produces a `rankings.json` in the first hour.

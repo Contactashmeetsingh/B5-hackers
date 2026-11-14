@@ -4,10 +4,12 @@
 
 **Status, 2026-11-14:**
 - **Done:** all 7 GI tasks (v1) on real model output, 30/30 genes, 0 mocks. The tasks are expression, find genes + expression, promoter, chromatin, enhancer, splice and annotation. The committed `genomic_context.json` and today's `rankings.json` are built from it.
-- **Done:** GI vs Keenable comparison, as PoC 3 (`poc/compare_glm_vs_keenable.py` → `data/output/glm_vs_keenable.md`). The rank correlation is about 0, so the two are complementary signals.
+- **Done:** GI vs Keenable comparison, as PoC 3 (`poc/compare_glm_vs_keenable.py` → `data/output/glm_vs_keenable.md`). There is no significant agreement (rho −0.20 to 0.12, n = 29). The two may be complementary, but this test can't show it.
 - **Next:** add per-task scores to the ranking rows.
 
 Lane B asks the Genomic Intelligence (GI) DNA language models what the genome says about each candidate gene, and turns the answers into a `model_score` in [0, 1]. Stage 4 blends that score 50/50 with the literature (Keenable) evidence.
+
+*Terms:* TSS = transcription start site, where a gene's RNA begins. MCP = Model Context Protocol, the API style GI's hosted server uses. minmax = rescale across the 30 genes so the lowest is 0 and the highest 1. log(TPM+1) = predicted expression in transcripts per million, log-scaled.
 
 ## How it fits the system
 
@@ -62,8 +64,8 @@ Everything is anchored on the gene's canonical transcription start site (TSS). T
 | **composite** (find genes + expression) | TSS ± 40 kb, plus strand | expression of the transcript the gene finder itself places at the canonical TSS | minmax; none if the finder misses the TSS |
 | **promoter** (`g0-promoter-2000bp`) | TSS ± 1 kb, gene-sense | max promoter probability | as-is (a probability) |
 | **chromatin** (`g0-deepsea`) | TSS ± 1 kb | DeepSEA features called (≥ 0.5) in breast-lineage cells (HMEC, MCF-7, T-47D) | minmax |
-| **enhancer** (`g0-deepstarr`) | TSS ± 1 kb, gene-sense | peak developmental/housekeeping activity | minmax. **Caveat:** this model is trained on fruit-fly DNA. Set its weight to 0 if judges object. |
-| **splice** (`g0-splice-bigbird`) | TSS → TSS + 15 kb, gene-sense | share of the canonical transcript's splice junctions (from Ensembl exons) that the model calls within 10 bp | as-is (a fraction); none if the window has no junction |
+| **enhancer** (`g0-deepstarr`) | TSS ± 1 kb, gene-sense | peak developmental/housekeeping activity | minmax. **Caveat:** this model is trained on fruit-fly DNA. To drop it, set its weight in `W_GI_TASK` to 0, then run `rm data/cache/genomic_context.json && .venv/bin/python -m backend.pipeline.genomic --offline && .venv/bin/python -m backend.pipeline.run --from-stage 4`. Task weights are applied in stage 3. |
+| **splice** (`g0-splice-bigbird`) | TSS → TSS + 15 kb, gene-sense | share of the canonical transcript's splice sites (donors and acceptors, from Ensembl exons) that the model calls within 10 bp | as-is (a fraction); none if the window has no splice site |
 | **annotation** (`g0-annotation`) | TSS ± 40 kb, plus strand | confidence of the transcript the gene finder places within 1 kb of the canonical TSS | as-is (a probability); 0 if the finder misses the gene |
 
 ```
@@ -111,13 +113,13 @@ A mock row has `source: "mock"`, `model_score: null` and `model_output: {"error"
 
 From `sanity_check.json` and the runs so far, all on 2026-11-14 on the demo key. These are checks for the demo story, not a validation of the method.
 
-- **Tissue control works:** ALB, a liver gene, scores 9.69 in "liver tissue" and 0.52 in the HER2+ breast context. HBB scores 3.53 vs 0.74. ERBB2 scores 3.17 in breast vs 1.87 in liver.
+- **Tissue control, mostly works:** ALB (a liver gene) scores 9.69 in "liver tissue" vs 0.52 in the HER2+ breast context. ERBB2 scores 3.17 vs 1.87. HBB (blood, which liver tissue contains) scores 3.53 vs 0.74. The housekeeping control did not behave: GAPDH scores 4.42 in breast but only 1.67 in liver.
 - **Deterministic:** the same request twice gives the same value (ERBB2: 3.168 and 3.168).
-- **Strand handling is right:** for 5 of 6 minus-strand genes, the gene-sense TSS window looks more promoter-like than its reverse complement. JUN is the exception; it is a single-exon gene with a CpG-island promoter.
-- **The splice model recovers real gene structure:** for ERBB2, all 17 canonical splice junctions in the first 15 kb were called, with no extra sites. Across the 30 genes, 25 had every junction in their window recovered. IGF1R's single junction in the window was missed, because the model called no sites there. JUN is single-exon, so it has no splice readout.
-- **The gene finder rediscovers the 17q12 amplicon** (`amplicon_context.json`, ERBB2 ± 100 kb). It found 9 transcripts with TSSs within 1 bp of ERBB2's canonical TSS, 21 bp of GRB7's, 18 bp of PGAP3's and 8 bp of MIEN1's, plus transcripts within 600 bp of TCAP and PNMT. It missed STARD3, NEUROD2 and PPP1R1B, whose TSSs are inside the window.
-- **The gene finder is gene-dependent.** It finds ERBB2, GRB7 and HSP90AA1 with high confidence, but misses STAT3, EZR and PIK3CA in their ± 40 kb windows. A window spanning the whole transcript did no better on 5 test genes. Read a low annotation score as "the model did not recognise this locus", not as biology. Across all 30 genes the gene finder placed a transcript at the canonical TSS for 19.
-- **Description wording matters.** Bare cell-line names gave unreliable numbers: `"MCF-7"` gave ESR1 0.16, which is wrong for an ER+ line. We use full phrases and keep them fixed across runs, as GI's docs advise.
+- **Strand check (6 of the 12 minus-strand genes tested):** in 5, the gene-sense TSS window scores higher than its reverse complement. The margin is clear for SHC1 (0.92 vs 0.34) and PGAP3, and narrow for HSP90AA1 and STAT3. JUN is the exception.
+- **The splice model recovers real splice sites:** for ERBB2, all 17 canonical splice sites (9 donors, 8 acceptors) in the first 15 kb were called, with no extra calls. Among the 12 genes with 5 or more sites in the window, 10 had every site recovered (ITGB4 28/29, STUB1 11/12). For 13 genes the window holds only the exon-1 donor, so their score is 1 of 1. IGF1R's single site was missed. JUN is single-exon.
+- **The gene finder places the known genes around ERBB2** (`amplicon_context.json`, ERBB2 ± 100 kb). This runs on the reference genome, so it is gene annotation, not copy number. It made 9 calls; one is a duplicate. 4 land within 1–21 bp of the ERBB2, GRB7, PGAP3 and MIEN1 start sites, and 2 within 600 bp of TCAP and PNMT. Two more are 0.4 and 4.4 kb from GRB7. It missed STARD3, NEUROD2 and PPP1R1B. It does find STARD3, 4 bp off, in STARD3's own window.
+- **The gene finder is gene-dependent.** It finds ERBB2, GRB7 and HSP90AA1 with high confidence, but misses STAT3, EZR and PIK3CA in their ± 40 kb windows. A window spanning the whole transcript did no better on 5 test genes; that was an exploratory run during development and is not saved. Read a low annotation score as "the model did not recognise this locus", not as biology. Across all 30 genes, it placed a transcript within 1 kb of the canonical TSS for 19, and 14 of those calls have confidence above 0.5.
+- **Description wording matters.** In exploratory runs that were not saved, bare cell-line names gave unreliable numbers: `"MCF-7"` gave ESR1 about 0.16, which is wrong for an ER+ line. We use full phrases and keep them fixed across runs, as GI's docs advise.
 
 ## Known limits (say these out loud if asked)
 

@@ -23,7 +23,7 @@
 | 5 Trials | biomarker | `data/cache/trials.json` (list of `Trial`) |
 | 6 Trial scoring | biomarker, `gene_scores.json`, `gene_candidates.json`, `genomic_context.json`, `trials.json`, `data/input/drug_targets.json` | `data/output/rankings.json` (list of `Ranking`, rank 1 first) |
 
-Stage 6 also reads `gene_candidates` (for `paper_ids`) and `genomic_context` (to know which inputs are mock), in addition to the two inputs in the `AGENTS.md` table.
+Stage 6 reads `gene_candidates` for `paper_ids`, and `genomic_context` to know which inputs are mock. Both are listed in `AGENTS.md` section 4.
 
 ## Scoring, one sentence each
 
@@ -55,6 +55,7 @@ All scores are in [0, 1], rounded to 4 decimals. Each derived score is computed 
   - Why negation matters: the first live sample returned two HR+/HER2-negative trials. A trial that requires HER2-negative disease scores as *mentioned* (0.5), not *required*.
   - Trade-off: a multi-cohort trial with both a HER2-positive and a HER2-negative cohort (for example, NCT06625775) also scores as *mentioned*.
   - Known miss: phrasing that puts the status word first ("positive for HER2") falls back to *mentioned*.
+  - Bracket signs are read like plain ones: `HER2[-]` counts as negated, `HER2[+]` as positive.
 - **mock_inputs** on each ranking lists `"trials"` if the trial is mock. It lists `"gene_candidates"` or `"genomic_context"` if the row for any matched gene, the biomarker gene included, is mock. The dashboard shows a mock tag whenever this list is not empty.
 - **No cache in scoring.** `refresh` is accepted for the common interface but does nothing. Scoring has no network calls, and a cached score could only ever be stale.
 
@@ -69,6 +70,7 @@ Done
 - [x] Dry run of stages 4 and 6 on the current upstream files (lane A candidates, lane B genomic context, mock trials), output sent to a scratch folder
 
 To do
+- [ ] **Pick the trial source.** `clinical_trials/her2_candidate_marker_open_trials.xlsx` lists 7 hand-checked open HER2 trials, but it has no eligibility text, and reading it needs `openpyxl`, which is not in `requirements.txt`. `trials --refresh` takes the first 200 recruiting trials for "Breast Cancer" + HER2 terms (`TRIALS_MAX_STUDIES`), and only 2 of the 7 spreadsheet trials are in it. Suggested: fetch the 7 NCT IDs with `backend/clients/clinicaltrials.py` so they carry full eligibility text, or raise `TRIALS_MAX_STUDIES`. Either way, rankings stay tagged mock through `gene_candidates` until lane A's targets dataset lands.
 - [ ] **Take the real snapshot** (team decides when): `.venv/bin/python -m backend.pipeline.trials --refresh`, check it, commit `data/cache/trials.json`. Settings are in `backend/config.py` (`TRIALS_*`): 200 studies max, `RECRUITING` and `NOT_YET_RECRUITING` only.
 - [ ] After the snapshot, read the top 10 rankings by hand and adjust the "required" heuristic if needed (for example, add "positive for HER2")
 - [ ] Tune weights in `config.py` (`AGENTS.md` open question: are 0.5/0.5 and 0.4/0.6 acceptable?)
