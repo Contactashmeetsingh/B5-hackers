@@ -1,4 +1,4 @@
-"""Stage 3 smoke test (offline): strand-aware windows and splice junctions, 7-task scoring,
+"""Genomic Intelligence stage smoke test (offline): strand-aware windows and splice junctions, 7-task scoring,
 cache-first run with a mock row for an unscored gene, and GI error parsing."""
 
 import json

@@ -1,143 +1,110 @@
-# B5 Hackers: from one biomarker to ranked clinical trials
+# B5 Hackers: a personalized medicine research platform (proof of concept)
 
-Give us a biomarker (HER2 in breast cancer) and we return the clinical trials that fit it best, with the papers and the genomic evidence behind every rank.
+Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast cancer, and it does two things side by side:
 
-> **Research prototype. Not medical advice.**
+1. **Finds research and clinical trials.** It retrieves papers about those biomarkers and matches them to a fixed list of clinical trials, with a plain-language reason for each match.
+2. **Finds related genes.** It runs the HER2 DNA sequence through a DNA model (Genomic Intelligence) and checks the predicted genes against TCGA Pan-Cancer Atlas patient data.
 
-**Current phase: proofs of concept.** We are short on time, so we are **not** building a full app. Each part of the idea gets a small, runnable proof of concept (PoC) that shows it works on real data. The plan below is being revised. `AGENTS.md` is the spec that coding agents follow.
+> **Research prototype. Not medical advice.** It helps researchers explore; it does not recommend treatment. Following up on the genes it reports is the researcher's job.
 
-## Start here (5 minutes)
+**Where are we?** See [`HUMAN.md`](HUMAN.md), the live progress tracker. The detailed spec for coding agents is [`AGENTS.md`](AGENTS.md).
+
+## How it works
+
+```mermaid
+flowchart TD
+    IN["You provide<br/>HER2 positive + PIK3CA mutated<br/>and a HER2 DNA sequence"]
+
+    subgraph A1["Approach 1: papers → clinical trials"]
+        K["Keenable<br/>finds research papers"]
+        T["Clinical trials<br/>fixed list of 7 open HER2 trials"]
+        M["Matching<br/>which trials need these biomarkers,<br/>and why, with the papers behind it"]
+        K --> M
+        T --> M
+    end
+
+    subgraph A2["Approach 2: DNA model → patient atlas"]
+        G["Genomic Intelligence<br/>genes found in the HER2 sequence<br/>+ genes that look like ERBB2 to the model"]
+        P["Pan-Cancer Atlas<br/>what TCGA patient data says<br/>about each gene"]
+        G --> P
+    end
+
+    IN --> K
+    IN --> T
+    IN --> G
+    K -. "genes named in papers" .-> G
+
+    M --> O1["Potentially relevant trials"]
+    P --> O2["Gene associations"]
+    O1 --> UI["Platform (API + frontend)"]
+    O2 --> UI
+```
+
+The two results are shown separately and never merged into one number. **There is no scoring system**: trials are grouped by simple rules (for example "requires both HER2 and PIK3CA"), not ranked by a score.
+
+## Three kinds of evidence
+
+Every result is labeled with where it came from, so nothing exploratory looks validated.
+
+| Label | What it means | Where it comes from |
+|---|---|---|
+| **Research-paper evidence** | A published paper reports the link | Keenable search, checked against PubMed |
+| **Model prediction** | A DNA model computed it from sequence. Exploratory. | Genomic Intelligence |
+| **Dataset-supported association** | Seen in patient cohort data | TCGA Pan-Cancer Atlas (breast cancer) |
+
+Two limits to keep in mind: the DNA models read the reference genome, so they cannot see a patient's own amplification or mutation; and the atlas describes a cohort, not an individual.
+
+## Run it
 
 You need Python 3.11 and [`uv`](https://docs.astral.sh/uv/). Everything runs offline from the committed data; no API keys are needed.
 
 ```bash
-[ -d .venv ] || uv venv --python 3.11 .venv            # skip if .venv already exists
+[ -d .venv ] || uv venv --python 3.11 .venv
 uv pip install --python .venv/bin/python -r requirements.txt
 
-.venv/bin/python -m pytest tests -q                      # 6 smoke tests, should all pass (1 Starlette deprecation warning is expected)
-.venv/bin/python -m backend.pipeline.run --from-stage 4  # rebuild gene scores + trial ranking from the caches
-.venv/bin/python poc/compare_glm_vs_keenable.py          # PoC 3: model vs literature
+.venv/bin/python -m pytest tests -q            # smoke tests
+.venv/bin/python -m backend.pipeline.run       # run the pipeline from the caches
+.venv/bin/uvicorn backend.app.main:app         # API at http://localhost:8000/docs
 ```
 
-## Proofs of concept
-
-| # | Question | Status | Run it | Look at |
-|---|---|---|---|---|
-| 1 | Can **Keenable** (an AI web-search tool) find genes linked to HER2 in the literature? | **Papers real; gene list labeled mock.** 29 PubMed-checked papers (8 of them reviews or editorials) name 29 partner genes plus ERBB2. `gene_candidates.json` is tagged mock only because its targets-dataset field is a stand-in. The genes and papers themselves are real. 26 papers have lab evidence: 21 of the 29, plus 5 new ones not yet in `papers.json`. | Curated by hand with Keenable, checked against PubMed | [`keenable/`](keenable/), `data/cache/papers.json` |
-| 2 | Can a **genomic language model** (Genomic Intelligence) score those genes? | **Done, real data.** All 7 GI tasks run for all 30 genes. 18 genes have all 7 readouts: the gene finder missed 11 start sites, and JUN has no splice sites. | `.venv/bin/python -m backend.pipeline.genomic --offline` | [`lanes/B-genomic/README.md`](lanes/B-genomic/README.md), `data/cache/genomic_context.json` |
-| 2b | Does the gene finder place the genes around ERBB2 correctly? | **Done, partly.** On the reference genome (this is gene annotation, not copy number), 4 of its calls land within 1–21 bp of the ERBB2, GRB7, PGAP3 and MIEN1 start sites. It missed STARD3, NEUROD2 and PPP1R1B. | `.venv/bin/python -c "import json; [print(g.get('nearest_known_gene'), g.get('distance_to_known_tss_bp'), 'bp') for g in json.load(open('data/cache/amplicon_context.json'))['genes']]"` | `data/cache/amplicon_context.json` |
-| 3 | Does the model **agree with the literature**? | **Done, first result:** no significant agreement (rank correlations −0.20 to 0.12, n = 29). The two may be complementary, but this test can't show it. | `.venv/bin/python poc/compare_glm_vs_keenable.py` | [`data/output/glm_vs_keenable.md`](data/output/glm_vs_keenable.md) |
-| 4 | Can we **rank trials** by the genes they add on top of HER2? | **Works, but on 6 mock trials,** and the gene list is still tagged mock. | `.venv/bin/python -m backend.pipeline.run --from-stage 4` | `data/output/rankings.json` |
-| 5 | Can the results feed a UI? | **API only.** The web page is parked. | `.venv/bin/uvicorn backend.app.main:app` | http://localhost:8000/api/rankings |
-
-"Mock" always means labeled placeholder data (`"source": "mock"`, IDs like `MOCK-NCT-0001`). Nothing is invented and presented as real.
-
-## Glossary
-
-| Term | Meaning |
-|---|---|
-| GI | Genomic Intelligence, the hackathon sponsor whose DNA models we call |
-| GLM | Genomic language model: a transformer trained on DNA (not a "generalized linear model") |
-| Keenable | AI web-search tool (app.keenable.ai), used to find the papers |
-| TSS | Transcription start site, where a gene's RNA begins. Every model readout is anchored here. |
-| log(TPM+1) | Predicted expression level: transcripts per million, log-scaled |
-| min-max | Rescale a set of numbers so the lowest becomes 0 and the highest 1 |
-| Spearman rho | Rank correlation: +1 = same order, 0 = no relation, −1 = opposite order |
-| MCP | Model Context Protocol, the API style GI's hosted server uses |
-| IHC / ISH | The two standard HER2 tests: protein staining score (0 to 3+), and gene-copy test |
+What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 
 ## What is in this repo
 
 | Path | What it is |
 |---|---|
-| `README.md` | This page: the plan for people (formerly `HUMAN.md`) |
-| `AGENTS.md` | The detailed spec for coding agents: contracts, scoring formulas, rules. `CLAUDE.md` just points to it. |
-| `keenable/` | Literature notes from Keenable: all HER2 interactors, and a lab-evidence list (21 of the 29 papers plus 5 new ones) |
-| `clinical_trials/` | Trial material, including a spreadsheet of 7 open HER2 trials that is not yet in the pipeline |
-| `poc/` | Quick proof-of-concept scripts. Each one reads committed data and writes to `data/output/`. |
-| `backend/` | The pipeline: `config.py` (all weights), `schemas.py` (file contracts), `clients/` (one wrapper per outside service), `pipeline/` (one module per stage), `app/` (API) |
-| `data/input/` | The biomarker record and the drug → target table |
-| `data/cache/` | Stage outputs, committed so everything runs offline |
-| `data/output/` | Final results: `rankings.json`, `glm_vs_keenable.*` |
-| `lanes/` | One folder per workstream, with scope, status and hand-offs. Start at [`lanes/README.md`](lanes/README.md). |
+| `README.md` | This page: the overview |
+| `HUMAN.md` | Live progress tracker: what works, what is next, how to run it |
+| `AGENTS.md` | The spec coding agents follow: file contracts, rules, services. `CLAUDE.md` points to it. |
+| `data/input/` | The input profile (`profile.json`), model settings for ERBB2 (`biomarker.json`), drug → target table |
+| `data/cache/` | Saved stage outputs, so everything runs offline |
+| `data/output/` | The two results: `trial_matches.json` and `gene_associations.json` (being built) |
+| `pancancer_atlas/` | TCGA Pan-Cancer Atlas table for 30 genes |
+| `clinical_trials/` | Spreadsheet of 7 open HER2 trials: the fixed trial list |
+| `keenable/` | Literature notes found with Keenable |
+| `backend/` | The pipeline (`pipeline/`), one wrapper per outside service (`clients/`), and the API (`app/`) |
+| `frontend/` | Owned by Sumaya. Holds API types for the UI. |
 | `tests/` | One offline smoke test per stage |
-| `frontend/` | **Parked.** The spec and TypeScript types for a web page we are not building in this phase |
+| `poc/`, `lanes/` | Earlier experiments and notes from the first design. Kept for reference. |
 
-## How the pieces fit (current plan, being revised)
+## Glossary
 
-```mermaid
-flowchart TD
-    IN["Input biomarker<br/>Breast · HER2 · gene ERBB2<br/>HER2 test: IHC staining score ± ISH copy test"]
-
-    subgraph W1["Way 1: evidence and genomic scoring"]
-        P["1. Keenable<br/>papers linking HER2 to other genes"]
-        G["2. Candidate genes<br/>(+ gene targets dataset, pending)"]
-        M["3. Genomic Intelligence models<br/>all 7 tasks at each gene's start site"]
-        GS["4. Gene score<br/>50% papers + 50% model"]
-        P --> G --> M --> GS
-        P -. "literature score" .-> GS
-    end
-
-    subgraph W2["Way 2: clinical trials"]
-        T["5. Trial snapshot<br/>(mock today)"]
-        TS["6. Trial score<br/>does the trial need HER2? +<br/>how strong are its extra genes?"]
-        T --> TS
-    end
-
-    IN --> P
-    IN --> T
-    GS --> TS
-    TS --> R["Ranked trials + evidence<br/>data/output/rankings.json"]
-    M -. "PoC 3" .-> CMP["Model vs literature<br/>glm_vs_keenable.md"]
-    P -. "PoC 3" .-> CMP
-```
-
-**Why two ways:** a trial is almost never about HER2 alone. It adds a second drug, a second target, or extra eligibility genes. Way 1 says which genes around HER2 matter most, from both papers and the genome model. Way 2 ranks trials by how well their extras line up with those genes. HER2 itself is listed in each trial's matched genes but left out of the score, because every trial has it.
-
-**The scores, in plain words** (all between 0 and 1; weights in `backend/config.py`):
-
-- **Literature score:** how many papers support the gene. 5 or more papers gives 1.0.
-- **Model score:** the average of the Genomic Intelligence task scores a gene has at its start site (up to 7; a missing readout is skipped), then rescaled across the 30 genes so the top one is 1 and the bottom one is 0. The tasks:
-  - expression in HER2+ breast cells, and how breast-specific it is compared with liver
-  - promoter strength
-  - open chromatin in breast cell lines
-  - enhancer activity
-  - recovered splice sites
-  - gene-finder confidence
-  - expression via gene finding
-- **Gene score:** 50% literature + 50% model.
-- **Trial score:** 40% "does the trial require HER2 status?" + 60% "average gene score of its top 3 extra genes".
-
-To change a weight: for `W_LIT`, `W_MODEL`, `W_DIRECT` or `W_GENOMIC`, re-run `.venv/bin/python -m backend.pipeline.run --from-stage 4`. A Genomic Intelligence task weight (`W_GI_TASK`, `W_EXPR_*`) is applied in stage 3, so run `rm data/cache/genomic_context.json && .venv/bin/python -m backend.pipeline.genomic --offline` first. That uses the per-gene caches, so no network is needed.
-
-## Who does what
-
-Four lanes that only touch each other through JSON files, so nobody blocks anybody. Details are in [`lanes/`](lanes/README.md).
-
-| Lane | Owns | Status | Owner |
-|---|---|---|---|
-| A. Literature and targets | Keenable client, stages 1–2 | Papers real. The Keenable API and the targets dataset are pending. | TBD |
-| B. Genomic model | Genomic Intelligence client, stage 3, PoCs 2 and 3 | Done for 30/30 genes | Contactashmeetsingh |
-| C. Trials and scoring | Trial snapshot, stages 4–6 | Scoring done. Trials are still mock. | TBD |
-| D. Dashboard | API, web page | API done. Web page parked for the PoC phase. | TBD |
-
-## Next steps (PoC phase)
-
-1. **Real trials (lane C):** convert `clinical_trials/her2_candidate_marker_open_trials.xlsx` into `data/cache/trials.json`, or run `.venv/bin/python -m backend.pipeline.trials --refresh`. That makes the trials real. Rankings stay tagged mock (`mock_inputs: ["gene_candidates"]`) until lane A replaces the targets-dataset stand-in.
-2. **Lab-evidence papers into the pipeline (lane A):** move the 26 lab-evidence papers (including the 5 not yet in `papers.json`) from `keenable/her2_interactors_experimental.md` into a data file, so scoring and PoC 3 read it directly.
-3. **Per-task model scores on each ranked trial (lanes B and C):** show which Genomic Intelligence task drove a trial's rank.
-4. Revise this plan for the PoC phase and assign lane owners.
-
-## Decisions we still need
-
-- Keenable API access, and which gene targets dataset to use (lane A cannot make live calls without them)
-- Weights: are 50/50 (papers vs model) and 40/60 (HER2 requirement vs extra genes) fine?
-- Keep the enhancer task in the model score? Its model was trained on fruit-fly DNA.
-- Lane owners for A, C and D
+| Term | Meaning |
+|---|---|
+| Biomarker | A measurable feature of a tumor, such as HER2 status or a PIK3CA mutation |
+| HER2 / ERBB2 | HER2 is the protein; ERBB2 is the gene that makes it |
+| PIK3CA | A gene that is often mutated in breast cancer and is linked to resistance to anti-HER2 drugs |
+| Keenable | Web search tool for AI agents, used to find the papers |
+| GI | Genomic Intelligence, whose DNA models we call |
+| Pan-Cancer Atlas | TCGA's dataset of tumor DNA, RNA and protein measurements from patients |
+| Co-amplification | Two genes gaining extra copies together, usually because they sit side by side |
+| TSS | Transcription start site, where a gene's RNA begins |
+| FASTA | A plain text file format for DNA sequences |
 
 ## Ground rules
 
 - **No invented data.** A result is real, or it is labeled `"mock"` in the file and wherever it is shown.
-- **Keys go in `.env`, never in git.** See `.env.example`. None are needed to run anything here.
-- **Small commits on a branch, then a pull request.** If you change a file contract, update `AGENTS.md` section 4 in the same commit.
+- **No scores.** Trials and genes are grouped and explained, not ranked by a blended number.
+- **Keys go in `.env`, never in git.** None are needed to run anything here.
+- **Small commits on a branch, then a pull request.**
 - It is a research prototype, not medical advice.

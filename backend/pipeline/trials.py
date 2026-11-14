@@ -1,4 +1,4 @@
-"""Stage 5: the clinical trial snapshot (data/cache/trials.json).
+"""Stage 3: the clinical trial list (data/cache/trials.json).
 
 Cache first. The demo reads the committed snapshot and never calls the network.
   python -m backend.pipeline.trials             # use cache; write a MOCK snapshot if none exists
@@ -37,7 +37,7 @@ def build_query(bm: Biomarker) -> tuple[str, str]:
 
 
 def mock_trials(bm: Biomarker) -> list[Trial]:
-    """A small, obviously fake snapshot shaped to exercise every branch of stage 6 scoring.
+    """A small, obviously fake snapshot shaped to exercise every branch of trial matching.
 
     IDs are "MOCK-NCT-000n" so they can never be mistaken for real NCT numbers, and
     no URL is given so the dashboard cannot link to a real study by accident.

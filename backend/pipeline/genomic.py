@@ -1,4 +1,4 @@
-"""Stage 3: genomic context and model score per candidate gene (lane B).
+"""Stage 5: Genomic Intelligence model readouts per candidate gene.
 
 Reads  data/cache/gene_candidates.json  (stage 2)
 Writes data/cache/genomic_context.json  (contract: AGENTS.md section 4)

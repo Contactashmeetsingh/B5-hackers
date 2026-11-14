@@ -1,3 +1,5 @@
+> **Architecture v1 notes (historical).** On 2026-11-14 the project moved to architecture v2: two approaches (papers → trial matching, DNA model → Pan-Cancer Atlas) and **no scoring system**. Stage numbers, `scoring.py`, `gene_scores.json` and `rankings.json` mentioned below no longer exist. `AGENTS.md` is the source of truth and `HUMAN.md` tracks progress.
+
 # Lane B: Genomic model (stage 3)
 
 **Owner:** Contactashmeetsingh
