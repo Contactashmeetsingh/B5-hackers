@@ -83,7 +83,7 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 | `clinical_trials/` | Spreadsheet of 10 open HER2 trials (plus notes on excluded ones): the fixed trial list |
 | `keenable/` | Literature notes found with Keenable |
 | `backend/` | The pipeline (`pipeline/`), one wrapper per outside service (`clients/`), and the API (`app/`) |
-| `frontend/` | Owned by Sumaya. Holds API types for the UI. |
+| `frontend/` | Next.js visual prototype: trial matches, candidate-gene profiles, and paper library. Uses a validated local snapshot by default; optional FastAPI connection. |
 | `tests/` | One offline smoke test per stage |
 | `poc/`, `lanes/` | Earlier experiments and notes from the first design. Kept for reference. |
 
@@ -108,3 +108,17 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 - **Keys go in `.env`, never in git.** None are needed to run anything here.
 - **Small commits on a branch, then a pull request.**
 - It is a research prototype, not medical advice.
+
+## Frontend preview
+
+The frontend uses an ivory, plum, and coral palette with an animated DNA-inspired illustration. Its trial, gene, and paper views use the repository data and preserve evidence and mock labels. Atlas mapping and FASTA upload remain pending.
+
+After Python setup above, run:
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+Open http://127.0.0.1:3000. No running API is required for the saved-data preview. See [`frontend/README.md`](frontend/README.md) for API mode and production checks.

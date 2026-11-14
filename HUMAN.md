@@ -44,12 +44,12 @@ flowchart TD
     P --> O2["Gene associations"]
     O1 --> API["API"]
     O2 --> API
-    API --> UI["Frontend (Sumaya)"]
+    API --> UI["Frontend visual prototype (built)"]
 
     classDef done fill:#d4edda,stroke:#2e7d32,color:#000
     classDef todo fill:#fff3cd,stroke:#b8860b,color:#000
-    class IN,K,T,M,O1,API done
-    class G,P,O2,UI todo
+    class IN,K,T,M,O1,API,UI done
+    class G,P,O2 todo
 ```
 
 Green = built and tested. Yellow = still to build.
@@ -93,7 +93,7 @@ Nothing mid-flight. Waiting for a go-ahead on Task 3.
 ## Remaining work
 
 - **Task 3:** accept a HER2 DNA file (FASTA); run the Genomic Intelligence models on it; list genes found in the sequence and genes whose model profile resembles ERBB2's; attach the Pan-Cancer Atlas values to each; write `gene_associations.json`.
-- **Task 4:** one command that runs both approaches; both results on the API; end-to-end test; final docs with example outputs; update the frontend types for Sumaya.
+- **Task 4:** one command that runs both approaches; both results on the API; end-to-end test; final docs with example outputs; integrate the remaining gene-association contract with the shared frontend (built v2 types are updated).
 
 ## Blockers and decisions needed
 
@@ -119,3 +119,15 @@ uv pip install --python .venv/bin/python -r requirements.txt
 ```
 
 No API keys are needed. Everything above runs offline from files saved in the repo, except `literature --refresh`, which searches Keenable.
+
+## Frontend visual prototype (2026-11-14)
+
+Built at Contactashmeetsingh's explicit request. Original ivory/plum/coral styling inspired by Isomorphic Labs, an animated DNA-inspired illustration, responsive navigation, and an integrated research workspace. No external deployment.
+
+- Trial matches: current 10-trial output, backend tiers, search/filter, expandable criteria and paper evidence.
+- Gene explorer: 30 literature-derived candidates with saved model readouts and linked papers. Atlas and predicted related-gene groups remain explicitly pending.
+- Paper library: 62 papers, reviewed-only filter, search, source links, review labels.
+- Local snapshot generated through the validated backend store; optional connection to the existing FastAPI API. No fabricated results or scoring system.
+- Verified production build and browser smoke checks: trial expansion/search/filter, gene details, reviewed-paper filtering, keyboard tabs, mobile navigation, no horizontal overflow at 320/390/768px, unavailable-data/retry states, and no browser runtime errors.
+
+Run `cd frontend && npm ci && npm run dev`, then open http://127.0.0.1:3000. The Python `.venv` must be set up first. See `frontend/README.md`. Backend Tasks 3 and 4 remain open.

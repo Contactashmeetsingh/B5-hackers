@@ -11,7 +11,7 @@ Build a working proof of concept of a personalized medicine **research** platfor
 1. finds supporting research papers and potentially relevant clinical trials, and explains why each trial may be relevant (Approach 1);
 2. runs the HER2 DNA sequence through the Genomic Intelligence models and maps the predicted genes onto Pan-Cancer Atlas data (Approach 2).
 
-It must run end to end for one profile. Breadth, polish and scale are out of scope. Following up on the genes it reports is the researcher's job, not ours.
+It must run end to end for one profile. Breadth and scale are out of scope. A frontend visual prototype was explicitly authorized by Contactashmeetsingh on 2026-11-14. Following up on the genes it reports is the researcher's job, not ours.
 
 This is a research demo. It is not medical advice, it makes no treatment recommendation, and every output must say so.
 
@@ -64,7 +64,7 @@ flowchart TD
     P --> O2["Gene associations<br/>data/output/gene_associations.json"]
     O1 --> API["7. API (FastAPI)"]
     O2 --> API
-    API --> UI["Frontend (built by Sumaya)"]
+    API --> UI["Frontend (shared UI; visual prototype built)"]
 ```
 
 **Approach 1: research papers → clinical trial matching**
@@ -84,7 +84,7 @@ flowchart TD
 
 **Output**
 
-7. **API.** Serves the profile, both result files and the supporting caches. The frontend is built by a teammate (Sumaya) on top of it; do not build UI here.
+7. **API.** Serves the profile, both result files and the supporting caches. The shared frontend in `frontend/` renders these results. Contactashmeetsingh explicitly authorized its visual prototype on 2026-11-14; coordinate future frontend changes with Sumaya.
 
 ## 4. Stage contracts
 
@@ -246,7 +246,7 @@ Rules for all clients:
 ## 7. Tech stack
 
 - **Backend:** Python 3.11, FastAPI, pydantic models that mirror the schemas above, `httpx` for clients
-- **Frontend:** built by a teammate (Sumaya) against the API. `frontend/lib/*.ts` holds contract types that still describe the old API until Task 4 updates them.
+- **Frontend:** Next.js + TypeScript in `frontend/`, with original CSS and a decorative canvas helix. `frontend/lib/*.ts` reflects the built v2 API. By default, `npm run dev` and `npm run build` export a validated snapshot from the committed research files; setting `NEXT_PUBLIC_API_BASE` connects the existing FastAPI endpoints instead. No hosting configuration. Atlas results and FASTA upload remain pending.
 - **Storage:** JSON files in `data/`, the atlas CSV in `pancancer_atlas/`. No database.
 - **Run:** `.venv/bin/python -m backend.pipeline.run` builds every cache and result file. `.venv/bin/uvicorn backend.app.main:app` serves them (docs at `/docs`).
 
@@ -277,7 +277,7 @@ Setup: `uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python 
 
 ## 8. What the frontend needs from us
 
-The UI is not built in this repo's backend work. Our job is to give it:
+The frontend visual prototype is built in `frontend/` under Contactashmeetsingh's explicit authorization. Backend stages provide:
 
 - the input profile (`/api/profile`);
 - **trial matches** and **gene associations** as two separate result sets, never merged;
@@ -303,7 +303,7 @@ The UI is not built in this repo's backend work. Our job is to give it:
 5. **Demo over depth.** Prefer the simplest thing that makes the end to end run work. No auth, no database, no deployment config, no test suites beyond one smoke test per stage.
 6. **Small commits**, pushed often. If you change a contract, update section 4 in the same commit, and update `HUMAN.md` at each milestone.
 7. **Paraphrase papers.** Store titles, IDs, links, and a one sentence summary in our own words. Do not store or display copied abstracts.
-8. **Do not build UI.** The frontend belongs to a teammate.
+8. **Frontend scope:** Contactashmeetsingh authorized the visual prototype in `frontend/` on 2026-11-14. Coordinate shared UI work with Sumaya. Preserve the two separate research approaches, evidence labels, and visible pending states; do not invent results or add deployment configuration.
 9. **Ask, do not guess,** on anything listed under open questions.
 
 ## 11. Build order (four tasks; status in `HUMAN.md`)
@@ -327,3 +327,5 @@ The UI is not built in this repo's backend work. Our job is to give it:
 - **Keenable API** (2026-11-14): documented at docs.keenable.ai; keyless web search; returns raw web results, so we parse gene mentions ourselves. New hits are **merged** into `papers.json`, labelled `reviewed: false` (Contactashmeetsingh).
 - **PIK3CA input** (2026-11-14, Contactashmeetsingh): "mutated: yes" only; no specific variant.
 - **Genomic Intelligence tasks** (2026-11-14, lane B owner): every GI task is run per gene (promoter, splice, enhancer, chromatin, expression, annotation, find genes + expression). See `lanes/B-genomic/README.md`.
+
+- **Frontend visual prototype** (2026-11-14, Contactashmeetsingh): explicitly authorized an Isomorphic Labs-inspired UI with a different palette. Built locally in `frontend/`; the prior no-UI restriction is superseded for this work. No external site deployment.

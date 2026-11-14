@@ -1,88 +1,56 @@
-> **Architecture v1 notes (historical).** On 2026-11-14 the project moved to architecture v2: two approaches (papers → trial matching, DNA model → Pan-Cancer Atlas) and **no scoring system**. Stage numbers, `scoring.py`, `gene_scores.json` and `rankings.json` mentioned below no longer exist. `AGENTS.md` is the source of truth and `HUMAN.md` tracks progress.
+# B5 Research frontend
 
-> **Parked (2026-11-14):** the proof-of-concept phase does not build this page. This folder keeps the spec, types and fetch helpers in case we come back to it.
+A responsive research workspace with an editorial landing page, an original animated DNA-inspired canvas illustration, and an ivory / deep plum / coral palette. The visual reference is [Isomorphic Labs](https://www.isomorphiclabs.com/); the implementation, assets, copy, and branding are original to this project. The helix is decorative, not a model prediction.
 
-# frontend (lane D, stage 7 UI)
+## Run locally
 
-The dashboard: one page that shows the biomarker and the ranked trials, with the evidence behind each rank. Spec: AGENTS.md section 8. Lane notes: [`lanes/D-dashboard/README.md`](../lanes/D-dashboard/README.md).
-
-The Next.js app is **not scaffolded yet**. So far this folder holds only what the app will import:
-
-| File | What it is |
-|---|---|
-| `lib/types.ts` | TypeScript mirror of `backend/schemas.py` plus the API-only views (`GeneDetail`, `Meta`, `Health`) |
-| `lib/api.ts` | Typed fetch helpers, one per endpoint. Base URL from `NEXT_PUBLIC_API_BASE` (default `http://localhost:8000`) |
-
-## Scaffold (lane D owner, once)
-
-`create-next-app` refuses a folder that already has files in it, so move these files aside first. Run from the repo root:
+Requires Node 20.9+ and the repo's Python `.venv` with `requirements.txt` installed.
 
 ```bash
-mv frontend frontend-seed
-npx create-next-app@latest frontend --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*" --use-npm
-mkdir -p frontend/lib && cp frontend-seed/lib/*.ts frontend/lib/
-cp frontend-seed/README.md frontend/README.md   # keep this file instead of the generated one
-rm -rf frontend-seed
-
 cd frontend
-npx shadcn@latest init                          # pick a neutral base color
-npx shadcn@latest add card badge progress collapsible separator skeleton alert
-echo "NEXT_PUBLIC_API_BASE=http://localhost:8000" > .env.local
-npm run dev                                     # http://localhost:3000
+npm ci
+npm run dev
 ```
 
-Accept the defaults for any other prompt. These commands have not been run in this repo yet. If a flag has changed, check `npx create-next-app@latest --help`. The root `.gitignore` already ignores `node_modules/`, `.next/` and `.env.local`.
+Open http://127.0.0.1:3000. `predev` exports the current saved research data through the backend's validated store into the ignored `public/research-data.json`. This does not call external services or rerun the research pipeline. The page identifies its source as **Repository snapshot**. Run `npm run snapshot` after pipeline changes, then reload the page.
 
-The API must be running for the page to show anything: `uvicorn backend.app.main:app --reload` from the repo root (CORS allows `http://localhost:3000`).
+## What works
 
-## The page
+- Shared biomarker profile, with all biomarker names and statuses read from data.
+- Trial matching: backend tiers and dataset order, search by title/ID/drug/related gene, tier filter, expandable criteria, drugs and targets, unchecked criteria, supporting papers, registry links, and status dates.
+- Gene explorer: searchable literature-derived candidates, model readouts, reference coordinates, linked papers, and mock provenance. Candidate genes are not presented as predicted related genes.
+- Paper library: title/ID/gene search, reviewed-only filtering, source links, and visible unreviewed / opposite-status labels.
+- Keyboard-operable tabs, responsive navigation, reduced-motion support, loading, no-results, failure, and retry states.
+- Research disclaimer and mock provenance. No blended scores or ranking numbers.
 
-One route, `app/page.tsx`. Suggested split:
+**Pending backend work:** gene-association output, locus and similar-profile result groups, Atlas mapping, and FASTA upload. These are visibly marked as pending. There is no pretend upload or run-analysis button.
 
+## Connect to FastAPI
+
+Create `frontend/.env.local` (ignored):
+
+```text
+NEXT_PUBLIC_API_BASE=http://127.0.0.1:8000
 ```
-app/page.tsx                  server component: getBiomarker(), getRankings(), getMeta()
-components/biomarker-card.tsx header card
-components/trial-row.tsx      client component: one ranked row, expands on click
-components/evidence-drawer.tsx client component: getGene(g) for each matched gene, on first expand
-components/mock-tag.tsx       the "mock data" badge
+
+Start `.venv/bin/uvicorn backend.app.main:app` from the repo root and restart the frontend. It uses `/api/profile`, `/api/trial-matches`, `/api/papers`, `/api/genes`, `/api/genes/{gene}`, `/api/meta`, and `/api/health`. Independent endpoint failures show notices while available result sets remain usable. API mode does not silently substitute saved data. Remove the variable to return to snapshot mode.
+
+## Verify
+
+```bash
+npm run build
+npm run typecheck
 ```
 
-### 1. Header: biomarker card
+Production build also exports a fresh snapshot. `npm start` serves the completed build. Browser smoke verification covers trial expansion/search/tier filters, gene details, paper review filters, keyboard tabs, mobile navigation, 320/390/768px overflow, and data failure/retry.
 
-From `GET /api/biomarker`: tissue, biomarker, gene, measurement (Breast · HER2 · ERBB2 · IHC ± ISH), plus coverage. Never hard-code "HER2" or "ERBB2" anywhere in the UI. Read them from this record.
+## Files
 
-If `meta.has_mock_data` is true, show a banner under the header: "Some inputs are mock data: <meta.mock_inputs>".
+- `app/page.tsx`: landing page and interactive workspace.
+- `app/globals.css`: responsive styles and motion preferences.
+- `components/helix.tsx`: procedural canvas art; animation pauses offscreen and respects reduced motion.
+- `lib/types.ts`, `lib/api.ts`: v2 API types and data-loading helpers.
+- `scripts/export_preview.py`: validated preview export; no research contract is changed.
+- `public/fonts/`: self-hosted Manrope, licensed under SIL OFL (included).
 
-### 2. Ranked trial list
-
-From `GET /api/rankings` (already sorted by `rank`). One card row per trial:
-
-- **rank**, **title**, **phase**, **status**
-- **score bar**: `trial_score` in [0, 1] as a bar (shadcn `Progress`, value `trial_score * 100`) with the number beside it
-- **matched gene chips**: one `Badge` per `matched_genes[].gene`. Style the biomarker's own gene (`biomarker.gene`) differently, because it is left out of `genomic_match` on purpose (AGENTS.md section 5)
-- **link** to `url` (opens ClinicalTrials.gov in a new tab), but only when `url` is non-empty. Mock trials from stage 5 have `url: ""`, and `<a href="">` would reopen the dashboard itself, so for those show `nct_id` as plain text next to the mock tag. `trialHref(row)` in `lib/api.ts` returns the URL or `null`
-- **mock tag** when `isMockRanking(row)`, i.e. `source === "mock"` or `mock_inputs` is non-empty. Mock trial IDs look like `MOCK-NCT-0001`; show them as they are
-
-### 3. Evidence drawer (row click)
-
-Expands under the row (shadcn `Collapsible`). Contents:
-
-1. **Why this score.** One line each, with weights taken from `meta.weights` (never typed into the UI):
-   `trial_score = W_DIRECT × biomarker_directness + W_GENOMIC × genomic_match`, showing both inputs.
-2. **Per matched gene**, from `GET /api/genes/{gene}` (`GeneDetail`):
-   - literature, model and combined scores (`score.literature_score`, `score.model_score`, `score.combined_score`) as three small bars
-   - **Genomic Intelligence components** from `genomic_context.model_output`, plus `region`, `assembly` and `model_task`. Lane B owns the shape of `model_output` and documents it in [`lanes/B-genomic/README.md`](../lanes/B-genomic/README.md). The scaffold-time shape is typed loosely as `GenomicModelOutput` in `lib/types.ts`. Show `summary` as one line, and `task_scores` (expression, composite, promoter, chromatin, enhancer, splice, annotation; each in [0, 1] or null) as small bars, with `task_raw` values in a tooltip. If those keys are absent, fall back to listing the scalar keys you find. Treat every field as optional.
-   - a mock tag if `mock_inputs` is non-empty (or `genomic_context.source === "mock"`)
-3. **Supporting papers** (`papers`): title linked to `url` (plain text when `url` is empty, the same rule as trial links), year, and the one-sentence `relation`. Rows only carry our own paraphrase; never show or fetch abstracts.
-
-### 4. Footer
-
-`meta.disclaimer` ("Research prototype. Not medical advice."). Keep the same text as a fallback constant so the footer shows even when the API is down.
-
-### Errors and empty states
-
-A stage that has not run yet makes its endpoint return **503**. `lib/api.ts` throws `ApiError` with `status` and `detail.run` (the command to run). Show that message in an `Alert` and do not crash the page. `GET /api/health` lists which contract files exist.
-
-## Layout references (pattern only)
-
-biomarkershealth.com and clintrialfinder.com: a clean ranked list, card rows, score chips. Borrow the **layout pattern only**. Do not copy their code, CSS, logos, icons, text, colors or any brand asset. Use our own wording and shadcn defaults.
+No deployment or external hosting is configured. Research prototype. Not medical advice.
