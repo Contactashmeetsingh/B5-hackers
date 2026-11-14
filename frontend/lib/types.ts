@@ -39,7 +39,7 @@ export interface Paper {
   url: string;
   genes_mentioned: string[];
   relation: string; // one paraphrased sentence, never an abstract
-  source: string; // "kleenable" | "mock"
+  source: string; // "keenable" | "mock"
 }
 
 // ---------------------------------------------------------------- stage 2
@@ -48,7 +48,7 @@ export interface GeneCandidate {
   ensembl_id: string | null;
   in_targets_dataset: boolean;
   paper_ids: string[];
-  source: string; // "kleenable" | "mock"
+  source: string; // "keenable" | "mock"
 }
 
 // ---------------------------------------------------------------- stage 3

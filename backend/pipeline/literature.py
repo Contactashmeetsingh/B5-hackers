@@ -4,9 +4,9 @@ Reads:  the biomarker (stage 0)
 Writes: data/cache/papers.json  (list[Paper])
 
 Cache first. data/cache/papers.json holds real, PubMed-verified results (see
-docs/her2_interactors_literature.md), so a normal run just loads and validates it.
+keenable/her2_interactors_literature.md), so a normal run just loads and validates it.
 
---refresh asks Kleenable for fresh results. If that fails (today it always does:
+--refresh asks Keenable for fresh results. If that fails (today it always does:
 the API is not documented yet), the existing cache is kept untouched. Real data
 is never overwritten by mock data. A mock file is written only when no cache
 exists at all, so the rest of the pipeline can still run.
@@ -20,7 +20,7 @@ import argparse
 import logging
 
 from backend import config
-from backend.clients.kleenable import KleenableClient
+from backend.clients.keenable import KeenableClient
 from backend.pipeline.biomarker import load_biomarker
 from backend.schemas import MOCK, Biomarker, DrugTarget, Paper
 from backend.store import read_rows, write_rows
@@ -41,8 +41,8 @@ def _queries(bm: Biomarker) -> list[str]:
 
 
 def _fetch_live(bm: Biomarker) -> list[Paper]:
-    """Ask Kleenable; dedupe by paper_id across queries."""
-    client = KleenableClient()
+    """Ask Keenable; dedupe by paper_id across queries."""
+    client = KeenableClient()
     papers: dict[str, Paper] = {}
     for q in _queries(bm):
         for hit in client.search_papers(q):
@@ -68,7 +68,7 @@ def _mock_papers(bm: Biomarker) -> list[Paper]:
             year=None,
             url="",
             genes_mentioned=sorted({bm.gene, g}),
-            relation="MOCK: placeholder row. Run stage 1 with real Kleenable results to replace it.",
+            relation="MOCK: placeholder row. Run stage 1 with real Keenable results to replace it.",
             source=MOCK,
         )
         for i, g in enumerate(genes, start=1)
@@ -88,12 +88,12 @@ def run(refresh: bool = False) -> list[Paper]:
         try:
             papers = _fetch_live(bm)
             if not papers:
-                raise RuntimeError("Kleenable returned no papers")
+                raise RuntimeError("Keenable returned no papers")
             write_rows(path, papers)
             log.info("stage 1: wrote %d live papers to %s", len(papers), path)
             return papers
         except Exception as exc:  # any live failure falls back; the demo must keep running
-            log.warning("stage 1: Kleenable refresh failed (%s: %s)", type(exc).__name__, exc)
+            log.warning("stage 1: Keenable refresh failed (%s: %s)", type(exc).__name__, exc)
             if path.exists():
                 papers = read_rows(path, Paper)
                 log.warning("stage 1: keeping the existing cache (%d papers), not overwriting it", len(papers))
@@ -108,7 +108,7 @@ def run(refresh: bool = False) -> list[Paper]:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--refresh", action="store_true", help="ask Kleenable instead of using the cache")
+    ap.add_argument("--refresh", action="store_true", help="ask Keenable instead of using the cache")
     args = ap.parse_args()
     rows = run(refresh=args.refresh)
     print(f"{len(rows)} papers ({sum(r.is_mock for r in rows)} mock)")

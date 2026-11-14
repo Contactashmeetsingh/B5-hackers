@@ -7,14 +7,14 @@ One row per gene mentioned in any paper, including the biomarker gene itself so
 downstream stages can see it (stage 6 drops it from genomic_match). Genes that
 appear only as a drug target are added too, with no papers.
 
-The real Kleenable gene targets dataset is not available yet (AGENTS.md open
+The real Keenable gene targets dataset is not available yet (AGENTS.md open
 question). Until it is, drug_targets.json stands in for it: in_targets_dataset
 means "is a target gene of a drug in drug_targets.json", and every row carries
 source="mock" plus a "targets_dataset" note so nobody mistakes it for the real thing.
 The paper evidence on each row (paper_ids) is real; papers.json has its own source.
 
 Cache first: an existing gene_candidates.json is returned as is. Use --refresh to
-rebuild it after papers.json changes (and to try the Kleenable dataset).
+rebuild it after papers.json changes (and to try the Keenable dataset).
 
     python -m backend.pipeline.targets [--refresh]
 """
@@ -26,7 +26,7 @@ import logging
 
 from backend import config
 from backend.clients.ensembl import lookup_genes
-from backend.clients.kleenable import KleenableClient
+from backend.clients.keenable import KeenableClient
 from backend.pipeline.biomarker import load_biomarker
 from backend.schemas import MOCK, Biomarker, DrugTarget, GeneCandidate, Paper
 from backend.store import read_rows, write_rows
@@ -41,10 +41,10 @@ def _targets_dataset(bm: Biomarker, drugs: list[DrugTarget], refresh: bool) -> t
     """Return (dataset genes, label for the targets_dataset field, row source)."""
     if refresh:
         try:
-            genes = set(KleenableClient().fetch_gene_targets(bm.gene))
-            return genes, "kleenable", "kleenable"
+            genes = set(KeenableClient().fetch_gene_targets(bm.gene))
+            return genes, "keenable", "keenable"
         except Exception as exc:  # undocumented today; fall back to the stand-in
-            log.warning("stage 2: Kleenable targets dataset unavailable (%s: %s); using stand-in",
+            log.warning("stage 2: Keenable targets dataset unavailable (%s: %s); using stand-in",
                         type(exc).__name__, exc)
     return {g for d in drugs for g in d.target_genes}, STAND_IN_LABEL, MOCK
 
@@ -119,7 +119,7 @@ def run(refresh: bool = False) -> list[GeneCandidate]:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--refresh", action="store_true", help="rebuild from papers.json and try the Kleenable dataset")
+    ap.add_argument("--refresh", action="store_true", help="rebuild from papers.json and try the Keenable dataset")
     args = ap.parse_args()
     out = run(refresh=args.refresh)
     print(f"{len(out)} gene candidates ({sum(r.is_mock for r in out)} mock)")

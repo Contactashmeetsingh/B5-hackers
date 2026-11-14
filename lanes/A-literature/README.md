@@ -8,10 +8,10 @@
 
 | File | What it does |
 |---|---|
-| `backend/clients/kleenable.py` | Kleenable/Keenable client. Placeholder: `search_papers` and `fetch_gene_targets` raise `NotImplementedError` until docs and auth are known. Reads `KLEENABLE_API_KEY` from `.env` and never prints it. |
-| `backend/pipeline/literature.py` | Stage 1. Cache first. `--refresh` tries Kleenable; if that fails it keeps the existing cache. Writes a mock (`MOCK-PAPER-001`, ...) only when no cache exists at all. |
+| `backend/clients/keenable.py` | Keenable client. Placeholder: `search_papers` and `fetch_gene_targets` raise `NotImplementedError` until docs and auth are known. Reads `KEENABLE_API_KEY` from `.env` and never prints it. |
+| `backend/pipeline/literature.py` | Stage 1. Cache first. `--refresh` tries Keenable; if that fails it keeps the existing cache. Writes a mock (`MOCK-PAPER-001`, ...) only when no cache exists at all. |
 | `backend/pipeline/targets.py` | Stage 2. Builds `gene_candidates.json` from the papers plus `drug_targets.json`, and logs the section 9 sanity check. |
-| `data/cache/papers.json` | Stage 1 output. **Real:** 29 PubMed-verified papers (`source: "kleenable"`). Built by hand with Keenable web search; see `docs/her2_interactors_literature.md`. Do not regenerate it with mocks. |
+| `data/cache/papers.json` | Stage 1 output. **Real:** 29 PubMed-verified papers (`source: "keenable"`). Built by hand with Keenable web search; see `keenable/her2_interactors_literature.md`. Do not regenerate it with mocks. |
 | `data/cache/gene_candidates.json` | Stage 2 output. 30 genes, ERBB2 included. |
 | `tests/test_literature.py`, `tests/test_targets.py` | One offline smoke test per stage. |
 
@@ -37,22 +37,22 @@ Rows are sorted by number of supporting papers (highest first), then by gene.
 
 Done
 - [x] Stage 1 cache: 29 real papers, 30 genes
-- [x] Kleenable client placeholder (no guessed endpoints)
+- [x] Keenable client placeholder (no guessed endpoints)
 - [x] Stage 1 `--refresh` falls back to the cache and never overwrites real data
 - [x] Stage 2 builds 30 candidates. Sanity check: PIK3CA, ERBB3, EGFR, GRB7, PTEN and ESR1 are present; CDK12, TOP2A and TP53 are missing.
 - [x] Offline smoke tests for both stages
 
 To do
-- [ ] Kleenable docs URL and auth (`AGENTS.md` open questions), then implement `KleenableClient.search_papers`
-- [ ] Real gene targets dataset (which one, and its license), then implement `KleenableClient.fetch_gene_targets` and drop the stand-in
+- [ ] Keenable docs URL and auth (`AGENTS.md` open questions), then implement `KeenableClient.search_papers`
+- [ ] Real gene targets dataset (which one, and its license), then implement `KeenableClient.fetch_gene_targets` and drop the stand-in
 - [ ] Follow-up search for CDK12, TOP2A and TP53. These are expected by `AGENTS.md` section 9 but missing from the current literature run. Add only PubMed-verified papers.
-- [ ] Once the real dataset exists, `source` on stage 2 rows becomes `"kleenable"`
+- [ ] Once the real dataset exists, `source` on stage 2 rows becomes `"keenable"`
 
 ## How to run
 
 ```bash
 .venv/bin/python -m backend.pipeline.literature            # load and validate papers.json
-.venv/bin/python -m backend.pipeline.literature --refresh  # try Kleenable; keeps the cache on failure
+.venv/bin/python -m backend.pipeline.literature --refresh  # try Keenable; keeps the cache on failure
 .venv/bin/python -m backend.pipeline.targets               # use gene_candidates.json if it exists
 .venv/bin/python -m backend.pipeline.targets --refresh     # rebuild it from papers.json
 .venv/bin/python -m pytest tests/test_literature.py tests/test_targets.py -q

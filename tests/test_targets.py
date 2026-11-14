@@ -20,8 +20,8 @@ def _fake_lookup(symbols, refresh=False):
 
 def test_targets_builds_candidates(tmp_path, monkeypatch):
     papers = [
-        {"paper_id": "P1", "title": "t1", "genes_mentioned": ["ERBB2", "ERBB3"], "source": "kleenable"},
-        {"paper_id": "P2", "title": "t2", "genes_mentioned": ["ERBB2", "ERBB3", "SLC9A3R1"], "source": "kleenable"},
+        {"paper_id": "P1", "title": "t1", "genes_mentioned": ["ERBB2", "ERBB3"], "source": "keenable"},
+        {"paper_id": "P2", "title": "t2", "genes_mentioned": ["ERBB2", "ERBB3", "SLC9A3R1"], "source": "keenable"},
     ]
     drugs = [{"drug": "drugA", "target_genes": ["ERBB2"], "source": "test"},
              {"drug": "drugB", "target_genes": ["PIK3CA"], "source": "test"}]

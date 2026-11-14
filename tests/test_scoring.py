@@ -11,7 +11,7 @@ from backend.pipeline import scoring
 from backend.schemas import Trial
 from backend.store import write_json
 
-KC, MOCK, GI = "kleenable", "mock", "genomic_intelligence"
+KC, MOCK, GI = "keenable", "mock", "genomic_intelligence"
 
 
 def _setup(tmp_path, monkeypatch):

@@ -59,8 +59,8 @@ TRIALS_PAGE_SIZE = 100
 TRIALS_MAX_STUDIES = 200
 TRIALS_STATUSES = ["RECRUITING", "NOT_YET_RECRUITING"]         # only trials a user could still join
 
-# ---------------------------------------------------------------- Kleenable / Keenable (stages 1 and 2)
-KLEENABLE_API_KEY = os.getenv("KLEENABLE_API_KEY") or None
+# ---------------------------------------------------------------- Keenable (stages 1 and 2)
+KEENABLE_API_KEY = os.getenv("KEENABLE_API_KEY") or None
 
 # ---------------------------------------------------------------- Genomic Intelligence (stage 3)
 # Transport: the hosted MCP server. It answers anonymously on a shared demo key;
