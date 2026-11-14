@@ -2,7 +2,7 @@
 
 Readable companion to `data/cache/papers.json`, which uses the stage 1 schema in `AGENTS.md`.
 
-- **Found with:** Keenable web search (app.keenable.ai; `AGENTS.md` spells it "Kleenable"), 13 queries, 2026-11-14.
+- **Found with:** Keenable web search (app.keenable.ai), 13 queries, 2026-11-14.
 - **Verified with:** PubMed. Every PMID, year and title below was checked against PubMed. Nothing is invented.
 - **Interaction types:** paraphrased from each paper's title and abstract, per `AGENTS.md` rule 5. Read the paper before citing it.
 

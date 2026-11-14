@@ -34,8 +34,8 @@ Two paths that meet at the scoring step.
 
 **Way 1: evidence and genomic scoring (what matters biologically)**
 
-1. **Literature retrieval.** Use Kleenable to find research papers connecting HER2/ERBB2 to other genes. Output: candidate genes, each with supporting papers.
-2. **Gene targets dataset.** Use Kleenable to find a gene targets dataset. Use it to confirm and extend the candidate gene list.
+1. **Literature retrieval.** Use Keenable to find research papers connecting HER2/ERBB2 to other genes. Output: candidate genes, each with supporting papers.
+2. **Gene targets dataset.** Use Keenable to find a gene targets dataset. Use it to confirm and extend the candidate gene list.
 3. **Genomic context.** For each candidate gene, fetch its genomic region and run it through the Genomic Intelligence model. Store two things per gene: the genomic context returned by the model, and a model likelihood score.
 4. **Combined gene score.** Merge the literature evidence and the model score into one score per gene.
 
@@ -70,11 +70,11 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 [{ "paper_id": "PMID or DOI", "title": "", "year": 2024, "url": "",
    "genes_mentioned": ["ERBB2", "PIK3CA"],
    "relation": "one sentence, paraphrased, on how the paper links the gene to HER2",
-   "source": "kleenable | mock" }]
+   "source": "keenable | mock" }]
 
 // gene_candidates.json  (includes the biomarker gene itself; stage 6 excludes it from genomic_match)
 [{ "gene": "PIK3CA", "ensembl_id": "ENSG...", "in_targets_dataset": true,
-   "paper_ids": ["..."], "source": "kleenable | mock",
+   "paper_ids": ["..."], "source": "keenable | mock",
    "approved_symbol": "(optional) current HGNC symbol when papers use an old one",
    "targets_dataset": "name of the targets dataset, or 'pending (drug_targets.json seed used as stand-in)'" }]
 
@@ -88,7 +88,7 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
                      "models": {}, "retrieved": "YYYY-MM-DD", "demo_key": true },
    "model_score": 0.0,            // [0,1]; null on mock rows (never invented)
    "source": "genomic_intelligence | mock" }]
-// full model_output shape: lanes/B-genomic/README.md (rows from the v0 run carry "components" instead of "task_scores")
+// full model_output shape: lanes/B-genomic/README.md
 
 // gene_scores.json
 [{ "gene": "PIK3CA", "literature_score": 0.0, "model_score": 0.0, "combined_score": 0.0 }]
@@ -138,7 +138,7 @@ These formulas are a starting point for a demo, not a validated method. Keep the
 
 | Service | Used for | Notes |
 |---|---|---|
-| **Kleenable** (hackathon sponsor) | Stage 1 paper search, stage 2 gene targets dataset | Docs link and auth not yet recorded here. See open questions. All calls go through `backend/clients/kleenable.py`. |
+| **Keenable** (hackathon sponsor) | Stage 1 paper search, stage 2 gene targets dataset | Web app: https://app.keenable.ai (search, fetch, API keys). API auth not yet recorded here. See open questions. All calls go through `backend/clients/keenable.py`. |
 | **Genomic Intelligence** (hackathon sponsor) | Stage 3 genomic context and model score | Docs: https://docs.genomicintelligence.ai (llms.txt index, `AGENTS.md`, OpenAPI at `api.genomicintelligence.ai/v1/openapi.json`). We call the hosted MCP server `https://mcp.genomicintelligence.ai/mcp` (MCP Streamable HTTP). It answers on a shared demo key, so no key is needed; set `GI_API_KEY` to use our own key on the same server. Tools used: `list_models`, `fetch_gene_for_expression`, `fetch_region`, `predict_expression`, `predict_promoter`, `predict_chromatin`, `find_genes_and_predict_expression`. Sequences are fetched server-side and passed as handles, so DNA never transits our code. Switch on `error.code`, never the message. All calls go through `backend/clients/genomic_intelligence.py`. |
 | **Ensembl REST** | Gene symbol to Ensembl ID, GRCh38 coordinates, canonical TSS | Fetch coordinates, do not type them from memory. All calls go through `backend/clients/ensembl.py` (cached in `data/cache/ensembl_genes.json`; resolves old HGNC symbols). |
 | **ClinicalTrials.gov API v2** | One-time snapshot for stage 5 | Run once, save to `data/cache/trials.json`, commit it. The demo never calls it live. |
@@ -163,7 +163,7 @@ backend/
   config.py            weights and paths
   schemas.py           pydantic models for every contract file (section 4)
   store.py             read_rows / write_rows: validated JSON I/O
-  clients/             kleenable.py, genomic_intelligence.py, ensembl.py, clinicaltrials.py
+  clients/             keenable.py, genomic_intelligence.py, ensembl.py, clinicaltrials.py
   pipeline/            biomarker.py, literature.py, targets.py, genomic.py, trials.py, scoring.py, run.py
   app/main.py          GET /api/biomarker, /api/rankings, /api/genes, /api/papers (+ /api/genes/{gene}, /api/meta, /api/health)
 data/
@@ -207,13 +207,13 @@ Setup: `uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python 
 1. Scaffold repo layout, `config.py`, pydantic schemas, `biomarker.json`.
 2. Write mock versions of every stage so `run.py` produces a `rankings.json` in the first hour.
 3. Frontend renders `rankings.json` (works from mocks immediately).
-4. Replace mocks with real calls one stage at a time: trials snapshot, then Kleenable, then Genomic Intelligence.
+4. Replace mocks with real calls one stage at a time: trials snapshot, then Keenable, then Genomic Intelligence.
 5. Tune weights, add the evidence drawer, rehearse the demo.
 
 ## 12. Open questions (resolve, then edit this file)
 
-- **Kleenable:** exact product name and spelling, docs URL, auth method, and whether it returns structured gene mentions or raw text we must parse.
-- **Gene targets dataset:** which dataset Kleenable gives us and its license.
+- **Keenable:** name and web app resolved (Keenable, https://app.keenable.ai). Still open: API auth method, and whether it returns structured gene mentions or raw text we must parse.
+- **Gene targets dataset:** which dataset Keenable gives us and its license.
 - **Weights:** are 0.5/0.5 and 0.4/0.6 acceptable defaults for the demo?
 - **Owners:** who takes lanes A, C and D in `README.md` (lane B: Contactashmeetsingh).
 
