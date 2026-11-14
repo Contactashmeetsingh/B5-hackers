@@ -1,0 +1,95 @@
+[
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0001",
+    "title": "[MOCK] Trastuzumab plus alpelisib in HER2-positive, PIK3CA-mutant breast cancer",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "trastuzumab",
+      "alpelisib"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-positive disease (IHC 3+ or ISH amplified)\n* PIK3CA mutation on tumour testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  },
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0002",
+    "title": "[MOCK] Trastuzumab deruxtecan in HER2-low breast cancer",
+    "phase": "Phase 3",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "trastuzumab deruxtecan"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-low disease (IHC 1+, or IHC 2+ with negative ISH)\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  },
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0003",
+    "title": "[MOCK] Endocrine therapy plus HER2-targeted antibody in ER-positive, HER2-positive breast cancer",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "fulvestrant",
+      "trastuzumab"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* Estrogen receptor positive and HER2-positive disease\n* ESR1 mutation status known\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  },
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0004",
+    "title": "[MOCK] Dual antibody blockade with a tissue biomarker sub-study in HER2-amplified breast cancer",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "pertuzumab",
+      "trastuzumab"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2 gene amplification by ISH\n* Tumour tissue available for ERBB3 and GRB7 testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  },
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0005",
+    "title": "[MOCK] Tucatinib in previously treated HER2-positive metastatic breast cancer",
+    "phase": "Phase 2",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "tucatinib"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-positive disease by local testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  },
+  {
+    "source": "mock",
+    "nct_id": "MOCK-NCT-0006",
+    "title": "[MOCK] Supervised exercise programme for people with breast cancer",
+    "phase": "N/A",
+    "status": "RECRUITING",
+    "url": "",
+    "conditions": [
+      "Breast Cancer"
+    ],
+    "interventions": [
+      "Supervised exercise programme"
+    ],
+    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* Any hormone receptor or HER2 status\n* Optional archival tissue for PTEN testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+  }
+]
