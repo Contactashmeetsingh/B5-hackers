@@ -1,0 +1,4992 @@
+[
+  {
+    "source": "genomic_intelligence",
+    "gene": "HSP90AA1",
+    "assembly": "GRCh38",
+    "region": "chr14:102080738-102139773",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 5.5041 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.511 in 'liver tissue'; promoter p=0.9844; 46 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 1.0,
+        "specificity": 0.5178,
+        "regulatory": 0.8858
+      },
+      "raw": {
+        "expression": 5.5041,
+        "specificity": 0.9931,
+        "promoter": 0.9844,
+        "chromatin": 46.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000080824",
+        "chrom": "14",
+        "strand": -1,
+        "tss": 102087044,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "14:102046085-102128004",
+        "tss_window": "14:102086045-102088044",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 5.5041,
+          "tpm": 244.6919,
+          "scored_window": [
+            12173,
+            70059
+          ],
+          "request_id": "cac6fe62-1541-461d-a881-085f0f6e610b"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 4.511,
+          "tpm": 90.0171,
+          "scored_window": [
+            12173,
+            70059
+          ],
+          "request_id": "308060c3-99ff-4955-89d6-ef8d36e4c3e0"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9844,
+        "upstream_window_probability": 0.9844,
+        "request_id": "6367b659-bad9-4e28-b541-02feef4451a7"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 706,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 46,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 4,
+          "H3K27me3": 2,
+          "H3K4me1": 2,
+          "Other": 15,
+          "Pol2": 7,
+          "c-Myc": 2
+        },
+        "request_id": "8f2fc5d6-55cd-4928-bdfa-8838acd3304e",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9978
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9937
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9913
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9876
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9874
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9863
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9852
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9822
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9807
+          },
+          {
+            "label_index": 231,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.9742
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.8012
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ITGB4",
+    "assembly": "GRCh38",
+    "region": "chr17:75721190-75757821",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9891; 16 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.7406,
+        "specificity": 1.0,
+        "regulatory": 0.569
+      },
+      "raw": {
+        "expression": 4.2334,
+        "specificity": 2.9878,
+        "promoter": 0.9891,
+        "chromatin": 16.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000132470",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 75721459,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:75680499-75762418",
+        "tss_window": "17:75720459-75722458",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 4.2334,
+          "tpm": 67.9485,
+          "scored_window": [
+            13333,
+            68600
+          ],
+          "request_id": "297e0d65-2e1a-466f-9321-65bc922a95e5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 1.2456,
+          "tpm": 2.475,
+          "scored_window": [
+            13333,
+            68600
+          ],
+          "request_id": "fc275401-085e-4252-910c-4beeee9d8a5b"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9891,
+        "upstream_window_probability": 0.9891,
+        "request_id": "e7dd6a06-4850-4502-ab90-cc3a352bcf7e"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 278,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 16,
+        "on_tissue_by_feature": {
+          "CTCF": 1,
+          "DNase": 5,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 2
+        },
+        "request_id": "0022fd15-75ca-4bf8-bbe5-3c3e0156a2ef",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9729
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9135
+          },
+          {
+            "label_index": 756,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.8857
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.8606
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.8566
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7949
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.7609
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7553
+          },
+          {
+            "label_index": 903,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "IFNa4h",
+            "score": 0.7507
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.6855
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.7699
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "JUN",
+    "assembly": "GRCh38",
+    "region": "chr1:58776845-58784048",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 5.2552 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.3483 in 'liver tissue'; promoter p=0.3121; 46 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.9492,
+        "specificity": 0.7387,
+        "regulatory": 0.5497
+      },
+      "raw": {
+        "expression": 5.2552,
+        "specificity": 1.9069,
+        "promoter": 0.3121,
+        "chromatin": 46.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000177606",
+        "chrom": "1",
+        "strand": -1,
+        "tss": 58784047,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "1:58743088-58825007",
+        "tss_window": "1:58783048-58785047",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 5.2552,
+          "tpm": 190.5663,
+          "scored_window": [
+            14965,
+            67244
+          ],
+          "request_id": "ab3ba763-cf0d-4e41-8256-07a4829e523e"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.3483,
+          "tpm": 27.4537,
+          "scored_window": [
+            14965,
+            67244
+          ],
+          "request_id": "14a001df-1266-424b-8565-ec7bd2b52948"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.3121,
+        "upstream_window_probability": 0.1133,
+        "request_id": "702430ff-e217-4c0e-9c5b-cb6e5a3c5be8"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 644,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 46,
+        "on_tissue_by_feature": {
+          "CTCF": 5,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 3,
+          "H3K4me1": 5,
+          "Other": 12,
+          "Pol2": 6,
+          "c-Myc": 2
+        },
+        "request_id": "4ef45417-47f1-442d-9a12-ff5835f9e240",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9988
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9948
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9946
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9935
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.992
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9894
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.986
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9853
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9819
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9818
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.7459
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "CDCP1",
+    "assembly": "GRCh38",
+    "region": "chr3:45082277-45146483",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.4086 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.8627 in 'liver tissue'; promoter p=0.9894; 15 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5723,
+        "specificity": 0.8932,
+        "regulatory": 0.5585
+      },
+      "raw": {
+        "expression": 3.4086,
+        "specificity": 2.5459,
+        "promoter": 0.9894,
+        "chromatin": 15.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000163814",
+        "chrom": "3",
+        "strand": -1,
+        "tss": 45146378,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "3:45105419-45187338",
+        "tss_window": "3:45145379-45147378",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.4086,
+          "tpm": 29.2243,
+          "scored_window": [
+            13872,
+            67686
+          ],
+          "request_id": "100c2c53-bf4d-4ca2-be77-c9403bf30f10"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 0.8627,
+          "tpm": 1.3695,
+          "scored_window": [
+            13872,
+            67686
+          ],
+          "request_id": "ed9c0954-1667-4d32-995f-e2be485ad1bf"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9894,
+        "upstream_window_probability": 0.9894,
+        "request_id": "842dc216-a906-4d4b-a4b8-9ed37e7360a7"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 266,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 15,
+        "on_tissue_by_feature": {
+          "CTCF": 1,
+          "DNase": 4,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 1,
+          "c-Myc": 1
+        },
+        "request_id": "7d23ca7a-73f3-42e5-9f2b-5f6637c15a57",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9893
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9155
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.8964
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.8618
+          },
+          {
+            "label_index": 493,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.8499
+          },
+          {
+            "label_index": 131,
+            "cell_type": "HMEC",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.8288
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.807
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7898
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.7756
+          },
+          {
+            "label_index": 340,
+            "cell_type": "HMEC",
+            "feature_type": "c-Myc",
+            "treatment": "IFNa4h",
+            "score": 0.717
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.6747
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PSMD3",
+    "assembly": "GRCh38",
+    "region": "chr17:39980800-39997960",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9763; 56 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.6873,
+        "specificity": 0.3479,
+        "regulatory": 0.9881
+      },
+      "raw": {
+        "expression": 3.9721,
+        "specificity": 0.2903,
+        "promoter": 0.9763,
+        "chromatin": 56.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000108344",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 39980807,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:39939847-40021766",
+        "tss_window": "17:39979807-39981806",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.9721,
+          "tpm": 52.0979,
+          "scored_window": [
+            12919,
+            68885
+          ],
+          "request_id": "f1099162-c768-4b3a-8216-d7859f572c3f"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.6818,
+          "tpm": 38.7159,
+          "scored_window": [
+            12919,
+            68885
+          ],
+          "request_id": "4567fb00-7e7a-483f-aaab-a565b834d4a2"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9763,
+        "upstream_window_probability": 0.9763,
+        "request_id": "3966ec5d-94cb-4a65-8305-d6048ce0fa24"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 775,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 56,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 4,
+          "H3K4me1": 6,
+          "Other": 18,
+          "Pol2": 7,
+          "c-Myc": 2
+        },
+        "request_id": "ad682647-08cf-4301-8636-e9df543a6c94",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9976
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9914
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9883
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9854
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9825
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9744
+          },
+          {
+            "label_index": 803,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.974
+          },
+          {
+            "label_index": 321,
+            "cell_type": "T-47D",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9731
+          },
+          {
+            "label_index": 137,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9703
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9682
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.6745
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "EZR",
+    "assembly": "GRCh38",
+    "region": "chr6:158765738-158819418",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.8955 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9003 in 'liver tissue'; promoter p=0.99; 35 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.6716,
+        "specificity": 0.5183,
+        "regulatory": 0.7716
+      },
+      "raw": {
+        "expression": 3.8955,
+        "specificity": 0.9952,
+        "promoter": 0.99,
+        "chromatin": 35.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000092820",
+        "chrom": "6",
+        "strand": -1,
+        "tss": 158819368,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "6:158778409-158860328",
+        "tss_window": "6:158818369-158820368",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.8955,
+          "tpm": 48.1827,
+          "scored_window": [
+            13067,
+            67765
+          ],
+          "request_id": "157d6407-8b8d-45fb-befa-257d38ccaa1e"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.9003,
+          "tpm": 17.1801,
+          "scored_window": [
+            13067,
+            67765
+          ],
+          "request_id": "1dbda528-f458-414e-bdc6-0e1ba027a615"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.99,
+        "upstream_window_probability": 0.99,
+        "request_id": "7a0d80a2-7f7c-499c-96d1-334ae7625c3a"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 531,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 35,
+        "on_tissue_by_feature": {
+          "CTCF": 4,
+          "DNase": 8,
+          "H3K27ac": 4,
+          "H3K27me3": 2,
+          "Other": 10,
+          "Pol2": 6,
+          "c-Myc": 1
+        },
+        "request_id": "e304b8a5-6147-4d4b-a66f-77c80edab168",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 244,
+            "cell_type": "MCF-7",
+            "feature_type": "Pol2",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9963
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9961
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9953
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.995
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9919
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9901
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9899
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9893
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9885
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.984
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.6539
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "STARD3",
+    "assembly": "GRCh38",
+    "region": "chr17:39637058-39664201",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.5601 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8267 in 'liver tissue'; promoter p=0.99; 42 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.6032,
+        "specificity": 0.4551,
+        "regulatory": 0.8461
+      },
+      "raw": {
+        "expression": 3.5601,
+        "specificity": 0.7334,
+        "promoter": 0.99,
+        "chromatin": 42.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000131748",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 39637144,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:39596184-39678103",
+        "tss_window": "17:39636144-39638143",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.5601,
+          "tpm": 34.1666,
+          "scored_window": [
+            14990,
+            67252
+          ],
+          "request_id": "c3a68cae-1210-427b-81de-7b86d815bfc5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.8267,
+          "tpm": 15.889,
+          "scored_window": [
+            14990,
+            67252
+          ],
+          "request_id": "0bdf2809-27a8-4801-bba4-934b47e6746c"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.99,
+        "upstream_window_probability": 0.99,
+        "request_id": "e429d00b-6935-43fb-bc11-a39bee374df3"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 631,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 42,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 4,
+          "H3K27me3": 2,
+          "Other": 14,
+          "Pol2": 7,
+          "c-Myc": 1
+        },
+        "request_id": "adf28b4c-df55-44cb-a5eb-83f36295ce7f",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9985
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9915
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9905
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9887
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9855
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9841
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9828
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9826
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9791
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9739
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.6348
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "SRC",
+    "assembly": "GRCh38",
+    "region": "chr20:37344673-37406050",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.1231 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.2456 in 'liver tissue'; promoter p=0.9884; 23 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.514,
+        "specificity": 0.7316,
+        "regulatory": 0.6431
+      },
+      "raw": {
+        "expression": 3.1231,
+        "specificity": 1.8775,
+        "promoter": 0.9884,
+        "chromatin": 23.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000197122",
+        "chrom": "20",
+        "strand": 1,
+        "tss": 37346140,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "20:37305180-37387099",
+        "tss_window": "20:37345140-37347139",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.1231,
+          "tpm": 21.7176,
+          "scored_window": [
+            13606,
+            67411
+          ],
+          "request_id": "086de447-3e9d-4783-b448-73aa9fc85c2f"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 1.2456,
+          "tpm": 2.475,
+          "scored_window": [
+            13606,
+            67411
+          ],
+          "request_id": "93c17fff-3ca6-4120-80df-5efe4476764d"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9884,
+        "upstream_window_probability": 0.9884,
+        "request_id": "99036d79-4797-4654-b4e5-febe7fb0a3de"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 381,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 23,
+        "on_tissue_by_feature": {
+          "CTCF": 2,
+          "DNase": 8,
+          "H3K27ac": 2,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 2,
+          "c-Myc": 1
+        },
+        "request_id": "2f534796-9338-4bfe-a8c3-b85450e6bcce",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9898
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9871
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9869
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9858
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9812
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9725
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9596
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9553
+          },
+          {
+            "label_index": 407,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27ac",
+            "treatment": "None",
+            "score": 0.9443
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9441
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.6296
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "SLC9A3R1",
+    "assembly": "GRCh38",
+    "region": "chr17:74748607-74769360",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 4.2334 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2334 in 'liver tissue'; promoter p=0.9883; 36 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.7406,
+        "specificity": 0.2778,
+        "regulatory": 0.7814
+      },
+      "raw": {
+        "expression": 4.2334,
+        "specificity": 0.0,
+        "promoter": 0.9883,
+        "chromatin": 36.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000109062",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 74748628,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:74707668-74789587",
+        "tss_window": "17:74747628-74749627",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 4.2334,
+          "tpm": 67.9485,
+          "scored_window": [
+            14277,
+            67488
+          ],
+          "request_id": "4b3aa627-4d9e-46c6-b343-f24e66a475d5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 4.2334,
+          "tpm": 67.9485,
+          "scored_window": [
+            14277,
+            67488
+          ],
+          "request_id": "3902f4dc-bae8-49ec-afb7-3f1a8ad3fc91"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9883,
+        "upstream_window_probability": 0.9883,
+        "request_id": "a5dd7c2b-80f6-4980-8ef7-3cbe01997445"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 566,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 36,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 3,
+          "H3K27me3": 2,
+          "Other": 10,
+          "Pol2": 6,
+          "c-Myc": 1
+        },
+        "request_id": "e5d64942-b4d8-466b-8941-dddb66fd785d",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9963
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9874
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9871
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9833
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.982
+          },
+          {
+            "label_index": 756,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9808
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9759
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9746
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.973
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9728
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5999
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "STAT3",
+    "assembly": "GRCh38",
+    "region": "chr17:42313322-42388574",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.6513 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.8344 in 'liver tissue'; promoter p=0.9882; 49 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.6218,
+        "specificity": 0.2335,
+        "regulatory": 0.9196
+      },
+      "raw": {
+        "expression": 3.6513,
+        "specificity": -0.1831,
+        "promoter": 0.9882,
+        "chromatin": 49.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000168610",
+        "chrom": "17",
+        "strand": -1,
+        "tss": 42388442,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:42347483-42429402",
+        "tss_window": "17:42387443-42389442",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.6513,
+          "tpm": 37.5247,
+          "scored_window": [
+            12064,
+            70340
+          ],
+          "request_id": "5628cd0e-884e-4d0d-80b4-7ee3edf1f99a"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.8344,
+          "tpm": 45.2635,
+          "scored_window": [
+            12064,
+            70340
+          ],
+          "request_id": "9ccb6d9d-b0ae-489a-8a16-855106c78aac"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9882,
+        "upstream_window_probability": 0.9882,
+        "request_id": "19c5a4d5-1f1d-4ad5-96d8-58890783c860"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 694,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 49,
+        "on_tissue_by_feature": {
+          "CTCF": 4,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 4,
+          "H3K4me1": 6,
+          "Other": 14,
+          "Pol2": 6,
+          "c-Myc": 2
+        },
+        "request_id": "5dab09ac-9542-4744-a9fb-60a0ee6353e8",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9974
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9904
+          },
+          {
+            "label_index": 413,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27ac",
+            "treatment": "None",
+            "score": 0.9888
+          },
+          {
+            "label_index": 615,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "IFNa4h",
+            "score": 0.9873
+          },
+          {
+            "label_index": 321,
+            "cell_type": "T-47D",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9832
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.979
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9788
+          },
+          {
+            "label_index": 184,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.9769
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9767
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9759
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5916
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "IGF1R",
+    "assembly": "GRCh38",
+    "region": "chr15:98648539-98964530",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.3031 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.2938 in 'liver tissue'; promoter p=0.9531; 29 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5507,
+        "specificity": 0.5217,
+        "regulatory": 0.6893
+      },
+      "raw": {
+        "expression": 3.3031,
+        "specificity": 1.0093,
+        "promoter": 0.9531,
+        "chromatin": 29.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000140443",
+        "chrom": "15",
+        "strand": 1,
+        "tss": 98648539,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "15:98607579-98689498",
+        "tss_window": "15:98647539-98649538",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.3031,
+          "tpm": 26.1965,
+          "scored_window": [
+            13943,
+            66751
+          ],
+          "request_id": "cfedc02b-cc5f-436b-abfa-2c304320740c"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.2938,
+          "tpm": 8.9129,
+          "scored_window": [
+            13943,
+            66751
+          ],
+          "request_id": "dc4b11d4-8f8c-4287-a800-00d9cc3e4809"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9531,
+        "upstream_window_probability": 0.9531,
+        "request_id": "fe1da8cb-734f-4038-a3d0-c5c556572e86"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 478,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 29,
+        "on_tissue_by_feature": {
+          "CTCF": 3,
+          "DNase": 8,
+          "H3K27ac": 2,
+          "H3K27me3": 2,
+          "Other": 10,
+          "Pol2": 3,
+          "c-Myc": 1
+        },
+        "request_id": "6b5f1638-d03b-471d-896c-5abe7ae5b977",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9907
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9765
+          },
+          {
+            "label_index": 756,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9732
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9702
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9694
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9678
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9609
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9491
+          },
+          {
+            "label_index": 340,
+            "cell_type": "HMEC",
+            "feature_type": "c-Myc",
+            "treatment": "IFNa4h",
+            "score": 0.946
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.934
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5873
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "STUB1",
+    "assembly": "GRCh38",
+    "region": "chr16:679980-682870",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.4994 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.8708 in 'liver tissue'; promoter p=0.8577; 37 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5908,
+        "specificity": 0.4297,
+        "regulatory": 0.7267
+      },
+      "raw": {
+        "expression": 3.4994,
+        "specificity": 0.6286,
+        "promoter": 0.8577,
+        "chromatin": 37.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000103266",
+        "chrom": "16",
+        "strand": 1,
+        "tss": 680410,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "16:639450-721369",
+        "tss_window": "16:679410-681409",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.4994,
+          "tpm": 32.0966,
+          "scored_window": [
+            16525,
+            65943
+          ],
+          "request_id": "169ccf3e-8303-4b9d-b6d9-6b19b96420a5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.8708,
+          "tpm": 16.6515,
+          "scored_window": [
+            16525,
+            65943
+          ],
+          "request_id": "4541ba5b-ddd9-445d-b76e-8d7ca7549cdd"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.8577,
+        "upstream_window_probability": 0.8577,
+        "request_id": "315eb687-3f7b-4245-9309-51d774ab4e13"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 538,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 37,
+        "on_tissue_by_feature": {
+          "CTCF": 5,
+          "DNase": 8,
+          "H3K27ac": 2,
+          "H3K27me3": 2,
+          "Other": 13,
+          "Pol2": 6,
+          "c-Myc": 1
+        },
+        "request_id": "84ef7488-8081-4d74-bb67-928b23b25527",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9941
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9812
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9784
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9719
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9672
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9654
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9623
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9621
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9606
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9563
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5824
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ERBB2",
+    "assembly": "GRCh38",
+    "region": "chr17:39687914-39730426",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.168 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.8704 in 'liver tissue'; promoter p=0.9877; 21 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5231,
+        "specificity": 0.5914,
+        "regulatory": 0.6215
+      },
+      "raw": {
+        "expression": 3.168,
+        "specificity": 1.2976,
+        "promoter": 0.9877,
+        "chromatin": 21.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000141736",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 39700064,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:39659104-39741023",
+        "tss_window": "17:39699064-39701063",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.168,
+          "tpm": 22.7599,
+          "scored_window": [
+            13493,
+            67928
+          ],
+          "request_id": "ecaae855-5158-4da3-b687-ff972eb33e0c"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 1.8704,
+          "tpm": 5.4911,
+          "scored_window": [
+            13493,
+            67928
+          ],
+          "request_id": "eea09448-2df3-49f8-9d6d-ed236476af7d"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9877,
+        "upstream_window_probability": 0.9877,
+        "request_id": "b3a393ef-635b-4384-afad-c630d952499d"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 320,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 21,
+        "on_tissue_by_feature": {
+          "CTCF": 2,
+          "DNase": 8,
+          "H3K27ac": 1,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 2
+        },
+        "request_id": "afb4a083-1013-4952-8b55-1912f13b3c57",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9924
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9878
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9875
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.986
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9796
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9724
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9462
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9315
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9212
+          },
+          {
+            "label_index": 285,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9045
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5787
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ERBB3",
+    "assembly": "GRCh38",
+    "region": "chr12:56076799-56103505",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.9721 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 4.2026 in 'liver tissue'; promoter p=0.9302; 38 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.6873,
+        "specificity": 0.2221,
+        "regulatory": 0.7736
+      },
+      "raw": {
+        "expression": 3.9721,
+        "specificity": -0.2305,
+        "promoter": 0.9302,
+        "chromatin": 38.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000065361",
+        "chrom": "12",
+        "strand": 1,
+        "tss": 56080165,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "12:56039205-56121124",
+        "tss_window": "12:56079165-56081164",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.9721,
+          "tpm": 52.0979,
+          "scored_window": [
+            9148,
+            68057
+          ],
+          "request_id": "0c75b7f5-151e-47fe-9bc9-4c450ddb9513"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 4.2026,
+          "tpm": 65.8579,
+          "scored_window": [
+            9148,
+            68057
+          ],
+          "request_id": "c954cdf7-b136-4939-8ed7-404718da8671"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9302,
+        "upstream_window_probability": 0.9302,
+        "request_id": "41bf9387-f892-4a30-913a-791a779654f5"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 589,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 38,
+        "on_tissue_by_feature": {
+          "CTCF": 5,
+          "DNase": 8,
+          "H3K27me3": 2,
+          "H3K4me1": 4,
+          "Other": 13,
+          "Pol2": 5,
+          "c-Myc": 1
+        },
+        "request_id": "8e26d7e0-1399-42c4-b611-86460f19be9b",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9927
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9911
+          },
+          {
+            "label_index": 803,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9888
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9872
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9852
+          },
+          {
+            "label_index": 167,
+            "cell_type": "T-47D",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.9844
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9841
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9829
+          },
+          {
+            "label_index": 809,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9815
+          },
+          {
+            "label_index": 274,
+            "cell_type": "T-47D",
+            "feature_type": "Pol2",
+            "treatment": "IFNa4h",
+            "score": 0.9778
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.561
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "GRB7",
+    "assembly": "GRCh38",
+    "region": "chr17:39737490-39747292",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.273 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.4069 in 'liver tissue'; promoter p=0.9753; 15 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5446,
+        "specificity": 0.4871,
+        "regulatory": 0.5515
+      },
+      "raw": {
+        "expression": 3.273,
+        "specificity": 0.8661,
+        "promoter": 0.9753,
+        "chromatin": 15.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000141738",
+        "chrom": "17",
+        "strand": 1,
+        "tss": 39737938,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:39696978-39778897",
+        "tss_window": "17:39736938-39738937",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.273,
+          "tpm": 25.3905,
+          "scored_window": [
+            13305,
+            67740
+          ],
+          "request_id": "fa44db1c-c08d-4aeb-b9d5-9d709fab8bcc"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.4069,
+          "tpm": 10.0996,
+          "scored_window": [
+            13305,
+            67740
+          ],
+          "request_id": "d08e3f1d-d2f3-4104-87a1-494902b31544"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9753,
+        "upstream_window_probability": 0.9753,
+        "request_id": "e3bc68be-c98f-4da7-b354-8917a48f130f"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 252,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 15,
+        "on_tissue_by_feature": {
+          "DNase": 7,
+          "H3K27me3": 1,
+          "Other": 5,
+          "Pol2": 2
+        },
+        "request_id": "49400389-0aab-4d98-862f-fe5d67efae4d",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9778
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9308
+          },
+          {
+            "label_index": 321,
+            "cell_type": "T-47D",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9279
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9195
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9175
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.763
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.7281
+          },
+          {
+            "label_index": 493,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.7272
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7177
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.664
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5277
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PGAP3",
+    "assembly": "GRCh38",
+    "region": "chr17:39671120-39696797",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 2.5933 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.3785 in 'liver tissue'; promoter p=0.9485; 43 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.4058,
+        "specificity": 0.3297,
+        "regulatory": 0.836
+      },
+      "raw": {
+        "expression": 2.5933,
+        "specificity": 0.2148,
+        "promoter": 0.9485,
+        "chromatin": 43.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000161395",
+        "chrom": "17",
+        "strand": -1,
+        "tss": 39688057,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "17:39647098-39729017",
+        "tss_window": "17:39687058-39689057",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 2.5933,
+          "tpm": 12.3743,
+          "scored_window": [
+            13517,
+            67091
+          ],
+          "request_id": "c6400b81-ac1c-42ba-98e6-03fac3faf11f"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.3785,
+          "tpm": 9.7889,
+          "scored_window": [
+            13517,
+            67091
+          ],
+          "request_id": "2cdc4e5c-c326-4899-a0d1-4d9e39304af7"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9485,
+        "upstream_window_probability": 0.9485,
+        "request_id": "52f48424-f471-441b-a1cf-0daf96366621"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 664,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 43,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 2,
+          "H3K4me1": 1,
+          "Other": 14,
+          "Pol2": 6,
+          "c-Myc": 1
+        },
+        "request_id": "2af44662-caf6-4bb2-a5de-232466e37fef",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9922
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9857
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9849
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9824
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9816
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9813
+          },
+          {
+            "label_index": 244,
+            "cell_type": "MCF-7",
+            "feature_type": "Pol2",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.98
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9799
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9763
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9755
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5238
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "MEMO1",
+    "assembly": "GRCh38",
+    "region": "chr2:31865060-32011230",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 2.9891 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.168 in 'liver tissue'; promoter p=0.9891; 40 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.4866,
+        "specificity": 0.2345,
+        "regulatory": 0.8243
+      },
+      "raw": {
+        "expression": 2.9891,
+        "specificity": -0.1789,
+        "promoter": 0.9891,
+        "chromatin": 40.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000162959",
+        "chrom": "2",
+        "strand": -1,
+        "tss": 32011008,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "2:31970049-32051968",
+        "tss_window": "2:32010009-32012008",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 2.9891,
+          "tpm": 18.8686,
+          "scored_window": [
+            11252,
+            69322
+          ],
+          "request_id": "1a0e4184-f1cb-4f68-8c6f-61228e2f814a"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.168,
+          "tpm": 22.7599,
+          "scored_window": [
+            11252,
+            69322
+          ],
+          "request_id": "ee75a56a-85dd-4e8e-9aaf-f9428dbbcb9b"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9891,
+        "upstream_window_probability": 0.9886,
+        "request_id": "b8a15018-bd18-40cd-9b37-ce03db44ed7f"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 633,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 40,
+        "on_tissue_by_feature": {
+          "CTCF": 4,
+          "DNase": 8,
+          "H3K27ac": 4,
+          "H3K27me3": 3,
+          "H3K4me1": 1,
+          "Other": 11,
+          "Pol2": 7,
+          "c-Myc": 2
+        },
+        "request_id": "c2addc23-455d-440b-9f84-f37d38df069c",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.998
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9961
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9874
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9873
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9864
+          },
+          {
+            "label_index": 413,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27ac",
+            "treatment": "None",
+            "score": 0.9817
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9812
+          },
+          {
+            "label_index": 231,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.9774
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.977
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9765
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.5152
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PTPN1",
+    "assembly": "GRCh38",
+    "region": "chr20:50510321-50585241",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 2.5213 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.9909; 43 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.3911,
+        "specificity": 0.2638,
+        "regulatory": 0.8572
+      },
+      "raw": {
+        "expression": 2.5213,
+        "specificity": -0.0576,
+        "promoter": 0.9909,
+        "chromatin": 43.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000196396",
+        "chrom": "20",
+        "strand": 1,
+        "tss": 50510383,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "20:50469423-50551342",
+        "tss_window": "20:50509383-50511382",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 2.5213,
+          "tpm": 11.4444,
+          "scored_window": [
+            12676,
+            67963
+          ],
+          "request_id": "2af8adc8-2af3-4ea6-94f3-4a264f6a43b4"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.5789,
+          "tpm": 12.1825,
+          "scored_window": [
+            12676,
+            67963
+          ],
+          "request_id": "1bf35b57-0e15-46f2-a4c0-8e8e10c4920f"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9909,
+        "upstream_window_probability": 0.9909,
+        "request_id": "10d353fc-1647-4a1a-ae9f-7cf899033c79"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 659,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 43,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 2,
+          "H3K4me1": 2,
+          "Other": 13,
+          "Pol2": 6,
+          "c-Myc": 1
+        },
+        "request_id": "505a7f40-da86-4e1a-97a4-a2fe4b2c1039",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.998
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9937
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9908
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9903
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9873
+          },
+          {
+            "label_index": 487,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.9848
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9837
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9833
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.976
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.975
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.504
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "SHC1",
+    "assembly": "GRCh38",
+    "region": "chr1:154962284-154974452",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.2279 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.9891 in 'liver tissue'; promoter p=0.9193; 23 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5354,
+        "specificity": 0.3355,
+        "regulatory": 0.6086
+      },
+      "raw": {
+        "expression": 3.2279,
+        "specificity": 0.2388,
+        "promoter": 0.9193,
+        "chromatin": 23.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000160691",
+        "chrom": "1",
+        "strand": -1,
+        "tss": 154970747,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "1:154929788-155011707",
+        "tss_window": "1:154969748-154971747",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.2279,
+          "tpm": 24.2278,
+          "scored_window": [
+            12899,
+            66844
+          ],
+          "request_id": "61e07ccf-32c5-4651-ab4a-327602d59ec0"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.9891,
+          "tpm": 18.8686,
+          "scored_window": [
+            12899,
+            66844
+          ],
+          "request_id": "3771a919-6bc3-4177-945f-cde18693d86b"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9193,
+        "upstream_window_probability": 0.9193,
+        "request_id": "4c06a86e-320e-4ce2-8662-8fc7d676ae6d"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 430,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 23,
+        "on_tissue_by_feature": {
+          "DNase": 8,
+          "H3K27me3": 3,
+          "H3K4me1": 2,
+          "Other": 8,
+          "Pol2": 2
+        },
+        "request_id": "0fd343d1-a990-4feb-a490-85bb4f8bc6cb",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9866
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9851
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9848
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9815
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9801
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9787
+          },
+          {
+            "label_index": 762,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9626
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9559
+          },
+          {
+            "label_index": 903,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "IFNa4h",
+            "score": 0.9449
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9285
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4932
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ERBIN",
+    "assembly": "GRCh38",
+    "region": "chr5:65883128-66082546",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 2.6804 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.1082 in 'liver tissue'; promoter p=0.9747; 41 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.4236,
+        "specificity": 0.1744,
+        "regulatory": 0.8278
+      },
+      "raw": {
+        "expression": 2.6804,
+        "specificity": -0.4278,
+        "promoter": 0.9747,
+        "chromatin": 41.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000112851",
+        "chrom": "5",
+        "strand": 1,
+        "tss": 65926575,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "5:65885615-65967534",
+        "tss_window": "5:65925575-65927574",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 2.6804,
+          "tpm": 13.5906,
+          "scored_window": [
+            14192,
+            68602
+          ],
+          "request_id": "b09fffc8-3e70-4c39-866f-b700bf92e6e0"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.1082,
+          "tpm": 21.3809,
+          "scored_window": [
+            14192,
+            68602
+          ],
+          "request_id": "47f89e2c-5e4e-4907-96a6-341d56dcbd0c"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9747,
+        "upstream_window_probability": 0.9747,
+        "request_id": "e6e69402-4fa5-4e01-9bca-896e0d93f796"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 562,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 41,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 3,
+          "H3K27me3": 4,
+          "Other": 12,
+          "Pol2": 7,
+          "c-Myc": 1
+        },
+        "request_id": "f2b85659-5fd3-4726-a93a-58754f89ad66",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9958
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9936
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9849
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9802
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.98
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.977
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.965
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9648
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9482
+          },
+          {
+            "label_index": 291,
+            "cell_type": "MCF-7",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9389
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4753
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "EGFR",
+    "assembly": "GRCh38",
+    "region": "chr7:55018820-55211628",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6513 in 'liver tissue'; promoter p=0.975; 21 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5692,
+        "specificity": 0.2155,
+        "regulatory": 0.6152
+      },
+      "raw": {
+        "expression": 3.3935,
+        "specificity": -0.2578,
+        "promoter": 0.975,
+        "chromatin": 21.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000146648",
+        "chrom": "7",
+        "strand": 1,
+        "tss": 55019017,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "7:54978057-55059976",
+        "tss_window": "7:55018017-55020016",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.3935,
+          "tpm": 28.7712,
+          "scored_window": [
+            15268,
+            66841
+          ],
+          "request_id": "34926053-23c3-4baa-b11e-15271bea52b6"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.6513,
+          "tpm": 37.5247,
+          "scored_window": [
+            15268,
+            66841
+          ],
+          "request_id": "6974e4c2-dc0e-4011-80f0-cf7bddabcb78"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.975,
+        "upstream_window_probability": 0.975,
+        "request_id": "4faf0450-fe85-4b8e-9d9f-c43e9a97a414"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 325,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 21,
+        "on_tissue_by_feature": {
+          "CTCF": 2,
+          "DNase": 8,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 2,
+          "c-Myc": 1
+        },
+        "request_id": "65d17d89-6764-40eb-ab00-f732b7121b5c",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9887
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9868
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.976
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9563
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9537
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9531
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9382
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9242
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9027
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.8971
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4666
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PTEN",
+    "assembly": "GRCh38",
+    "region": "chr10:87862638-87971930",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.3935 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.9262 in 'liver tissue'; promoter p=0.7213; 38 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.5692,
+        "specificity": 0.149,
+        "regulatory": 0.6692
+      },
+      "raw": {
+        "expression": 3.3935,
+        "specificity": -0.5327,
+        "promoter": 0.7213,
+        "chromatin": 38.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000171862",
+        "chrom": "10",
+        "strand": 1,
+        "tss": 87863625,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "10:87822665-87904584",
+        "tss_window": "10:87862625-87864624",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.3935,
+          "tpm": 28.7712,
+          "scored_window": [
+            13989,
+            67560
+          ],
+          "request_id": "d39a7c0a-1ca3-49a7-bf07-555d57fbdb47"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.9262,
+          "tpm": 49.7122,
+          "scored_window": [
+            13989,
+            67560
+          ],
+          "request_id": "aaee7d81-7b0e-47a2-ad94-0fb9cf78658f"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.7213,
+        "upstream_window_probability": 0.7213,
+        "request_id": "807aedba-a529-4d77-b25d-032e3506d6b8"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 570,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 38,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 2,
+          "Other": 11,
+          "Pol2": 5,
+          "c-Myc": 1
+        },
+        "request_id": "66b19980-6623-4aa8-b00a-e42cb6f95678",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9929
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9918
+          },
+          {
+            "label_index": 244,
+            "cell_type": "MCF-7",
+            "feature_type": "Pol2",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9902
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9856
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9839
+          },
+          {
+            "label_index": 332,
+            "cell_type": "HMEC",
+            "feature_type": "Pol2",
+            "treatment": "None",
+            "score": 0.9827
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9821
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9812
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9743
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9715
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4624
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PIK3CA",
+    "assembly": "GRCh38",
+    "region": "chr3:179148114-179240093",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 2.21 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5069 in 'liver tissue'; promoter p=0.9889; 41 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.3276,
+        "specificity": 0.206,
+        "regulatory": 0.8349
+      },
+      "raw": {
+        "expression": 2.21,
+        "specificity": -0.2969,
+        "promoter": 0.9889,
+        "chromatin": 41.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000121879",
+        "chrom": "3",
+        "strand": 1,
+        "tss": 179148357,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "3:179107397-179189316",
+        "tss_window": "3:179147357-179149356",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 2.21,
+          "tpm": 8.1153,
+          "scored_window": [
+            11815,
+            67179
+          ],
+          "request_id": "fdb37890-82d3-45ed-a2f5-fa9b672cf464"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.5069,
+          "tpm": 11.267,
+          "scored_window": [
+            11815,
+            67179
+          ],
+          "request_id": "9e6ed26d-859c-470b-86d9-90a24cb5efcd"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9889,
+        "upstream_window_probability": 0.9889,
+        "request_id": "abf9b5d7-d52f-47cb-920a-ae528318ffd2"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 582,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 41,
+        "on_tissue_by_feature": {
+          "CTCF": 4,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 3,
+          "H3K4me1": 5,
+          "Other": 10,
+          "Pol2": 5,
+          "c-Myc": 1
+        },
+        "request_id": "687dfca3-1a01-49d7-9b50-b08acd6db130",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.998
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9951
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9951
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9941
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9898
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9888
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9877
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9785
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9773
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9757
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4562
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "VAV2",
+    "assembly": "GRCh38",
+    "region": "chr9:133761892-133992854",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 3.0337 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 3.6818 in 'liver tissue'; promoter p=0.9739; 27 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.4957,
+        "specificity": 0.1211,
+        "regulatory": 0.6784
+      },
+      "raw": {
+        "expression": 3.0337,
+        "specificity": -0.6481,
+        "promoter": 0.9739,
+        "chromatin": 27.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000160293",
+        "chrom": "9",
+        "strand": -1,
+        "tss": 133992324,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "9:133951365-134033284",
+        "tss_window": "9:133991325-133993324",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 3.0337,
+          "tpm": 19.7741,
+          "scored_window": [
+            14446,
+            66754
+          ],
+          "request_id": "dc28db7a-c5bd-43c5-a798-cc4735e6ddb5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 3.6818,
+          "tpm": 38.7159,
+          "scored_window": [
+            14446,
+            66754
+          ],
+          "request_id": "b9987839-5851-4b77-872b-4c3d803bf5de"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9739,
+        "upstream_window_probability": 0.9739,
+        "request_id": "e421b275-b930-4686-80b6-732db9e64bb3"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 435,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 27,
+        "on_tissue_by_feature": {
+          "CTCF": 2,
+          "DNase": 8,
+          "H3K27me3": 2,
+          "Other": 11,
+          "Pol2": 3,
+          "c-Myc": 1
+        },
+        "request_id": "6e5f58d5-eead-4805-83e2-0aa6dcf48c04",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9892
+          },
+          {
+            "label_index": 340,
+            "cell_type": "HMEC",
+            "feature_type": "c-Myc",
+            "treatment": "IFNa4h",
+            "score": 0.9842
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9796
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9774
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.974
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.969
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9589
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9565
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9563
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9474
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4318
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ATM",
+    "assembly": "GRCh38",
+    "region": "chr11:108222788-108369102",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 1.8113 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.6949 in 'liver tissue'; promoter p=0.9743; 49 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.2462,
+        "specificity": 0.0642,
+        "regulatory": 0.9127
+      },
+      "raw": {
+        "expression": 1.8113,
+        "specificity": -0.8836,
+        "promoter": 0.9743,
+        "chromatin": 49.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000149311",
+        "chrom": "11",
+        "strand": 1,
+        "tss": 108223067,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "11:108182107-108264026",
+        "tss_window": "11:108222067-108224066",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 1.8113,
+          "tpm": 5.1182,
+          "scored_window": [
+            14460,
+            68435
+          ],
+          "request_id": "0ca1d7f5-88f8-4b35-b81a-0ab00e941289"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.6949,
+          "tpm": 13.8046,
+          "scored_window": [
+            14460,
+            68435
+          ],
+          "request_id": "5efddc9c-0eaa-46df-913f-83177c2288bb"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9743,
+        "upstream_window_probability": 0.9743,
+        "request_id": "136fa7e6-3b3a-4171-8ce8-536e49f14f88"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 754,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 49,
+        "on_tissue_by_feature": {
+          "CTCF": 6,
+          "DNase": 8,
+          "H3K27ac": 5,
+          "H3K27me3": 3,
+          "H3K4me1": 3,
+          "Other": 15,
+          "Pol2": 7,
+          "c-Myc": 2
+        },
+        "request_id": "2b4531c6-12c5-445b-9f59-4415f6e1ce5e",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9984
+          },
+          {
+            "label_index": 709,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9958
+          },
+          {
+            "label_index": 803,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9938
+          },
+          {
+            "label_index": 756,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9925
+          },
+          {
+            "label_index": 346,
+            "cell_type": "MCF-7",
+            "feature_type": "c-Myc",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9925
+          },
+          {
+            "label_index": 167,
+            "cell_type": "T-47D",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.9871
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9852
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9842
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.9816
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9808
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.4077
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ESR1",
+    "assembly": "GRCh38",
+    "region": "chr6:151651284-152129619",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 0.9074 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.3009 in 'liver tissue'; promoter p=0.9461; 18 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.0617,
+        "specificity": 0.4244,
+        "regulatory": 0.5688
+      },
+      "raw": {
+        "expression": 0.9074,
+        "specificity": 0.6065,
+        "promoter": 0.9461,
+        "chromatin": 18.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000091831",
+        "chrom": "6",
+        "strand": 1,
+        "tss": 151807682,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "6:151766722-151848641",
+        "tss_window": "6:151806682-151808681",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 0.9074,
+          "tpm": 1.4779,
+          "scored_window": [
+            14668,
+            67357
+          ],
+          "request_id": "a86c1749-541c-45de-b911-55d7cea312e5"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 0.3009,
+          "tpm": 0.351,
+          "scored_window": [
+            14668,
+            67357
+          ],
+          "request_id": "6b4120c6-38dc-46db-a4af-cbd6d0c16185"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9461,
+        "upstream_window_probability": 0.9461,
+        "request_id": "57e76c5d-69d1-4074-b39f-f1bd70233d70"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 255,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 18,
+        "on_tissue_by_feature": {
+          "CTCF": 1,
+          "DNase": 8,
+          "H3K27ac": 1,
+          "H3K27me3": 1,
+          "Other": 6,
+          "c-Myc": 1
+        },
+        "request_id": "df712acb-e68a-4e93-9063-9661ddf31267",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9939
+          },
+          {
+            "label_index": 131,
+            "cell_type": "HMEC",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.9527
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9368
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9326
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9095
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9088
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.875
+          },
+          {
+            "label_index": 42,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.8602
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.8067
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.7962
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.3516
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "TNF",
+    "assembly": "GRCh38",
+    "region": "chr6:31575558-31578336",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 1.3247 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 1.254 in 'liver tissue'; promoter p=0.9015; 22 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.1469,
+        "specificity": 0.2949,
+        "regulatory": 0.589
+      },
+      "raw": {
+        "expression": 1.3247,
+        "specificity": 0.0707,
+        "promoter": 0.9015,
+        "chromatin": 22.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000232810",
+        "chrom": "6",
+        "strand": 1,
+        "tss": 31575565,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "6:31534605-31616524",
+        "tss_window": "6:31574565-31576564",
+        "tss_window_strand": 1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 1.3247,
+          "tpm": 2.7611,
+          "scored_window": [
+            12789,
+            69462
+          ],
+          "request_id": "3afcf299-ca38-4a07-befe-5870362fbd61"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 1.254,
+          "tpm": 2.5042,
+          "scored_window": [
+            12789,
+            69462
+          ],
+          "request_id": "108d0aed-b54a-45b3-9e6d-040064980c2b"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9015,
+        "upstream_window_probability": 0.9015,
+        "request_id": "af08356f-e299-4563-a398-1cfb86e70616"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 295,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 22,
+        "on_tissue_by_feature": {
+          "CTCF": 3,
+          "DNase": 8,
+          "H3K27ac": 2,
+          "H3K27me3": 2,
+          "Other": 5,
+          "Pol2": 2
+        },
+        "request_id": "212bd5ab-752c-48dd-85a7-6d3fe1f475ad",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 407,
+            "cell_type": "HMEC",
+            "feature_type": "H3K27ac",
+            "treatment": "None",
+            "score": 0.9898
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9857
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.9643
+          },
+          {
+            "label_index": 231,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.963
+          },
+          {
+            "label_index": 413,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27ac",
+            "treatment": "None",
+            "score": 0.9627
+          },
+          {
+            "label_index": 225,
+            "cell_type": "HMEC",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.9163
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.9091
+          },
+          {
+            "label_index": 244,
+            "cell_type": "MCF-7",
+            "feature_type": "Pol2",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.8781
+          },
+          {
+            "label_index": 89,
+            "cell_type": "T-47D",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.8647
+          },
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.8375
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.3436
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "MUC4",
+    "assembly": "GRCh38",
+    "region": "chr3:195746765-195811973",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 0.8259 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.193 in 'liver tissue'; promoter p=0.9443; 9 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.0451,
+        "specificity": 0.4308,
+        "regulatory": 0.4722
+      },
+      "raw": {
+        "expression": 0.8259,
+        "specificity": 0.6329,
+        "promoter": 0.9443,
+        "chromatin": 9.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000145113",
+        "chrom": "3",
+        "strand": -1,
+        "tss": 195811929,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "3:195770970-195852889",
+        "tss_window": "3:195810930-195812929",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 0.8259,
+          "tpm": 1.284,
+          "scored_window": [
+            14605,
+            67736
+          ],
+          "request_id": "674ac8e2-167e-443e-bdc7-811fbbdb5e6d"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 0.193,
+          "tpm": 0.2129,
+          "scored_window": [
+            14605,
+            67736
+          ],
+          "request_id": "91d5eafd-0ccc-42a4-97c8-243ae211ea67"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.9443,
+        "upstream_window_probability": 0.9443,
+        "request_id": "fc75f6a5-8a38-4faa-bfce-8cae00e45f8a"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 106,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 9,
+        "on_tissue_by_feature": {
+          "DNase": 4,
+          "Other": 5
+        },
+        "request_id": "1fdbc1a3-9819-471a-ab6b-57493d2803f3",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.948
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.8646
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7328
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.6932
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.6425
+          },
+          {
+            "label_index": 886,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.5745
+          },
+          {
+            "label_index": 897,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.5636
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.5114
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.5005
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.316
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "PGR",
+    "assembly": "GRCh38",
+    "region": "chr11:101029624-101129817",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 0.6051 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 0.9838 in 'liver tissue'; promoter p=0.8682; 16 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.0,
+        "specificity": 0.1862,
+        "regulatory": 0.5086
+      },
+      "raw": {
+        "expression": 0.6051,
+        "specificity": -0.3787,
+        "promoter": 0.8682,
+        "chromatin": 16.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000082175",
+        "chrom": "11",
+        "strand": -1,
+        "tss": 101129813,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "11:101088854-101170773",
+        "tss_window": "11:101128814-101130813",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 0.6051,
+          "tpm": 0.8315,
+          "scored_window": [
+            13612,
+            67278
+          ],
+          "request_id": "a4d7037f-fba9-4698-8bd9-67051c18f30b"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 0.9838,
+          "tpm": 1.6747,
+          "scored_window": [
+            13612,
+            67278
+          ],
+          "request_id": "48f840a8-5af2-4503-95bd-8d5e37cfd484"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.8682,
+        "upstream_window_probability": 0.8525,
+        "request_id": "7161bbdf-d1e5-4ecd-bc4e-c5fda81dbd4e"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 209,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 16,
+        "on_tissue_by_feature": {
+          "CTCF": 2,
+          "DNase": 8,
+          "H3K27me3": 1,
+          "Other": 4,
+          "c-Myc": 1
+        },
+        "request_id": "3c6bbe17-1403-437a-b0fa-d7844be46d1c",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9947
+          },
+          {
+            "label_index": 131,
+            "cell_type": "HMEC",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.8771
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.8273
+          },
+          {
+            "label_index": 106,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.8014
+          },
+          {
+            "label_index": 53,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7821
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.7542
+          },
+          {
+            "label_index": 493,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.7149
+          },
+          {
+            "label_index": 100,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.7133
+          },
+          {
+            "label_index": 184,
+            "cell_type": "MCF-7",
+            "feature_type": "CTCF",
+            "treatment": "None",
+            "score": 0.7114
+          },
+          {
+            "label_index": 850,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.6764
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.2316
+  },
+  {
+    "source": "genomic_intelligence",
+    "gene": "ERBB4",
+    "assembly": "GRCh38",
+    "region": "chr2:211375717-212539266",
+    "model_task": "expression (g0-expression-8192) + promoter (g0-promoter-2000bp) + chromatin (g0-deepsea)",
+    "model_output": {
+      "summary": "Predicted 1.4298 log(TPM+1) in 'HER2-positive breast cancer cell line' vs 2.5789 in 'liver tissue'; promoter p=0.7728; 17 breast-lineage chromatin calls at the TSS.",
+      "components": {
+        "expression": 0.1683,
+        "specificity": 0.0,
+        "regulatory": 0.4715
+      },
+      "raw": {
+        "expression": 1.4298,
+        "specificity": -1.1491,
+        "promoter": 0.7728,
+        "chromatin": 17.0
+      },
+      "weights": {
+        "expression": 0.3333333333333333,
+        "specificity": 0.3333333333333333,
+        "regulatory": 0.3333333333333333,
+        "regulatory.promoter": 0.5,
+        "regulatory.chromatin": 0.5
+      },
+      "locus": {
+        "ensembl_id": "ENSG00000178568",
+        "chrom": "2",
+        "strand": -1,
+        "tss": 212538802,
+        "tss_source": "canonical-transcript",
+        "tss_matches_ensembl": true,
+        "expression_window": "2:212497843-212579762",
+        "tss_window": "2:212537803-212539802",
+        "tss_window_strand": -1
+      },
+      "expression": {
+        "target": {
+          "description": "HER2-positive breast cancer cell line",
+          "log_tpm": 1.4298,
+          "tpm": 3.178,
+          "scored_window": [
+            14619,
+            66895
+          ],
+          "request_id": "edfe0dcf-45e6-4f96-b5a2-03c9ae4d77d3"
+        },
+        "reference": {
+          "description": "liver tissue",
+          "log_tpm": 2.5789,
+          "tpm": 12.1825,
+          "scored_window": [
+            14619,
+            66895
+          ],
+          "request_id": "0d491a35-3eea-4177-b05e-2c564084436f"
+        }
+      },
+      "promoter": {
+        "max_probability": 0.7728,
+        "upstream_window_probability": 0.7728,
+        "request_id": "94989c38-1b44-400e-8006-0883472c0f06"
+      },
+      "chromatin": {
+        "threshold": 0.5,
+        "windows": 10,
+        "labels_called_all_cell_types": 202,
+        "on_tissue_cell_types": [
+          "HMEC",
+          "MCF-7",
+          "T-47D"
+        ],
+        "on_tissue_labels_called": 17,
+        "on_tissue_by_feature": {
+          "CTCF": 1,
+          "DNase": 7,
+          "H3K27me3": 2,
+          "Other": 6,
+          "Pol2": 1
+        },
+        "request_id": "0ed34f1f-1b5c-4be1-a38b-ea2bb1476d5a",
+        "top_on_tissue_calls": [
+          {
+            "label_index": 856,
+            "cell_type": "MCF-7",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.9964
+          },
+          {
+            "label_index": 131,
+            "cell_type": "HMEC",
+            "feature_type": "CTCF",
+            "treatment": "IFNa4h",
+            "score": 0.9664
+          },
+          {
+            "label_index": 839,
+            "cell_type": "T-47D",
+            "feature_type": "Other",
+            "treatment": "None",
+            "score": 0.8789
+          },
+          {
+            "label_index": 59,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "None",
+            "score": 0.8707
+          },
+          {
+            "label_index": 476,
+            "cell_type": "T-47D",
+            "feature_type": "H3K27me3",
+            "treatment": "IFNa4h",
+            "score": 0.8236
+          },
+          {
+            "label_index": 274,
+            "cell_type": "T-47D",
+            "feature_type": "Pol2",
+            "treatment": "IFNa4h",
+            "score": 0.7848
+          },
+          {
+            "label_index": 756,
+            "cell_type": "HMEC",
+            "feature_type": "Other",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.7828
+          },
+          {
+            "label_index": 6,
+            "cell_type": "HMEC",
+            "feature_type": "DNase",
+            "treatment": "IFNa4h",
+            "score": 0.7728
+          },
+          {
+            "label_index": 12,
+            "cell_type": "MCF-7",
+            "feature_type": "DNase",
+            "treatment": "EtOH_0.02pct",
+            "score": 0.716
+          },
+          {
+            "label_index": 493,
+            "cell_type": "MCF-7",
+            "feature_type": "H3K27me3",
+            "treatment": "None",
+            "score": 0.7084
+          }
+        ]
+      },
+      "models": {
+        "expression": "g0-expression-8192",
+        "promoter": "g0-promoter-2000bp",
+        "chromatin": "g0-deepsea"
+      },
+      "retrieved": "2026-11-14",
+      "demo_key": true
+    },
+    "model_score": 0.2133
+  }
+]

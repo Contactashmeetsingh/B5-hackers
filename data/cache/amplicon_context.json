@@ -1,0 +1,149 @@
+{
+  "biomarker_gene": "ERBB2",
+  "region": "chr17:39600064-39800063",
+  "assembly": "GRCh38",
+  "description": "HER2-positive breast cancer cell line",
+  "source": "genomic_intelligence",
+  "retrieved": "2026-11-14",
+  "counts": {
+    "genes_found": 9,
+    "genes_predicted": 9,
+    "genes_skipped": 0
+  },
+  "models": {
+    "annotation": "g0-annotation",
+    "expression": "g0-expression-8192"
+  },
+  "request_id": "bee61390-37b3-45d6-b383-5930800666ca",
+  "known_protein_coding_genes_in_region": [
+    "NEUROD2",
+    "PPP1R1B",
+    "STARD3",
+    "TCAP",
+    "PNMT",
+    "PGAP3",
+    "ERBB2",
+    "MIEN1",
+    "GRB7",
+    "IKZF3"
+  ],
+  "genes": [
+    {
+      "gene_index": 1,
+      "gene_name": "transcript_1",
+      "strand": "+",
+      "tss_position": 65040,
+      "centered_sequence_length": 81920,
+      "expression": 2.2378,
+      "expression_tpm": 8.3729,
+      "skipped": false,
+      "tss_genomic": 39665104,
+      "nearest_known_gene": "TCAP",
+      "distance_to_known_tss_bp": -245
+    },
+    {
+      "gene_index": 2,
+      "gene_name": "transcript_2",
+      "strand": "+",
+      "tss_position": 67827,
+      "centered_sequence_length": 81920,
+      "expression": 2.4497,
+      "expression_tpm": 10.5843,
+      "skipped": false,
+      "tss_genomic": 39667891,
+      "nearest_known_gene": "PNMT",
+      "distance_to_known_tss_bp": -562
+    },
+    {
+      "gene_index": 3,
+      "gene_name": "transcript_3",
+      "strand": "+",
+      "tss_position": 99999,
+      "centered_sequence_length": 81920,
+      "expression": 3.0933,
+      "expression_tpm": 21.0495,
+      "skipped": false,
+      "tss_genomic": 39700063,
+      "nearest_known_gene": "ERBB2",
+      "distance_to_known_tss_bp": -1
+    },
+    {
+      "gene_index": 4,
+      "gene_name": "transcript_4",
+      "strand": "+",
+      "tss_position": 99999,
+      "centered_sequence_length": 81920,
+      "expression": 3.0933,
+      "expression_tpm": 21.0495,
+      "skipped": false,
+      "tss_genomic": 39700063,
+      "nearest_known_gene": "ERBB2",
+      "distance_to_known_tss_bp": -1
+    },
+    {
+      "gene_index": 5,
+      "gene_name": "transcript_5",
+      "strand": "+",
+      "tss_position": 137895,
+      "centered_sequence_length": 81920,
+      "expression": 3.183,
+      "expression_tpm": 23.1183,
+      "skipped": false,
+      "tss_genomic": 39737959,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 21
+    },
+    {
+      "gene_index": 6,
+      "gene_name": "transcript_6",
+      "strand": "+",
+      "tss_position": 138287,
+      "centered_sequence_length": 81920,
+      "expression": 3.183,
+      "expression_tpm": 23.1183,
+      "skipped": false,
+      "tss_genomic": 39738351,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 413
+    },
+    {
+      "gene_index": 7,
+      "gene_name": "transcript_7",
+      "strand": "+",
+      "tss_position": 142227,
+      "centered_sequence_length": 81920,
+      "expression": 2.6949,
+      "expression_tpm": 13.8046,
+      "skipped": false,
+      "tss_genomic": 39742291,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 4353
+    },
+    {
+      "gene_index": 8,
+      "gene_name": "transcript_8",
+      "strand": "-",
+      "tss_position": 87975,
+      "centered_sequence_length": 81920,
+      "expression": 2.5213,
+      "expression_tpm": 11.4444,
+      "skipped": false,
+      "tss_genomic": 39688039,
+      "nearest_known_gene": "PGAP3",
+      "distance_to_known_tss_bp": -18
+    },
+    {
+      "gene_index": 9,
+      "gene_name": "transcript_9",
+      "strand": "-",
+      "tss_position": 130460,
+      "centered_sequence_length": 81920,
+      "expression": 3.8649,
+      "expression_tpm": 46.7003,
+      "skipped": false,
+      "tss_genomic": 39730524,
+      "nearest_known_gene": "MIEN1",
+      "distance_to_known_tss_bp": -8
+    }
+  ]
+}
