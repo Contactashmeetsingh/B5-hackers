@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Ground truth for every coding agent working in this repo. Read this file fully before writing code. If something here conflicts with a teammate's chat message, this file wins until it is edited. `HUMAN.md` is the same plan drawn for people.
+Ground truth for every coding agent working in this repo. Read this file fully before writing code. If something here conflicts with a teammate's chat message, this file wins until it is edited. `README.md` (formerly `HUMAN.md`) is the same plan drawn for people.
 
 ## 1. Mission
 
@@ -22,6 +22,9 @@ One biomarker record, stored at `data/input/biomarker.json`:
 | measurement | HER2 receptor (IHC score ± ISH) |
 | source_field | `labels.diagnosis.Biomarkers` |
 | coverage | 1,290 / 1,290 cases |
+| aliases | HER2, ERBB2, HER-2, HER2/neu, ErbB-2, ErbB2 (used to spot the biomarker in trial text) |
+| sanity_genes | the section 9 sanity list (logged by stage 2, never scored) |
+| model_context | conditioning for the Genomic Intelligence models: `expression_target` ("HER2-positive breast cancer cell line"), `expression_reference` ("liver tissue"), `chromatin_cell_types` (HMEC, MCF-7, T-47D) |
 
 Do not generalize to other biomarkers yet. Do keep the biomarker as a parameter (never a string literal buried in pipeline code) so more rows can be added later.
 
@@ -57,7 +60,7 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 | 3 | Genomic context | `backend/pipeline/genomic.py` | gene_candidates | `data/cache/genomic_context.json` |
 | 4 | Gene scoring | `backend/pipeline/scoring.py` | papers, gene_candidates, genomic_context | `data/cache/gene_scores.json` |
 | 5 | Trials | `backend/pipeline/trials.py` | biomarker | `data/cache/trials.json` |
-| 6 | Trial scoring | `backend/pipeline/scoring.py` | gene_scores, trials | `data/output/rankings.json` |
+| 6 | Trial scoring | `backend/pipeline/scoring.py` | gene_scores, gene_candidates, genomic_context, trials, drug_targets, biomarker | `data/output/rankings.json` |
 | 7 | API + UI | `backend/app/main.py`, `frontend/` | rankings and caches | dashboard |
 
 ### Schemas
@@ -69,14 +72,23 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
    "relation": "one sentence, paraphrased, on how the paper links the gene to HER2",
    "source": "kleenable | mock" }]
 
-// gene_candidates.json
+// gene_candidates.json  (includes the biomarker gene itself; stage 6 excludes it from genomic_match)
 [{ "gene": "PIK3CA", "ensembl_id": "ENSG...", "in_targets_dataset": true,
-   "paper_ids": ["..."], "source": "kleenable | mock" }]
+   "paper_ids": ["..."], "source": "kleenable | mock",
+   "approved_symbol": "(optional) current HGNC symbol when papers use an old one",
+   "targets_dataset": "name of the targets dataset, or 'pending (drug_targets.json seed used as stand-in)'" }]
 
 // genomic_context.json
-[{ "gene": "PIK3CA", "assembly": "GRCh38", "region": "chr3:start-end",
-   "model_task": "name of the Genomic Intelligence task used",
-   "model_output": { }, "model_score": 0.0, "source": "genomic_intelligence | mock" }]
+[{ "gene": "PIK3CA", "assembly": "GRCh38", "region": "chr3:start-end",   // gene body, 1-based inclusive
+   "model_task": "expression (g0-expression-8192) + promoter (...) + ... + composite (annotation->expression)",
+   "model_output": { "summary": "", "task_scores": { "expression": 0.0, "composite": 0.0, "promoter": 0.0,
+                     "chromatin": 0.0, "enhancer": 0.0, "splice": 0.0, "annotation": 0.0 },
+                     "task_raw": {}, "tasks_used": [], "weights": {}, "locus": {}, "expression": {}, "composite": {},
+                     "promoter": {}, "chromatin": {}, "enhancer": {}, "splice": {}, "annotation": {},
+                     "models": {}, "retrieved": "YYYY-MM-DD", "demo_key": true },
+   "model_score": 0.0,            // [0,1]; null on mock rows (never invented)
+   "source": "genomic_intelligence | mock" }]
+// full model_output shape: lanes/B-genomic/README.md (rows from the v0 run carry "components" instead of "task_scores")
 
 // gene_scores.json
 [{ "gene": "PIK3CA", "literature_score": 0.0, "model_score": 0.0, "combined_score": 0.0 }]
@@ -89,8 +101,17 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 // rankings.json  (the only file the dashboard needs)
 [{ "rank": 1, "nct_id": "NCT...", "title": "", "phase": "", "status": "", "url": "",
    "trial_score": 0.0, "biomarker_directness": 0.0, "genomic_match": 0.0,
-   "matched_genes": [{ "gene": "PIK3CA", "combined_score": 0.0, "paper_ids": ["..."] }] }]
+   "matched_genes": [{ "gene": "PIK3CA", "combined_score": 0.0, "paper_ids": ["..."] }],
+   "source": "clinicaltrials.gov snapshot | mock",       // the trial's own source
+   "mock_inputs": ["trials", "gene_candidates", "genomic_context"] }]  // non-empty -> UI shows "mock data"
+
+// data/input/drug_targets.json
+[{ "drug": "trastuzumab", "aliases": ["Herceptin"], "target_genes": ["ERBB2"], "source": "where the pair came from" }]
 ```
+
+The pydantic models for every file above live in `backend/schemas.py`; read and write them only through `backend/store.py`.
+
+Side caches (not contracts; written and read by one stage only): `data/cache/ensembl_genes.json` (Ensembl lookups), `data/cache/genomic_raw/<GENE>.json` (one digest of the GI calls per gene, with request ids), `data/cache/amplicon_context.json` (optional: genes GI finds around the biomarker gene; context for the UI, not scored).
 
 ## 5. Scoring (v0, deliberately simple)
 
@@ -99,7 +120,7 @@ All scores are floats in [0, 1]. All weights live in `backend/config.py`. Never 
 **Gene level**
 
 - `literature_score = min(1, supporting_papers / LIT_SATURATION)` with `LIT_SATURATION = 5`
-- `model_score` = the Genomic Intelligence output for that gene's region, min-max normalized across the candidate set
+- `model_score` = the stage 3 Genomic Intelligence score, min-max normalized across the candidate set. Stage 3 runs **every GI task** at the gene's canonical TSS and reduces each to one task score in [0, 1]: expression (target-context level + specificity vs `expression_reference`), composite (find genes + expression), promoter, chromatin (on-tissue calls), enhancer, splice (canonical junctions recovered) and annotation (gene finder confidence at the TSS). Probabilities and fractions are used as-is; unbounded readouts are min-max normalized. `model_score` = weighted mean of the task scores the gene has (`W_GI_TASK`, 1.0 each). Higher means the DNA models see a well-formed, active, breast-relevant gene at that promoter. Details, caveats and the v0 → v1 status: `lanes/B-genomic/README.md`.
 - `combined_score = W_LIT * literature_score + W_MODEL * model_score` with `W_LIT = 0.5`, `W_MODEL = 0.5`
 
 **Trial level**
@@ -118,14 +139,14 @@ These formulas are a starting point for a demo, not a validated method. Keep the
 | Service | Used for | Notes |
 |---|---|---|
 | **Kleenable** (hackathon sponsor) | Stage 1 paper search, stage 2 gene targets dataset | Docs link and auth not yet recorded here. See open questions. All calls go through `backend/clients/kleenable.py`. |
-| **Genomic Intelligence** (hackathon sponsor) | Stage 3 genomic context and model score | Hosted MCP server at `mcp.genomicintelligence.ai/mcp` and a REST API that takes a `GI_API_KEY`. Verify endpoints and task names against the sponsor's docs before coding. All calls go through `backend/clients/genomic_intelligence.py`. |
-| **Ensembl REST** | Gene symbol to Ensembl ID and GRCh38 coordinates | Fetch coordinates, do not type them from memory. |
+| **Genomic Intelligence** (hackathon sponsor) | Stage 3 genomic context and model score | Docs: https://docs.genomicintelligence.ai (llms.txt index, `AGENTS.md`, OpenAPI at `api.genomicintelligence.ai/v1/openapi.json`). We call the hosted MCP server `https://mcp.genomicintelligence.ai/mcp` (MCP Streamable HTTP). It answers on a shared demo key, so no key is needed; set `GI_API_KEY` to use our own key on the same server. Tools used: `list_models`, `fetch_gene_for_expression`, `fetch_region`, `predict_expression`, `predict_promoter`, `predict_chromatin`, `find_genes_and_predict_expression`. Sequences are fetched server-side and passed as handles, so DNA never transits our code. Switch on `error.code`, never the message. All calls go through `backend/clients/genomic_intelligence.py`. |
+| **Ensembl REST** | Gene symbol to Ensembl ID, GRCh38 coordinates, canonical TSS | Fetch coordinates, do not type them from memory. All calls go through `backend/clients/ensembl.py` (cached in `data/cache/ensembl_genes.json`; resolves old HGNC symbols). |
 | **ClinicalTrials.gov API v2** | One-time snapshot for stage 5 | Run once, save to `data/cache/trials.json`, commit it. The demo never calls it live. |
 
 Rules for all clients:
 
 - One thin wrapper file per service. Pipeline code never calls an HTTP endpoint directly.
-- **Cache first.** If the cache file exists, use it. Only call the network when run with `--refresh`.
+- **Cache first.** If the cache file exists, use it. Only call the network when run with `--refresh`, or for items missing from a per-item cache (stage 3 sends only uncached genes to GI; `--offline` forbids even that).
 - Keys come from `.env` (see `.env.example`). Never commit a key. Never print one.
 - If a service is unreachable or undocumented, write a mock that returns the right schema with `"source": "mock"` and keep going. The UI must show a visible "mock data" tag on anything mocked.
 
@@ -137,18 +158,24 @@ Rules for all clients:
 - **Run:** `python -m backend.pipeline.run` builds every cache and `rankings.json`. `uvicorn backend.app.main:app` serves it. `npm run dev` in `frontend/`.
 
 ```
-AGENTS.md  CLAUDE.md  HUMAN.md
+AGENTS.md  CLAUDE.md  README.md (the plan for people, formerly HUMAN.md)
 backend/
   config.py            weights and paths
-  clients/             kleenable.py, genomic_intelligence.py, ensembl.py
+  schemas.py           pydantic models for every contract file (section 4)
+  store.py             read_rows / write_rows: validated JSON I/O
+  clients/             kleenable.py, genomic_intelligence.py, ensembl.py, clinicaltrials.py
   pipeline/            biomarker.py, literature.py, targets.py, genomic.py, trials.py, scoring.py, run.py
-  app/main.py          GET /api/biomarker, /api/rankings, /api/genes, /api/papers
+  app/main.py          GET /api/biomarker, /api/rankings, /api/genes, /api/papers (+ /api/genes/{gene}, /api/meta, /api/health)
 data/
   input/               biomarker.json, drug_targets.json
   cache/               stage outputs (committed, so the demo works offline)
   output/rankings.json
 frontend/
+lanes/                 one folder per lane (A-literature, B-genomic, C-trials-scoring, D-dashboard): scope, status, hand-offs
+tests/                 one offline smoke test per stage
 ```
+
+Setup: `uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python -r requirements.txt`.
 
 ## 8. Dashboard requirements
 
@@ -186,7 +213,10 @@ frontend/
 ## 12. Open questions (resolve, then edit this file)
 
 - **Kleenable:** exact product name and spelling, docs URL, auth method, and whether it returns structured gene mentions or raw text we must parse.
-- **Genomic Intelligence:** which model task produces the "likelihood" we want for a gene region (expression, enhancer activity, splice, variant effect), and what a higher value means.
 - **Gene targets dataset:** which dataset Kleenable gives us and its license.
 - **Weights:** are 0.5/0.5 and 0.4/0.6 acceptable defaults for the demo?
-- **Owners:** who takes each workstream in `HUMAN.md`.
+- **Owners:** who takes lanes A, C and D in `README.md` (lane B: Contactashmeetsingh).
+
+### Resolved
+
+- **Genomic Intelligence task and meaning of "higher"** (2026-11-14, lane B owner). The score is based on the output of **every** GI task (promoter, splice, enhancer, chromatin, expression, annotation, find genes + expression), one task score each, used in the ranking and compared against the Keenable literature evidence. Higher = the DNA models see the gene as well-formed, active and breast-relevant at its promoter. See section 5 and `lanes/B-genomic/README.md`.

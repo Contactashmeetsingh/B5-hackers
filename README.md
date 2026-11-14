@@ -64,12 +64,12 @@ One page. A biomarker card on top, then a ranked list of trials. Each row has a 
 
 ## Who does what
 
-Four lanes that only touch each other through JSON files, so nobody blocks anybody.
+Four lanes that only touch each other through JSON files, so nobody blocks anybody. Each lane has a folder under [`lanes/`](lanes/README.md) with its scope, status checklist and hand-offs.
 
 | Lane | Owns | Done when | Owner |
 |---|---|---|---|
 | A. Literature and targets | Kleenable client, stages 1 and 2 | `papers.json` and `gene_candidates.json` hold real results | TBD |
-| B. Genomic model | Genomic Intelligence client, stage 3 | `genomic_context.json` has a context and score per gene | TBD |
+| B. Genomic model | Genomic Intelligence client, stage 3 | `genomic_context.json` has a context and score per gene | Contactashmeetsingh |
 | C. Trials and scoring | Trial snapshot, stages 4 to 6 | `rankings.json` is sorted and explainable | TBD |
 | D. Dashboard | FastAPI endpoints, Next.js UI | Ranked list with evidence drawer runs locally | TBD |
 
@@ -95,10 +95,11 @@ The rule: something demoable exists from hour one, and it only gets more real.
 ## Decisions we still need
 
 - Kleenable: exact name, docs link, and login. Lane A cannot start real calls without it.
-- Which Genomic Intelligence task gives us the "likelihood" number, and what high means.
 - Which gene targets dataset we use.
 - Are the 50/50 and 60/40 weights fine for the demo.
-- Lane owners.
+- Lane owners (A, C, D).
+
+Decided: the Genomic Intelligence score is built from the output of every GI task (promoter, splice, enhancer, chromatin, expression, annotation, find genes + expression), each run at the gene's start site. It feeds the trial ranking and is compared against the Keenable literature evidence. Higher means the models see a well-formed, active, breast-relevant gene. See [`lanes/B-genomic/README.md`](lanes/B-genomic/README.md).
 
 ## Ground rules
 
