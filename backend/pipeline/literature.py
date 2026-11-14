@@ -12,17 +12,22 @@ then MERGES the hits into the existing papers:
 
 * The curated papers already in the cache are kept exactly as they are and marked
   reviewed=true (they were checked by hand against PubMed; see keenable/).
-* A new hit becomes a row with reviewed=false. Its genes_mentioned are the profile
-  and candidate genes named in its title or search snippet. Its relation is written
-  by us and says it is an unreviewed search hit. The snippet itself is never stored
+* Every new hit is checked against PubMed (backend/clients/pubmed.py). Its title, year
+  and publication types come from the PubMed record, not from the search page. Its
+  genes_mentioned are the profile and candidate genes named in the PubMed title or
+  abstract. The Keenable snippet is not used for anything: it can hold other page text.
+* A new hit becomes a row with reviewed=false. Its relation is written by us and says it
+  is an unreviewed search hit. Neither the snippet nor the abstract is ever stored
   (AGENTS.md: no copied abstracts).
-* Hits that name none of the profile's biomarkers are dropped as off-topic.
-* opposite_status lists profile genes the hit describes in the opposite state
-  (e.g. ERBB2 for a "HER2-negative" study), read from title + snippet with the
-  same reader stage 4 uses on trial criteria. Stage 4 shows these papers last.
+* Hits PubMed does not know, and hits whose PubMed record names none of the profile's
+  biomarkers, are dropped (logged with the reason).
+* opposite_status lists profile genes the hit studies in the opposite state (e.g. ERBB2
+  for a "HER2-negative" study), read with the same reader stage 4 uses on trial
+  criteria: the title decides when it states a status; otherwise the abstract does.
+  Stage 4 lists these papers separately.
 * A PMID that is already in the cache keeps its existing row.
 
-If Keenable fails, the existing cache is kept untouched. A mock file is written only
+If Keenable or PubMed fails, the existing cache is kept untouched. A mock file is written only
 when no cache exists at all, so the rest of the pipeline can still run.
 
     python -m backend.pipeline.literature [--refresh]
@@ -36,10 +41,11 @@ import logging
 from typing import Optional
 
 from backend import config
+from backend.clients import pubmed
 from backend.clients.keenable import KeenableClient
-from backend.pipeline.biomarker_text import CONFLICTS, classify
+from backend.pipeline.biomarker_text import ABSENT, CONFLICTS, MENTIONED, classify
 from backend.pipeline.profile import load_profile
-from backend.pipeline.textmatch import alias_pattern, term_pattern
+from backend.pipeline.textmatch import alias_pattern
 from backend.schemas import MOCK, DrugTarget, GeneCandidate, Paper, Profile, ProfileBiomarker
 from backend.store import read_rows, write_json, write_rows
 
@@ -47,7 +53,7 @@ log = logging.getLogger(__name__)
 
 SOURCE = "keenable"
 UNREVIEWED_RELATION = ("Keenable search hit, not yet reviewed by the team. "
-                       "Its PubMed title or summary names {genes}.")
+                       "Its PubMed title or abstract names {genes}.")
 
 
 # ---------------------------------------------------------------- queries
@@ -93,42 +99,65 @@ def genes_in(text: str, vocab: dict[str, list[str]]) -> list[str]:
 
 
 # ---------------------------------------------------------------- live search + merge
+def opposite_status(title: str, abstract: str, profile: Profile) -> list[str]:
+    """Profile genes the paper studies in the opposite state. The title decides when it
+    states a status; a title that is silent or only names the gene defers to the abstract."""
+    out = []
+    for b in profile.biomarkers:
+        others = [o for o in profile.biomarkers if o is not b]
+        in_title = classify(title, b, others).requirement
+        if in_title == CONFLICTS or (in_title in (ABSENT, MENTIONED) and abstract
+                                     and classify(abstract, b, others).requirement == CONFLICTS):
+            out.append(b.gene)
+    return out
+
+
 def _new_rows(profile: Profile, drugs: list[DrugTarget], vocab: dict[str, list[str]],
-              known: set[str], client: KeenableClient, today: str) -> tuple[list[Paper], dict]:
+              known: set[str], client: KeenableClient, today: str,
+              fetch_records=pubmed.fetch_records) -> tuple[list[Paper], dict]:
     profile_genes = {b.gene for b in profile.biomarkers}
+    searched = [(q, client.search_pubmed(q, max_results=config.KEENABLE_MAX_RESULTS))
+                for q in build_queries(profile, drugs)]
+    unseen = [h["paper_id"] for _, hits in searched for h in hits if h["paper_id"] not in known]
+    records = fetch_records(unseen) if unseen else {}
+
     new: dict[str, Paper] = {}
     query_log = []
-    for q in build_queries(profile, drugs):
-        hits = client.search_pubmed(q, max_results=config.KEENABLE_MAX_RESULTS)
+    for q, hits in searched:
         entries = []
         for h in hits:
-            text = f"{h['title']}\n{h['snippet']}"
-            genes = genes_in(text, vocab)
-            if h["paper_id"] in known:
+            pid, rec, genes = h["paper_id"], records.get(h["paper_id"]), []
+            if pid in known:
                 outcome = "already in papers.json"
-            elif not profile_genes & set(genes):
-                outcome = "dropped: names no profile biomarker"
-            elif h["paper_id"] in new:
-                outcome = "merged (also found by another query)"
-                if q not in new[h["paper_id"]].found_by:
-                    new[h["paper_id"]].found_by.append(q)
+            elif rec is None:
+                outcome = "dropped: not found on PubMed"
             else:
-                outcome = "merged"
-                opposite = [b.gene for b in profile.biomarkers if classify(text, b).requirement == CONFLICTS]
-                new[h["paper_id"]] = Paper(
-                    paper_id=h["paper_id"], title=h["title"], year=h["year"], url=h["url"],
-                    genes_mentioned=genes, relation=UNREVIEWED_RELATION.format(genes=", ".join(genes)),
-                    source=SOURCE, reviewed=False, found_by=[q], retrieved=today, opposite_status=opposite,
-                )
-            # Provenance without page text: no snippet is written anywhere.
-            entries.append({"paper_id": h["paper_id"], "title": h["title"], "url": h["url"],
-                            "published_at": h["published_at"], "genes_spotted": genes, "outcome": outcome})
+                genes = genes_in(f"{rec['title']}\n{rec['abstract']}", vocab)
+                if not profile_genes & set(genes):
+                    outcome = "dropped: PubMed record names no profile biomarker"
+                elif pid in new:
+                    outcome = "merged (also found by another query)"
+                    if q not in new[pid].found_by:
+                        new[pid].found_by.append(q)
+                else:
+                    outcome = "merged"
+                    new[pid] = Paper(
+                        paper_id=pid, title=rec["title"], year=rec["year"], url=h["url"],
+                        genes_mentioned=genes, relation=UNREVIEWED_RELATION.format(genes=", ".join(genes)),
+                        source=SOURCE, reviewed=False, found_by=[q], retrieved=today,
+                        opposite_status=opposite_status(rec["title"], rec["abstract"], profile),
+                        publication_types=rec["publication_types"],
+                    )
+            # Provenance without page or abstract text.
+            entries.append({"paper_id": pid, "search_title": h["title"], "url": h["url"],
+                            "genes_in_pubmed_record": genes, "outcome": outcome})
         query_log.append({"query": q, "hits": len(hits), "results": entries})
     log_doc = {
         "retrieved": today,
         "endpoint": "/v1/search" if client.has_key else "/v1/search/public (keyless)",
         "site": config.KEENABLE_PUBMED_SITE,
         "max_results": config.KEENABLE_MAX_RESULTS,
+        "checked_against": "PubMed efetch (title, year, publication types; abstract read for genes and status, not stored)",
         "queries": query_log,
     }
     return list(new.values()), log_doc
@@ -161,7 +190,7 @@ def _mock_papers(profile: Profile) -> list[Paper]:
     ]
 
 
-def run(refresh: bool = False, client: Optional[KeenableClient] = None) -> list[Paper]:
+def run(refresh: bool = False, client: Optional[KeenableClient] = None, fetch_records=None) -> list[Paper]:
     path = config.PAPERS_PATH
     if path.exists() and not refresh:
         papers = read_rows(path, Paper)
@@ -180,7 +209,8 @@ def run(refresh: bool = False, client: Optional[KeenableClient] = None) -> list[
             vocab = gene_vocabulary(profile, candidates)
             today = _dt.date.today().isoformat()
             new, query_log = _new_rows(profile, drugs, vocab, {p.paper_id for p in existing},
-                                       client or KeenableClient(), today)
+                                       client or KeenableClient(), today,
+                                       fetch_records or pubmed.fetch_records)
             papers = merge(existing, new)
             if not papers:
                 raise RuntimeError("Keenable returned no on-topic papers")

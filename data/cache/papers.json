@@ -10,7 +10,11 @@
       "ERBB3"
     ],
     "relation": "Review: HER3 lacks strong kinase activity and pairs with HER2 to form the most transforming ErbB dimer, driving PI3K/AKT signaling in breast cancer.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -25,7 +29,11 @@
       "PIK3CA"
     ],
     "relation": "Review: HER2 activates HER3 through heterodimerization; blocking HER2 upregulates HER3 as compensation, and a HER2/HER3/IGF-1R complex is linked to trastuzumab resistance.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -42,7 +50,11 @@
       "PGR"
     ],
     "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -57,7 +69,11 @@
       "HSP90AA1"
     ],
     "relation": "Review of how HER2 forms active heterodimers with EGFR and HER3 and how HSP90 binding stabilizes HER2 and limits HER2/HER3 pairing.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -70,7 +86,11 @@
       "HSP90AA1"
     ],
     "relation": "Full-length and truncated p95-HER2 are HSP90 client proteins; HSP90 inhibitors degrade them and halt trastuzumab-resistant breast tumor growth.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -84,7 +104,11 @@
       "HSP90AA1"
     ],
     "relation": "HSP90 bound to HER2 holds back its signaling by limiting formation of HER2/HER3 heterodimers.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -98,7 +122,11 @@
       "ERBB3"
     ],
     "relation": "Cell-surface HSP90 binds the HER2 extracellular domain; blocking this contact reduces heregulin-driven HER2/HER3 activation and breast cancer cell invasion.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -112,7 +140,11 @@
       "HSP90AA1"
     ],
     "relation": "The E3 ligase CHIP/STUB1 ubiquitinates newly made HSP90-bound HER2 for proteasomal degradation, lowering surface HER2 in breast cancer cells.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -126,7 +158,11 @@
       "HSP90AA1"
     ],
     "relation": "ATM stabilizes HER2 by promoting the HER2-HSP90 complex and preventing HER2 ubiquitination, sustaining AKT signaling in HER2-positive breast cancer.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -140,7 +176,11 @@
       "SHC1"
     ],
     "relation": "GRB7 is co-amplified with HER2 in breast cancer and binds phosphorylated HER2 tightly through its SH2 domain.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -155,7 +195,11 @@
       "VAV2"
     ],
     "relation": "In HER2-positive breast cancer cells, GRB7 couples HER2 to SHC/RAS for proliferation and to FAK/VAV2/RAC1 for migration.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -171,7 +215,11 @@
       "PGAP3"
     ],
     "relation": "RNAi screen of 17q12 amplicon genes shows several genes co-amplified with HER2 (STARD3, GRB7, PSMD3, PERLD1/PGAP3) support HER2-positive breast cancer cell growth.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -185,7 +233,11 @@
       "TNF"
     ],
     "relation": "TNF-alpha induces MUC4, which reduces trastuzumab binding to HER2 and causes resistance; MUC4 predicts poorer disease-free survival in HER2-positive patients.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -198,7 +250,11 @@
       "MUC4"
     ],
     "relation": "In mouse models of HER2-positive breast cancer, MUC4 overexpression blocks trastuzumab access to HER2, and N-acetylcysteine restores response.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -211,7 +267,11 @@
       "IGF1R"
     ],
     "relation": "In trastuzumab-resistant breast cancer cells, IGF-1R binds and transactivates HER2; breaking the heterodimer restores trastuzumab sensitivity.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -225,7 +285,11 @@
       "IGF1R"
     ],
     "relation": "HER2, HER3 and IGF-1R form a three-receptor complex in trastuzumab-resistant breast cancer cells.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -239,7 +303,11 @@
       "PTEN"
     ],
     "relation": "SRC activation is a shared downstream node of several trastuzumab-resistance routes in HER2-positive breast cancer, and SRC inhibition restores response.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -253,7 +321,11 @@
       "SRC"
     ],
     "relation": "CDCP1 binds HER2 through its intracellular domain and increases HER2-SRC interaction, enhancing HER2 signaling and trastuzumab resistance.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -268,7 +340,11 @@
       "PIK3CA"
     ],
     "relation": "Trastuzumab acts partly by activating PTEN through SRC inhibition; PTEN-deficient breast cancers respond poorly to trastuzumab.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -281,7 +357,11 @@
       "PIK3CA"
     ],
     "relation": "An activating PIK3CA mutation speeds up HER2-driven mouse mammary tumors and makes them resistant to combined anti-HER2 therapy.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -294,7 +374,11 @@
       "PIK3CA"
     ],
     "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -307,7 +391,11 @@
       "PTPN1"
     ],
     "relation": "Loss or inhibition of PTP1B delays HER2-driven mammary tumors and lung metastasis in mice, so PTP1B acts as a positive regulator of HER2 signaling.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -322,7 +410,11 @@
       "JUN"
     ],
     "relation": "Beta-4 integrin forms a complex with HER2 and amplifies its signaling to STAT3 and c-Jun, driving mammary tumor onset in mice.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -336,7 +428,11 @@
       "SHC1"
     ],
     "relation": "MEMO1 binds the phospho-Y1227 site of HER2, likely through SHC, and is needed for HER2-driven breast carcinoma cell migration.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -349,7 +445,11 @@
       "ERBIN"
     ],
     "relation": "ERBIN's PDZ domain binds HER2 directly and keeps the receptor at the basolateral membrane of epithelial cells.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -365,7 +465,11 @@
       "HSP90AA1"
     ],
     "relation": "Erbin joins NHERF1, Ezrin and HSP90 in a membrane complex that keeps HER2 active; losing Erbin lowers HER2 signaling.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -378,7 +482,11 @@
       "ESR1"
     ],
     "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -392,7 +500,11 @@
       "PGR"
     ],
     "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
@@ -407,76 +519,94 @@
       "ERBB4"
     ],
     "relation": "Review of HER2 structure, its dimerization with other HER family receptors, and HER2-targeted drugs.",
-    "reviewed": true
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": []
   },
   {
     "source": "keenable",
     "paper_id": "42323696",
-    "title": "Impact of somatic PIK3CA mutations on clinical outcomes in HER2-positive breast cancer",
-    "year": null,
+    "title": "Impact of somatic PIK3CA mutations on clinical outcomes in HER2-positive breast cancer.",
+    "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/42323696/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer",
       "HER2 positive and PIK3CA mutated breast cancer clinical trial"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "36516931",
-    "title": "Predictive and prognostic value of PIK3CA mutations in HER2-positive breast cancer treated with tyrosine kinase inhibitors: A systematic review and meta-analysis",
-    "year": 2022,
+    "title": "Predictive and prognostic value of PIK3CA mutations in HER2-positive breast cancer treated with tyrosine kinase inhibitors: A systematic review and meta-analysis.",
+    "year": 2023,
     "url": "https://pubmed.ncbi.nlm.nih.gov/36516931/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer",
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Meta-Analysis",
+      "Systematic Review",
+      "Journal Article",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "32843527",
-    "title": "PIK3CA Mutation in the ShortHER Randomized Adjuvant Trial for Patients with Early HER2+ Breast Cancer: Association with Prognosis and Integration with PAM50 Subtype",
+    "title": "PIK3CA Mutation in the ShortHER Randomized Adjuvant Trial for Patients with Early HER2+ Breast Cancer: Association with Prognosis and Integration with PAM50 Subtype.",
     "year": 2020,
     "url": "https://pubmed.ncbi.nlm.nih.gov/32843527/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer",
       "HER2 positive and PIK3CA mutated breast cancer clinical trial"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "38837894",
-    "title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+    "title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials.",
     "year": 2024,
     "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer",
@@ -484,19 +614,24 @@
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Multicenter Study"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "25199759",
-    "title": "PIK3CA mutations are associated with lower rates of pathologic complete response to anti-human epidermal growth factor receptor 2 (her2) therapy in primary HER2-overexpressing breast cancer",
+    "title": "PIK3CA mutations are associated with lower rates of pathologic complete response to anti-human epidermal growth factor receptor 2 (her2) therapy in primary HER2-overexpressing breast cancer.",
     "year": 2014,
     "url": "https://pubmed.ncbi.nlm.nih.gov/25199759/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer",
@@ -504,92 +639,109 @@
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "30535550",
-    "title": "Genomic alterations associated with HER2+ breast cancer risk and clinical outcome in response to trastuzumab",
-    "year": 2018,
+    "title": "Genomic alterations associated with HER2+ breast cancer risk and clinical outcome in response to trastuzumab.",
+    "year": 2019,
     "url": "https://pubmed.ncbi.nlm.nih.gov/30535550/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "22172323",
-    "title": "PIK3CA mutations, PTEN, and pHER2 expression and impact on outcome in HER2-positive early-stage breast cancer patients treated with adjuvant chemotherapy and trastuzumab",
-    "year": 2011,
+    "title": "PIK3CA mutations, PTEN, and pHER2 expression and impact on outcome in HER2-positive early-stage breast cancer patients treated with adjuvant chemotherapy and trastuzumab.",
+    "year": 2012,
     "url": "https://pubmed.ncbi.nlm.nih.gov/22172323/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA",
       "PTEN"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA, PTEN.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA, PTEN.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "31219154",
-    "title": "The H1047R PIK3CA oncogene induces a senescence-like state, pleiotropy and acute HSP90 dependency in HER2+ mammary epithelial cells",
+    "title": "The H1047R PIK3CA oncogene induces a senescence-like state, pleiotropy and acute HSP90 dependency in HER2+ mammary epithelial cells.",
     "year": 2019,
     "url": "https://pubmed.ncbi.nlm.nih.gov/31219154/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "30288002",
-    "title": "Clinico-pathological Features of PIK3CA Mutation in HER2-Positive Breast Cancer of Indian Population",
-    "year": null,
+    "title": "Clinico-pathological Features of PIK3CA Mutation in HER2-Positive Breast Cancer of Indian Population.",
+    "year": 2018,
     "url": "https://pubmed.ncbi.nlm.nih.gov/30288002/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "33947692",
-    "title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+    "title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer.",
     "year": 2021,
     "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
@@ -597,38 +749,48 @@
       "alpelisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Clinical Trial, Phase I",
+      "Journal Article",
+      "Research Support, N.I.H., Extramural",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "35465733",
-    "title": "A phase III trial of alpelisib + trastuzumab ± fulvestrant versus trastuzumab + chemotherapy in HER2+ PIK3CA-mutated breast cancer",
-    "year": null,
+    "title": "A phase III trial of alpelisib + trastuzumab ± fulvestrant versus trastuzumab + chemotherapy in HER2+ PIK3CA-mutated breast cancer.",
+    "year": 2022,
     "url": "https://pubmed.ncbi.nlm.nih.gov/35465733/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
       "alpelisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Clinical Trial Protocol",
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "39476340",
-    "title": "Inavolisib-Based Therapy in PIK3CA-Mutated Advanced Breast Cancer",
+    "title": "Inavolisib-Based Therapy in PIK3CA-Mutated Advanced Breast Cancer.",
     "year": 2024,
     "url": "https://pubmed.ncbi.nlm.nih.gov/39476340/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
@@ -637,19 +799,26 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Clinical Trial, Phase II",
+      "Comparative Study",
+      "Journal Article",
+      "Multicenter Study",
+      "Randomized Controlled Trial"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "40454641",
-    "title": "Overall Survival with Inavolisib in PIK3CA-Mutated Advanced Breast Cancer",
+    "title": "Overall Survival with Inavolisib in PIK3CA-Mutated Advanced Breast Cancer.",
     "year": 2025,
     "url": "https://pubmed.ncbi.nlm.nih.gov/40454641/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
@@ -658,38 +827,51 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Clinical Trial, Phase III",
+      "Multicenter Study"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "33246021",
-    "title": "Alpelisib plus fulvestrant for PIK3CA-mutated, hormone receptor-positive, human epidermal growth factor receptor-2-negative advanced breast cancer: final overall survival results from SOLAR-1",
-    "year": 2020,
+    "title": "Alpelisib plus fulvestrant for PIK3CA-mutated, hormone receptor-positive, human epidermal growth factor receptor-2-negative advanced breast cancer: final overall survival results from SOLAR-1.",
+    "year": 2021,
     "url": "https://pubmed.ncbi.nlm.nih.gov/33246021/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
       "alpelisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [
+      "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "42202490",
-    "title": "Safety analyses of the INAVO120 randomised phase III trial of inavolisib or placebo with palbociclib–fulvestrant in patients with __PIK3CA__-mutated, hormone receptor-positive, HER2-negative, endocrine-resistant advanced breast cancer",
+    "title": "Safety analyses of the INAVO120 randomised phase III trial of inavolisib or placebo with palbociclib-fulvestrant in patients with PIK3CA-mutated, hormone receptor-positive, HER2-negative, endocrine-resistant advanced breast cancer.",
     "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/42202490/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "HER2 positive and PIK3CA mutated breast cancer clinical trial",
@@ -698,110 +880,133 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Clinical Trial, Phase III"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "19633047",
-    "title": "Association between gain-of-function mutations in PIK3CA and resistance to HER2-targeted agents in HER2-amplified breast cancer cell lines",
-    "year": 2009,
+    "title": "Association between gain-of-function mutations in PIK3CA and resistance to HER2-targeted agents in HER2-amplified breast cancer cell lines.",
+    "year": 2010,
     "url": "https://pubmed.ncbi.nlm.nih.gov/19633047/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Research Support, Non-U.S. Gov't"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "25559805",
-    "title": "PIK3CA genotype and treatment decisions in human epidermal growth factor receptor 2-positive breast cancer",
+    "title": "PIK3CA genotype and treatment decisions in human epidermal growth factor receptor 2-positive breast cancer.",
     "year": 2015,
     "url": "https://pubmed.ncbi.nlm.nih.gov/25559805/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Editorial",
+      "Comment"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "26105797",
-    "title": "The predictive and prognostic role of phosphatase phosphoinositol-3 (PI3) kinase (PIK3CA) mutation in HER2-positive breast cancer receiving HER2-targeted therapy: a meta-analysis",
-    "year": null,
+    "title": "The predictive and prognostic role of phosphatase phosphoinositol-3 (PI3) kinase (PIK3CA) mutation in HER2-positive breast cancer receiving HER2-targeted therapy: a meta-analysis.",
+    "year": 2015,
     "url": "https://pubmed.ncbi.nlm.nih.gov/26105797/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Meta-Analysis"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "25800754",
-    "title": "Deciphering the role of phosphatidylinositol 3-kinase mutations in human epidermal growth factor receptor 2-positive breast cancer",
+    "title": "Deciphering the role of phosphatidylinositol 3-kinase mutations in human epidermal growth factor receptor 2-positive breast cancer.",
     "year": 2015,
     "url": "https://pubmed.ncbi.nlm.nih.gov/25800754/",
     "genes_mentioned": [
-      "ERBB2",
-      "PIK3CA",
-      "PTEN"
+      "ERBB2"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA, PTEN.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2.",
     "reviewed": false,
     "found_by": [
       "PIK3CA mutation and response to HER2-targeted therapy in breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article",
+      "Comment"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "29850984",
-    "title": "Phase I study of alpelisib (BYL-719) and trastuzumab emtansine (T-DM1) in HER2-positive metastatic breast cancer (MBC) after trastuzumab and taxane therapy",
+    "title": "Phase I study of alpelisib (BYL-719) and trastuzumab emtansine (T-DM1) in HER2-positive metastatic breast cancer (MBC) after trastuzumab and taxane therapy.",
     "year": 2018,
     "url": "https://pubmed.ncbi.nlm.nih.gov/29850984/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Clinical Trial, Phase I",
+      "Journal Article"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "36633813",
-    "title": "Pharmacokinetics and Pharmacodynamic of Alpelisib",
+    "title": "Pharmacokinetics and Pharmacodynamic of Alpelisib.",
     "year": 2023,
     "url": "https://pubmed.ncbi.nlm.nih.gov/36633813/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
@@ -809,37 +1014,23 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "33213227",
-    "title": "A pharmacokinetic evaluation of alpelisib for the treatment of HR+, HER2-negative, PIK3CA-mutated advanced or metastatic breast cancer",
-    "year": 2020,
+    "title": "A pharmacokinetic evaluation of alpelisib for the treatment of HR+, HER2-negative, PIK3CA-mutated advanced or metastatic breast cancer.",
+    "year": 2021,
     "url": "https://pubmed.ncbi.nlm.nih.gov/33213227/",
     "genes_mentioned": [
       "ERBB2",
-      "PIK3CA",
-      "PTEN"
+      "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA, PTEN.",
-    "reviewed": false,
-    "found_by": [
-      "alpelisib in HER2 positive breast cancer"
-    ],
-    "retrieved": "2026-11-14",
-    "opposite_status": []
-  },
-  {
-    "source": "keenable",
-    "paper_id": "38011835",
-    "title": "A Cohort Study of the Antitumor Efficacy and Toxicity Profile of Alpelisib for Metastatic or Locally Advanced HR+, HER2- Breast Cancer: A Single-Institution Experience",
-    "year": 2023,
-    "url": "https://pubmed.ncbi.nlm.nih.gov/38011835/",
-    "genes_mentioned": [
-      "ERBB2"
-    ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
@@ -847,38 +1038,69 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
     ]
   },
   {
     "source": "keenable",
-    "paper_id": "31256368",
-    "title": "Alpelisib: First Global Approval",
-    "year": 2019,
-    "url": "https://pubmed.ncbi.nlm.nih.gov/31256368/",
+    "paper_id": "38011835",
+    "title": "A Cohort Study of the Antitumor Efficacy and Toxicity Profile of Alpelisib for Metastatic or Locally Advanced HR+, HER2- Breast Cancer: A Single-Institution Experience.",
+    "year": 2024,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38011835/",
     "genes_mentioned": [
-      "ERBB2",
-      "PIK3CA",
-      "PTEN"
+      "ERBB2"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA, PTEN.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [
+      "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article"
+    ]
+  },
+  {
+    "source": "keenable",
+    "paper_id": "31256368",
+    "title": "Alpelisib: First Global Approval.",
+    "year": 2019,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31256368/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PIK3CA"
+    ],
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
+    "reviewed": false,
+    "found_by": [
+      "alpelisib in HER2 positive breast cancer"
+    ],
+    "retrieved": "2026-11-14",
+    "opposite_status": [
+      "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "31091374",
-    "title": "Alpelisib for PIK3CA-Mutated, Hormone Receptor-Positive Advanced Breast Cancer",
+    "title": "Alpelisib for PIK3CA-Mutated, Hormone Receptor-Positive Advanced Breast Cancer.",
     "year": 2019,
     "url": "https://pubmed.ncbi.nlm.nih.gov/31091374/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
@@ -886,19 +1108,27 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Clinical Trial, Phase III",
+      "Comparative Study",
+      "Journal Article",
+      "Multicenter Study",
+      "Randomized Controlled Trial",
+      "Research Support, Non-U.S. Gov't"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "33622114",
-    "title": "Alpelisib for the treatment of PIK3CA-mutated, hormone receptor-positive, HER2-negative metastatic breast cancer",
-    "year": null,
+    "title": "Alpelisib for the treatment of PIK3CA-mutated, hormone receptor-positive, HER2-negative metastatic breast cancer.",
+    "year": 2021,
     "url": "https://pubmed.ncbi.nlm.nih.gov/33622114/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "alpelisib in HER2 positive breast cancer"
@@ -906,19 +1136,24 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Clinical Trial, Phase III",
+      "Journal Article",
+      "Randomized Controlled Trial"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "42263466",
-    "title": "Pharmacologic Features, Clinical Applications, and Drug Safety Evaluation of Inavolisib in the Treatment of Metastatic Breast Cancer",
-    "year": null,
+    "title": "Pharmacologic Features, Clinical Applications, and Drug Safety Evaluation of Inavolisib in the Treatment of Metastatic Breast Cancer.",
+    "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/42263466/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
@@ -926,37 +1161,45 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "41143603",
-    "title": "PI3Kα Inhibitor and Degrader Inavolisib Can Co-opt FGFR2 to Enhance Responses in Patients with __PIK3CA__-Mutated Solid Tumors and in Preclinical Models",
-    "year": 2025,
+    "title": "PI3Kα Inhibitor and Degrader Inavolisib Can Co-opt FGFR2 to Enhance Responses in Patients with PIK3CA-Mutated Solid Tumors and in Preclinical Models.",
+    "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/41143603/",
     "genes_mentioned": [
-      "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [],
+    "publication_types": [
+      "Clinical Trial, Phase I",
+      "Journal Article",
+      "Multicenter Study"
+    ]
   },
   {
     "source": "keenable",
     "paper_id": "40845250",
-    "title": "US Food and Drug Administration Approval Summary: Inavolisib With Palbociclib and Fulvestrant for Endocrine-Resistant, PIK3CA-Mutated, Hormone Receptor-Positive, Human Epidermal Growth Factor Receptor 2-Negative, Locally Advanced or Metastatic Breast Cancer",
-    "year": null,
+    "title": "US Food and Drug Administration Approval Summary: Inavolisib With Palbociclib and Fulvestrant for Endocrine-Resistant, PIK3CA-Mutated, Hormone Receptor-Positive, Human Epidermal Growth Factor Receptor 2-Negative, Locally Advanced or Metastatic Breast Cancer.",
+    "year": 2025,
     "url": "https://pubmed.ncbi.nlm.nih.gov/40845250/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
@@ -964,19 +1207,24 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Randomized Controlled Trial",
+      "Research Support, Non-U.S. Gov't"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "40642892",
-    "title": "Inavolisib for HR-Positive, HER2-Negative Advanced Breast Cancer: Clinical Trials and Patient Access Implication",
+    "title": "Inavolisib for HR-Positive, HER2-Negative Advanced Breast Cancer: Clinical Trials and Patient Access Implication.",
     "year": 2025,
     "url": "https://pubmed.ncbi.nlm.nih.gov/40642892/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
@@ -984,19 +1232,23 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "39873916",
-    "title": "Inavolisib: First Approval",
+    "title": "Inavolisib: First Approval.",
     "year": 2025,
     "url": "https://pubmed.ncbi.nlm.nih.gov/39873916/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
@@ -1004,44 +1256,54 @@
     "retrieved": "2026-11-14",
     "opposite_status": [
       "ERBB2"
-    ]
-  },
-  {
-    "source": "keenable",
-    "paper_id": "41764610",
-    "title": "Inavolisib-based Combination Therapy for the Treatment of PIK3CAMutated HR+/HER2- Breast Cancer: An Overview",
-    "year": 2026,
-    "url": "https://pubmed.ncbi.nlm.nih.gov/41764610/",
-    "genes_mentioned": [
-      "ERBB2",
-      "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
-    "reviewed": false,
-    "found_by": [
-      "inavolisib in HER2 positive breast cancer"
-    ],
-    "retrieved": "2026-11-14",
-    "opposite_status": [
-      "ERBB2"
+    "publication_types": [
+      "Journal Article",
+      "Review"
     ]
   },
   {
     "source": "keenable",
     "paper_id": "42496151",
-    "title": "Inavolisib: a second-generation PI3Kα inhibitor in HR+/HER2-negative breast cancer",
+    "title": "Inavolisib: a second-generation PI3Kα inhibitor in HR+/HER2-negative breast cancer.",
     "year": 2026,
     "url": "https://pubmed.ncbi.nlm.nih.gov/42496151/",
     "genes_mentioned": [
       "ERBB2",
       "PIK3CA"
     ],
-    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names ERBB2, PIK3CA.",
     "reviewed": false,
     "found_by": [
       "inavolisib in HER2 positive breast cancer"
     ],
     "retrieved": "2026-11-14",
-    "opposite_status": []
+    "opposite_status": [
+      "ERBB2"
+    ],
+    "publication_types": [
+      "Journal Article",
+      "Review"
+    ]
+  },
+  {
+    "source": "keenable",
+    "paper_id": "39791163",
+    "title": "FDA Approves Inavolisib Combo for PIK3CA-Mutated, HR+ Breast Cancer.",
+    "year": 2025,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39791163/",
+    "genes_mentioned": [
+      "PIK3CA"
+    ],
+    "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or abstract names PIK3CA.",
+    "reviewed": false,
+    "found_by": [
+      "inavolisib in HER2 positive breast cancer"
+    ],
+    "retrieved": "2026-11-14",
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   }
 ]

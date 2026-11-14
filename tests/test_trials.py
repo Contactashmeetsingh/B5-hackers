@@ -64,3 +64,24 @@ def test_mock_and_ctgov_fallbacks(tmp_path, monkeypatch):
     assert seen["cond"] == "Breast Cancer" and '"HER2"' in seen["term"] and '"ERBB2"' in seen["term"]
     assert t.nct_id == "TEST-NCT-1" and t.phase == "Phase 1/Phase 2" and t.interventions == ["trastuzumab"]
     assert t.source == clinicaltrials.SNAPSHOT_SOURCE and not t.is_mock
+
+
+def test_xlsx_cells_without_references(tmp_path):
+    import zipfile
+
+    sheet = ('<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'
+             '<row><c t="inlineStr"><is><t>NCT ID</t></is></c><c t="inlineStr"><is><t>Trial</t></is></c></row>'
+             '<row><c t="inlineStr"><is><t>NCT00000001</t></is></c><c t="inlineStr"><is><r><t>Rich </t></r><r><t>text</t></r></is></c></row>'
+             '</sheetData></worksheet>')
+    workbook = ('<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
+                'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+                '<sheets><sheet name="S" sheetId="1" r:id="rId1"/></sheets></workbook>')
+    rels = ('<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+            '<Relationship Id="rId1" Target="worksheets/sheet1.xml"/></Relationships>')
+    path = tmp_path / "t.xlsx"
+    with zipfile.ZipFile(path, "w") as z:
+        z.writestr("xl/workbook.xml", workbook)
+        z.writestr("xl/_rels/workbook.xml.rels", rels)
+        z.writestr("xl/worksheets/sheet1.xml", sheet)
+    assert trials.read_xlsx_sheet(path, "S") == [{"NCT ID": "NCT00000001", "Trial": "Rich text"}]
+

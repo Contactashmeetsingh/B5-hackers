@@ -6,5 +6,5 @@
   {"term": "progesterone receptor", "genes": ["PGR"], "note": "progesterone receptor (PGR)", "source": "HGNC: PGR encodes the progesterone receptor"},
   {"term": "HR", "genes": ["ESR1", "PGR"], "note": "hormone receptor, i.e. ER and/or PR", "source": "Breast cancer usage: hormone receptor status = ER and PR status (ASCO/CAP ER/PR testing guideline)"},
   {"term": "hormone receptor", "genes": ["ESR1", "PGR"], "note": "hormone receptor, i.e. ER and/or PR", "source": "Breast cancer usage: hormone receptor status = ER and PR status (ASCO/CAP ER/PR testing guideline)"},
-  {"term": "triple-positive", "genes": ["ESR1", "PGR"], "note": "ER-, PR- and HER2-positive", "source": "Breast cancer usage: triple-positive = ER+, PR+, HER2+"}
+  {"term": "triple-positive", "genes": ["ESR1", "PGR"], "note": "ER-positive, PR-positive and HER2-positive", "source": "Breast cancer usage: triple-positive = ER+, PR+, HER2+"}
 ]

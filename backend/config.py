@@ -58,8 +58,8 @@ TRIALS_MAX_STUDIES = 200
 TRIALS_STATUSES = ["RECRUITING", "NOT_YET_RECRUITING"]         # only trials a user could still join
 
 # ---------------------------------------------------------------- trial matching (stage 4)
-STATUS_WINDOW_CHARS = 25       # a status word ("positive", "mutated") must follow the biomarker within this many chars, same line
-NEGATION_LOOKBACK_CHARS = 15   # "no", "without", "negative for" this close before the biomarker negates it
+STATUS_WINDOW_CHARS = 45       # how far after the biomarker its status is read (same clause; "HER2 IHC 1+ or IHC 2+ with negative ISH")
+NEGATION_LOOKBACK_CHARS = 25   # how far before it ("must not have HER2", "no evidence of a PIK3CA", "positive for HER2")
 MAX_SUPPORTING_PAPERS = 6      # papers shown per trial (the total found is always reported too)
 
 # ---------------------------------------------------------------- Keenable (stage 1)
@@ -71,6 +71,13 @@ KEENABLE_MAX_RETRIES = 3
 KEENABLE_BACKOFF_CAP_S = 30.0
 KEENABLE_PUBMED_SITE = "pubmed.ncbi.nlm.nih.gov"  # papers only: every hit then has a PMID
 KEENABLE_MAX_RESULTS = 10                          # per query (API allows 1-50)
+
+# ---------------------------------------------------------------- PubMed (stage 1: checks each Keenable hit)
+PUBMED_TOOL = "biomarker-research-poc"   # NCBI's "tool" parameter: a generic name, no contact details
+PUBMED_BATCH = 100                       # PMIDs per efetch call
+PUBMED_TIMEOUT_S = 60.0
+PUBMED_MAX_RETRIES = 3
+PUBMED_PAUSE_S = 0.4                     # between calls; NCBI allows 3 per second without a key
 
 # ---------------------------------------------------------------- Genomic Intelligence (stage 5)
 # Transport: the hosted MCP server. It answers anonymously on a shared demo key;

@@ -34,6 +34,19 @@ class FakeKeenable:
         ]
 
 
+PUBMED = {  # what PubMed says about the fake PMIDs; the Keenable title and snippet are not trusted
+    "TEST-2": {"title": "PIK3CA mutation in HER2-positive breast cancer", "year": 2024,
+               "publication_types": ["Journal Article"], "abstract": "PTEN loss too."},
+    "TEST-3": {"title": "Alpelisib for PIK3CA-mutated advanced breast cancer", "year": 2021,
+               "publication_types": ["Review"], "abstract": "Approved for HR-positive, HER2-negative disease."},
+    "TEST-4": {"title": "Unrelated cardiology paper", "year": 2019, "publication_types": [], "abstract": ""},
+}
+
+
+def fake_fetch(pmids):
+    return {p: PUBMED[p] for p in pmids if p in PUBMED}
+
+
 class BrokenKeenable(FakeKeenable):
     def search_pubmed(self, query, max_results=10):
         raise RuntimeError("Keenable down")
@@ -62,19 +75,39 @@ def test_literature_merge_and_fallbacks(tmp_path, monkeypatch):
     curated = [Paper(paper_id="TEST-1", title="fixture", genes_mentioned=["ERBB2"], relation="ours", source="keenable")]
     write_rows(papers_path, curated)
     client = FakeKeenable()
-    out = literature.run(refresh=True, client=client)
+    out = literature.run(refresh=True, client=client, fetch_records=fake_fetch)
     by_id = {p.paper_id: p for p in out}
     assert [p.paper_id for p in out] == ["TEST-1", "TEST-2", "TEST-3"]   # curated first; off-topic TEST-4 dropped
     assert by_id["TEST-1"].reviewed is True and by_id["TEST-1"].relation == "ours"
     assert by_id["TEST-2"].reviewed is False and by_id["TEST-2"].genes_mentioned == ["ERBB2", "PIK3CA"]
+    assert by_id["TEST-3"].title == PUBMED["TEST-3"]["title"] and by_id["TEST-3"].publication_types == ["Review"]
     assert by_id["TEST-2"].found_by == client.queries                    # every query found it, each listed once
-    assert by_id["TEST-2"].opposite_status == [] and by_id["TEST-3"].opposite_status == ["ERBB2"]
-    assert SNIPPET not in papers_path.read_text() and SNIPPET not in (tmp_path / "keenable_queries.json").read_text()
+    assert by_id["TEST-2"].opposite_status == [] and by_id["TEST-3"].opposite_status == ["ERBB2"]  # from the abstract
+    for path in (papers_path, tmp_path / "keenable_queries.json"):  # no snippet, no abstract text stored
+        assert SNIPPET not in path.read_text() and "Approved for HR-positive" not in path.read_text()
     log = json.loads((tmp_path / "keenable_queries.json").read_text())
     assert log["queries"][0]["results"][0]["outcome"] == "already in papers.json"
 
     # Keenable fails: the cache is kept byte for byte.
     before = papers_path.read_bytes()
-    assert [p.paper_id for p in literature.run(refresh=True, client=BrokenKeenable())] == ["TEST-1", "TEST-2", "TEST-3"]
+    assert [p.paper_id for p in literature.run(refresh=True, client=BrokenKeenable(), fetch_records=fake_fetch)] == [
+        "TEST-1", "TEST-2", "TEST-3"]
     assert papers_path.read_bytes() == before
     assert read_rows(papers_path, Paper)[1].reviewed is False
+
+
+def test_keenable_client_edge_cases(monkeypatch):
+    from backend.clients import keenable
+
+    assert keenable._retry_after("5", 2.0) == 5.0
+    assert keenable._retry_after("Wed, 21 Oct 2015 07:28:00 GMT", 2.0) == 0.0  # an HTTP date in the past
+    assert keenable._retry_after("junk", 2.0) == 2.0
+    client = keenable.KeenableClient(api_key=None)
+    monkeypatch.setattr(client, "search", lambda *a, **k: {"results": [
+        {"title": "A __PIK3CA__ study - PubMed", "url": "https://pubmed.ncbi.nlm.nih.gov/123/", "snippet": "s"},
+        {"title": "no url", "url": None},
+        {"title": "not pubmed", "url": "https://example.org/x"},
+    ]})
+    [hit] = client.search_pubmed("q")
+    assert hit["paper_id"] == "123" and hit["title"] == "A PIK3CA study"
+

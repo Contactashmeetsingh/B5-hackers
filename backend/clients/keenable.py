@@ -21,8 +21,10 @@ Errors: 429 waits for Retry-After and retries; 5xx and timeouts retry with backo
 
 from __future__ import annotations
 
+import email.utils
 import re
 import time
+from datetime import datetime, timezone
 from typing import Any, Optional
 
 import httpx
@@ -31,6 +33,22 @@ from backend import config  # importing config also loads .env
 
 PUBMED_URL = re.compile(r"^https?://(?:www\.)?pubmed\.ncbi\.nlm\.nih\.gov/(\d+)/?(?:[?#].*)?$")
 TITLE_SUFFIX = re.compile(r"\s+[-|]\s+PubMed\s*$", re.IGNORECASE)
+HIGHLIGHT = re.compile(r"(\*\*|__)(.+?)\1")  # search-result emphasis, e.g. "__PIK3CA__"
+
+
+def _retry_after(value: Optional[str], default: float) -> float:
+    """Seconds to wait from a Retry-After header: a number of seconds or an HTTP date."""
+    if not value:
+        return default
+    try:
+        return max(0.0, float(value))
+    except ValueError:
+        pass
+    try:
+        when = email.utils.parsedate_to_datetime(value)
+        return max(0.0, (when - datetime.now(timezone.utc)).total_seconds())
+    except (TypeError, ValueError):
+        return default
 
 
 class KeenableError(RuntimeError):
@@ -88,7 +106,7 @@ class KeenableClient:
             if r.status_code == 200:
                 return r.json()
             if r.status_code == 429 and not last:
-                time.sleep(min(float(r.headers.get("Retry-After", delay) or delay), config.KEENABLE_BACKOFF_CAP_S))
+                time.sleep(min(_retry_after(r.headers.get("Retry-After"), delay), config.KEENABLE_BACKOFF_CAP_S))
                 continue
             if r.status_code >= 500 and not last:
                 time.sleep(delay)
@@ -109,14 +127,14 @@ class KeenableClient:
         raw = self.search(query, site=config.KEENABLE_PUBMED_SITE, max_results=max_results)
         hits = []
         for res in raw.get("results", []):
-            m = PUBMED_URL.match(res.get("url", "").strip())
+            m = PUBMED_URL.match((res.get("url") or "").strip())
             if not m:
                 continue
             published = res.get("published_at") or ""
             year = int(published[:4]) if published[:4].isdigit() else None
             hits.append({
                 "paper_id": m.group(1),
-                "title": TITLE_SUFFIX.sub("", (res.get("title") or "").strip()),
+                "title": HIGHLIGHT.sub(r"\2", TITLE_SUFFIX.sub("", (res.get("title") or "").strip())),
                 "year": year,
                 "url": f"https://pubmed.ncbi.nlm.nih.gov/{m.group(1)}/",
                 "published_at": published or None,

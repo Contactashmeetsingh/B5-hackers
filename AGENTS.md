@@ -2,7 +2,7 @@
 
 Ground truth for every coding agent working in this repo. Read this file fully before writing code. If something here conflicts with a teammate's chat message, this file wins until it is edited. `CLAUDE.md` imports this file, so there is no separate `claude.agent.md`. `README.md` is the overview for people and `HUMAN.md` is the live progress tracker.
 
-> **Architecture v2 (2026-11-14): personalized medicine research platform.** The project no longer ranks trials with scores. It takes a biomarker profile (HER2 + PIK3CA) and runs two parallel approaches: papers → clinical trial matching, and DNA model → Pan-Cancer Atlas gene mapping. **The old scoring system is removed** (section 5). Build status per task is in `HUMAN.md`; rows marked *planned* below are not built yet.
+> **Architecture v2 (2026-11-14): personalized medicine research platform.** The project no longer ranks trials with scores. It takes a biomarker profile (HER2 + PIK3CA) and runs two parallel approaches: papers → clinical trial matching (**built**), and DNA model → Pan-Cancer Atlas gene mapping (Task 3). **The old scoring system is removed** (section 5). Build status per task is in `HUMAN.md`; rows marked *planned* below are not built yet.
 
 ## 1. Mission
 
@@ -21,8 +21,8 @@ This is a research demo. It is not medical advice, it makes no treatment recomme
 
 | Biomarker | Gene | Alteration | Status | Aliases (to spot it in trial and paper text) |
 |---|---|---|---|---|
-| HER2 | ERBB2 | overexpression / amplification | positive | HER2, ERBB2, HER-2, HER2/neu, ErbB-2, ErbB2 |
-| PIK3CA mutation | PIK3CA | mutation | mutated (optional `variant`, e.g. H1047R) | PIK3CA, PI3KCA, p110alpha, p110α |
+| HER2 | ERBB2 | overexpression / amplification | positive | HER2, ERBB2, HER-2, HER2/neu, ErbB-2, ErbB2, and the spelled-out "human epidermal growth factor receptor 2" forms |
+| PIK3CA | PIK3CA | mutation | mutated (yes/no; `variant` stays null for the PoC) | PIK3CA, PI3KCA, p110alpha, p110α |
 
 Plus `tissue` (Breast) and `sequence_gene` (ERBB2): the gene whose DNA sequence feeds Approach 2.
 
@@ -93,10 +93,10 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 | # | Stage | Approach | Module | Reads | Writes | Built? |
 |---|---|---|---|---|---|---|
 | 0 | Input | both | `backend/pipeline/profile.py`, `biomarker.py` | `data/input/profile.json`, `biomarker.json` | (in memory) | yes |
-| 1 | Literature | 1 | `backend/pipeline/literature.py` | profile | `data/cache/papers.json` | cache real; live Keenable search *planned (Task 2)* |
-| 2 | Gene candidates | 2 | `backend/pipeline/targets.py` | papers, drug_targets | `data/cache/gene_candidates.json` | yes |
-| 3 | Trials | 1 | `backend/pipeline/trials.py` | spreadsheet | `data/cache/trials.json` | mock today; spreadsheet import *planned (Task 2)* |
-| 4 | Trial matching | 1 | `backend/pipeline/matching.py` | profile, papers, trials, drug_targets | `data/output/trial_matches.json` | *planned (Task 2)* |
+| 1 | Literature | 1 | `backend/pipeline/literature.py` | profile, drug_targets, gene_candidates (vocabulary only); Keenable + PubMed on `--refresh` | `data/cache/papers.json` (+ `keenable_queries.json`) | yes: 29 curated + 33 merged Keenable hits |
+| 2 | Gene candidates | 2 | `backend/pipeline/targets.py` | biomarker, papers, drug_targets, Ensembl cache | `data/cache/gene_candidates.json` | yes |
+| 3 | Trials | 1 | `backend/pipeline/trials.py` | `clinical_trials/her2_candidate_marker_open_trials.xlsx` (both sheets); biomarker for `--ctgov` / mock | `data/cache/trials.json` | yes: 7 real trials |
+| 4 | Trial matching | 1 | `backend/pipeline/matching.py` | profile, papers, gene_candidates, trials, drug_targets, gene_terms | `data/output/trial_matches.json` | yes |
 | 5 | Genomic Intelligence | 2 | `backend/pipeline/genomic.py` | gene_candidates, biomarker | `data/cache/genomic_context.json` (+ side caches) | per-gene profiles yes; sequence/FASTA input *planned (Task 3)* |
 | 6 | Atlas mapping | 2 | `backend/pipeline/atlas.py` | genomic_context, sequence scan, atlas CSV, profile | `data/output/gene_associations.json` | *planned (Task 3)* |
 | 7 | API | both | `backend/app/main.py` | everything above | HTTP | yes for built stages |
@@ -113,8 +113,17 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 // papers.json
 [{ "paper_id": "PMID or DOI", "title": "", "year": 2024, "url": "",
    "genes_mentioned": ["ERBB2", "PIK3CA"],
-   "relation": "one sentence, paraphrased, on how the paper links the gene to the biomarker",
-   "source": "keenable | mock" }]
+   "relation": "one sentence, in our words, on how the paper links the gene to the biomarker",
+   "source": "keenable | mock",
+   "reviewed": true,              // true: curated, checked by hand on PubMed. false: Keenable hit merged automatically
+   // merged hits only:
+   "found_by": ["query text"], "retrieved": "YYYY-MM-DD",
+   "opposite_status": ["ERBB2"],    // profile genes the hit studies in the opposite state (e.g. HER2-negative)
+   "publication_types": ["Review"] }]  // from PubMed
+// Merged hits are checked on PubMed: title, year (PubMed publication year) and publication types come from
+// the PubMed record; genes_mentioned and opposite_status are read from the PubMed title + abstract (the title
+// decides when it states a status). The Keenable snippet is not used. Neither snippet nor abstract is stored.
+// Merged hits' relation says "Keenable search hit, not yet reviewed..."; curated rows have the empty defaults.
 
 // gene_candidates.json  (includes the biomarker gene itself)
 [{ "gene": "PIK3CA", "ensembl_id": "ENSG...", "in_targets_dataset": true,
@@ -122,9 +131,12 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
    "approved_symbol": "(optional) current HGNC symbol when papers use an old one",
    "targets_dataset": "name of the targets dataset, or 'pending (drug_targets.json seed used as stand-in)'" }]
 
-// trials.json
-[{ "nct_id": "NCT...", "title": "", "phase": "", "status": "", "url": "",
-   "conditions": [""], "interventions": [""], "eligibility_text": "",
+// trials.json  (from the curated spreadsheet; columns found by header name)
+[{ "nct_id": "NCT...", "title": "", "phase": "Phase 3", "status": "Recruiting", "url": "",
+   "conditions": [], "interventions": [],          // the spreadsheet has neither column
+   "eligibility_text": "the spreadsheet's 'What the trial requires' text",
+   "sponsor": "", "curated_markers": "the curator's marker note (display only)",
+   "status_detail": "full status cell", "status_as_of": "YYYY-MM-DD", "status_caveat": "Notes sheet 'Data caveat'",
    "source": "curated spreadsheet | clinicaltrials.gov snapshot | mock" }]
 
 // genomic_context.json  (one row per candidate gene)
@@ -137,15 +149,27 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
    "source": "genomic_intelligence | mock" }]
 // full model_output shape: lanes/B-genomic/README.md
 
-// data/output/trial_matches.json   (Approach 1 result; draft until Task 2 lands)
+// data/output/trial_matches.json   (Approach 1 result; GET /api/trial-matches)
 [{ "nct_id": "NCT...", "title": "", "phase": "", "status": "", "url": "",
-   "tier": "requires_all_biomarkers | primary_plus_related_gene | primary_only | not_matched",
-   "tier_label": "Requires HER2 and PIK3CA",
-   "biomarker_matches": [{ "biomarker": "PIK3CA mutation", "gene": "PIK3CA",
-                           "requirement": "required | mentioned | drug_target | absent", "evidence_text": "" }],
-   "related_genes": [{ "gene": "ESR1", "how": "named in criteria | target of fulvestrant", "paper_ids": ["..."] }],
-   "supporting_papers": [{ "paper_id": "", "title": "", "year": 2024, "url": "", "relation": "", "source": "keenable" }],
-   "explanation": "plain-language reason this trial may be relevant",
+   "tier": "requires_all_biomarkers | partial_plus_related | partial_only | mentions_only | conflicts | not_matched",
+   "tier_rank": 1,                                  // order of tiers, not a score
+   "tier_label": "Requires HER2 positive and PIK3CA mutated",
+   "biomarker_matches": [{ "biomarker": "PIK3CA", "gene": "PIK3CA", "status": "mutated",
+                           "requirement": "required | mentioned | conflicts | absent",
+                           "evidence_text": "the criteria line that decided it", "via_drugs": ["inavolisib"] }],
+   "drugs": [{ "drug": "inavolisib", "matched_name": "inavolisib", "target_genes": ["PIK3CA"], "source": "" }],
+   "related_genes": [{ "gene": "ESR1", "how": ["\"HR\" (hormone receptor...) named in the trial text", "target of fulvestrant"],
+                       "paper_ids": ["..."] }],
+   "unchecked_criteria": ["ESR1", "PGR"],          // genes whose status the criteria name but the profile lacks
+   "supporting_papers": [{ "paper_id": "", "title": "", "year": 2016, "url": "", "relation": "", "source": "",
+                           "reviewed": true, "why": ["links PIK3CA to HER2", "title names alpelisib"] }],
+   "supporting_papers_total": 21,                   // before the MAX_SUPPORTING_PAPERS cut
+   "supporting_papers_reviewed": 4,                 // of the total, checked by hand
+   "opposite_status_papers": [ /* same shape */ ],  // same genes/drugs but the opposite status (e.g. HER2-negative)
+   "opposite_status_papers_total": 14,
+   "explanation": "plain-language reason, built only from the fields above",
+   "evidence_type": "research-paper evidence + trial criteria",
+   "eligibility_text": "", "sponsor": "", "status_detail": "", "status_as_of": "", "status_caveat": "",
    "source": "the trial's own source", "mock_inputs": [] }]
 
 // data/output/gene_associations.json   (Approach 2 result; draft until Task 3 lands)
@@ -156,8 +180,12 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
   "evidence_legend": {}, "disclaimer": "" }
 // each gene entry: { "gene": "", "prediction": {...model readouts...}, "atlas": {...} | null, "paper_ids": [] }
 
-// data/input/drug_targets.json
+// data/input/drug_targets.json   (stage 2 stand-in targets dataset; stage 4 drug -> target lookup)
 [{ "drug": "trastuzumab", "aliases": ["Herceptin"], "target_genes": ["ERBB2"], "source": "where the pair came from" }]
+// Only add drugs whose targets are already candidate genes: stage 2 turns every target into a candidate gene.
+
+// data/input/gene_terms.json   (stage 4: clinical words that stand for genes in trial text)
+[{ "term": "HR", "genes": ["ESR1", "PGR"], "note": "hormone receptor, i.e. ER and/or PR", "source": "" }]
 
 // pancancer_atlas/her2_dependence_tcga_pancan.csv  (30 genes; TCGA PanCancer Atlas breast cohort via cBioPortal)
 // per gene, under two HER2+ definitions (amp_ = ERBB2 GISTIC amplification, clin_ = clinical IHC/FISH):
@@ -166,28 +194,30 @@ Every stage reads JSON, writes JSON, and can be run alone. Stages talk only thro
 
 The pydantic models for the JSON files live in `backend/schemas.py`; read and write them only through `backend/store.py`.
 
-Side caches (not contracts; written and read by one stage only): `data/cache/ensembl_genes.json` (Ensembl lookups), `data/cache/genomic_raw/<GENE>.json` (one digest of the GI calls per gene, with request ids), `data/cache/amplicon_context.json` (genes GI finds around the sequence gene).
+Side caches (not contracts; written and read by one stage only): `data/cache/keenable_queries.json` (stage 1: every query, its hits, the genes found in each PubMed record and what happened to each hit; no snippets or abstracts), `data/cache/ensembl_genes.json` (Ensembl lookups), `data/cache/genomic_raw/<GENE>.json` (one digest of the GI calls per gene, with request ids), `data/cache/amplicon_context.json` (genes GI finds around the sequence gene).
 
 ## 5. Evidence, not scores
 
 **The scoring system is gone.** There is no `literature_score`, `combined_score`, `genomic_match`, `biomarker_directness` or `trial_score`, no weights in `backend/config.py`, and no `gene_scores.json` or `rankings.json`. Do not reintroduce a blended number that ranks trials or genes.
 
-Trials are grouped by **rule-based tiers**, checked against each trial's own criteria:
+Trials are grouped by **rule-based tiers** (`backend/pipeline/matching.py`), checked against each trial's own criteria. For each profile biomarker, `backend/pipeline/biomarker_text.py` reads the criteria and calls it **required** ("HER2-positive", "PIK3CA-mutated"), **mentioned**, **conflicts** ("HER2-negative", "HER2-low", "PIK3CA wild-type") or **absent**.
 
-| Tier | Rule |
-|---|---|
-| Requires all profile biomarkers | the trial's criteria require HER2 status **and** a PIK3CA mutation |
-| HER2 plus a related gene | the trial requires HER2 and involves another gene the literature links to HER2 (named in its criteria or targeted by one of its drugs) |
-| HER2 only | the trial requires or mentions HER2 and nothing else from our gene list |
-| Not matched | none of the profile biomarkers appear |
+| Rank | Tier | Rule |
+|---|---|---|
+| 1 | `requires_all_biomarkers` | the criteria require every profile biomarker (HER2 positive **and** PIK3CA mutated) |
+| 2 | `partial_plus_related` | requires some, and involves another profile biomarker (mentioned, or targeted by a trial drug) or a literature-linked gene (named, via a clinical word such as "HR" → ESR1/PGR, or as a drug target) |
+| 3 | `partial_only` | requires some, nothing else from our gene lists |
+| 4 | `mentions_only` | names or targets a profile biomarker but requires none |
+| 5 | `conflicts` | the criteria ask for the opposite of the profile ("HER2-negative", "HER2-low", IHC 0-2+ with negative ISH, "PIK3CA wild-type"), exclude the profile's status ("Exclusion: known PIK3CA mutation"), or the title states the opposite |
+| 6 | `not_matched` | no profile biomarker anywhere |
 
-Inside a tier, keep the dataset's own order. Every match carries the text that triggered it and the papers behind it.
+Inside a tier, keep the dataset's own order. Every match carries the criteria line that triggered it, the drugs and their targets (a drug named only under exclusions is not counted), and the papers behind each gene. Supporting papers are the ones that name a trial drug aimed at a non-primary gene, or an involved gene other than HER2 (nearly every paper names HER2, so HER2 alone supports nothing in particular). Hand-reviewed papers say "links PIK3CA to HER2"; unreviewed hits only say what their PubMed record names. Papers on the same genes or drugs that study the opposite status (e.g. HER2-negative disease) are not support: they are listed and counted separately (`opposite_status_papers`).
 
 **Every result must carry one of three evidence labels. Never blur them.**
 
 | Label | Means | Source |
 |---|---|---|
-| **Research-paper evidence** | a published paper reports the link | Keenable search, PubMed-verified, paraphrased |
+| **Research-paper evidence** | a published paper reports the link | Keenable search of PubMed. `reviewed: true` rows were checked by hand and paraphrased; `reviewed: false` rows are automatic hits, checked against their PubMed record but not read by a person |
 | **Model prediction** | a DNA model computed it from sequence; exploratory, not validated | Genomic Intelligence |
 | **Dataset-supported association** | observed in patient cohort data | TCGA PanCancer Atlas table |
 
@@ -199,8 +229,9 @@ The one number kept from the old design is the GI **activity summary** (`model_s
 
 | Service | Used for | Notes |
 |---|---|---|
-| **Keenable** (hackathon sponsor) | Stage 1 paper search | Web search and page fetch for agents. Docs: https://docs.keenable.ai (`llms.txt`). Base URL `https://api.keenable.ai`. Works **without a key**: `POST /v1/search/public` with JSON `{"query": "...", "max_results": N}` and the header `X-Keenable-Title` naming the app (limit 1,000 requests/hour per IP). With a key (`KEENABLE_API_KEY`): `POST /v1/search` with `X-API-Key`. It returns web results (title, URL, snippet), **not** structured gene mentions; we parse genes ourselves. Queries are logged by Keenable, so never send personal data. All calls go through `backend/clients/keenable.py`. *(Client is a placeholder until Task 2.)* |
+| **Keenable** (hackathon sponsor) | Stage 1 paper search | Web search and page fetch for agents. Docs: https://docs.keenable.ai (`llms.txt`). Base URL `https://api.keenable.ai`. Works **without a key**: `POST /v1/search/public` with JSON `{"query": "...", "site": "pubmed.ncbi.nlm.nih.gov", "max_results": N}` and the header `X-Keenable-Title` naming the app (generic name in `config.KEENABLE_APP_TITLE`; limit 1,000 requests/hour per IP). With a key (`KEENABLE_API_KEY` in `.env`): `POST /v1/search` with `X-API-Key`. It returns web results (title, URL, snippet, published_at), **not** structured gene mentions and **no gene targets dataset**; we parse genes ourselves and never store snippets. Queries are logged by Keenable, so only send the generic profile-built queries, never personal data. All calls go through `backend/clients/keenable.py`. The Keenable CLI and MCP server are a separate, interactive tool for people and agents; the pipeline does not use them. |
 | **Genomic Intelligence** (hackathon sponsor) | Stage 5 model predictions | Docs: https://docs.genomicintelligence.ai. We call the hosted MCP server `https://mcp.genomicintelligence.ai/mcp` (MCP Streamable HTTP). It answers on a shared demo key, so no key is needed; set `GI_API_KEY` to use our own. Tools: `list_models`, `fetch_gene_for_expression`, `fetch_region`, `fetch_ensembl_sequence`, `store_inline_sequence` (a pasted sequence → handle), `predict_expression`, `predict_promoter`, `predict_chromatin`, `predict_enhancer`, `predict_splice`, `find_genes`, `find_genes_and_predict_expression`. **There is no similarity or homology search.** Switch on `error.code`, never the message. All calls go through `backend/clients/genomic_intelligence.py`. |
+| **PubMed (NCBI E-utilities)** | Stage 1: checking each Keenable hit | `efetch` by PMID only (no key; 3 requests/s; generic `tool` name). Gives the authoritative title, year and publication types; the abstract is read to spot genes and HER2-negative studies and is never stored. All calls go through `backend/clients/pubmed.py`. |
 | **Ensembl REST** | Gene symbol to Ensembl ID, GRCh38 coordinates, canonical TSS, genes in a region | Fetch coordinates, do not type them from memory. All calls go through `backend/clients/ensembl.py` (cached in `data/cache/ensembl_genes.json`). |
 | **TCGA PanCancer Atlas** | Stage 6 gene mapping | No live call. The committed table `pancancer_atlas/her2_dependence_tcga_pancan.csv` (cBioPortal study `brca_tcga_pan_can_atlas_2018`, pulled 2026-11-14) is the only atlas data we use. Do not add another dataset. |
 | **ClinicalTrials.gov API v2** | Not used in the demo | The client exists (`backend/clients/clinicaltrials.py`) but the trial list is the curated spreadsheet. |
@@ -225,15 +256,15 @@ backend/
   config.py            paths and service settings (no scoring weights)
   schemas.py           pydantic models for the contract files (section 4)
   store.py             read_rows / write_rows: validated JSON I/O
-  clients/             keenable.py, genomic_intelligence.py, ensembl.py, clinicaltrials.py
-  pipeline/            profile.py, biomarker.py, literature.py, targets.py, trials.py, genomic.py, run.py
-                       (planned: matching.py, atlas.py)
-  app/main.py          GET /api/profile, /api/biomarker, /api/papers, /api/trials, /api/genes,
+  clients/             keenable.py, pubmed.py, genomic_intelligence.py, ensembl.py, clinicaltrials.py
+  pipeline/            profile.py, biomarker.py, literature.py, targets.py, trials.py, matching.py, genomic.py, run.py
+                       textmatch.py + biomarker_text.py (shared text reading); planned: atlas.py
+  app/main.py          GET /api/profile, /api/biomarker, /api/papers, /api/trials, /api/trial-matches, /api/genes,
                        /api/genes/{gene}, /api/meta, /api/health
 data/
-  input/               profile.json, biomarker.json, drug_targets.json
+  input/               profile.json, biomarker.json, drug_targets.json, gene_terms.json
   cache/               stage outputs (committed, so the demo works offline)
-  output/              trial_matches.json, gene_associations.json (planned); glm_vs_keenable.* (old experiment)
+  output/              trial_matches.json; gene_associations.json (planned); glm_vs_keenable.* (old experiment)
 pancancer_atlas/       TCGA PanCancer Atlas table for the 30 candidate genes
 keenable/              literature notes found with Keenable
 clinical_trials/       the open HER2 trials spreadsheet (the hard-coded trial list)
@@ -286,11 +317,13 @@ The UI is not built in this repo's backend work. Our job is to give it:
 
 - **Gene targets dataset:** `gene_candidates.json` rows are still tagged mock because the "targets dataset" field is a stand-in (`drug_targets.json`). Drop the field, or name a real dataset?
 - **Atlas coverage:** the atlas table covers only the 30 candidate genes. Locus genes outside it (e.g. MIEN1, TCAP, PNMT) will show "not in atlas table". Extend the table, or leave as is?
-- **PIK3CA variant:** is a specific mutation (e.g. H1047R) part of the input, or only "mutated: yes"?
+- **Reviewing merged papers:** the 33 Keenable hits are `reviewed: false`. Who checks them, and do reviewed ones get a hand-written `relation`?
+- **ER/PR in the profile:** five trials require hormone receptor status (a sixth names it for one cohort), which the profile does not record. Add ESR1/PGR status to the profile?
 - **Old experiment:** keep `poc/compare_glm_vs_keenable.py` and `data/output/glm_vs_keenable.*`, or delete them?
 
 ### Resolved
 
 - **Architecture v2** (2026-11-14, Contactashmeetsingh): two approaches, scoring removed, trials from the curated spreadsheet only, rule-based tiers, both "related gene" methods for Approach 2, frontend owned by Sumaya.
-- **Keenable API** (2026-11-14): documented at docs.keenable.ai; keyless web search; returns raw web results, so we parse gene mentions ourselves.
+- **Keenable API** (2026-11-14): documented at docs.keenable.ai; keyless web search; returns raw web results, so we parse gene mentions ourselves. New hits are **merged** into `papers.json`, labelled `reviewed: false` (Contactashmeetsingh).
+- **PIK3CA input** (2026-11-14, Contactashmeetsingh): "mutated: yes" only; no specific variant.
 - **Genomic Intelligence tasks** (2026-11-14, lane B owner): every GI task is run per gene (promoter, splice, enhancer, chromatin, expression, annotation, find genes + expression). See `lanes/B-genomic/README.md`.

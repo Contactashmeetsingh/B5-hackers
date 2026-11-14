@@ -6,6 +6,7 @@ import pytest
 from backend import config
 from backend.pipeline import matching
 from backend.pipeline.biomarker_text import classify
+from tests.classify_cases import CASES
 from backend.pipeline.profile import load_profile
 from backend.schemas import DrugTarget, GeneCandidate, GeneTerm, Paper, Trial, TrialMatch
 from backend.store import read_rows, write_rows
@@ -27,7 +28,13 @@ HER2, PIK3CA = PROFILE.biomarkers
     ("human epidermal growth factor receptor-2-negative advanced breast cancer", "conflicts", "absent"),
 ])
 def test_classify(text, her2, pik3ca):
-    assert (classify(text, HER2).requirement, classify(text, PIK3CA).requirement) == (her2, pik3ca)
+    assert (classify(text, HER2, [PIK3CA]).requirement, classify(text, PIK3CA, [HER2]).requirement) == (her2, pik3ca)
+
+
+@pytest.mark.parametrize("who, text, want", CASES)
+def test_classify_reviewer_cases(who, text, want):
+    b, others = (HER2, [PIK3CA]) if who == "HER2" else (PIK3CA, [HER2])
+    assert classify(text, b, others).requirement[0].upper() == want
 
 
 def _trial(n, title, criteria):
@@ -42,6 +49,9 @@ def test_matching(tmp_path, monkeypatch):
         _trial(4, "Exercise study", "Any adult with breast cancer"),
         _trial(5, "Tucatinib", "HER2 positive by local testing"),
         _trial(6, "Inavolisib study", "Any HER2 status"),
+        _trial(7, "HER2-positive study", "Inclusion Criteria:\n* HER2-positive\nExclusion Criteria:\n* Known PIK3CA mutation"),
+        _trial(8, "T-DXd in HER2-low disease", "Prior endocrine therapy"),
+        _trial(9, "Tucatinib", "Inclusion Criteria:\n* HER2+ disease\nExclusion Criteria:\n* Prior alpelisib\n* Known ESR1 mutation"),
     ]
     papers = [
         Paper(paper_id="TEST-P1", title="HER2 biology", genes_mentioned=["ERBB2"], source="keenable", reviewed=True),
@@ -79,12 +89,15 @@ def test_matching(tmp_path, monkeypatch):
     assert {d.drug for d in t2.drugs} == {"alpelisib", "trastuzumab"}
     pik = next(m for m in t2.biomarker_matches if m.gene == "PIK3CA")
     assert pik.requirement == "required" and pik.via_drugs == ["alpelisib"] and "PIK3CA-mutated" in pik.evidence_text
-    ids = [p.paper_id for p in t2.supporting_papers]
-    assert ids == ["TEST-P2", "TEST-P3"]                              # opposite-status paper last
-    assert "TEST-P1" not in ids                                       # HER2 alone supports nothing in particular
-    p3 = next(p for p in t2.supporting_papers if p.paper_id == "TEST-P3")
-    assert any("HER2-negative" in w for w in p3.why)
-    assert "PMID TEST-P2" in t2.explanation and "not a recommendation" in t2.explanation
+    assert [p.paper_id for p in t2.supporting_papers] == ["TEST-P2"]   # HER2 alone (TEST-P1) supports nothing
+    assert t2.supporting_papers[0].why == ["links PIK3CA to HER2"]
+    assert [p.paper_id for p in t2.opposite_status_papers] == ["TEST-P3"]  # HER2-negative study: listed apart
+    p3 = t2.opposite_status_papers[0]
+    assert "title names alpelisib" in p3.why and any("HER2-negative" in w for w in p3.why)
+    assert not any("links" in w and "HER2" in w for w in p3.why)          # no HER2 link claimed for it
+    assert (t2.supporting_papers_total, t2.supporting_papers_reviewed, t2.opposite_status_papers_total) == (1, 1, 1)
+    assert "PMID TEST-P2 (2016): ours." in t2.explanation and "1 more paper(s)" in t2.explanation
+    assert "not a recommendation" in t2.explanation and ".." not in t2.explanation
 
     t1 = by["TEST-NCT-1"]
     assert t1.tier == "partial_plus_related" and [g.gene for g in t1.related_genes] == ["ESR1", "PGR"]
@@ -96,4 +109,9 @@ def test_matching(tmp_path, monkeypatch):
     assert by["TEST-NCT-4"].tier == "not_matched"
     assert by["TEST-NCT-5"].tier == "partial_only" and by["TEST-NCT-5"].tier_label == "Requires HER2 positive only"
     assert by["TEST-NCT-6"].tier == "mentions_only"
+    t7 = by["TEST-NCT-7"]  # the profile's PIK3CA mutation is an exclusion
+    assert t7.tier == "conflicts" and "Known PIK3CA mutation" in t7.explanation
+    assert by["TEST-NCT-8"].tier == "conflicts"  # "HER2-low" stated only in the title
+    t9 = by["TEST-NCT-9"]  # a drug or gene named only under exclusions is not part of the trial
+    assert [d.drug for d in t9.drugs] == ["tucatinib"] and t9.related_genes == [] and t9.tier == "partial_only"
     assert all(m.mock_inputs == [] for m in out)  # gene_candidates' stand-in field is never read here

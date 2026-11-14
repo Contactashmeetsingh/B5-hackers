@@ -76,9 +76,9 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 | `README.md` | This page: the overview |
 | `HUMAN.md` | Live progress tracker: what works, what is next, how to run it |
 | `AGENTS.md` | The spec coding agents follow: file contracts, rules, services. `CLAUDE.md` points to it. |
-| `data/input/` | The input profile (`profile.json`), model settings for ERBB2 (`biomarker.json`), drug → target table |
+| `data/input/` | The input profile (`profile.json`), model settings for ERBB2 (`biomarker.json`), drug → target table, clinical words for genes (`gene_terms.json`: ER → ESR1) |
 | `data/cache/` | Saved stage outputs, so everything runs offline |
-| `data/output/` | The two results: `trial_matches.json` and `gene_associations.json` (being built) |
+| `data/output/` | The two results: `trial_matches.json` (Approach 1, built) and `gene_associations.json` (Approach 2, being built) |
 | `pancancer_atlas/` | TCGA Pan-Cancer Atlas table for 30 genes |
 | `clinical_trials/` | Spreadsheet of 7 open HER2 trials: the fixed trial list |
 | `keenable/` | Literature notes found with Keenable |

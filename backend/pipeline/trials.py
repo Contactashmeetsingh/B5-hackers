@@ -80,8 +80,9 @@ def read_xlsx_sheet(path: Path, sheet_name: str) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for row in sheet.iterfind("m:sheetData/m:row", _NS):
         cells: dict[str, str] = {}
-        for c in row.iterfind("m:c", _NS):
-            col = re.match(r"[A-Z]+", c.get("r", "")).group()
+        for i, c in enumerate(row.iterfind("m:c", _NS)):
+            ref = re.match(r"[A-Z]+", c.get("r", ""))  # "r" is optional in the spec: fall back to position
+            col = ref.group() if ref else _column_letter(i)
             kind = c.get("t")
             if kind == "inlineStr":
                 value = "".join(t.text or "" for t in c.iter(_T))
@@ -96,6 +97,16 @@ def read_xlsx_sheet(path: Path, sheet_name: str) -> list[dict[str, str]]:
         return []
     header = rows[0]
     return [{header[col]: r.get(col, "") for col in header} for r in rows[1:]]
+
+
+def _column_letter(index: int) -> str:
+    """0 -> A, 25 -> Z, 26 -> AA."""
+    letters = ""
+    index += 1
+    while index:
+        index, rem = divmod(index - 1, 26)
+        letters = chr(65 + rem) + letters
+    return letters
 
 
 def _column(row: dict[str, str], prefix: str) -> str:
@@ -227,8 +238,12 @@ def _ctgov_snapshot(bm: Biomarker, path: Path) -> list[Trial]:
         return trials
     except (httpx.HTTPError, clinicaltrials.ClinicalTrialsError) as exc:
         # Never replace a trial list we already have with a mock (AGENTS.md section 6: keep going).
-        print(f"[trials] ClinicalTrials.gov snapshot failed ({exc}); keeping the existing cache or falling back to mock")
-        return read_rows(path, Trial) if path.exists() else mock_trials(bm)
+        print(f"[trials] ClinicalTrials.gov snapshot failed ({exc}); keeping the existing list")
+        if path.exists():
+            return read_rows(path, Trial)
+        if config.TRIALS_SPREADSHEET_PATH.exists():
+            return import_spreadsheet(config.TRIALS_SPREADSHEET_PATH)
+        return mock_trials(bm)
 
 
 def run(refresh: bool = False, ctgov: bool = False) -> list[Trial]:

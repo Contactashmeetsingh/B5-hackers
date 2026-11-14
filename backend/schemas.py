@@ -103,6 +103,11 @@ class Paper(_Sourced):
     # True: checked by hand against PubMed (the curated set). False: a Keenable search
     # hit merged automatically, not yet reviewed. None: unknown (old rows, mocks).
     reviewed: Optional[bool] = None
+    # Merged Keenable hits only (empty on curated rows):
+    found_by: list[str] = Field(default_factory=list)          # the queries that returned it
+    retrieved: Optional[str] = None                            # YYYY-MM-DD of the search
+    opposite_status: list[str] = Field(default_factory=list)   # profile genes it studies in the opposite state
+    publication_types: list[str] = Field(default_factory=list) # from PubMed, e.g. ["Review"]
 
 
 # ---------------------------------------------------------------- stage 2
@@ -111,6 +116,8 @@ class GeneCandidate(_Sourced):
     ensembl_id: Optional[str] = None
     in_targets_dataset: bool = False
     paper_ids: list[str] = Field(default_factory=list)
+    targets_dataset: str = ""                # which targets dataset in_targets_dataset refers to
+    approved_symbol: Optional[str] = None    # current HGNC symbol when the papers use an old one
 
 
 # ---------------------------------------------------------------- stage 5
@@ -135,6 +142,12 @@ class Trial(_Sourced):
     conditions: list[str] = Field(default_factory=list)
     interventions: list[str] = Field(default_factory=list)
     eligibility_text: str = ""
+    # From the curated spreadsheet ("" for other sources):
+    sponsor: str = ""
+    curated_markers: str = ""   # the curator's marker note; display only, matching does not read it
+    status_detail: str = ""     # the full status cell
+    status_as_of: str = ""      # YYYY-MM-DD the status was recorded
+    status_caveat: str = ""     # the spreadsheet's data caveat about statuses
 
 
 # ---------------------------------------------------------------- stage 4 (Approach 1 result)
@@ -165,7 +178,7 @@ class RelatedGene(_Row):
 
     gene: str
     how: list[str]                                        # e.g. ['"HR" named in the criteria', "target of fulvestrant"]
-    paper_ids: list[str] = Field(default_factory=list)    # papers that link it to the biomarker
+    paper_ids: list[str] = Field(default_factory=list)    # papers in our set that name it
 
 
 class SupportingPaper(_Row):
@@ -176,7 +189,8 @@ class SupportingPaper(_Row):
     relation: str = ""
     source: str = ""
     reviewed: Optional[bool] = None
-    why: list[str] = Field(default_factory=list)          # e.g. ["links PIK3CA to HER2", "mentions alpelisib"]
+    why: list[str] = Field(default_factory=list)          # e.g. ["links PIK3CA to HER2", "title names alpelisib"]
+    publication_types: list[str] = Field(default_factory=list)
 
 
 class TrialMatch(_Row):
@@ -194,8 +208,18 @@ class TrialMatch(_Row):
     unchecked_criteria: list[str] = Field(default_factory=list)  # genes whose status the criteria name but the profile lacks
     supporting_papers: list[SupportingPaper] = Field(default_factory=list)
     supporting_papers_total: int = 0   # before the MAX_SUPPORTING_PAPERS cut
+    supporting_papers_reviewed: int = 0  # how many of the total were checked by hand
+    # Papers on the same genes or drugs that study the opposite biomarker status (e.g.
+    # HER2-negative disease): context, not support. Listed apart, capped the same way.
+    opposite_status_papers: list[SupportingPaper] = Field(default_factory=list)
+    opposite_status_papers_total: int = 0
     explanation: str = ""
     evidence_type: str = "research-paper evidence + trial criteria"
+    eligibility_text: str = ""         # copied from trials.json, so the UI can show the full criteria
+    sponsor: str = ""
+    status_detail: str = ""
+    status_as_of: str = ""
+    status_caveat: str = ""
     source: str = ""                   # the trial's own source, copied from trials.json
     mock_inputs: list[str] = Field(default_factory=list)  # non-empty -> UI shows "mock data"
 
