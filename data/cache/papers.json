@@ -1,0 +1,383 @@
+[
+  {
+    "paper_id": "39020378",
+    "title": "HER3 receptor and its role in the therapeutic management of metastatic breast cancer.",
+    "year": 2024,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39020378/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBB3"
+    ],
+    "relation": "Review: HER3 lacks strong kinase activity and pairs with HER2 to form the most transforming ErbB dimer, driving PI3K/AKT signaling in breast cancer.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "30057690",
+    "title": "HER3 signaling and targeted therapy in cancer.",
+    "year": 2018,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30057690/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBB3",
+      "IGF1R",
+      "PIK3CA"
+    ],
+    "relation": "Review: HER2 activates HER3 through heterodimerization; blocking HER2 upregulates HER3 as compensation, and a HER2/HER3/IGF-1R complex is linked to trastuzumab resistance.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "39062682",
+    "title": "A Comprehensive Review of HER2 in Cancer Biology and Therapeutics.",
+    "year": 2024,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39062682/",
+    "genes_mentioned": [
+      "ERBB2",
+      "EGFR",
+      "ERBB3",
+      "ERBB4",
+      "ESR1",
+      "PGR"
+    ],
+    "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "17274834",
+    "title": "HER2 therapy. HER2 (ERBB2): functional diversity from structurally conserved building blocks.",
+    "year": 2007,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17274834/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBB3",
+      "EGFR",
+      "HSP90AA1"
+    ],
+    "relation": "Review of how HER2 forms active heterodimers with EGFR and HER3 and how HSP90 binding stabilizes HER2 and limits HER2/HER3 pairing.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "19855434",
+    "title": "Inhibitors of HSP90 block p95-HER2 signaling in Trastuzumab-resistant tumors and suppress their growth.",
+    "year": 2009,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19855434/",
+    "genes_mentioned": [
+      "ERBB2",
+      "HSP90AA1"
+    ],
+    "relation": "Full-length and truncated p95-HER2 are HSP90 client proteins; HSP90 inhibitors degrade them and halt trastuzumab-resistant breast tumor growth.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "15568014",
+    "title": "Hsp90 restrains ErbB-2/HER2 signalling by limiting heterodimer formation.",
+    "year": 2004,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15568014/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBB3",
+      "HSP90AA1"
+    ],
+    "relation": "HSP90 bound to HER2 holds back its signaling by limiting formation of HER2/HER3 heterodimers.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "18056992",
+    "title": "A critical role for HSP90 in cancer cell invasion involves interaction with the extracellular domain of HER-2.",
+    "year": 2007,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18056992/",
+    "genes_mentioned": [
+      "ERBB2",
+      "HSP90AA1",
+      "ERBB3"
+    ],
+    "relation": "Cell-surface HSP90 binds the HER2 extracellular domain; blocking this contact reduces heregulin-driven HER2/HER3 activation and breast cancer cell invasion.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "34439093",
+    "title": "CHIP/STUB1 Ubiquitin Ligase Functions as a Negative Regulator of ErbB2 by Promoting Its Early Post-Biosynthesis Degradation.",
+    "year": 2021,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34439093/",
+    "genes_mentioned": [
+      "ERBB2",
+      "STUB1",
+      "HSP90AA1"
+    ],
+    "relation": "The E3 ligase CHIP/STUB1 ubiquitinates newly made HSP90-bound HER2 for proteasomal degradation, lowering surface HER2 in breast cancer cells.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "25881002",
+    "title": "ATM kinase sustains HER2 tumorigenicity in breast cancer.",
+    "year": 2015,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25881002/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ATM",
+      "HSP90AA1"
+    ],
+    "relation": "ATM stabilizes HER2 by promoting the HER2-HSP90 complex and preventing HER2 ubiquitination, sustaining AKT signaling in HER2-positive breast cancer.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "7907978",
+    "title": "The SH2 domain protein GRB-7 is co-amplified, overexpressed and in a tight complex with HER2 in breast cancer.",
+    "year": 1994,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7907978/",
+    "genes_mentioned": [
+      "ERBB2",
+      "GRB7",
+      "SHC1"
+    ],
+    "relation": "GRB7 is co-amplified with HER2 in breast cancer and binds phosphorylated HER2 tightly through its SH2 domain.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "23593540",
+    "title": "Dissecting GRB7-mediated signals for proliferation and migration in HER2 overexpressing breast tumor cells: GTP-ase rules.",
+    "year": 2013,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23593540/",
+    "genes_mentioned": [
+      "ERBB2",
+      "GRB7",
+      "SHC1",
+      "VAV2"
+    ],
+    "relation": "In HER2-positive breast cancer cells, GRB7 couples HER2 to SHC/RAS for proliferation and to FAK/VAV2/RAC1 for migration.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "23253899",
+    "title": "The HER2 amplicon includes several genes required for the growth and survival of HER2 positive breast cancer cells.",
+    "year": 2012,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23253899/",
+    "genes_mentioned": [
+      "ERBB2",
+      "STARD3",
+      "GRB7",
+      "PSMD3",
+      "PGAP3"
+    ],
+    "relation": "RNAi screen of 17q12 amplicon genes shows several genes co-amplified with HER2 (STARD3, GRB7, PSMD3, PERLD1/PGAP3) support HER2-positive breast cancer cell growth.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "27698002",
+    "title": "TNFα-Induced Mucin 4 Expression Elicits Trastuzumab Resistance in HER2-Positive Breast Cancer.",
+    "year": 2016,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27698002/",
+    "genes_mentioned": [
+      "ERBB2",
+      "MUC4",
+      "TNF"
+    ],
+    "relation": "TNF-alpha induces MUC4, which reduces trastuzumab binding to HER2 and causes resistance; MUC4 predicts poorer disease-free survival in HER2-positive patients.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "28915583",
+    "title": "N-Acetylcysteine breaks resistance to trastuzumab caused by MUC4 overexpression in human HER2 positive BC-bearing nude mice monitored by 89Zr-Trastuzumab and 18F-FDG PET imaging.",
+    "year": 2017,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28915583/",
+    "genes_mentioned": [
+      "ERBB2",
+      "MUC4"
+    ],
+    "relation": "In mouse models of HER2-positive breast cancer, MUC4 overexpression blocks trastuzumab access to HER2, and N-acetylcysteine restores response.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "16322262",
+    "title": "Insulin-like growth factor-I receptor/human epidermal growth factor receptor 2 heterodimerization contributes to trastuzumab resistance of breast cancer cells.",
+    "year": 2005,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16322262/",
+    "genes_mentioned": [
+      "ERBB2",
+      "IGF1R"
+    ],
+    "relation": "In trastuzumab-resistant breast cancer cells, IGF-1R binds and transactivates HER2; breaking the heterodimer restores trastuzumab sensitivity.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "20103628",
+    "title": "Heterotrimerization of the growth factor receptors erbB2, erbB3, and insulin-like growth factor-i receptor in breast cancer cells resistant to herceptin.",
+    "year": 2010,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20103628/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBB3",
+      "IGF1R"
+    ],
+    "relation": "HER2, HER3 and IGF-1R form a three-receptor complex in trastuzumab-resistant breast cancer cells.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "21399647",
+    "title": "Combating trastuzumab resistance by targeting SRC, a common node downstream of multiple resistance pathways.",
+    "year": 2011,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21399647/",
+    "genes_mentioned": [
+      "ERBB2",
+      "SRC",
+      "PTEN"
+    ],
+    "relation": "SRC activation is a shared downstream node of several trastuzumab-resistance routes in HER2-positive breast cancer, and SRC inhibition restores response.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "25892239",
+    "title": "Interaction of CDCP1 with HER2 enhances HER2-driven tumorigenesis and promotes trastuzumab resistance in breast cancer.",
+    "year": 2015,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25892239/",
+    "genes_mentioned": [
+      "ERBB2",
+      "CDCP1",
+      "SRC"
+    ],
+    "relation": "CDCP1 binds HER2 through its intracellular domain and increases HER2-SRC interaction, enhancing HER2 signaling and trastuzumab resistance.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "15324695",
+    "title": "PTEN activation contributes to tumor inhibition by trastuzumab, and loss of PTEN predicts trastuzumab resistance in patients.",
+    "year": 2004,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15324695/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PTEN",
+      "SRC",
+      "PIK3CA"
+    ],
+    "relation": "Trastuzumab acts partly by activating PTEN through SRC inhibition; PTEN-deficient breast cancers respond poorly to trastuzumab.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "23940356",
+    "title": "Mutant PIK3CA accelerates HER2-driven transgenic mammary tumors and induces resistance to combinations of anti-HER2 therapies.",
+    "year": 2013,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23940356/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PIK3CA"
+    ],
+    "relation": "An activating PIK3CA mutation speeds up HER2-driven mouse mammary tumors and makes them resistant to combined anti-HER2 therapy.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "27358378",
+    "title": "PIK3CA mutations in HER2-positive breast cancer: an ongoing conundrum.",
+    "year": 2016,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27358378/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PIK3CA"
+    ],
+    "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "17259984",
+    "title": "Protein tyrosine phosphatase 1B deficiency or inhibition delays ErbB2-induced mammary tumorigenesis and protects from lung metastasis.",
+    "year": 2007,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17259984/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PTPN1"
+    ],
+    "relation": "Loss or inhibition of PTP1B delays HER2-driven mammary tumors and lung metastasis in mice, so PTP1B acts as a positive regulator of HER2 signaling.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "16901783",
+    "title": "Beta 4 integrin amplifies ErbB2 signaling to promote mammary tumorigenesis.",
+    "year": 2006,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16901783/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ITGB4",
+      "STAT3",
+      "JUN"
+    ],
+    "relation": "Beta-4 integrin forms a complex with HER2 and amplifies its signaling to STAT3 and c-Jun, driving mammary tumor onset in mice.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "15156151",
+    "title": "Memo mediates ErbB2-driven cell motility.",
+    "year": 2004,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15156151/",
+    "genes_mentioned": [
+      "ERBB2",
+      "MEMO1",
+      "SHC1"
+    ],
+    "relation": "MEMO1 binds the phospho-Y1227 site of HER2, likely through SHC, and is needed for HER2-driven breast carcinoma cell migration.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "10878805",
+    "title": "ERBIN: a basolateral PDZ protein that interacts with the mammalian ERBB2/HER2 receptor.",
+    "year": 2000,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10878805/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBIN"
+    ],
+    "relation": "ERBIN's PDZ domain binds HER2 directly and keeps the receptor at the basolateral membrane of epithelial cells.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "40390040",
+    "title": "Erbin interacts with NHERF1 and Ezrin to stabilize a membrane ErbB2 signaling complex in HER2-positive breast cancer.",
+    "year": 2025,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40390040/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ERBIN",
+      "SLC9A3R1",
+      "EZR",
+      "HSP90AA1"
+    ],
+    "relation": "Erbin joins NHERF1, Ezrin and HSP90 in a membrane complex that keeps HER2 active; losing Erbin lowers HER2 signaling.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "37258523",
+    "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+    "year": 2023,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ESR1"
+    ],
+    "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "27800032",
+    "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+    "year": 2016,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ESR1",
+      "PGR"
+    ],
+    "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+    "source": "kleenable"
+  },
+  {
+    "paper_id": "39137598",
+    "title": "Advances in HER2-Targeted Therapies: From monoclonal antibodies to dual inhibitors developments in cancer treatment.",
+    "year": 2024,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39137598/",
+    "genes_mentioned": [
+      "ERBB2",
+      "EGFR",
+      "ERBB3",
+      "ERBB4"
+    ],
+    "relation": "Review of HER2 structure, its dimerization with other HER family receptors, and HER2-targeted drugs.",
+    "source": "kleenable"
+  }
+]
