@@ -2,6 +2,8 @@
 
 Ground truth for every coding agent working in this repo. Read this file fully before writing code. If something here conflicts with a teammate's chat message, this file wins until it is edited. `README.md` (formerly `HUMAN.md`) is the same plan drawn for people.
 
+> **Current phase (2026-11-14): proofs of concept, not a working app.** We are on a time crunch. Prefer a small runnable script that proves one idea on real data (put it in `poc/`, read committed files, write to `data/output/`) over app features. The Next.js dashboard (section 8) is parked. The plan is being revised by the team; until this file is edited again, the contracts and rules below still hold.
+
 ## 1. Mission
 
 Build a hackathon proof of concept that takes one cancer biomarker and returns a ranked list of clinical trials, with the evidence behind each rank visible in a dashboard.
@@ -171,6 +173,9 @@ data/
   cache/               stage outputs (committed, so the demo works offline)
   output/rankings.json
 frontend/
+keenable/              literature notes found with Keenable (all interactors, lab-evidence subset)
+clinical_trials/       trial material (e.g. the open HER2 trials spreadsheet)
+poc/                   proof-of-concept scripts: read committed data, write data/output/
 lanes/                 one folder per lane (A-literature, B-genomic, C-trials-scoring, D-dashboard): scope, status, hand-offs
 tests/                 one offline smoke test per stage
 ```
@@ -178,6 +183,8 @@ tests/                 one offline smoke test per stage
 Setup: `uv venv --python 3.11 .venv && uv pip install --python .venv/bin/python -r requirements.txt`.
 
 ## 8. Dashboard requirements
+
+*Parked during the proof-of-concept phase. The API (`backend/app/main.py`) stays; the web page is not being built.*
 
 - One page. Header shows the biomarker card (Breast, HER2, ERBB2, IHC ± ISH).
 - Main view is the ranked trial list: rank, title, phase, status, score bar, matched gene chips, link to the trial.

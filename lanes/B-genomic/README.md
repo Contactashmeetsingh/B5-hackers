@@ -4,7 +4,8 @@
 
 **Status, 2026-11-14:**
 - **Done:** all 7 GI tasks (v1) on real model output, 30/30 genes, 0 mocks. The tasks are expression, find genes + expression, promoter, chromatin, enhancer, splice and annotation. The committed `genomic_context.json` and today's `rankings.json` are built from it.
-- **Next:** add per-task scores to the ranking rows. Then compare the GI ranking against the Keenable literature evidence (see Status below).
+- **Done:** GI vs Keenable comparison, as PoC 3 (`poc/compare_glm_vs_keenable.py` → `data/output/glm_vs_keenable.md`). The rank correlation is about 0, so the two are complementary signals.
+- **Next:** add per-task scores to the ranking rows.
 
 Lane B asks the Genomic Intelligence (GI) DNA language models what the genome says about each candidate gene, and turns the answers into a `model_score` in [0, 1]. Stage 4 blends that score 50/50 with the literature (Keenable) evidence.
 
@@ -137,7 +138,7 @@ From `sanity_check.json` and the runs so far, all on 2026-11-14 on the demo key.
 - [x] Biology sanity checks (`sanity_check.py`)
 - [x] **v1 full run:** 30/30 genes with all 7 tasks, committed, and stages 4–6 re-run
 - [ ] **Per-task scores in the ranking:** add `model_task_scores` to `gene_scores.json` and `matched_genes`, plus a per-trial breakdown of which task drove `genomic_match`. This touches lane C's `scoring.py` and `backend/schemas.py`, so agree it with lane C.
-- [ ] **Compare GI with Keenable:** a new output, `data/output/model_vs_literature.json`. It will hold the per-gene literature rank (Keenable paper count) vs the GI model rank, the Spearman correlation overall and per task, and agreement labels: both high, literature only, model only, both low. Plus `GET /api/comparison` for lane D.
+- [x] **Compare GI with Keenable** (PoC 3): `poc/compare_glm_vs_keenable.py` writes `data/output/glm_vs_keenable.{json,md}`, with the Spearman correlation overall and per task and the agreement quadrants. There is no API endpoint, because the UI is parked.
 - [ ] Get our own `GI_API_KEY` for private quota (same code path)
 - [ ] Decide with the team whether `"liver tissue"` is the best reference context, and whether to keep the enhancer task
 - [ ] Later: GI's `genomic-variant-interpretation` workflow scores patient VCF variants near TSSs. It is REST-only and not finished on GI's side, but it is the path from "reference genome" to "this patient".

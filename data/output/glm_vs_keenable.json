@@ -1,0 +1,578 @@
+{
+  "summary": {
+    "n_genes": 29,
+    "excluded": [
+      "ERBB2"
+    ],
+    "spearman_glm_vs_keenable_papers": -0.203,
+    "spearman_glm_vs_keenable_lab_papers": 0.047,
+    "spearman_glm_vs_evidence_tier": 0.115,
+    "spearman_per_task_vs_lab_papers": {
+      "expression": {
+        "n": 29,
+        "rho": 0.212
+      },
+      "composite": {
+        "n": 18,
+        "rho": 0.103
+      },
+      "promoter": {
+        "n": 29,
+        "rho": -0.123
+      },
+      "chromatin": {
+        "n": 29,
+        "rho": -0.084
+      },
+      "enhancer": {
+        "n": 29,
+        "rho": 0.142
+      },
+      "splice": {
+        "n": 28,
+        "rho": 0.133
+      },
+      "annotation": {
+        "n": 29,
+        "rho": 0.103
+      }
+    },
+    "mean_glm_physical_binding": 0.598,
+    "mean_glm_functional_only": 0.564,
+    "significance_note": "n=29: |rho| must exceed ~0.37 for p < 0.05",
+    "quadrants": {
+      "literature-high / GLM-high": [
+        "HSP90AA1",
+        "ERBB3",
+        "SHC1",
+        "STAT3",
+        "GRB7"
+      ],
+      "literature-high / GLM-low": [
+        "ERBIN",
+        "EGFR",
+        "PTEN",
+        "SRC",
+        "MUC4",
+        "IGF1R"
+      ],
+      "literature-low / GLM-high": [
+        "PSMD3",
+        "STARD3",
+        "ITGB4",
+        "JUN",
+        "SLC9A3R1",
+        "ATM",
+        "STUB1",
+        "TNF",
+        "EZR",
+        "PTPN1"
+      ],
+      "literature-low / GLM-low": [
+        "PGAP3",
+        "PIK3CA",
+        "MEMO1",
+        "ESR1",
+        "CDCP1",
+        "VAV2",
+        "PGR",
+        "ERBB4"
+      ]
+    }
+  },
+  "genes": [
+    {
+      "gene": "HSP90AA1",
+      "glm_score": 0.8534,
+      "glm_task_scores": {
+        "expression": 0.7589,
+        "composite": 1.0,
+        "promoter": 0.9844,
+        "chromatin": 0.7872,
+        "enhancer": 0.4447,
+        "splice": 1.0,
+        "annotation": 0.9985
+      },
+      "keenable_papers": 7,
+      "keenable_lab_papers": 4,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-high"
+    },
+    {
+      "gene": "PSMD3",
+      "glm_score": 0.7874,
+      "glm_task_scores": {
+        "expression": 0.5176,
+        "composite": 0.5993,
+        "promoter": 0.9763,
+        "chromatin": 1.0,
+        "enhancer": 0.4224,
+        "splice": 1.0,
+        "annotation": 0.9965
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "ERBB3",
+      "glm_score": 0.7405,
+      "glm_task_scores": {
+        "expression": 0.4547,
+        "composite": 0.5931,
+        "promoter": 0.9302,
+        "chromatin": 0.617,
+        "enhancer": 0.593,
+        "splice": 1.0,
+        "annotation": 0.9957
+      },
+      "keenable_papers": 8,
+      "keenable_lab_papers": 3,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-high"
+    },
+    {
+      "gene": "STARD3",
+      "glm_score": 0.7103,
+      "glm_task_scores": {
+        "expression": 0.5291,
+        "composite": 0.5411,
+        "promoter": 0.99,
+        "chromatin": 0.7021,
+        "enhancer": 0.2181,
+        "splice": 1.0,
+        "annotation": 0.9918
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "ITGB4",
+      "glm_score": 0.7034,
+      "glm_task_scores": {
+        "expression": 0.8703,
+        "composite": 0.6825,
+        "promoter": 0.9891,
+        "chromatin": 0.1489,
+        "enhancer": 0.2723,
+        "splice": 0.9655,
+        "annotation": 0.9948
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "JUN",
+      "glm_score": 0.6857,
+      "glm_task_scores": {
+        "expression": 0.844,
+        "composite": 0.8689,
+        "promoter": 0.3121,
+        "chromatin": 0.7872,
+        "enhancer": 0.3028,
+        "splice": null,
+        "annotation": 0.9992
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "SLC9A3R1",
+      "glm_score": 0.6839,
+      "glm_task_scores": {
+        "expression": 0.5092,
+        "composite": 0.6516,
+        "promoter": 0.9883,
+        "chromatin": 0.5745,
+        "enhancer": 0.0749,
+        "splice": 1.0,
+        "annotation": 0.9888
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "ATM",
+      "glm_score": 0.6607,
+      "glm_task_scores": {
+        "expression": 0.1552,
+        "composite": 0.2074,
+        "promoter": 0.9743,
+        "chromatin": 0.8511,
+        "enhancer": 0.4947,
+        "splice": 1.0,
+        "annotation": 0.9425
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "STUB1",
+      "glm_score": 0.6553,
+      "glm_task_scores": {
+        "expression": 0.5103,
+        "composite": 0.5168,
+        "promoter": 0.8577,
+        "chromatin": 0.5957,
+        "enhancer": 0.1923,
+        "splice": 0.9167,
+        "annotation": 0.998
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "TNF",
+      "glm_score": 0.6368,
+      "glm_task_scores": {
+        "expression": 0.2209,
+        "composite": 0.062,
+        "promoter": 0.9015,
+        "chromatin": 0.2766,
+        "enhancer": 1.0,
+        "splice": 1.0,
+        "annotation": 0.9963
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "SHC1",
+      "glm_score": 0.6324,
+      "glm_task_scores": {
+        "expression": 0.4354,
+        "composite": 0.4653,
+        "promoter": 0.9193,
+        "chromatin": 0.2979,
+        "enhancer": 0.3131,
+        "splice": 1.0,
+        "annotation": 0.996
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 3,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-high"
+    },
+    {
+      "gene": "EZR",
+      "glm_score": 0.5919,
+      "glm_task_scores": {
+        "expression": 0.595,
+        "composite": null,
+        "promoter": 0.99,
+        "chromatin": 0.5532,
+        "enhancer": 0.4132,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "STAT3",
+      "glm_score": 0.5896,
+      "glm_task_scores": {
+        "expression": 0.4277,
+        "composite": null,
+        "promoter": 0.9882,
+        "chromatin": 0.8511,
+        "enhancer": 0.2704,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-high / GLM-high"
+    },
+    {
+      "gene": "GRB7",
+      "glm_score": 0.5876,
+      "glm_task_scores": {
+        "expression": 0.5159,
+        "composite": 0.4533,
+        "promoter": 0.9753,
+        "chromatin": 0.1277,
+        "enhancer": 0.1735,
+        "splice": 1.0,
+        "annotation": 0.8679
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 3,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-high"
+    },
+    {
+      "gene": "PTPN1",
+      "glm_score": 0.5729,
+      "glm_task_scores": {
+        "expression": 0.3275,
+        "composite": null,
+        "promoter": 0.9909,
+        "chromatin": 0.7234,
+        "enhancer": 0.3953,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-high"
+    },
+    {
+      "gene": "ERBIN",
+      "glm_score": 0.5599,
+      "glm_task_scores": {
+        "expression": 0.299,
+        "composite": 0.4503,
+        "promoter": 0.9747,
+        "chromatin": 0.6809,
+        "enhancer": 0.5093,
+        "splice": 1.0,
+        "annotation": 0.0049
+      },
+      "keenable_papers": 2,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "PGAP3",
+      "glm_score": 0.5549,
+      "glm_task_scores": {
+        "expression": 0.3678,
+        "composite": null,
+        "promoter": 0.9485,
+        "chromatin": 0.7234,
+        "enhancer": 0.2896,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "PIK3CA",
+      "glm_score": 0.5541,
+      "glm_task_scores": {
+        "expression": 0.2668,
+        "composite": null,
+        "promoter": 0.9889,
+        "chromatin": 0.6809,
+        "enhancer": 0.3883,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 4,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "MEMO1",
+      "glm_score": 0.5379,
+      "glm_task_scores": {
+        "expression": 0.3606,
+        "composite": 0.3584,
+        "promoter": 0.9891,
+        "chromatin": 0.6596,
+        "enhancer": 0.3511,
+        "splice": 0.3333,
+        "annotation": 0.7133
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "EGFR",
+      "glm_score": 0.5111,
+      "glm_task_scores": {
+        "expression": 0.3923,
+        "composite": 0.4744,
+        "promoter": 0.975,
+        "chromatin": 0.2553,
+        "enhancer": 0.0834,
+        "splice": 1.0,
+        "annotation": 0.397
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "PTEN",
+      "glm_score": 0.5011,
+      "glm_task_scores": {
+        "expression": 0.3591,
+        "composite": 0.5016,
+        "promoter": 0.7213,
+        "chromatin": 0.617,
+        "enhancer": 0.3024,
+        "splice": 1.0,
+        "annotation": 0.0061
+      },
+      "keenable_papers": 2,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "SRC",
+      "glm_score": 0.4987,
+      "glm_task_scores": {
+        "expression": 0.6228,
+        "composite": null,
+        "promoter": 0.9884,
+        "chromatin": 0.2979,
+        "enhancer": 0.0832,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 3,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "MUC4",
+      "glm_score": 0.4919,
+      "glm_task_scores": {
+        "expression": 0.2379,
+        "composite": null,
+        "promoter": 0.9443,
+        "chromatin": 0.0,
+        "enhancer": 0.7694,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 2,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "ESR1",
+      "glm_score": 0.4801,
+      "glm_task_scores": {
+        "expression": 0.243,
+        "composite": null,
+        "promoter": 0.9461,
+        "chromatin": 0.1915,
+        "enhancer": 0.4997,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "CDCP1",
+      "glm_score": 0.479,
+      "glm_task_scores": {
+        "expression": 0.7327,
+        "composite": null,
+        "promoter": 0.9894,
+        "chromatin": 0.1277,
+        "enhancer": 0.0242,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "VAV2",
+      "glm_score": 0.4507,
+      "glm_task_scores": {
+        "expression": 0.3084,
+        "composite": null,
+        "promoter": 0.9739,
+        "chromatin": 0.383,
+        "enhancer": 0.0391,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 1,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "IGF1R",
+      "glm_score": 0.4171,
+      "glm_task_scores": {
+        "expression": 0.5362,
+        "composite": 0.4323,
+        "promoter": 0.9531,
+        "chromatin": 0.4255,
+        "enhancer": 0.5318,
+        "splice": 0.0,
+        "annotation": 0.0407
+      },
+      "keenable_papers": 3,
+      "keenable_lab_papers": 2,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-high / GLM-low"
+    },
+    {
+      "gene": "PGR",
+      "glm_score": 0.4111,
+      "glm_task_scores": {
+        "expression": 0.0931,
+        "composite": null,
+        "promoter": 0.8682,
+        "chromatin": 0.1489,
+        "enhancer": 0.3564,
+        "splice": 1.0,
+        "annotation": 0.0
+      },
+      "keenable_papers": 2,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 2,
+      "agreement": "literature-low / GLM-low"
+    },
+    {
+      "gene": "ERBB4",
+      "glm_score": 0.2911,
+      "glm_task_scores": {
+        "expression": 0.0842,
+        "composite": 0.0,
+        "promoter": 0.7728,
+        "chromatin": 0.1702,
+        "enhancer": 0.0,
+        "splice": 1.0,
+        "annotation": 0.0106
+      },
+      "keenable_papers": 2,
+      "keenable_lab_papers": 1,
+      "keenable_evidence_tier": 1,
+      "agreement": "literature-low / GLM-low"
+    }
+  ]
+}

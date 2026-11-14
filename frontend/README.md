@@ -1,3 +1,5 @@
+> **Parked (2026-11-14):** the proof-of-concept phase does not build this page. This folder keeps the spec, types and fetch helpers in case we come back to it.
+
 # frontend (lane D, stage 7 UI)
 
 The dashboard: one page that shows the biomarker and the ranked trials, with the evidence behind each rank. Spec: AGENTS.md section 8. Lane notes: [`lanes/D-dashboard/README.md`](../lanes/D-dashboard/README.md).

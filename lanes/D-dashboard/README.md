@@ -1,3 +1,5 @@
+> **Parked (2026-11-14):** we are building proofs of concept, not a working app, so the web page below is on hold. The API is done and tested, and stays.
+
 # Lane D: Dashboard (stage 7)
 
 **Owner:** TBD
