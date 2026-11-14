@@ -7,15 +7,30 @@
       "alteration": "overexpression / amplification",
       "status": "positive",
       "variant": null,
-      "aliases": ["HER2", "ERBB2", "HER-2", "HER2/neu", "ErbB-2", "ErbB2"]
+      "aliases": [
+        "HER2",
+        "ERBB2",
+        "HER-2",
+        "HER2/neu",
+        "ErbB-2",
+        "ErbB2",
+        "human epidermal growth factor receptor 2",
+        "human epidermal growth factor receptor-2",
+        "human epidermal growth factor 2"
+      ]
     },
     {
-      "biomarker": "PIK3CA mutation",
+      "biomarker": "PIK3CA",
       "gene": "PIK3CA",
       "alteration": "mutation",
       "status": "mutated",
       "variant": null,
-      "aliases": ["PIK3CA", "PI3KCA", "p110alpha", "p110α"]
+      "aliases": [
+        "PIK3CA",
+        "PI3KCA",
+        "p110alpha",
+        "p110α"
+      ]
     }
   ],
   "sequence_gene": "ERBB2"

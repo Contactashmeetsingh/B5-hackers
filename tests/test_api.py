@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from backend import config
 from backend.app.main import app
 from backend.pipeline.biomarker import load_biomarker
-from backend.schemas import GeneCandidate, GenomicContext, Paper, Trial
+from backend.schemas import GeneCandidate, GenomicContext, Paper, Trial, TrialMatch
 from backend.store import write_rows
 
 
@@ -22,6 +22,12 @@ def test_api_smoke(tmp_path, monkeypatch):
             GenomicContext(gene="MOCKGENE", model_task="mock", model_output={"expression": 0.5}, model_score=0.5, source="mock")
         ],
         "TRIALS_PATH": [Trial(nct_id="MOCK-NCT-0001", title="Mock trial", source="mock")],
+        "TRIAL_MATCHES_PATH": [
+            TrialMatch(nct_id="MOCK-NCT-0002", title="Second", tier="partial_only", tier_rank=3, tier_label="x",
+                       source="mock", mock_inputs=["trials"]),
+            TrialMatch(nct_id="MOCK-NCT-0001", title="Mock trial", tier="requires_all_biomarkers", tier_rank=1,
+                       tier_label="Requires HER2 positive and PIK3CA mutated", source="mock", mock_inputs=["trials"]),
+        ],
     }
     for attr, rows in fixtures.items():
         path = tmp_path / f"{attr.lower()}.json"
@@ -42,6 +48,10 @@ def test_api_smoke(tmp_path, monkeypatch):
     assert trials.status_code == 200
     assert trials.headers["access-control-allow-origin"] == "http://localhost:3000"
     assert trials.json()[0]["nct_id"] == "MOCK-NCT-0001"  # plain array, per the contract
+
+    matches = client.get("/api/trial-matches").json()
+    assert [m["nct_id"] for m in matches] == ["MOCK-NCT-0001", "MOCK-NCT-0002"]  # by tier_rank
+    assert matches[0]["mock_inputs"] == ["trials"]
 
     assert client.get("/api/genes").json()[0]["gene"] == "MOCKGENE"
     assert client.get("/api/rankings").status_code == 404  # the scoring system is gone

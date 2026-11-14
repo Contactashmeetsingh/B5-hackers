@@ -83,6 +83,15 @@ class DrugTarget(_Row):
     source: str
 
 
+class GeneTerm(_Row):
+    """A clinical word that stands for one or more genes in trial text, e.g. "ER" -> ESR1."""
+
+    term: str
+    genes: list[str]
+    note: str = ""      # what the term means, shown in the match reason
+    source: str
+
+
 # ---------------------------------------------------------------- stage 1
 class Paper(_Sourced):
     paper_id: str
@@ -91,6 +100,9 @@ class Paper(_Sourced):
     url: str = ""
     genes_mentioned: list[str] = Field(default_factory=list)
     relation: str = ""
+    # True: checked by hand against PubMed (the curated set). False: a Keenable search
+    # hit merged automatically, not yet reviewed. None: unknown (old rows, mocks).
+    reviewed: Optional[bool] = None
 
 
 # ---------------------------------------------------------------- stage 2
@@ -123,3 +135,67 @@ class Trial(_Sourced):
     conditions: list[str] = Field(default_factory=list)
     interventions: list[str] = Field(default_factory=list)
     eligibility_text: str = ""
+
+
+# ---------------------------------------------------------------- stage 4 (Approach 1 result)
+class BiomarkerMatch(_Row):
+    """How one profile biomarker shows up in a trial's criteria."""
+
+    biomarker: str            # e.g. "HER2"
+    gene: str                 # e.g. "ERBB2"
+    status: str               # the profile's value, e.g. "positive"
+    # required:  the criteria ask for the profile's status ("HER2-positive", "PIK3CA-mutated")
+    # mentioned: named, but not as a requirement (or both positive and negative cohorts)
+    # conflicts: the criteria ask for the opposite ("HER2-negative", "HER2-low", "PIK3CA wild-type")
+    # absent:    not named anywhere in the trial text
+    requirement: str
+    evidence_text: str = ""   # the criteria line that triggered the call
+    via_drugs: list[str] = Field(default_factory=list)  # trial drugs that target this gene
+
+
+class DrugHit(_Row):
+    drug: str
+    matched_name: str          # the spelling found in the trial text, e.g. "Phesgo"
+    target_genes: list[str]
+    source: str = ""           # where the drug -> target pair comes from
+
+
+class RelatedGene(_Row):
+    """A literature-linked gene (from gene_candidates.json) that the trial involves."""
+
+    gene: str
+    how: list[str]                                        # e.g. ['"HR" named in the criteria', "target of fulvestrant"]
+    paper_ids: list[str] = Field(default_factory=list)    # papers that link it to the biomarker
+
+
+class SupportingPaper(_Row):
+    paper_id: str
+    title: str
+    year: Optional[int] = None
+    url: str = ""
+    relation: str = ""
+    source: str = ""
+    reviewed: Optional[bool] = None
+    why: list[str] = Field(default_factory=list)          # e.g. ["links PIK3CA to HER2", "mentions alpelisib"]
+
+
+class TrialMatch(_Row):
+    nct_id: str
+    title: str
+    phase: str = ""
+    status: str = ""
+    url: str = ""
+    tier: str                  # see backend/pipeline/matching.py TIERS
+    tier_rank: int             # 1 = closest fit to the profile; order only, not a score
+    tier_label: str
+    biomarker_matches: list[BiomarkerMatch] = Field(default_factory=list)
+    drugs: list[DrugHit] = Field(default_factory=list)
+    related_genes: list[RelatedGene] = Field(default_factory=list)
+    unchecked_criteria: list[str] = Field(default_factory=list)  # genes whose status the criteria name but the profile lacks
+    supporting_papers: list[SupportingPaper] = Field(default_factory=list)
+    supporting_papers_total: int = 0   # before the MAX_SUPPORTING_PAPERS cut
+    explanation: str = ""
+    evidence_type: str = "research-paper evidence + trial criteria"
+    source: str = ""                   # the trial's own source, copied from trials.json
+    mock_inputs: list[str] = Field(default_factory=list)  # non-empty -> UI shows "mock data"
+

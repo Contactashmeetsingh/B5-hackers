@@ -6,7 +6,7 @@
 
 Approach 1 (papers -> trials):   1 literature, 3 trials, 4 trial matching
 Approach 2 (DNA model -> atlas): 2 gene candidates, 5 genomic intelligence, 6 atlas mapping
-Stages 4 and 6 are added to STAGES as they are built (HUMAN.md tracks progress).
+Stage 6 is added to STAGES once it is built (HUMAN.md tracks progress).
 The old scoring stages (gene scores, trial rankings) were removed.
 
 Stage modules are imported inside each stage function, so a module that is
@@ -37,6 +37,11 @@ def _trials(refresh: bool):
     return trials.run(refresh=refresh), config.TRIALS_PATH
 
 
+def _matching(refresh: bool):
+    from backend.pipeline import matching
+    return matching.run(refresh=refresh), config.TRIAL_MATCHES_PATH
+
+
 def _genomic(refresh: bool):
     from backend.pipeline import genomic
     return genomic.run(refresh=refresh), config.GENOMIC_CONTEXT_PATH
@@ -47,14 +52,17 @@ STAGES = [
     (1, "literature", _literature),
     (2, "gene candidates", _targets),
     (3, "trials", _trials),
+    (4, "trial matching", _matching),
     (5, "genomic intel", _genomic),
 ]
 
 
 def _mock_count(rows) -> str:
-    """How many rows are mock. "-" if rows carry no source."""
+    """How many rows are mock (or rest on mock inputs). "-" if rows carry no source."""
     if rows and hasattr(rows[0], "is_mock"):
         return str(sum(r.is_mock for r in rows))
+    if rows and hasattr(rows[0], "mock_inputs"):
+        return str(sum(bool(r.mock_inputs) for r in rows))
     if rows and hasattr(rows[0], "mock_inputs"):
         return str(sum(bool(r.mock_inputs) for r in rows))
     return "-"

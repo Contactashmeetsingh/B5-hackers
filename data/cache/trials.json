@@ -1,95 +1,114 @@
 [
   {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0001",
-    "title": "[MOCK] Trastuzumab plus alpelisib in HER2-positive, PIK3CA-mutant breast cancer",
-    "phase": "Phase 2",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "trastuzumab",
-      "alpelisib"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-positive disease (IHC 3+ or ISH amplified)\n* PIK3CA mutation on tumour testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
-  },
-  {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0002",
-    "title": "[MOCK] Trastuzumab deruxtecan in HER2-low breast cancer",
+    "source": "curated spreadsheet",
+    "nct_id": "NCT05894239",
+    "title": "INAVO122: inavolisib + Phesgo vs placebo + Phesgo (PIK3CA-mutated HER2+ locally advanced/metastatic)",
     "phase": "Phase 3",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "trastuzumab deruxtecan"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-low disease (IHC 1+, or IHC 2+ with negative ISH)\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05894239",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "Central testing must document HER2-positivity and a PIK3CA-mutated tumor",
+    "sponsor": "Hoffmann-La Roche",
+    "curated_markers": "PIK3CA",
+    "status_detail": "Recruiting",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   },
   {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0003",
-    "title": "[MOCK] Endocrine therapy plus HER2-targeted antibody in ER-positive, HER2-positive breast cancer",
+    "source": "curated spreadsheet",
+    "nct_id": "NCT05306041",
+    "title": "GeparPiPPa: neoadjuvant endocrine therapy +/- inavolisib in HER2+, HR+, PIK3CA-mutant early breast cancer",
     "phase": "Phase 2",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "fulvestrant",
-      "trastuzumab"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* Estrogen receptor positive and HER2-positive disease\n* ESR1 mutation status known\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05306041",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation",
+    "sponsor": "German Breast Group (GBG)",
+    "curated_markers": "PIK3CA, ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting; est. completion Jan 2027; Europe-based sites",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   },
   {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0004",
-    "title": "[MOCK] Dual antibody blockade with a tissue biomarker sub-study in HER2-amplified breast cancer",
+    "source": "curated spreadsheet",
+    "nct_id": "NCT05230810",
+    "title": "Tucatinib + alpelisib (+ fulvestrant in HR+) in PIK3CA-mutant HER2+ locally advanced/metastatic breast cancer",
+    "phase": "Phase 1b/2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05230810",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease",
+    "sponsor": "Criterium, Inc.",
+    "curated_markers": "PIK3CA (ESR1/PGR for HR+ cohort)",
+    "status_detail": "Recruiting",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
+  },
+  {
+    "source": "curated spreadsheet",
+    "nct_id": "NCT04569747",
+    "title": "Adjuvant endocrine therapy + pertuzumab/trastuzumab (Phesgo) in stage I HR+/HER2+ breast cancer",
     "phase": "Phase 2",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "pertuzumab",
-      "trastuzumab"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2 gene amplification by ISH\n* Tumour tissue available for ERBB3 and GRB7 testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT04569747",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity",
+    "sponsor": "Dana-Farber Cancer Institute",
+    "curated_markers": "ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting; ~375 patients; est. completion 2030",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   },
   {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0005",
-    "title": "[MOCK] Tucatinib in previously treated HER2-positive metastatic breast cancer",
+    "source": "curated spreadsheet",
+    "nct_id": "NCT07506876",
+    "title": "Concurrent neoadjuvant chemo/endocrine therapy in HER2+ breast cancer",
     "phase": "Phase 2",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "tucatinib"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* HER2-positive disease by local testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07506876",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC",
+    "sponsor": "Legacy Health System",
+    "curated_markers": "ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting; 4 sites (Oregon); record updated May 2026",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   },
   {
-    "source": "mock",
-    "nct_id": "MOCK-NCT-0006",
-    "title": "[MOCK] Supervised exercise programme for people with breast cancer",
-    "phase": "N/A",
-    "status": "RECRUITING",
-    "url": "",
-    "conditions": [
-      "Breast Cancer"
-    ],
-    "interventions": [
-      "Supervised exercise programme"
-    ],
-    "eligibility_text": "Illustrative mock criteria only.\nInclusion Criteria:\n* Any hormone receptor or HER2 status\n* Optional archival tissue for PTEN testing\nExclusion Criteria:\n* Illustrative mock exclusion criterion."
+    "source": "curated spreadsheet",
+    "nct_id": "NCT07610720",
+    "title": "DALTINA: dalpiciclib + anti-HER2 + endocrine therapy maintenance in HR+/HER2+ metastatic breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07610720",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75",
+    "sponsor": "Sun Yat-sen University",
+    "curated_markers": "ESR1 (ER), PGR (PR)",
+    "status_detail": "Recruiting; 1 site (Guangzhou, China); est. completion 2028",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
+  },
+  {
+    "source": "curated spreadsheet",
+    "nct_id": "NCT07612215",
+    "title": "Elacestrant + trastuzumab + pertuzumab in advanced triple-positive breast cancer",
+    "phase": "Phase 1/2",
+    "status": "Recruiting (record updated Jun 2026)",
+    "url": "https://clinicaltrials.gov/study/NCT07612215",
+    "conditions": [],
+    "interventions": [],
+    "eligibility_text": "Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups",
+    "sponsor": "NYU Langone Health",
+    "curated_markers": "ESR1 (ER, incl. mutant and wild-type cohorts), PGR (PR)",
+    "status_detail": "Recruiting (record updated Jun 2026)",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions."
   }
 ]

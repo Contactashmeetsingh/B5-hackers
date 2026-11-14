@@ -7,5 +7,9 @@
   {"drug": "lapatinib", "aliases": ["Tykerb"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
   {"drug": "neratinib", "aliases": ["Nerlynx"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
   {"drug": "margetuximab", "aliases": ["Margenza"], "target_genes": ["ERBB2"], "source": "AGENTS.md section 9 seed"},
-  {"drug": "alpelisib", "aliases": ["Piqray"], "target_genes": ["PIK3CA"], "source": "AGENTS.md section 5 example"}
+  {"drug": "pertuzumab, trastuzumab and hyaluronidase", "aliases": ["Phesgo"], "target_genes": ["ERBB2"], "source": "FDA label (PHESGO): fixed-dose pertuzumab + trastuzumab, both HER2-directed antibodies"},
+  {"drug": "alpelisib", "aliases": ["Piqray"], "target_genes": ["PIK3CA"], "source": "FDA label (PIQRAY): kinase inhibitor of PI3K-alpha, the PIK3CA gene product"},
+  {"drug": "inavolisib", "aliases": ["Itovebi", "GDC-0077"], "target_genes": ["PIK3CA"], "source": "FDA label (ITOVEBI): inhibitor of PI3K-alpha, the PIK3CA gene product"},
+  {"drug": "fulvestrant", "aliases": ["Faslodex"], "target_genes": ["ESR1"], "source": "FDA label (FASLODEX): estrogen receptor antagonist"},
+  {"drug": "elacestrant", "aliases": ["Orserdu"], "target_genes": ["ESR1"], "source": "FDA label (ORSERDU): estrogen receptor antagonist"}
 ]

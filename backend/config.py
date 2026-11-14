@@ -27,6 +27,8 @@ OUTPUT_DIR = DATA_DIR / "output"
 PROFILE_PATH = INPUT_DIR / "profile.json"            # the biomarker profile (HER2 + PIK3CA)
 BIOMARKER_PATH = INPUT_DIR / "biomarker.json"        # model conditioning for the sequence gene (ERBB2)
 DRUG_TARGETS_PATH = INPUT_DIR / "drug_targets.json"
+GENE_TERMS_PATH = INPUT_DIR / "gene_terms.json"      # clinical words for genes: ER -> ESR1, HR -> ESR1 + PGR
+TRIALS_SPREADSHEET_PATH = ROOT / "clinical_trials" / "her2_candidate_marker_open_trials.xlsx"
 ATLAS_PATH = ROOT / "pancancer_atlas" / "her2_dependence_tcga_pancan.csv"  # TCGA PanCancer Atlas table
 
 PAPERS_PATH = CACHE_DIR / "papers.json"                    # stage 1
@@ -40,17 +42,35 @@ GENE_ASSOCIATIONS_PATH = OUTPUT_DIR / "gene_associations.json"  # stage 6, Appro
 # Stage 5 keeps every raw Genomic Intelligence response, one file per gene, so a
 # re-run never re-spends quota and every score can be traced to a request_id.
 GI_RAW_DIR = CACHE_DIR / "genomic_raw"
+# Stage 1 provenance: every Keenable query and the hits it returned (no snippets).
+KEENABLE_QUERY_LOG_PATH = CACHE_DIR / "keenable_queries.json"
 # Optional stage 5 extra: genes found in the biomarker's own amplicon region.
 AMPLICON_CONTEXT_PATH = CACHE_DIR / "amplicon_context.json"
 
-# ---------------------------------------------------------------- trial snapshot (stage 3)
+# ---------------------------------------------------------------- trials (stage 3)
+# The hard-coded trial list is the curated spreadsheet (one row per trial).
+TRIALS_SHEET = "Open HER2 trials"
+TRIALS_NOTES_SHEET = "Notes"            # its "Data caveat" row is attached to every trial
+# Optional ClinicalTrials.gov snapshot (`trials --ctgov`); not used by the demo.
 TRIALS_CONDITION_TEMPLATE = "{tissue} Cancer"                  # ClinicalTrials.gov query.cond
 TRIALS_PAGE_SIZE = 100
 TRIALS_MAX_STUDIES = 200
 TRIALS_STATUSES = ["RECRUITING", "NOT_YET_RECRUITING"]         # only trials a user could still join
 
+# ---------------------------------------------------------------- trial matching (stage 4)
+STATUS_WINDOW_CHARS = 25       # a status word ("positive", "mutated") must follow the biomarker within this many chars, same line
+NEGATION_LOOKBACK_CHARS = 15   # "no", "without", "negative for" this close before the biomarker negates it
+MAX_SUPPORTING_PAPERS = 6      # papers shown per trial (the total found is always reported too)
+
 # ---------------------------------------------------------------- Keenable (stage 1)
 KEENABLE_API_KEY = os.getenv("KEENABLE_API_KEY") or None
+KEENABLE_BASE_URL = "https://api.keenable.ai"
+KEENABLE_APP_TITLE = "biomarker-research-poc"   # X-Keenable-Title for keyless calls: a generic app name, nothing personal
+KEENABLE_TIMEOUT_S = 60.0
+KEENABLE_MAX_RETRIES = 3
+KEENABLE_BACKOFF_CAP_S = 30.0
+KEENABLE_PUBMED_SITE = "pubmed.ncbi.nlm.nih.gov"  # papers only: every hit then has a PMID
+KEENABLE_MAX_RESULTS = 10                          # per query (API allows 1-50)
 
 # ---------------------------------------------------------------- Genomic Intelligence (stage 5)
 # Transport: the hosted MCP server. It answers anonymously on a shared demo key;

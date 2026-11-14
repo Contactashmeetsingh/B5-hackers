@@ -1,0 +1,956 @@
+[
+  {
+    "nct_id": "NCT05894239",
+    "title": "INAVO122: inavolisib + Phesgo vs placebo + Phesgo (PIK3CA-mutated HER2+ locally advanced/metastatic)",
+    "phase": "Phase 3",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05894239",
+    "tier": "requires_all_biomarkers",
+    "tier_rank": 1,
+    "tier_label": "Requires HER2 positive and PIK3CA mutated",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "Central testing must document HER2-positivity and a PIK3CA-mutated tumor",
+        "via_drugs": [
+          "Phesgo"
+        ]
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "required",
+        "evidence_text": "Central testing must document HER2-positivity and a PIK3CA-mutated tumor",
+        "via_drugs": [
+          "inavolisib"
+        ]
+      }
+    ],
+    "drugs": [
+      {
+        "drug": "pertuzumab, trastuzumab and hyaluronidase",
+        "matched_name": "Phesgo",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "FDA label (PHESGO): fixed-dose pertuzumab + trastuzumab, both HER2-directed antibodies"
+      },
+      {
+        "drug": "inavolisib",
+        "matched_name": "inavolisib",
+        "target_genes": [
+          "PIK3CA"
+        ],
+        "source": "FDA label (ITOVEBI): inhibitor of PI3K-alpha, the PIK3CA gene product"
+      }
+    ],
+    "related_genes": [],
+    "unchecked_criteria": [],
+    "supporting_papers": [
+      {
+        "paper_id": "41143603",
+        "title": "PI3Kα Inhibitor and Degrader Inavolisib Can Co-opt FGFR2 to Enhance Responses in Patients with __PIK3CA__-Mutated Solid Tumors and in Preclinical Models",
+        "year": 2025,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41143603/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names inavolisib",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "27358378",
+        "title": "PIK3CA mutations in HER2-positive breast cancer: an ongoing conundrum.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27358378/",
+        "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "23940356",
+        "title": "Mutant PIK3CA accelerates HER2-driven transgenic mammary tumors and induces resistance to combinations of anti-HER2 therapies.",
+        "year": 2013,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23940356/",
+        "relation": "An activating PIK3CA mutation speeds up HER2-driven mouse mammary tumors and makes them resistant to combined anti-HER2 therapy.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "38837894",
+        "title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "36516931",
+        "title": "Predictive and prognostic value of PIK3CA mutations in HER2-positive breast cancer treated with tyrosine kinase inhibitors: A systematic review and meta-analysis",
+        "year": 2022,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36516931/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "33947692",
+        "title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+        "year": 2021,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 36,
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"Central testing must document HER2-positivity and a PIK3CA-mutated tumor\". Drugs named: Phesgo (targets ERBB2) and inavolisib (targets PIK3CA). 36 supporting paper(s); for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "Hoffmann-La Roche",
+    "status_detail": "Recruiting",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "Central testing must document HER2-positivity and a PIK3CA-mutated tumor"
+  },
+  {
+    "nct_id": "NCT05306041",
+    "title": "GeparPiPPa: neoadjuvant endocrine therapy +/- inavolisib in HER2+, HR+, PIK3CA-mutant early breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05306041",
+    "tier": "requires_all_biomarkers",
+    "tier_rank": 1,
+    "tier_label": "Requires HER2 positive and PIK3CA mutated",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation",
+        "via_drugs": []
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "required",
+        "evidence_text": "HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation",
+        "via_drugs": [
+          "inavolisib"
+        ]
+      }
+    ],
+    "drugs": [
+      {
+        "drug": "inavolisib",
+        "matched_name": "inavolisib",
+        "target_genes": [
+          "PIK3CA"
+        ],
+        "source": "FDA label (ITOVEBI): inhibitor of PI3K-alpha, the PIK3CA gene product"
+      }
+    ],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "\"ER\" (estrogen receptor (ESR1)) named in the trial text",
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"PR\" (progesterone receptor (PGR)) named in the trial text",
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "41143603",
+        "title": "PI3Kα Inhibitor and Degrader Inavolisib Can Co-opt FGFR2 to Enhance Responses in Patients with __PIK3CA__-Mutated Solid Tumors and in Preclinical Models",
+        "year": 2025,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41143603/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names inavolisib",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27358378",
+        "title": "PIK3CA mutations in HER2-positive breast cancer: an ongoing conundrum.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27358378/",
+        "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "27800032",
+        "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+        "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      },
+      {
+        "paper_id": "23940356",
+        "title": "Mutant PIK3CA accelerates HER2-driven transgenic mammary tumors and induces resistance to combinations of anti-HER2 therapies.",
+        "year": 2013,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23940356/",
+        "relation": "An activating PIK3CA mutation speeds up HER2-driven mouse mammary tumors and makes them resistant to combined anti-HER2 therapy.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "38837894",
+        "title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 39,
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation\". Drugs named: inavolisib (targets PIK3CA). It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 39 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "German Breast Group (GBG)",
+    "status_detail": "Recruiting; est. completion Jan 2027; Europe-based sites",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation"
+  },
+  {
+    "nct_id": "NCT05230810",
+    "title": "Tucatinib + alpelisib (+ fulvestrant in HR+) in PIK3CA-mutant HER2+ locally advanced/metastatic breast cancer",
+    "phase": "Phase 1b/2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT05230810",
+    "tier": "requires_all_biomarkers",
+    "tier_rank": 1,
+    "tier_label": "Requires HER2 positive and PIK3CA mutated",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease",
+        "via_drugs": [
+          "tucatinib"
+        ]
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "required",
+        "evidence_text": "HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease",
+        "via_drugs": [
+          "alpelisib"
+        ]
+      }
+    ],
+    "drugs": [
+      {
+        "drug": "tucatinib",
+        "matched_name": "tucatinib",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "AGENTS.md section 9 seed"
+      },
+      {
+        "drug": "alpelisib",
+        "matched_name": "alpelisib",
+        "target_genes": [
+          "PIK3CA"
+        ],
+        "source": "FDA label (PIQRAY): kinase inhibitor of PI3K-alpha, the PIK3CA gene product"
+      },
+      {
+        "drug": "fulvestrant",
+        "matched_name": "fulvestrant",
+        "target_genes": [
+          "ESR1"
+        ],
+        "source": "FDA label (FASLODEX): estrogen receptor antagonist"
+      }
+    ],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text",
+          "target of fulvestrant"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "33947692",
+        "title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+        "year": 2021,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names alpelisib",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "35465733",
+        "title": "A phase III trial of alpelisib + trastuzumab ± fulvestrant versus trastuzumab + chemotherapy in HER2+ PIK3CA-mutated breast cancer",
+        "year": null,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35465733/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names alpelisib",
+          "title names fulvestrant",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "31256368",
+        "title": "Alpelisib: First Global Approval",
+        "year": 2019,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31256368/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA, PTEN.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names alpelisib",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "29850984",
+        "title": "Phase I study of alpelisib (BYL-719) and trastuzumab emtansine (T-DM1) in HER2-positive metastatic breast cancer (MBC) after trastuzumab and taxane therapy",
+        "year": 2018,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29850984/",
+        "relation": "Keenable search hit, not yet reviewed by the team. Its PubMed title or summary names ERBB2, PIK3CA.",
+        "source": "keenable",
+        "reviewed": false,
+        "why": [
+          "title names alpelisib",
+          "links PIK3CA to HER2"
+        ]
+      },
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27358378",
+        "title": "PIK3CA mutations in HER2-positive breast cancer: an ongoing conundrum.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27358378/",
+        "relation": "Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links PIK3CA to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 40,
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease\". Drugs named: tucatinib (targets ERBB2), alpelisib (targets PIK3CA) and fulvestrant (targets ESR1). It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 40 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "Criterium, Inc.",
+    "status_detail": "Recruiting",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease"
+  },
+  {
+    "nct_id": "NCT04569747",
+    "title": "Adjuvant endocrine therapy + pertuzumab/trastuzumab (Phesgo) in stage I HR+/HER2+ breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT04569747",
+    "tier": "partial_plus_related",
+    "tier_rank": 2,
+    "tier_label": "Requires HER2 positive, plus related genes",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity",
+        "via_drugs": [
+          "trastuzumab",
+          "pertuzumab",
+          "Phesgo"
+        ]
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "absent",
+        "evidence_text": "",
+        "via_drugs": []
+      }
+    ],
+    "drugs": [
+      {
+        "drug": "trastuzumab",
+        "matched_name": "trastuzumab",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "AGENTS.md section 9 seed"
+      },
+      {
+        "drug": "pertuzumab",
+        "matched_name": "pertuzumab",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "AGENTS.md section 9 seed"
+      },
+      {
+        "drug": "pertuzumab, trastuzumab and hyaluronidase",
+        "matched_name": "Phesgo",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "FDA label (PHESGO): fixed-dose pertuzumab + trastuzumab, both HER2-directed antibodies"
+      }
+    ],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "\"ER\" (estrogen receptor (ESR1)) named in the trial text",
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"PR\" (progesterone receptor (PGR)) named in the trial text",
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27800032",
+        "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+        "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      },
+      {
+        "paper_id": "39062682",
+        "title": "A Comprehensive Review of HER2 in Cancer Biology and Therapeutics.",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39062682/",
+        "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 3,
+    "explanation": "Its criteria require HER2 positive: \"HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and Phesgo (targets ERBB2). It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "Dana-Farber Cancer Institute",
+    "status_detail": "Recruiting; ~375 patients; est. completion 2030",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity"
+  },
+  {
+    "nct_id": "NCT07506876",
+    "title": "Concurrent neoadjuvant chemo/endocrine therapy in HER2+ breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07506876",
+    "tier": "partial_plus_related",
+    "tier_rank": 2,
+    "tier_label": "Requires HER2 positive, plus related genes",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC",
+        "via_drugs": []
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "absent",
+        "evidence_text": "",
+        "via_drugs": []
+      }
+    ],
+    "drugs": [],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "\"hormone receptor\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"hormone receptor\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27800032",
+        "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+        "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      },
+      {
+        "paper_id": "39062682",
+        "title": "A Comprehensive Review of HER2 in Cancer Biology and Therapeutics.",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39062682/",
+        "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 3,
+    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "Legacy Health System",
+    "status_detail": "Recruiting; 4 sites (Oregon); record updated May 2026",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC"
+  },
+  {
+    "nct_id": "NCT07610720",
+    "title": "DALTINA: dalpiciclib + anti-HER2 + endocrine therapy maintenance in HR+/HER2+ metastatic breast cancer",
+    "phase": "Phase 2",
+    "status": "Recruiting",
+    "url": "https://clinicaltrials.gov/study/NCT07610720",
+    "tier": "partial_plus_related",
+    "tier_rank": 2,
+    "tier_label": "Requires HER2 positive, plus related genes",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75",
+        "via_drugs": []
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "absent",
+        "evidence_text": "",
+        "via_drugs": []
+      }
+    ],
+    "drugs": [],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"HR\" (hormone receptor, i.e. ER and/or PR) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27800032",
+        "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+        "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      },
+      {
+        "paper_id": "39062682",
+        "title": "A Comprehensive Review of HER2 in Cancer Biology and Therapeutics.",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39062682/",
+        "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 3,
+    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "Sun Yat-sen University",
+    "status_detail": "Recruiting; 1 site (Guangzhou, China); est. completion 2028",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75"
+  },
+  {
+    "nct_id": "NCT07612215",
+    "title": "Elacestrant + trastuzumab + pertuzumab in advanced triple-positive breast cancer",
+    "phase": "Phase 1/2",
+    "status": "Recruiting (record updated Jun 2026)",
+    "url": "https://clinicaltrials.gov/study/NCT07612215",
+    "tier": "partial_plus_related",
+    "tier_rank": 2,
+    "tier_label": "Requires HER2 positive, plus related genes",
+    "biomarker_matches": [
+      {
+        "biomarker": "HER2",
+        "gene": "ERBB2",
+        "status": "positive",
+        "requirement": "required",
+        "evidence_text": "Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups",
+        "via_drugs": [
+          "trastuzumab",
+          "pertuzumab"
+        ]
+      },
+      {
+        "biomarker": "PIK3CA",
+        "gene": "PIK3CA",
+        "status": "mutated",
+        "requirement": "absent",
+        "evidence_text": "",
+        "via_drugs": []
+      }
+    ],
+    "drugs": [
+      {
+        "drug": "trastuzumab",
+        "matched_name": "trastuzumab",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "AGENTS.md section 9 seed"
+      },
+      {
+        "drug": "pertuzumab",
+        "matched_name": "pertuzumab",
+        "target_genes": [
+          "ERBB2"
+        ],
+        "source": "AGENTS.md section 9 seed"
+      },
+      {
+        "drug": "elacestrant",
+        "matched_name": "elacestrant",
+        "target_genes": [
+          "ESR1"
+        ],
+        "source": "FDA label (ORSERDU): estrogen receptor antagonist"
+      }
+    ],
+    "related_genes": [
+      {
+        "gene": "ESR1",
+        "how": [
+          "ESR1 named in the trial text",
+          "\"ER\" (estrogen receptor (ESR1)) named in the trial text",
+          "\"triple-positive\" (ER-, PR- and HER2-positive) named in the trial text",
+          "target of elacestrant"
+        ],
+        "paper_ids": [
+          "39062682",
+          "37258523",
+          "27800032"
+        ]
+      },
+      {
+        "gene": "PGR",
+        "how": [
+          "\"PR\" (progesterone receptor (PGR)) named in the trial text",
+          "\"triple-positive\" (ER-, PR- and HER2-positive) named in the trial text"
+        ],
+        "paper_ids": [
+          "39062682",
+          "27800032"
+        ]
+      }
+    ],
+    "unchecked_criteria": [
+      "ESR1",
+      "PGR"
+    ],
+    "supporting_papers": [
+      {
+        "paper_id": "37258523",
+        "title": "Estrogen/HER2 receptor crosstalk in breast cancer: combination therapies to improve outcomes for patients with hormone receptor-positive/HER2-positive breast cancer.",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37258523/",
+        "relation": "Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ]
+      },
+      {
+        "paper_id": "27800032",
+        "title": "Resistance to therapy in estrogen receptor positive and human epidermal growth factor 2 positive breast cancers: progress with latest therapeutic strategies.",
+        "year": 2016,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27800032/",
+        "relation": "Review of endocrine and anti-HER2 resistance in ER-positive/HER2-positive breast cancer, driven by ER-HER2 pathway crosstalk.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      },
+      {
+        "paper_id": "39062682",
+        "title": "A Comprehensive Review of HER2 in Cancer Biology and Therapeutics.",
+        "year": 2024,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39062682/",
+        "relation": "Review: HER2 is the preferred heterodimer partner of EGFR, HER3 and HER4, and its downstream signaling boosts estrogen and progesterone receptor activity.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2",
+          "links PGR to HER2"
+        ]
+      }
+    ],
+    "supporting_papers_total": 3,
+    "explanation": "Its criteria require HER2 positive: \"Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and elacestrant (targets ESR1). It also involves ESR1 and PGR, which our papers link to HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s); for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "evidence_type": "research-paper evidence + trial criteria",
+    "source": "curated spreadsheet",
+    "mock_inputs": [],
+    "sponsor": "NYU Langone Health",
+    "status_detail": "Recruiting (record updated Jun 2026)",
+    "status_as_of": "2026-11-14",
+    "status_caveat": "Statuses come from trial listings and aggregator pages, since ClinicalTrials.gov pages would not load. Confirm each status on ClinicalTrials.gov before relying on it. Not for medical decisions.",
+    "eligibility_text": "Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups"
+  }
+]

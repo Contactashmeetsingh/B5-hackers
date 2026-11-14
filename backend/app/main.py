@@ -28,6 +28,7 @@ from backend.schemas import (
     Paper,
     Profile,
     Trial,
+    TrialMatch,
 )
 from backend.store import read_rows
 
@@ -40,6 +41,7 @@ CONTRACTS: dict[str, tuple[str, type[BaseModel], str, str]] = {
     "papers": ("PAPERS_PATH", Paper, "stage 1 (literature)", "python -m backend.pipeline.literature"),
     "gene_candidates": ("GENE_CANDIDATES_PATH", GeneCandidate, "stage 2 (gene candidates)", "python -m backend.pipeline.targets"),
     "trials": ("TRIALS_PATH", Trial, "stage 3 (trials)", "python -m backend.pipeline.trials"),
+    "trial_matches": ("TRIAL_MATCHES_PATH", TrialMatch, "stage 4 (trial matching)", "python -m backend.pipeline.matching"),
     "genomic_context": ("GENOMIC_CONTEXT_PATH", GenomicContext, "stage 5 (genomic intelligence)", "python -m backend.pipeline.genomic"),
 }
 # Contracts whose rows carry a `source` field, checked by /api/meta for mocks.
@@ -134,6 +136,8 @@ def health() -> dict[str, Any]:
 def meta() -> Meta:
     """Global mock flag for the UI banner. Looks only at files that exist."""
     mocks: set[str] = set()
+    for row in _load_if_present("trial_matches"):
+        mocks.update(row.mock_inputs)
     for name in SOURCED:
         if any(row.is_mock for row in _load_if_present(name)):
             mocks.add(name)
@@ -167,6 +171,14 @@ def biomarker() -> Biomarker:
 def trials() -> list[Trial]:
     """The hard-coded clinical trials dataset, as stage 3 wrote it."""
     return _load("trials")
+
+
+@app.get("/api/trial-matches", response_model=list[TrialMatch])
+def trial_matches() -> list[TrialMatch]:
+    """Approach 1 result: every trial with its tier, the criteria text that matched,
+    drugs, related genes, supporting papers and a plain-language explanation.
+    Sorted by tier_rank (an order of tiers, not a score); dataset order inside a tier."""
+    return sorted(_load("trial_matches"), key=lambda r: r.tier_rank)
 
 
 @app.get("/api/genes", response_model=list[GeneCandidate])
