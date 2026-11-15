@@ -18,7 +18,8 @@ Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast
 
 ## How it works
 
-<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/c6d19239-32f9-443d-9e29-85b84f0aa475" />
+<!-- <img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/c6d19239-32f9-443d-9e29-85b84f0aa475" /> -->
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/7e601996-d723-48b5-bd3e-f28abaeacbad" />
 
 ```
 ```
