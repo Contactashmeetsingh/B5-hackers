@@ -1,9 +1,16 @@
 # B5 Hackers: a personalized medicine research platform (proof of concept)
+Team ID: B5
+Sponsor prizes: Genomic Intelligence, Keenable
+
+Problem: 
+
+A patient comes in with a breast cancer diagnosis, specifically with HER2 mutation. They want to be matched to clinical trials based on their genomic sequencing, which shows other biomarkers associated with HER2. This way the patient can be matched to the best possible clinical trial for them. 
 
 Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast cancer, and it does two things side by side:
 
 1. **Finds research and clinical trials.** It retrieves papers about those biomarkers and matches them to a fixed list of clinical trials, with a plain-language reason for each match.
 2. **Finds related genes.** It runs the HER2 DNA sequence through a DNA model (Genomic Intelligence) and checks the predicted genes against TCGA Pan-Cancer Atlas patient data.
+3. Can find alternative treatment regimens by cross-referencing existing research with genomic intelligence. 
 
 > **Research prototype. Not medical advice.** It helps researchers explore; it does not recommend treatment. Following up on the genes it reports is the researcher's job.
 
@@ -12,33 +19,8 @@ Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast
 ## How it works
 
 ```mermaid
-flowchart TD
-    IN["You provide<br/>HER2 positive + PIK3CA mutated<br/>and a HER2 DNA sequence"]
+<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/3ff51c27-dfac-4f7a-b2f9-9e69e2fe0709" />
 
-    subgraph A1["Approach 1: papers → clinical trials"]
-        K["Keenable<br/>finds research papers"]
-        T["Clinical trials<br/>fixed list of 10 open HER2 trials"]
-        M["Matching<br/>which trials need these biomarkers,<br/>and why, with the papers behind it"]
-        K --> M
-        T --> M
-    end
-
-    subgraph A2["Approach 2: DNA model → patient atlas"]
-        G["Genomic Intelligence<br/>genes found in the HER2 sequence<br/>+ genes that look like ERBB2 to the model"]
-        P["Pan-Cancer Atlas<br/>what TCGA patient data says<br/>about each gene"]
-        G --> P
-    end
-
-    IN --> K
-    IN --> T
-    IN --> G
-    K -. "genes named in papers" .-> G
-
-    M --> O1["Potentially relevant trials"]
-    P --> O2["Gene associations"]
-    O1 --> UI["Platform (API + frontend)"]
-    O2 --> UI
-```
 
 The two results are shown separately and never merged into one number. **There is no scoring system**: trials are grouped by simple rules (for example "requires both HER2 and PIK3CA"), not ranked by a score.
 
