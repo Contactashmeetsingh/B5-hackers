@@ -1,2 +1,3 @@
 *.tsbuildinfo
 /public/research-data.json
+/out

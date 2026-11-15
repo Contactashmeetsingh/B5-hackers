@@ -16,7 +16,9 @@ Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast
 
 ## Run the app (branch `main_with_newapp`)
 
-You need Python 3.11+ and Node.js 20.9+. Everything runs offline from the data in this repo; no API keys are needed.
+**Online (no install):** https://contactashmeetsingh.github.io/B5-hackers/ (works once GitHub Pages is enabled; see "Hosting" below).
+
+**On your computer:** you need Python 3.11+ and Node.js 20.9+. Everything runs offline from the data in this repo; no API keys are needed.
 
 ```bash
 git clone -b main_with_newapp https://github.com/Contactashmeetsingh/B5-hackers.git
@@ -31,7 +33,7 @@ This branch adds **PSMD3** as a HER2-associated gene: the Trial matches tab show
 
 ## How it works
 
-<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/c6d19239-32f9-443d-9e29-85b84f0aa475" />
+<img width="1672" alt="How it works: HER2-only trial matching, and HER2 + gene mutations (e.g. PIK3CA, PSMD3) refined with Genomic Intelligence and Keenable into better-matched trials or alternative drug options" src="assets/github_image.png" />
 
 What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 
@@ -88,3 +90,15 @@ npm run dev
 ```
 
 Open http://127.0.0.1:3000. No running API is required for the saved-data preview. See [`frontend/README.md`](frontend/README.md) for API mode and production checks.
+
+## Hosting (GitHub Pages)
+
+`.github/workflows/deploy-pages.yml` builds a static copy of the app (`GITHUB_PAGES=true npm run build` → `frontend/out`) on every push to `main_with_newapp` and publishes it to https://contactashmeetsingh.github.io/B5-hackers/. The static site uses the saved repository data only (no API, no keys).
+
+One-time setup by a repository admin:
+
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+2. **Settings → Environments → github-pages → Deployment branches:** allow `main_with_newapp` (by default only `main` may deploy).
+3. Re-run the "Deploy app to GitHub Pages" workflow (Actions tab) or push to `main_with_newapp`.
+
+The published site is public: anyone with the link can use it.

@@ -60,7 +60,8 @@ export async function loadResearch(): Promise<{
   notices: string[];
 }> {
   if (!API_BASE) {
-    const response = await fetch("/research-data.json", {
+    const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+    const response = await fetch(`${base}/research-data.json`, {
       signal: AbortSignal.timeout(10000),
     });
     if (!response.ok)
