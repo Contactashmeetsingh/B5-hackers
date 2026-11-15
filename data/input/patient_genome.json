@@ -1,0 +1,13 @@
+{
+  "patient_id": "DEMO-HER2-001",
+  "synthetic": true,
+  "note": "Demo patient. Not a real person. Whole-genome input is stubbed: for now the genome is given as a list of gene names. Later, set genome.format to \"vcf\" and genome.vcf_path to a VCF file.",
+  "tissue": "Breast",
+  "her2_status": "positive",
+  "genome": {
+    "type": "whole_genome",
+    "format": "gene_names",
+    "vcf_path": null,
+    "mutated_genes": ["ERBB2"]
+  }
+}
