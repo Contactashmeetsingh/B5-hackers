@@ -1,10 +1,6 @@
-# B5 Research frontend
+# B5 Research — Plan B
 
-A responsive research workspace with an editorial landing page, an original animated DNA-inspired canvas illustration, and an ivory / deep plum / coral palette. The visual reference is [Isomorphic Labs](https://www.isomorphiclabs.com/); the implementation, assets, copy, and branding are original to this project. The helix is decorative, not a model prediction.
-
-## Run locally
-
-Requires Node 20.9+ and the repo's Python `.venv` with `requirements.txt` installed.
+A self-contained, two-stage research demo. All displayed research is prepared from `main` commit `3f9c5be`, bundled in `data/plan-b.json`, and rendered immediately. No backend, Python virtualenv, API key, or live sponsor service is required to run it.
 
 ```bash
 cd frontend
@@ -12,45 +8,32 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. `predev` exports the current saved research data through the backend's validated store into the ignored `public/research-data.json`. This does not call external services or rerun the research pipeline. The page identifies its source as **Repository snapshot**. Run `npm run snapshot` after pipeline changes, then reload the page.
+Open http://127.0.0.1:3000. `npm run build` builds the production version; `npm start` serves it. `npm run typecheck` checks TypeScript.
 
-## What works
+## The two stages
 
-- Shared biomarker profile, with all biomarker names and statuses read from data.
-- Trial matching: backend tiers and dataset order, search by title/ID/drug/related gene, tier filter, expandable criteria, drugs and targets, unchecked criteria, supporting papers, registry links, and status dates.
-- Gene explorer: searchable literature-derived candidates, model readouts, reference coordinates, linked papers, and mock provenance. Candidate genes are not presented as predicted related genes.
-- Paper library: title/ID/gene search, reviewed-only filtering, source links, and visible unreviewed / opposite-status labels.
-- Keyboard-operable tabs, responsive navigation, reduced-motion support, loading, no-results, failure, and retry states.
-- Research disclaimer and mock provenance. No blended scores or ranking numbers.
+1. **HER2 positive:** show potential matches from `clinical_trials/trial_ops.csv`. Of 528 records, 47 explicitly list HER2-positive disease in the title or therapeutic area, including mixed-cohort studies with a visible caveat. Search, phase filters, pagination, and registry details are interactive.
+2. **HER2 positive + PIK3CA mutation:** show the saved Keenable interaction evidence and the Genomic Intelligence promoter/chromatin readouts, followed by the more specific trial shortlist. INAVO122 / NCT05894239 explicitly names both statuses in its title. Twelve other dual-tagged studies need further review; 15 listing a different HER2 status are kept out of the shortlist.
 
-**Pending backend work:** gene-association output, locus and similar-profile result groups, Atlas mapping, and FASTA upload. These are visibly marked as pending. There is no pretend upload or run-analysis button.
+Trial relevance comes from the saved trial record, not from a model readout. The literature identifies functional evidence in mouse models; commentary/review/pathway papers are labelled separately. No blended scores are displayed.
 
-## Connect to FastAPI
+**Source limitation:** `genomic_intelligence/her2_genes_dna_context_ranking.md` explicitly excludes expression predictions. The UI therefore shows PIK3CA promoter probability (0.9889), chromatin calls (41), and provenance, and says **overexpression is not established**. It does not relabel these as expression or mutation-specific predictions.
 
-Create `frontend/.env.local` (ignored):
+## Data provenance
 
-```text
-NEXT_PUBLIC_API_BASE=http://127.0.0.1:8000
-```
+`data/plan-b.json` records the exact source commit and links to the frozen source files:
 
-Start `.venv/bin/uvicorn backend.app.main:app` from the repo root and restart the frontend. It uses `/api/profile`, `/api/trial-matches`, `/api/papers`, `/api/genes`, `/api/genes/{gene}`, `/api/meta`, and `/api/health`. Independent endpoint failures show notices while available result sets remain usable. API mode does not silently substitute saved data. Remove the variable to return to snapshot mode.
+- `clinical_trials/trial_ops.csv`
+- `keenable/her2_interactors_experimental.md`
+- `keenable/her2_interactors_literature.md`
+- `genomic_intelligence/her2_genes_dna_context_ranking.csv` and `.md`
 
-## Verify
+To intentionally refresh the prepared data, fetch `origin/main` and run `npm run refresh:plan-b` (Python 3 standard library only). Review the output and resulting JSON before committing. This is a preparation helper; it never runs during `dev` or `build`.
 
-```bash
-npm run build
-npm run typecheck
-```
+The earlier platform API helpers and snapshot exporter remain available for the main platform work, but Plan B does not import them. `NEXT_PUBLIC_API_BASE` has no effect on Plan B.
 
-Production build also exports a fresh snapshot. `npm start` serves the completed build. Browser smoke verification covers trial expansion/search/tier filters, gene details, paper review filters, keyboard tabs, mobile navigation, 320/390/768px overflow, and data failure/retry.
+## Visuals and verification
 
-## Files
+Ivory, plum, and coral styling; original animated DNA-inspired canvas art; responsive profile controls; instant stage transitions; expandable source evidence; keyboard-operable controls; reduced-motion support. Manrope is self-hosted under the included SIL OFL license. The helix is conceptual artwork, not a model output.
 
-- `app/page.tsx`: landing page and interactive workspace.
-- `app/globals.css`: responsive styles and motion preferences.
-- `components/helix.tsx`: procedural canvas art; animation pauses offscreen and respects reduced motion.
-- `lib/types.ts`, `lib/api.ts`: v2 API types and data-loading helpers.
-- `scripts/export_preview.py`: validated preview export; no research contract is changed.
-- `public/fonts/`: self-hosted Manrope, licensed under SIL OFL (included).
-
-No deployment or external hosting is configured. Research prototype. Not medical advice.
+Browser smoke checks cover both profiles, pagination, search and phase filters, evidence expansion, provenance, exclusions, 320/390/768px layouts, and operation without research API calls. Research prototype. Not medical advice.

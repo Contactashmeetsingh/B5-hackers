@@ -131,3 +131,16 @@ Built at Contactashmeetsingh's explicit request. Original ivory/plum/coral styli
 - Verified production build and browser smoke checks: trial expansion/search/filter, gene details, reviewed-paper filtering, keyboard tabs, mobile navigation, no horizontal overflow at 320/390/768px, unavailable-data/retry states, and no browser runtime errors.
 
 Run `cd frontend && npm ci && npm run dev`, then open http://127.0.0.1:3000. The Python `.venv` must be set up first. See `frontend/README.md`. Backend Tasks 3 and 4 remain open.
+
+## Active frontend: Plan B (2026-11-14)
+
+Contactashmeetsingh changed the frontend assignment to a fast, polished, saved-data demo. Branch: `frontend/plan-b`. Backend platform work above is preserved.
+
+- Source: `origin/main` at `3f9c5be`; prepared data committed in `frontend/data/plan-b.json`.
+- Stage 1: 47 records explicitly listing HER2-positive disease (including labelled mixed cohorts) from 528 CSV records.
+- Stage 2: HER2 + PIK3CA experimental-literature context, promoter probability 0.9889 and 41 chromatin calls, then INAVO122 as the one title explicitly naming both statuses. Twelve uncertain records and 15 opposite-status records are separated.
+- The GI file deliberately excludes expression predictions, so the interface says overexpression is not established. No fabricated expression result.
+- Removed the Python/backend dependency from frontend startup and build; no live service calls or artificial processing delays.
+- Production build, TypeScript check, and browser smoke checks pass: both profile flows, search/phase filters, pagination, evidence expansion, 320/390/768px layouts, and zero research API calls.
+
+Run `cd frontend && npm ci && npm run dev`. The visual design remains ivory/plum/coral with the original animated DNA-inspired artwork.

@@ -4,6 +4,18 @@ Ground truth for every coding agent working in this repo. Read this file fully b
 
 > **Architecture v2 (2026-11-14): personalized medicine research platform.** The project no longer ranks trials with scores. It takes a biomarker profile (HER2 + PIK3CA) and runs two parallel approaches: papers → clinical trial matching (**built**), and DNA model → Pan-Cancer Atlas gene mapping (Task 3). **The old scoring system is removed** (section 5). Build status per task is in `HUMAN.md`; rows marked *planned* below are not built yet.
 
+## Active frontend override: Plan B (2026-11-14)
+
+Contactashmeetsingh explicitly changed the frontend task to a self-contained saved-data demo. This section takes precedence over the platform architecture below for `frontend/` only. Preserve backend work.
+
+- Use the saved files from `main`, pinned to a commit in `frontend/data/plan-b.json`; no backend, live sponsor calls, Python virtualenv, or run-time research pipeline is required.
+- Stage 1: HER2 positive → potentially matching trials from `clinical_trials/trial_ops.csv`.
+- Stage 2: HER2 positive + PIK3CA mutation → the Keenable interaction evidence, saved Genomic Intelligence readouts, and a narrower trial shortlist from that same CSV.
+- A smooth interactive presentation is authorized. Keep a discreet saved-data/source label; do not imply live searches or model execution.
+- The main GI table explicitly omits expression predictions: show promoter/chromatin readouts and “overexpression not established,” never relabel them as expression predictions.
+- HER2-negative/low studies are not HER2-positive matches. Marker tags alone do not confirm eligibility. Keep ambiguous and mixed-cohort candidates separate from titles explicitly naming both profile statuses.
+- Preserve evidence labels and the research disclaimer. No treatment recommendations or invented results.
+
 ## 1. Mission
 
 Build a working proof of concept of a personalized medicine **research** platform. Given a biomarker profile, it:

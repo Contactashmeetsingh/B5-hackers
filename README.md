@@ -109,11 +109,9 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 - **Small commits on a branch, then a pull request.**
 - It is a research prototype, not medical advice.
 
-## Frontend preview
+## Plan B frontend
 
-The frontend uses an ivory, plum, and coral palette with an animated DNA-inspired illustration. Its trial, gene, and paper views use the repository data and preserve evidence and mock labels. Atlas mapping and FASTA upload remain pending.
-
-After Python setup above, run:
+The active frontend is a self-contained two-stage demo built from saved `main` data. HER2 shows potentially matching trials from `clinical_trials/trial_ops.csv`; adding PIK3CA reveals the saved Keenable interaction evidence, Genomic Intelligence promoter/chromatin results, and the more specific trial shortlist. The genomic source excludes expression predictions, which the UI states explicitly.
 
 ```bash
 cd frontend
@@ -121,4 +119,4 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3000. No running API is required for the saved-data preview. See [`frontend/README.md`](frontend/README.md) for API mode and production checks.
+Open http://127.0.0.1:3000. No backend or Python environment is required. The earlier backend architecture above is preserved for the main platform. See [`frontend/README.md`](frontend/README.md) for Plan B sources and verification.

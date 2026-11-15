@@ -1,37 +1,24 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useId, useState } from "react";
 import { Helix } from "@/components/helix";
-import { loadResearch } from "@/lib/api";
-import type {
-  GeneCandidate,
-  Paper,
-  ResearchData,
-  TrialMatch,
-} from "@/lib/types";
+import data from "@/data/plan-b.json";
+import "./plan-b.css";
 
-type Tab = "trials" | "genes" | "papers";
-const DISCLAIMER =
-  "Research prototype. Not medical advice. No treatment recommendations.";
-
-function Arrow({
-  diagonal = false,
-  className = "",
-}: {
-  diagonal?: boolean;
-  className?: string;
-}) {
+type Trial = (typeof data.baseline)[number];
+const disclaimer =
+  "Research prototype. Not medical advice. Matches do not establish eligibility or recommend treatment.";
+function Arrow({ up = false }: { up?: boolean }) {
   return (
     <svg
-      className={className}
-      width="20"
-      height="20"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
     >
       <path
-        d={diagonal ? "M5 19 19 5M5 5h14v14" : "M4 12h15m-6-6 6 6-6 6"}
+        d={up ? "M5 19 19 5M5 5h14v14" : "M4 12h15m-6-6 6 6-6 6"}
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -71,341 +58,317 @@ function Mark() {
     </svg>
   );
 }
-function Badge({
-  children,
-  tone = "neutral",
-}: {
-  children: React.ReactNode;
-  tone?: string;
-}) {
-  return <span className={`badge ${tone}`}>{children}</span>;
-}
-function ExternalLink({
-  href,
-  children,
-}: {
-  href?: string;
-  children: React.ReactNode;
-}) {
-  return href && /^https?:\/\//.test(href) ? (
-    <a href={href} target="_blank" rel="noreferrer" className="external-link">
-      {children}
-      <Arrow diagonal />
-    </a>
-  ) : (
-    <span>{children}</span>
-  );
-}
-function PaperItem({ paper }: { paper: Paper }) {
+function Link({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <article className="paper-item">
-      <div className="paper-meta">
-        <span>
-          {paper.year ?? "Year unavailable"}{" "}
-          <span className="dot-separator">·</span> {paper.paper_id}
-        </span>
-        <Badge tone={paper.reviewed ? "sage" : "amber"}>
-          {paper.reviewed ? "Reviewed" : "Not yet reviewed"}
-        </Badge>
-        {paper.source === "mock" && <Badge tone="amber">Mock data</Badge>}
-      </div>
-      <h4>
-        <ExternalLink href={paper.url}>{paper.title}</ExternalLink>
-      </h4>
-      <p>{paper.relation}</p>
-      {paper.opposite_status && paper.opposite_status.length > 0 && (
-        <p className="caution">
-          Studies a different biomarker status:{" "}
-          {paper.opposite_status.join(", ")}
-        </p>
-      )}
-      {paper.why && paper.why.length > 0 && (
-        <p className="paper-why">Included because: {paper.why.join("; ")}</p>
-      )}
-    </article>
+    <a className="external-link" href={href} target="_blank" rel="noreferrer">
+      {children}
+      <Arrow up />
+    </a>
   );
 }
-function TrialRow({ trial }: { trial: TrialMatch }) {
-  const [expanded, setExpanded] = useState(false);
+function TrialCard({
+  trial,
+  personalized = false,
+}: {
+  trial: Trial;
+  personalized?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
   const id = useId();
   return (
-    <article className={`trial-row ${expanded ? "expanded" : ""}`}>
+    <article className={`pb-trial ${personalized ? "pb-featured" : ""}`}>
+      {personalized && (
+        <div className="pb-match-ribbon">
+          <span>✳</span> BOTH BIOMARKERS EXPLICITLY NAMED{" "}
+          <span className="pb-match-type">Trial-record evidence</span>
+        </div>
+      )}
       <button
-        className="trial-summary"
-        aria-expanded={expanded}
+        className="pb-trial-button"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
         aria-controls={id}
-        onClick={() => setExpanded(!expanded)}
       >
-        <span className="trial-id">
-          {trial.nct_id}
-          <span>{trial.phase || "Phase not listed"}</span>
-        </span>
-        <span className="trial-main">
-          <span className="trial-title">{trial.title}</span>
-          <span className="trial-chips">
-            {trial.biomarker_matches.map((match) => (
-              <Badge
-                key={match.gene}
-                tone={
-                  match.requirement === "required"
-                    ? "sage"
-                    : match.requirement === "conflicts"
-                      ? "amber"
-                      : "neutral"
-                }
-              >
-                {match.biomarker}{" "}
-                <span className="chip-status">{match.requirement}</span>
-              </Badge>
-            ))}
-            {(trial.mock_inputs.length > 0 || trial.source === "mock") && (
-              <Badge tone="amber">Mock inputs</Badge>
-            )}
+        <span className="pb-trial-top">
+          <span className="eyebrow">{trial.nct_id}</span>
+          <span>{trial.phase_label}</span>
+          <span className="pb-status">
+            <i />
+            {trial.status_label}
           </span>
         </span>
-        <span className="trial-status">
-          <span className="status-dot" />
-          {trial.status || "Status unavailable"}
+        {personalized && <span className="pb-trial-nickname">INAVO122</span>}
+        <span className="pb-trial-title">{trial.title}</span>
+        <span className="pb-trial-bottom">
+          <span className="pb-chip-list">
+            <span className="badge sage">
+              HER2-positive{" "}
+              {trial.her2_context === "mixed" ? "cohort" : "listed"}
+            </span>
+            {trial.markers.includes("PIK3CA") && (
+              <span className={`badge ${personalized ? "rose" : "neutral"}`}>
+                PIK3CA {personalized ? "mutation named" : "mentioned"}
+              </span>
+            )}
+            {trial.her2_context === "mixed" && (
+              <span className="badge amber">
+                Multiple cohorts · check criteria
+              </span>
+            )}
+          </span>
+          <span className="pb-expand">
+            {open ? "Close details −" : "Explore trial +"}
+          </span>
         </span>
-        <span className="expand-icon">{expanded ? "−" : "+"}</span>
       </button>
-      {expanded && (
-        <div id={id} className="trial-detail">
-          <div className="detail-intro">
-            <span className="eyebrow">WHY THIS TRIAL APPEARS</span>
-            <p>{trial.explanation}</p>
-            <Badge tone="rose">Research-paper evidence + trial criteria</Badge>
-          </div>
-          <div className="criteria-grid">
-            {trial.biomarker_matches.map((match) => (
-              <div key={match.gene}>
-                <span className="eyebrow">
-                  {match.biomarker} · {match.requirement}
-                </span>
-                <p>
-                  {match.evidence_text ||
-                    "No requirement recorded for this biomarker."}
-                </p>
-              </div>
-            ))}
-          </div>
-          {trial.unchecked_criteria.length > 0 && (
-            <div className="notice">
-              Still to check: {trial.unchecked_criteria.join(", ")} status is
-              not recorded in this profile. A biomarker match does not establish
-              full trial eligibility.
+      {personalized && (
+        <div className="pb-match-reason">
+          <span className="eyebrow">WHY THIS IS A CLOSER MATCH</span>
+          <p>
+            The trial title names both <strong>PIK3CA-mutated</strong> and{" "}
+            <strong>HER2-positive</strong> disease, and evaluates inavolisib
+            with Phesgo. This is a direct match to the two selected biomarker
+            descriptions.
+          </p>
+          <span>
+            The literature and model results add research context; the trial
+            record determines the match.
+          </span>
+        </div>
+      )}
+      {open && (
+        <div className="pb-trial-details" id={id}>
+          <div className="pb-detail-grid">
+            <div>
+              <span className="eyebrow">THERAPEUTIC AREA</span>
+              <p>{trial.therapeutic_area}</p>
             </div>
-          )}
-          {trial.drugs.length > 0 && (
-            <div className="drug-list">
-              <span className="eyebrow">DRUGS & TARGETS</span>
-              {trial.drugs.map((drug) => (
-                <span key={drug.drug}>
-                  {drug.matched_name}{" "}
-                  <span className="muted">
-                    → {drug.target_genes.join(", ")}
-                  </span>
-                </span>
-              ))}
+            <div>
+              <span className="eyebrow">RECORD DETAILS</span>
+              <p>
+                {trial.locations} locations · {trial.countries}
+                <br />
+                Minimum age: {trial.age_min || "Not specified"}
+                {trial.age_max && ` · Maximum: ${trial.age_max}`}
+                <br />
+                {trial.sex === "ALL" ? "All sexes" : trial.sex.toLowerCase()}
+              </p>
             </div>
-          )}
-          <div className="detail-paper-heading">
-            <h4>Supporting research</h4>
-            <span>
-              {trial.supporting_papers.length} of{" "}
-              {trial.supporting_papers_total} papers
-            </span>
+            <div>
+              <span className="eyebrow">BIOMARKER TAGS</span>
+              <p>{trial.markers.join(" · ") || "None recorded"}</p>
+            </div>
+            <div>
+              <span className="eyebrow">SPECIMENS</span>
+              <p>
+                {trial.specimen_requirements
+                  .replaceAll("_", " ")
+                  .replaceAll(";", " ·") || "Not specified in this record"}
+              </p>
+            </div>
           </div>
-          {trial.supporting_papers.map((paper) => (
-            <PaperItem key={paper.paper_id} paper={paper} />
-          ))}
-          <div className="trial-foot">
-            <span>
-              Status from curated spreadsheet
-              {trial.status_as_of ? ` · ${trial.status_as_of}` : ""}. Confirm
-              current status and full eligibility.
-            </span>
-            <ExternalLink href={trial.url}>View trial registry</ExternalLink>
+          <div className="pb-detail-foot">
+            <p>
+              Saved registry record. Full eligibility and current recruiting
+              status require confirmation.
+            </p>
+            <Link href={trial.url}>Open trial registry</Link>
           </div>
-          <p className="result-disclaimer">{DISCLAIMER}</p>
         </div>
       )}
     </article>
   );
 }
-function GenePanel({
-  gene,
-  data,
-  onClose,
-}: {
-  gene: GeneCandidate;
-  data: ResearchData;
-  onClose: () => void;
-}) {
-  const context = data.contexts.find((row) => row.gene === gene.gene);
-  const papers = data.papers.filter((paper) =>
-    gene.paper_ids.includes(paper.paper_id),
-  );
+function Evidence() {
+  const gene = data.genomic.PIK3CA;
+  const reference = data.genomic.ERBB2;
   return (
-    <section className="gene-panel" aria-label={`${gene.gene} evidence`}>
-      <div className="gene-panel-heading">
-        <div>
-          <span className="eyebrow">GENE EVIDENCE</span>
-          <h3>{gene.gene}</h3>
-        </div>
-        <button
-          className="round-button"
-          onClick={onClose}
-          aria-label="Close gene evidence"
-        >
-          ×
-        </button>
+    <section className="pb-evidence" aria-label="PIK3CA molecular evidence">
+      <div className="pb-section-label">
+        <span className="eyebrow">THE CONTEXT BEHIND THE MATCH</span>
+        <span>Two independent sources. One clearer picture.</span>
       </div>
-      <div className="gene-provenance">
-        <Badge tone="rose">Model prediction</Badge>
-        {gene.source === "mock" && (
-          <Badge tone="amber">Candidate source: mock</Badge>
-        )}
-        {context?.source === "mock" && (
-          <Badge tone="amber">Model data: mock</Badge>
-        )}
-        <span>
-          {context?.assembly} {context?.region}
-        </span>
-      </div>
-      {context ? (
-        <>
-          <p className="gene-summary">
-            {context.model_output.summary ||
-              "Seven-task genomic model profile from the saved pipeline output."}
-          </p>
-          <div className="readouts">
-            {Object.entries(context.model_output.task_scores ?? {}).map(
-              ([task, value]) => (
-                <div key={task}>
-                  <span>
-                    {task === "composite" ? "Gene finder + expression" : task}
-                  </span>
-                  <strong>
-                    {value === null ? "Unavailable" : value.toFixed(3)}
-                  </strong>
-                </div>
-              ),
-            )}
+      <div className="pb-evidence-grid">
+        <article className="pb-evidence-card pb-literature">
+          <div className="pb-card-top">
+            <span className="eyebrow">01 / KEENABLE</span>
+            <span className="badge rose">Research-paper evidence</span>
           </div>
-          <p className="fine-print">
-            Normalized model readouts, not relevance scores. These
-            reference-sequence models do not establish a patient’s amplification
-            or mutation status.
+          <div
+            className="pb-gene-connection"
+            aria-label="HER2 and PIK3CA functional relationship"
+          >
+            <span>HER2</span>
+            <span className="pb-connection-line">↔</span>
+            <span>PIK3CA</span>
+          </div>
+          <h3>
+            A functional interaction.
+            <br />A reason to look closer.
+          </h3>
+          <p>
+            The saved experimental literature reports that mutant PIK3CA
+            accelerated HER2-driven tumors and resistance to anti-HER2 drug
+            combinations in mouse models.
           </p>
-        </>
-      ) : (
-        <p className="notice">Model output is not available for this gene.</p>
-      )}
-      <div className="notice">
-        <strong>Atlas mapping is being built.</strong> Cohort associations and
-        the two related-gene result groups are not available yet. These are
-        literature-derived candidate genes, not a sequence-similarity search.
+          <div className="pb-evidence-conclusion">
+            <span className="pb-tick">✓</span>
+            <div>
+              <strong>Functional interaction reported</strong>
+              <span>Preclinical evidence · not direct physical binding</span>
+            </div>
+          </div>
+          <details className="pb-source-details">
+            <summary>
+              Read the supporting research{" "}
+              <span>{data.papers.length} sources +</span>
+            </summary>
+            <div>
+              {data.papers.map((paper) => (
+                <article className="pb-paper" key={paper.id}>
+                  <div>
+                    <span
+                      className={`badge ${paper.primary ? "sage" : "neutral"}`}
+                    >
+                      {paper.primary ? "Primary experiment" : paper.kind}
+                    </span>
+                    <span>
+                      {paper.year} · PMID {paper.id}
+                    </span>
+                  </div>
+                  <h4>
+                    <Link href={paper.url}>{paper.title}</Link>
+                  </h4>
+                  <p>{paper.summary}</p>
+                  <small>{paper.context}</small>
+                </article>
+              ))}
+              <Link href={data.sources.experimental}>
+                Saved Keenable evidence
+              </Link>
+            </div>
+          </details>
+        </article>
+        <article className="pb-evidence-card">
+          <div className="pb-card-top">
+            <span className="eyebrow">02 / GENOMIC INTELLIGENCE</span>
+            <span className="badge rose">Model prediction</span>
+          </div>
+          <div className="pb-model-head">
+            <span>PIK3CA</span>
+            <span className="pb-regulatory-tag">Regulatory context</span>
+          </div>
+          <h3>
+            Signals in the DNA.
+            <br />
+            Context for the question.
+          </h3>
+          <div className="pb-readout-pair">
+            <div>
+              <strong>{gene.promoter_probability}</strong>
+              <span>Promoter probability</span>
+            </div>
+            <div>
+              <strong>{gene.chromatin_calls}</strong>
+              <span>Chromatin feature calls</span>
+            </div>
+          </div>
+          <div className="pb-compare">
+            <div>
+              <span>PIK3CA</span>
+              <i style={{ width: "100%" }} />
+              <strong>{gene.chromatin_calls}</strong>
+            </div>
+            <div>
+              <span>ERBB2</span>
+              <i
+                style={{
+                  width: `${(Number(reference.chromatin_calls) / Number(gene.chromatin_calls)) * 100}%`,
+                }}
+              />
+              <strong>{reference.chromatin_calls}</strong>
+            </div>
+            <span>Called chromatin features · breast-lineage cells</span>
+          </div>
+          <div className="pb-expression-note">
+            <strong>Overexpression is not established.</strong>
+            <p>
+              This saved file excludes expression predictions. Promoter
+              probability and chromatin calls describe regulatory context, not
+              mutation-specific or patient-specific overexpression.
+            </p>
+          </div>
+          <details className="pb-source-details">
+            <summary>
+              Inspect model provenance <span>+</span>
+            </summary>
+            <dl>
+              <dt>Promoter model</dt>
+              <dd>{gene.promoter_model}</dd>
+              <dt>Chromatin model</dt>
+              <dd>{gene.chromatin_model}</dd>
+              <dt>H3K27ac / Pol2</dt>
+              <dd>
+                {gene.H3K27ac} / {gene.Pol2} calls
+              </dd>
+              <dt>Retrieved</dt>
+              <dd>{gene.retrieved}</dd>
+              <dt>Promoter request</dt>
+              <dd>{gene.promoter_request_id}</dd>
+              <dt>Chromatin request</dt>
+              <dd>{gene.chromatin_request_id}</dd>
+            </dl>
+            <p>
+              Reference DNA around the canonical start site. The models do not
+              read a patient’s mutation or amplification.
+            </p>
+            <Link href={data.sources.genomic_notes}>
+              Read the saved model notes
+            </Link>
+          </details>
+        </article>
       </div>
-      <div className="detail-paper-heading">
-        <h4>Papers mentioning this candidate</h4>
-        <span>{papers.length} papers</span>
-      </div>
-      {papers.slice(0, 4).map((paper) => (
-        <PaperItem key={paper.paper_id} paper={paper} />
-      ))}
-      {papers.length > 4 && (
-        <p className="fine-print">
-          Showing the first 4 linked papers. Explore the full collection in the
-          paper library.
-        </p>
-      )}
-      <p className="result-disclaimer">{DISCLAIMER}</p>
     </section>
   );
 }
 
-export default function Home() {
-  const [data, setData] = useState<ResearchData | null>(null);
-  const [source, setSource] = useState("Loading research");
-  const [notices, setNotices] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [reload, setReload] = useState(0);
-  const [tab, setTab] = useState<Tab>("trials");
+export default function PlanB() {
+  const [mutation, setMutation] = useState(false);
+  const [draftMutation, setDraftMutation] = useState("none");
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("all");
-  const [gene, setGene] = useState<string | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => {
-    let active = true;
-    loadResearch()
-      .then((result) => {
-        if (active) {
-          setData(result.data);
-          setSource(result.source);
-          setNotices(result.notices);
-          setError(null);
-        }
-      })
-      .catch((err) => {
-        if (active)
-          setError(
-            err instanceof Error
-              ? err.message
-              : "Research data is unavailable.",
-          );
-      });
-    return () => {
-      active = false;
-    };
-  }, [reload]);
-  const changeTab = (next: Tab) => {
-    setTab(next);
+  const [phase, setPhase] = useState("all");
+  const [limit, setLimit] = useState(8);
+  const [menu, setMenu] = useState(false);
+  const [viewId, setViewId] = useState(0);
+  const apply = (next: boolean) => {
+    setMutation(next);
+    setDraftMutation(next ? "PIK3CA" : "none");
     setQuery("");
-    setFilter("all");
-    setGene(null);
+    setPhase("all");
+    setLimit(8);
+    setViewId((id) => id + 1);
   };
-  const term = query.trim().toLowerCase();
-  const trials = useMemo(
-    () =>
-      (data?.trials ?? []).filter(
-        (trial) =>
-          (filter === "all" || trial.tier === filter) &&
-          [
-            trial.title,
-            trial.nct_id,
-            ...trial.drugs.map((drug) => drug.drug),
-            ...trial.related_genes.map((row) => row.gene),
-          ]
-            .join(" ")
-            .toLowerCase()
-            .includes(term),
-      ),
-    [data, term, filter],
-  );
-  const genes = (data?.genes ?? []).filter((row) =>
-    row.gene.toLowerCase().includes(term),
-  );
-  const papers = (data?.papers ?? []).filter(
-    (paper) =>
-      (filter !== "reviewed" || paper.reviewed) &&
-      [paper.title, paper.paper_id, ...(paper.genes_mentioned ?? [])]
-        .join(" ")
+  const rows = (mutation ? data.personalized : data.baseline).filter(
+    (row) =>
+      (phase === "all" || row.phase.includes(phase)) &&
+      `${row.title} ${row.nct_id} ${row.markers.join(" ")}`
         .toLowerCase()
-        .includes(term),
+        .includes(query.toLowerCase()),
   );
-  const tiers = [
-    ...new Map(
-      (data?.trials ?? []).map((trial) => [trial.tier, trial.tier_label]),
-    ).entries(),
-  ];
-  const selectedGene = data?.genes.find((row) => row.gene === gene);
-  const navigate = () => setMenuOpen(false);
-
+  const scrollToResearch = () => {
+    setMenu(false);
+    document
+      .getElementById("research")
+      ?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+  };
   return (
-    <>
+    <div className="plan-b">
       <a className="skip-link" href="#research">
-        Skip to research workspace
+        Skip to trial matching
       </a>
       <header className="site-header">
         <a className="wordmark" href="#" aria-label="B5 Research home">
@@ -417,68 +380,64 @@ export default function Home() {
         <button
           className="menu-toggle"
           aria-label="Toggle navigation"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menu}
+          onClick={() => setMenu(!menu)}
         >
-          {menuOpen ? "Close" : "Menu"}
+          {menu ? "Close" : "Menu"}
         </button>
-        <nav
-          className={menuOpen ? "nav-open" : ""}
-          aria-label="Main navigation"
-        >
-          <a onClick={navigate} href="#approach">
-            Our approach
-          </a>
+        <nav className={menu ? "nav-open" : ""} aria-label="Main navigation">
           <a
-            onClick={() => {
-              navigate();
-              changeTab("papers");
-            }}
             href="#research"
+            onClick={() => {
+              apply(false);
+              setMenu(false);
+            }}
           >
-            The evidence
-          </a>
-          <a onClick={navigate} href="#principles">
-            Our principles
+            Find trials
           </a>
           <a
-            onClick={() => {
-              navigate();
-              changeTab("trials");
-            }}
             href="#research"
+            onClick={() => {
+              apply(true);
+              setMenu(false);
+            }}
+          >
+            Personalize
+          </a>
+          <a href="#sources" onClick={() => setMenu(false)}>
+            Our evidence
+          </a>
+          <a
             className="nav-cta"
+            href="#research"
+            onClick={() => setMenu(false)}
           >
-            Explore the research <Arrow diagonal />
+            Explore your profile <Arrow up />
           </a>
         </nav>
       </header>
       <main>
-        <section className="hero" aria-labelledby="hero-title">
+        <section className="hero pb-hero">
           <div className="hero-copy">
             <div className="eyebrow hero-eyebrow">
-              <span className="small-cross">✳</span> A CLOSER LOOK AT WHAT
-              CONNECTS US
+              <span className="small-cross">✳</span> EVERY PROFILE TELLS A
+              DIFFERENT STORY
             </div>
-            <h1 id="hero-title">
-              Follow the
+            <h1>
+              More context.
               <br />
-              <em>evidence.</em>
-              <br />
-              Find new
-              <br />
-              possibilities.
+              <em>Closer matches.</em>
             </h1>
             <p>
-              From a single biomarker profile to a wider view of the science.
-              Connecting research, clinical trials, and genomic intelligence.
+              Start with HER2. Add a gene mutation. Connect the research and
+              genomic signals to a more focused view of clinical trials.
             </p>
             <a className="button button-dark" href="#research">
-              Explore the research <Arrow diagonal />
+              Find your starting point <Arrow up />
             </a>
             <div className="hero-note">
-              <span className="status-dot" />
-              Built for curiosity. Grounded in evidence.
+              <span className="status-dot" />A personalized medicine research
+              experience.
             </div>
           </div>
           <div className="hero-art">
@@ -490,504 +449,356 @@ export default function Home() {
               <span className="crosshair">+</span> THE SCIENCE OF CONNECTION
             </div>
             <div className="art-label label-bottom">
-              <span className="art-index">B5 / 001</span>
-              <span>
-                DNA-inspired study
-                <br />
-                Conceptual visualization
-              </span>
+              DNA-inspired study · conceptual visualization
             </div>
-            <span className="art-coordinate">
-              BIOLOGY × INFORMATION × POSSIBILITY
-            </span>
           </div>
           <div className="hero-footer">
-            <span>PERSONALIZED MEDICINE, THROUGH A RESEARCH LENS</span>
-            <a href="#approach">
-              A different perspective <span>↓</span>
+            <span>ONE PROFILE. A MORE INFORMED PERSPECTIVE.</span>
+            <a href="#research">
+              Explore the connections <span>↓</span>
             </a>
           </div>
         </section>
-        <section
-          className="profile-strip"
-          aria-label="Current research profile"
-        >
-          <div>
-            <span className="eyebrow">OUR STARTING POINT</span>
-            <span className="profile-tissue">
-              {data?.profile.tissue ?? "Loading profile"}
-              {data && " cancer research"}
-            </span>
-          </div>
-          <div className="profile-biomarkers">
-            {data?.profile.biomarkers.map((row) => (
-              <span key={row.gene}>
-                <span className="profile-plus">+</span>
-                <strong>{row.biomarker}</strong> {row.status}
-              </span>
-            ))}
-          </div>
-          <a href="#research" aria-label="Explore this profile">
-            <Arrow diagonal />
-          </a>
-        </section>
-        <section id="approach" className="approach section-pad">
+        <section id="research" className="pb-workspace section-pad">
           <div className="section-topline">
-            <span className="eyebrow">01 / OUR APPROACH</span>
-            <span className="section-note">
-              One profile. Two paths of inquiry.
-            </span>
-          </div>
-          <div className="approach-layout">
-            <h2>
-              Biology is connected.
-              <br />
-              <span className="muted">
-                Our research
-                <br />
-                should be, too.
-              </span>
-            </h2>
-            <div className="approach-paths">
-              <p className="approach-intro">
-                Look at the same question from two perspectives. Follow what the
-                literature reports, then explore what DNA models can reveal.
-              </p>
-              <a
-                href="#research"
-                onClick={() => changeTab("trials")}
-                className="path-link"
-              >
-                <span className="path-number">01</span>
-                <div>
-                  <span className="eyebrow">PAPERS → CLINICAL TRIALS</span>
-                  <h3>Let the evidence lead.</h3>
-                  <p>
-                    Find potentially relevant trials and understand the research
-                    and criteria behind every match.
-                  </p>
-                </div>
-                <Arrow diagonal />
-              </a>
-              <a
-                href="#research"
-                onClick={() => changeTab("genes")}
-                className="path-link"
-              >
-                <span className="path-number">02</span>
-                <div>
-                  <span className="eyebrow">DNA MODELS → PAN-CANCER ATLAS</span>
-                  <h3>Explore another dimension.</h3>
-                  <p>
-                    Inspect candidate-gene model profiles. Sequence findings and
-                    cohort mapping are the next step.
-                  </p>
-                </div>
-                <Arrow diagonal />
-              </a>
-            </div>
-          </div>
-        </section>
-        <section id="research" className="research-section section-pad">
-          <div className="section-topline">
-            <span className="eyebrow">02 / THE RESEARCH WORKSPACE</span>
-            <span className="live-label">
+            <span className="eyebrow">YOUR RESEARCH WORKSPACE</span>
+            <span className="pb-saved">
               <span className="status-dot" />
-              {source}
+              Curated research · 14 Nov 2026
             </span>
           </div>
-          <div className="workspace-title">
+          <div className="pb-workspace-title">
             <h2>
-              A profile.
+              Start with what
               <br />
-              <em>A world to explore.</em>
+              <em>makes it personal.</em>
             </h2>
             <p>
-              Go beyond the result.
+              From a broad biomarker match
               <br />
-              See the reasoning, inspect the sources,
-              <br />
-              and follow the questions that matter.
+              to a more specific research question.
             </p>
           </div>
-          <div className="workspace">
-            <div className="workspace-profile">
-              <div>
-                <span className="eyebrow">CURRENT PROFILE</span>
-                <h3>
-                  {data?.profile.tissue ?? "Loading"}
-                  <span className="profile-divider">/</span>
-                  {data?.profile.biomarkers
-                    .map((row) => `${row.biomarker} ${row.status}`)
-                    .join(" + ") ?? "Loading biomarker profile"}
-                </h3>
-              </div>
-              <Badge>Research use only</Badge>
-            </div>
-            <div className="tabs" role="tablist" aria-label="Research views">
-              {(
-                [
-                  {
-                    id: "trials",
-                    label: "Trial matches",
-                    count: data?.trials.length,
-                  },
-                  {
-                    id: "genes",
-                    label: "Gene explorer",
-                    count: data?.genes.length,
-                  },
-                  {
-                    id: "papers",
-                    label: "Paper library",
-                    count: data?.papers.length,
-                  },
-                ] as const
-              ).map((item) => (
-                <button
-                  key={item.id}
-                  role="tab"
-                  id={`tab-${item.id}`}
-                  aria-selected={tab === item.id}
-                  aria-controls="research-panel"
-                  tabIndex={tab === item.id ? 0 : -1}
-                  onClick={() => changeTab(item.id)}
-                  onKeyDown={(event) => {
-                    const order: Tab[] = ["trials", "genes", "papers"];
-                    const index = order.indexOf(tab);
-                    let next: Tab | undefined;
-                    if (event.key === "ArrowRight")
-                      next = order[(index + 1) % 3];
-                    if (event.key === "ArrowLeft")
-                      next = order[(index + 2) % 3];
-                    if (event.key === "Home") next = "trials";
-                    if (event.key === "End") next = "papers";
-                    if (next) {
-                      event.preventDefault();
-                      changeTab(next);
-                      document.getElementById(`tab-${next}`)?.focus();
-                    }
-                  }}
-                >
-                  {item.label}
-                  <span>{item.count ?? "—"}</span>
-                </button>
-              ))}
-            </div>
-            <div
-              id="research-panel"
-              role="tabpanel"
-              aria-labelledby={`tab-${tab}`}
-              tabIndex={0}
-              className="research-panel"
+          <div className="pb-stage-switch" aria-label="Research stage">
+            <button
+              className={!mutation ? "active" : ""}
+              aria-pressed={!mutation}
+              onClick={() => apply(false)}
             >
-              {error ? (
-                <div className="empty-state" role="alert">
-                  <h3>Research is temporarily unavailable.</h3>
-                  <p>{error}</p>
-                  <button
-                    className="button button-dark"
-                    onClick={() => {
-                      setError(null);
-                      setReload(reload + 1);
-                    }}
-                  >
-                    Try again <Arrow />
-                  </button>
-                </div>
-              ) : !data ? (
-                <div className="loading-state" role="status">
-                  <span className="loading-orbit" />
-                  <p>Bringing the evidence together…</p>
-                </div>
-              ) : (
-                <>
-                  {notices.map((notice) => (
-                    <div className="notice" role="status" key={notice}>
-                      {notice}
-                    </div>
-                  ))}
-                  <div className="panel-heading">
-                    <div>
-                      <span className="eyebrow">
-                        {tab === "trials"
-                          ? "APPROACH 01 · RESEARCH-PAPER EVIDENCE + TRIAL CRITERIA"
-                          : tab === "genes"
-                            ? "APPROACH 02 · CANDIDATE GENE PROFILES"
-                            : "THE SOURCES BEHIND THE SCIENCE"}
-                      </span>
-                      <h3>
-                        {tab === "trials"
-                          ? "Connections worth investigating."
-                          : tab === "genes"
-                            ? "A closer look at the candidates."
-                            : "Research you can trace."}
-                      </h3>
-                      <p>
-                        {tab === "trials"
-                          ? "Grouped by biomarker criteria, with the reasoning behind each match."
-                          : tab === "genes"
-                            ? "Literature-derived candidates with exploratory model readouts. Atlas mapping is pending."
-                            : "Published papers and search hits, with review status visible throughout."}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="toolbar">
-                    <label className="search-field">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <circle
-                          cx="10"
-                          cy="10"
-                          r="6"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="m15 15 5 5"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                      </svg>
-                      <input
-                        aria-label={`Search ${tab}`}
-                        placeholder={
-                          tab === "trials"
-                            ? "Search trials, drugs, or genes"
-                            : tab === "genes"
-                              ? "Find a gene"
-                              : "Search papers, IDs, or genes"
-                        }
-                        value={query}
-                        onChange={(event) => {
-                          setQuery(event.target.value);
-                          if (tab === "genes") setGene(null);
-                        }}
-                      />
-                      {query && (
-                        <button
-                          aria-label="Clear search"
-                          onClick={() => setQuery("")}
-                        >
-                          ×
-                        </button>
-                      )}
-                    </label>
-                    {tab !== "genes" && (
-                      <select
-                        aria-label={
-                          tab === "trials"
-                            ? "Filter by trial tier"
-                            : "Filter by review status"
-                        }
-                        value={filter}
-                        onChange={(event) => setFilter(event.target.value)}
-                      >
-                        <option value="all">
-                          {tab === "trials"
-                            ? "All match groups"
-                            : "All review statuses"}
-                        </option>
-                        {tab === "trials" ? (
-                          tiers.map(([key, label]) => (
-                            <option key={key} value={key}>
-                              {label}
-                            </option>
-                          ))
-                        ) : (
-                          <option value="reviewed">Reviewed papers only</option>
-                        )}
-                      </select>
-                    )}
-                  </div>
-                  <div aria-live="polite" className="result-count">
-                    {tab === "trials"
-                      ? `${trials.length} trials`
-                      : tab === "genes"
-                        ? `${genes.length} candidate genes`
-                        : `${papers.length} papers`}
-                    {term && ` matching “${query}”`}
-                  </div>
-                  {tab === "trials" && (
-                    <div className="trial-groups">
-                      {tiers.map(([key, label]) => {
-                        const group = trials.filter((row) => row.tier === key);
-                        return (
-                          group.length > 0 && (
-                            <section key={key} className="trial-group">
-                              <div className="group-heading">
-                                <span className="group-icon">↗</span>
-                                <h4>{label}</h4>
-                                <span>{group.length} trials</span>
-                              </div>
-                              {group.map((trial) => (
-                                <TrialRow key={trial.nct_id} trial={trial} />
-                              ))}
-                            </section>
-                          )
-                        );
-                      })}
-                      {trials.length === 0 && (
-                        <div className="empty-state">
-                          <h3>No trials to show.</h3>
-                          <p>
-                            {data.trials.length
-                              ? "Try a different search or match group."
-                              : "Trial matching results have not been generated yet."}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  {tab === "genes" && (
+              <span>01</span>
+              <div>
+                <strong>Find HER2 trials</strong>
+                <small>Your starting point</small>
+              </div>
+              <Arrow />
+            </button>
+            <button
+              className={mutation ? "active" : ""}
+              aria-pressed={mutation}
+              onClick={() => apply(true)}
+            >
+              <span>02</span>
+              <div>
+                <strong>Add molecular context</strong>
+                <small>HER2 + PIK3CA</small>
+              </div>
+              <Arrow />
+            </button>
+          </div>
+          <form
+            className="pb-profile-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              apply(draftMutation === "PIK3CA");
+            }}
+          >
+            <div className="pb-tissue">
+              <span className="eyebrow">RESEARCH PROFILE</span>
+              <strong>Breast cancer</strong>
+              <small>Two supported demo profiles</small>
+            </div>
+            <label>
+              <span>Primary biomarker</span>
+              <select aria-label="Primary biomarker" defaultValue="HER2">
+                <option value="HER2">HER2 positive</option>
+              </select>
+            </label>
+            <span className="pb-form-plus">+</span>
+            <label>
+              <span>Gene mutation</span>
+              <select
+                aria-label="Gene mutation"
+                value={draftMutation}
+                onChange={(event) => setDraftMutation(event.target.value)}
+              >
+                <option value="none">No mutation selected</option>
+                <option value="PIK3CA">PIK3CA mutation</option>
+              </select>
+            </label>
+            <button className="button button-dark" type="submit">
+              Find matched trials <Arrow />
+            </button>
+          </form>
+          <div key={viewId} className="pb-results">
+            <div className="pb-result-intro">
+              <div>
+                <span className="eyebrow">
+                  {mutation
+                    ? "STAGE 02 / PERSONALIZED RESEARCH"
+                    : "STAGE 01 / BIOMARKER MATCHING"}
+                </span>
+                <h3>
+                  {mutation ? (
                     <>
-                      <div className="notice subtle">
-                        <strong>In progress:</strong> genes found in the input
-                        sequence, genes with similar model profiles, and
-                        Pan-Cancer Atlas associations will appear when Approach
-                        2 is complete. Genomic Intelligence does not perform
-                        sequence-similarity search.
-                      </div>
-                      <div className="gene-grid">
-                        {genes.map((row) => (
-                          <button
-                            key={row.gene}
-                            className={`gene-tile ${gene === row.gene ? "selected" : ""}`}
-                            aria-pressed={gene === row.gene}
-                            onClick={() =>
-                              setGene(gene === row.gene ? null : row.gene)
-                            }
-                          >
-                            <span className="gene-tile-top">
-                              {data.profile.biomarkers.some(
-                                (b) => b.gene === row.gene,
-                              )
-                                ? "PROFILE GENE"
-                                : "CANDIDATE"}
-                              <Arrow diagonal />
-                            </span>
-                            <strong>{row.gene}</strong>
-                            <span>
-                              {row.paper_ids.length} linked papers
-                              {row.source === "mock" ? " · Mock source" : ""}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                      {genes.length === 0 && (
-                        <div className="empty-state">
-                          <h3>No candidate genes found.</h3>
-                          <p>Try another gene symbol.</p>
-                        </div>
-                      )}
-                      {selectedGene && (
-                        <GenePanel
-                          key={selectedGene.gene}
-                          gene={selectedGene}
-                          data={data}
-                          onClose={() => setGene(null)}
-                        />
-                      )}
+                      HER2 <span>+</span> PIK3CA
+                      <span className="pb-result-period">.</span>
+                    </>
+                  ) : (
+                    <>
+                      A starting point for <em>HER2.</em>
                     </>
                   )}
-                  {tab === "papers" && (
-                    <div className="paper-library">
-                      {papers.map((paper) => (
-                        <PaperItem key={paper.paper_id} paper={paper} />
-                      ))}
-                      {papers.length === 0 && (
-                        <div className="empty-state">
-                          <h3>No papers found.</h3>
-                          <p>Try another search or review status.</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  {data.meta.has_mock_data && (
-                    <div className="mock-notice">
-                      <span className="small-cross">✳</span>
-                      <p>
-                        <strong>Transparent by design.</strong> Some inputs are
-                        labelled mock: {data.meta.mock_inputs.join(", ")}.
-                        Labels stay attached to the evidence.
-                      </p>
-                    </div>
-                  )}
+                </h3>
+                <p>
+                  {mutation
+                    ? "A functional link in the literature. Regulatory context from DNA models. A trial that explicitly names both biomarkers."
+                    : "Potential matches with HER2-positive disease listed in the saved trial title or therapeutic area. Full criteria still need review."}
+                </p>
+              </div>
+              <div className="pb-result-count" aria-live="polite">
+                <strong>
+                  {mutation ? data.counts.matched : data.counts.baseline}
+                </strong>
+                <span>
+                  {mutation
+                    ? "explicit combined match"
+                    : "HER2-positive cohorts listed"}
+                </span>
+              </div>
+            </div>
+            <div className="pb-funnel">
+              <span>
+                <strong>{data.counts.screened}</strong> trial records
+              </span>
+              <Arrow />
+              <span className={!mutation ? "current" : ""}>
+                <strong>{data.counts.baseline}</strong> HER2-positive listings
+              </span>
+              {mutation && (
+                <>
+                  <Arrow />
+                  <span className="current">
+                    <strong>{data.counts.matched}</strong> names both biomarkers
+                  </span>
                 </>
               )}
             </div>
-            <div className="workspace-footer">
-              <span className="shield-icon">◇</span>
-              {data?.meta.disclaimer ?? DISCLAIMER} Results do not establish
-              eligibility or recommend treatment.
+            {mutation && <Evidence />}
+            <div className="pb-list-heading">
+              <div>
+                <span className="eyebrow">
+                  {mutation ? "YOUR FOCUSED SHORTLIST" : "EXPLORE THE TRIALS"}
+                </span>
+                <h3>
+                  {mutation
+                    ? "A more specific connection."
+                    : "The next question starts here."}
+                </h3>
+              </div>
+              <Link href={data.sources.trials}>Trial data source</Link>
             </div>
-          </div>
-        </section>
-        <section id="principles" className="principles section-pad">
-          <div className="section-topline">
-            <span className="eyebrow">03 / OUR PRINCIPLES</span>
-            <span className="section-note">
-              Clarity is part of the science.
-            </span>
-          </div>
-          <h2>
-            Different evidence.
-            <br />
-            <em>Clearly distinguished.</em>
-          </h2>
-          <div className="principle-grid">
-            <article>
-              <span className="principle-symbol">↗</span>
-              <span className="eyebrow">01 / RESEARCH-PAPER EVIDENCE</span>
-              <h3>Follow the source.</h3>
-              <p>
-                Every paper has a link and a visible review status. Read what
-                supports a connection and what still needs a closer look.
-              </p>
-            </article>
-            <article>
-              <span className="principle-symbol">✳</span>
-              <span className="eyebrow">02 / MODEL PREDICTION</span>
-              <h3>Question the prediction.</h3>
-              <p>
-                DNA models offer exploratory readouts. Reference-sequence
-                results are not clinically validated and do not establish a
-                patient’s alterations.
-              </p>
-            </article>
-            <article>
-              <span className="principle-symbol">⌘</span>
-              <span className="eyebrow">
-                03 / DATASET-SUPPORTED ASSOCIATION
+            <div className="toolbar pb-toolbar">
+              <label className="search-field">
+                <span aria-hidden="true">⌕</span>
+                <input
+                  aria-label="Search matched trials"
+                  placeholder="Search by trial name, ID, or biomarker"
+                  value={query}
+                  onChange={(event) => {
+                    setQuery(event.target.value);
+                    setLimit(8);
+                  }}
+                />
+                {query && (
+                  <button
+                    type="button"
+                    aria-label="Clear search"
+                    onClick={() => setQuery("")}
+                  >
+                    ×
+                  </button>
+                )}
+              </label>
+              <select
+                aria-label="Filter trial phase"
+                value={phase}
+                onChange={(event) => {
+                  setPhase(event.target.value);
+                  setLimit(8);
+                }}
+              >
+                <option value="all">All phases</option>
+                <option value="PHASE1">Phase 1</option>
+                <option value="PHASE2">Phase 2</option>
+                <option value="PHASE3">Phase 3</option>
+              </select>
+              <span className="pb-shown-count">
+                {rows.length} {rows.length === 1 ? "trial" : "trials"}
               </span>
-              <h3>Keep the context.</h3>
-              <p>
-                Pan-Cancer Atlas mapping is coming next. Cohort-level
-                associations describe patterns across patients, not an
-                individual outcome.
-              </p>
-            </article>
+            </div>
+            <div className={`pb-trial-list ${mutation ? "personalized" : ""}`}>
+              {rows.slice(0, limit).map((trial) => (
+                <TrialCard
+                  trial={trial}
+                  key={trial.nct_id}
+                  personalized={mutation}
+                />
+              ))}
+              {rows.length === 0 && (
+                <div className="empty-state">
+                  <h3>No trials in this view.</h3>
+                  <p>Try a different name or phase.</p>
+                  <button
+                    className="button button-dark"
+                    onClick={() => {
+                      setQuery("");
+                      setPhase("all");
+                    }}
+                  >
+                    Reset filters <Arrow />
+                  </button>
+                </div>
+              )}
+            </div>
+            {rows.length > limit && (
+              <button
+                className="pb-load-more"
+                onClick={() => setLimit(limit + 8)}
+              >
+                Explore more trials{" "}
+                <span>
+                  {Math.min(limit, rows.length)} of {rows.length}
+                </span>
+                <Arrow />
+              </button>
+            )}
+            {!mutation ? (
+              <div className="pb-refine">
+                <span className="pb-refine-symbol">✳</span>
+                <div>
+                  <span className="eyebrow">ONE MORE PIECE OF THE PICTURE</span>
+                  <h3>What changes with a PIK3CA mutation?</h3>
+                  <p>
+                    Bring the literature and genomic context into view, then
+                    narrow the trial list.
+                  </p>
+                </div>
+                <button
+                  className="button button-dark"
+                  onClick={() => {
+                    apply(true);
+                    scrollToResearch();
+                  }}
+                >
+                  Add PIK3CA <Arrow />
+                </button>
+              </div>
+            ) : (
+              <div className="pb-review-groups">
+                <details className="pb-review">
+                  <summary>
+                    <span>
+                      Additional studies to review
+                      <small>
+                        Both biomarkers tagged; the combined eligibility
+                        requirement is not established.
+                      </small>
+                    </span>
+                    <span>{data.counts.review} studies +</span>
+                  </summary>
+                  <div>
+                    {data.review.map((row) => (
+                      <div className="pb-review-row" key={row.nct_id}>
+                        <div>
+                          <span className="eyebrow">{row.nct_id}</span>
+                          <h4>
+                            <Link href={row.url}>{row.title}</Link>
+                          </h4>
+                        </div>
+                        <span className="badge amber">
+                          {row.her2_context === "mixed"
+                            ? "Mixed cohorts"
+                            : "HER2 status not explicit"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+                <details className="pb-review">
+                  <summary>
+                    <span>
+                      Different HER2 status
+                      <small>
+                        HER2-negative, HER2-low, or triple-negative disease is
+                        listed. Kept out of the shortlist.
+                      </small>
+                    </span>
+                    <span>{data.counts.excluded} studies +</span>
+                  </summary>
+                  <div>
+                    {data.excluded.map((row) => (
+                      <div className="pb-review-row" key={row.nct_id}>
+                        <div>
+                          <span className="eyebrow">{row.nct_id}</span>
+                          <h4>
+                            <Link href={row.url}>{row.title}</Link>
+                          </h4>
+                        </div>
+                        <span className="badge neutral">Different status</span>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </div>
+            )}
+            <p className="pb-research-note">{disclaimer}</p>
           </div>
         </section>
-        <section className="closing">
-          <span className="eyebrow">
-            BETTER QUESTIONS. DEEPER UNDERSTANDING.
-          </span>
-          <h2>
-            There’s more
-            <br />
-            to <em>discover.</em>
-          </h2>
-          <a className="button button-dark" href="#research">
-            Follow your curiosity <Arrow diagonal />
-          </a>
-          <div className="closing-orbit" aria-hidden="true">
-            <Mark />
+        <section id="sources" className="pb-sources section-pad">
+          <div>
+            <span className="eyebrow">SCIENCE YOU CAN TRACE</span>
+            <h2>
+              Every connection.
+              <br />
+              <em>A source behind it.</em>
+            </h2>
+            <p>
+              This experience brings together saved research and model results.
+              Evidence stays attached to its source, so you can follow the
+              reasoning.
+            </p>
+          </div>
+          <div className="pb-source-list">
+            <Link href={data.sources.trials}>
+              <span>
+                <small>01 / CLINICAL TRIALS</small>Trial registry snapshot
+              </span>
+            </Link>
+            <Link href={data.sources.experimental}>
+              <span>
+                <small>02 / KEENABLE</small>Experimental interaction evidence
+              </span>
+            </Link>
+            <Link href={data.sources.genomic_notes}>
+              <span>
+                <small>03 / GENOMIC INTELLIGENCE</small>Promoter & chromatin
+                model results
+              </span>
+            </Link>
+            <span className="pb-source-version">
+              Saved dataset · main / {data.source_commit.slice(0, 7)} · No live
+              searches or model runs
+            </span>
           </div>
         </section>
       </main>
@@ -1000,24 +811,20 @@ export default function Home() {
             </span>
           </a>
           <p>
-            Connecting the signals.
+            More context.
             <br />
-            Opening new questions.
+            More informed questions.
           </p>
-          <a
-            href="https://github.com/Contactashmeetsingh/B5-hackers"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore the project <Arrow diagonal />
+          <a href="#research">
+            Explore your profile <Arrow up />
           </a>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} B5 Research</span>
-          <span>{DISCLAIMER}</span>
+          <span>© 2026 B5 Research</span>
+          <span>Research prototype. Not medical advice.</span>
           <a href="#">Back to top ↑</a>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
