@@ -64,7 +64,9 @@
       "40845250",
       "40642892",
       "39873916",
-      "42496151"
+      "42496151",
+      "31013812",
+      "29069787"
     ],
     "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
     "approved_symbol": null
@@ -151,6 +153,20 @@
   },
   {
     "source": "mock",
+    "gene": "ESR1",
+    "ensembl_id": "ENSG00000091831",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "39062682",
+      "37258523",
+      "27800032",
+      "29069787"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
     "gene": "EGFR",
     "ensembl_id": "ENSG00000146648",
     "in_targets_dataset": true,
@@ -158,19 +174,6 @@
       "39062682",
       "17274834",
       "39137598"
-    ],
-    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
-    "approved_symbol": null
-  },
-  {
-    "source": "mock",
-    "gene": "ESR1",
-    "ensembl_id": "ENSG00000091831",
-    "in_targets_dataset": true,
-    "paper_ids": [
-      "39062682",
-      "37258523",
-      "27800032"
     ],
     "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
     "approved_symbol": null
@@ -197,6 +200,19 @@
       "30057690",
       "16322262",
       "20103628"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PSMD3",
+    "ensembl_id": "ENSG00000108344",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "23253899",
+      "31013812",
+      "34572038"
     ],
     "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
     "approved_symbol": null
@@ -358,17 +374,6 @@
     "source": "mock",
     "gene": "PGAP3",
     "ensembl_id": "ENSG00000161395",
-    "in_targets_dataset": false,
-    "paper_ids": [
-      "23253899"
-    ],
-    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
-    "approved_symbol": null
-  },
-  {
-    "source": "mock",
-    "gene": "PSMD3",
-    "ensembl_id": "ENSG00000108344",
     "in_targets_dataset": false,
     "paper_ids": [
       "23253899"

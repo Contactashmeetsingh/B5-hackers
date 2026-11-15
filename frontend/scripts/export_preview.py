@@ -7,7 +7,7 @@ sys.path.insert(0, str(ROOT))
 
 from backend.app.main import health, meta, profile
 from backend import config
-from backend.schemas import GeneCandidate, GenomicContext, Paper, TrialMatch
+from backend.schemas import GeneCandidate, GeneDrugOption, GenomicContext, Paper, TrialMatch
 from backend.store import read_rows, write_json
 
 
@@ -23,6 +23,7 @@ payload = {
     "papers": rows(config.PAPERS_PATH, Paper),
     "genes": rows(config.GENE_CANDIDATES_PATH, GeneCandidate),
     "contexts": rows(config.GENOMIC_CONTEXT_PATH, GenomicContext),
+    "gene_drugs": rows(config.GENE_DRUG_OPTIONS_PATH, GeneDrugOption),
 }
 destination = ROOT / "frontend/public/research-data.json"
 write_json(destination, payload)

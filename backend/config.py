@@ -28,6 +28,7 @@ PROFILE_PATH = INPUT_DIR / "profile.json"            # the biomarker profile (HE
 BIOMARKER_PATH = INPUT_DIR / "biomarker.json"        # model conditioning for the sequence gene (ERBB2)
 DRUG_TARGETS_PATH = INPUT_DIR / "drug_targets.json"
 GENE_TERMS_PATH = INPUT_DIR / "gene_terms.json"      # clinical words for genes: ER -> ESR1, HR -> ESR1 + PGR
+GENE_DRUG_OPTIONS_PATH = INPUT_DIR / "gene_drug_options.json"  # curated drugs + trial status per HER2-associated gene (PSMD3)
 TRIALS_SPREADSHEET_PATH = ROOT / "clinical_trials" / "her2_candidate_marker_open_trials.xlsx"
 ATLAS_PATH = ROOT / "pancancer_atlas" / "her2_dependence_tcga_pancan.csv"  # TCGA PanCancer Atlas table
 

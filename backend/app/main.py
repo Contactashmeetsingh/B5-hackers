@@ -24,6 +24,7 @@ from backend.schemas import (
     MOCK,
     Biomarker,
     GeneCandidate,
+    GeneDrugOption,
     GenomicContext,
     Paper,
     Profile,
@@ -223,3 +224,15 @@ def gene_detail(gene: str) -> GeneDetail:
 @app.get("/api/papers", response_model=list[Paper])
 def papers() -> list[Paper]:
     return _load("papers")
+
+
+@app.get("/api/gene-drugs", response_model=list[GeneDrugOption])
+def gene_drugs() -> list[GeneDrugOption]:
+    """Curated drug options and trial status for HER2-associated genes (empty if not curated)."""
+    path = config.GENE_DRUG_OPTIONS_PATH
+    if not path.exists():
+        return []
+    try:
+        return read_rows(path, GeneDrugOption)
+    except ValueError as exc:
+        raise _malformed("gene_drug_options", path, exc)

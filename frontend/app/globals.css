@@ -1980,3 +1980,23 @@ svg {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Curated drug targets and trial status for a HER2-associated gene (e.g. PSMD3). */
+.gene-drugs {
+  margin-top: 18px;
+}
+.gene-drugs .drug-list strong,
+.no-trial-group .drug-list strong {
+  font-weight: 600;
+}
+.no-trial-group .empty-state {
+  text-align: left;
+  padding: 28px 15px 34px;
+}
+.no-trial-group .empty-state p {
+  margin: 12px 0;
+  max-width: 720px;
+}
+.no-trial-group .empty-state .drug-list {
+  justify-content: flex-start;
+}

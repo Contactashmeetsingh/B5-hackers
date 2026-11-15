@@ -323,7 +323,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -431,8 +432,8 @@
         "publication_types": []
       }
     ],
-    "supporting_papers_total": 24,
-    "supporting_papers_reviewed": 7,
+    "supporting_papers_total": 25,
+    "supporting_papers_reviewed": 8,
     "opposite_status_papers": [
       {
         "paper_id": "42202490",
@@ -551,7 +552,7 @@
       }
     ],
     "opposite_status_papers_total": 14,
-    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation\". Drugs named: inavolisib (targets PIK3CA). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 24 supporting paper(s), 7 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 14 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation\". Drugs named: inavolisib (targets PIK3CA). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 25 supporting paper(s), 8 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 14 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "HR+/HER2+ with centrally confirmed ER, PR, HER2 status and a tumor PIK3CA mutation",
     "sponsor": "German Breast Group (GBG)",
@@ -628,7 +629,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -742,8 +744,8 @@
         "publication_types": []
       }
     ],
-    "supporting_papers_total": 24,
-    "supporting_papers_reviewed": 7,
+    "supporting_papers_total": 25,
+    "supporting_papers_reviewed": 8,
     "opposite_status_papers": [
       {
         "paper_id": "42202490",
@@ -864,7 +866,7 @@
       }
     ],
     "opposite_status_papers_total": 15,
-    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease\". Drugs named: tucatinib (targets ERBB2), alpelisib (targets PIK3CA) and fulvestrant (targets ESR1). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 24 supporting paper(s), 7 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 15 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease\". Drugs named: tucatinib (targets ERBB2), alpelisib (targets PIK3CA) and fulvestrant (targets ESR1). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 25 supporting paper(s), 8 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 15 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "HER2 positivity by FISH and/or IHC 3+, with PIK3CA-mutant unresectable or metastatic disease",
     "sponsor": "Criterium, Inc.",
@@ -940,7 +942,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       }
     ],
@@ -1040,8 +1043,8 @@
         "publication_types": []
       }
     ],
-    "supporting_papers_total": 24,
-    "supporting_papers_reviewed": 7,
+    "supporting_papers_total": 25,
+    "supporting_papers_reviewed": 8,
     "opposite_status_papers": [
       {
         "paper_id": "42202490",
@@ -1162,7 +1165,7 @@
       }
     ],
     "opposite_status_papers_total": 15,
-    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HER2-positive advanced breast cancer with a PIK3CA mutation, previously treated including trastuzumab\". Drugs named: trastuzumab (targets ERBB2), alpelisib (targets PIK3CA) and fulvestrant (targets ESR1). It also involves ESR1, which our papers name alongside HER2. 24 supporting paper(s), 7 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 15 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive and PIK3CA mutated: \"HER2-positive advanced breast cancer with a PIK3CA mutation, previously treated including trastuzumab\". Drugs named: trastuzumab (targets ERBB2), alpelisib (targets PIK3CA) and fulvestrant (targets ESR1). It also involves ESR1, which our papers name alongside HER2. 25 supporting paper(s), 8 checked by hand; for example PMID 27358378 (2016): Commentary on the clinical evidence linking PIK3CA mutations to reduced benefit from HER2-targeted therapy in HER2-positive breast cancer. 15 more paper(s) on these genes or drugs study HER2-negative disease and are listed separately. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "HER2-positive advanced breast cancer with a PIK3CA mutation, previously treated including trastuzumab",
     "sponsor": "Spanish Breast Cancer Research Group",
@@ -1239,7 +1242,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1299,13 +1303,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and Phesgo (targets ERBB2). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and Phesgo (targets ERBB2). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "HER2-positive (ASCO/CAP 2018, central confirmation) T1 invasive carcinoma, N0 or N1mi, with ER/PR positivity",
     "sponsor": "Dana-Farber Cancer Institute",
@@ -1352,7 +1371,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1411,13 +1431,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "Hormone receptor positive, HER2 positive, anatomic stage IIA-IIIC",
     "sponsor": "Legacy Health System",
@@ -1464,7 +1499,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1523,13 +1559,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "Hormone receptor positive and HER2 positive; no progression after 4-8 cycles of first-line therapy; female 18-75",
     "sponsor": "Sun Yat-sen University",
@@ -1607,7 +1658,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1667,13 +1719,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and elacestrant (targets ESR1). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups\". It does not select on PIK3CA mutated. Drugs named: trastuzumab (targets ERBB2), pertuzumab (targets ERBB2) and elacestrant (targets ESR1). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "Histologically confirmed ER+, PR+, HER2+ breast cancer; ESR1 wild-type and ESR1-mutated groups",
     "sponsor": "NYU Langone Health",
@@ -1732,7 +1799,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1792,13 +1860,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"Histologically confirmed HER2+ and HR+ (ER+ and/or PR+) metastatic breast cancer\". It does not select on PIK3CA mutated. Drugs named: T-DXd (targets ERBB2). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"Histologically confirmed HER2+ and HR+ (ER+ and/or PR+) metastatic breast cancer\". It does not select on PIK3CA mutated. Drugs named: T-DXd (targets ERBB2). It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "Histologically confirmed HER2+ and HR+ (ER+ and/or PR+) metastatic breast cancer",
     "sponsor": "Daiichi Sankyo",
@@ -1846,7 +1929,8 @@
         "paper_ids": [
           "39062682",
           "37258523",
-          "27800032"
+          "27800032",
+          "29069787"
         ]
       },
       {
@@ -1905,13 +1989,28 @@
           "links PGR to HER2"
         ],
         "publication_types": []
+      },
+      {
+        "paper_id": "29069787",
+        "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+        "year": 2017,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+        "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+        "source": "keenable",
+        "reviewed": true,
+        "why": [
+          "links ESR1 to HER2"
+        ],
+        "publication_types": [
+          "Journal Article"
+        ]
       }
     ],
-    "supporting_papers_total": 3,
-    "supporting_papers_reviewed": 3,
+    "supporting_papers_total": 4,
+    "supporting_papers_reviewed": 4,
     "opposite_status_papers": [],
     "opposite_status_papers_total": 0,
-    "explanation": "Its criteria require HER2 positive: \"HR-positive (ER >10%) and HER2-positive (IHC 3+ or IHC 2+/ISH+) early-stage or locally advanced invasive breast cancer; female 18-75\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 3 supporting paper(s), 3 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
+    "explanation": "Its criteria require HER2 positive: \"HR-positive (ER >10%) and HER2-positive (IHC 3+ or IHC 2+/ISH+) early-stage or locally advanced invasive breast cancer; female 18-75\". It does not select on PIK3CA mutated. It also involves ESR1 and PGR, which our papers name alongside HER2. The profile does not record ESR1 or PGR status, so check those criteria. 4 supporting paper(s), 4 checked by hand; for example PMID 37258523 (2023): Review of two-way crosstalk between estrogen receptor and HER2 signaling and how it drives therapy resistance in HR-positive/HER2-positive breast cancer. Research-paper evidence and the trial's stated criteria only, not a recommendation. Confirm eligibility and recruiting status on ClinicalTrials.gov.",
     "evidence_type": "research-paper evidence + trial criteria",
     "eligibility_text": "HR-positive (ER >10%) and HER2-positive (IHC 3+ or IHC 2+/ISH+) early-stage or locally advanced invasive breast cancer; female 18-75",
     "sponsor": "Second Affiliated Hospital, Zhejiang University School of Medicine",

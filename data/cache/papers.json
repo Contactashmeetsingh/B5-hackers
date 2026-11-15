@@ -1305,5 +1305,61 @@
     "publication_types": [
       "Journal Article"
     ]
+  },
+  {
+    "source": "keenable",
+    "paper_id": "31013812",
+    "title": "Proteasome 26S Subunit, non-ATPase 3 (PSMD3) Regulates Breast Cancer by Stabilizing HER2 from Degradation.",
+    "year": 2019,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31013812/",
+    "genes_mentioned": [
+      "ERBB2",
+      "PSMD3"
+    ],
+    "relation": "PSMD3 binds HER2 and protects it from degradation; knocking PSMD3 down lowers HER2 and HER2+ breast cancer cell growth, and high PSMD3 tracks with shorter survival.",
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
+  },
+  {
+    "source": "keenable",
+    "paper_id": "29069787",
+    "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells.",
+    "year": 2017,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/",
+    "genes_mentioned": [
+      "ERBB2",
+      "ESR1"
+    ],
+    "relation": "Proteasome inhibitors (bortezomib, carfilzomib) lower HER2 activity and ER-alpha and kill resistant HER2+/ER+ breast cancer cells; PSMD3 is not tested by name.",
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
+  },
+  {
+    "source": "keenable",
+    "paper_id": "34572038",
+    "title": "26S Proteasome Non-ATPase Regulatory Subunits 1 (PSMD1) and 3 (PSMD3) as Putative Targets for Cancer Prognosis and Therapy.",
+    "year": 2021,
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34572038/",
+    "genes_mentioned": [
+      "PSMD3"
+    ],
+    "relation": "PSMD1 and PSMD3 are higher in many cancers than in normal tissue and are linked to survival; proposed as therapy targets alongside approved proteasome inhibitors.",
+    "reviewed": true,
+    "found_by": [],
+    "retrieved": null,
+    "opposite_status": [],
+    "publication_types": [
+      "Journal Article"
+    ]
   }
 ]

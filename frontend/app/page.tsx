@@ -5,6 +5,7 @@ import { Helix } from "@/components/helix";
 import { loadResearch } from "@/lib/api";
 import type {
   GeneCandidate,
+  GeneDrugOption,
   Paper,
   ResearchData,
   TrialMatch,
@@ -233,6 +234,102 @@ function TrialRow({ trial }: { trial: TrialMatch }) {
     </article>
   );
 }
+function DrugNames({ option }: { option: GeneDrugOption }) {
+  return (
+    <>
+      {option.drugs.map((drug, i) => (
+        <span key={drug.drug}>
+          {i > 0 && ", "}
+          <strong>{drug.drug}</strong>
+          {drug.aliases.length > 0 && ` (${drug.aliases.join(", ")})`}
+        </span>
+      ))}
+    </>
+  );
+}
+
+function GeneDrugsSection({
+  gene,
+  data,
+}: {
+  gene: string;
+  data: ResearchData;
+}) {
+  const option = data.gene_drugs?.find((row) => row.gene === gene);
+  const trials = data.trials.filter((trial) =>
+    trial.related_genes.some((row) => row.gene === gene),
+  );
+  return (
+    <div className="gene-drugs">
+      <div className="detail-paper-heading">
+        <h4>Drug targets &amp; clinical trials</h4>
+        {option && <Badge tone="rose">Curated</Badge>}
+      </div>
+      {option ? (
+        <>
+          {option.association && (
+            <p className="gene-summary">{option.association}</p>
+          )}
+          <div className="drug-list">
+            <span className="eyebrow">
+              DRUG TARGET · {option.drug_class.toUpperCase()}
+            </span>
+            <span>
+              <DrugNames option={option} />
+            </span>
+          </div>
+          {option.drug_footnote && (
+            <p className="fine-print">Note: {option.drug_footnote}</p>
+          )}
+          <div className="notice">
+            <strong>Clinical trials: {option.trials.length || "none found"}.</strong>{" "}
+            {option.trial_note}
+          </div>
+        </>
+      ) : trials.length > 0 ? (
+        <p className="fine-print">
+          {trials.length} trial{trials.length > 1 ? "s" : ""} in the trial
+          database involve {gene}:{" "}
+          {trials.map((trial) => trial.nct_id).join(", ")}. Drug options for
+          this gene are not curated yet.
+        </p>
+      ) : (
+        <p className="fine-print">
+          No trial in the trial database involves {gene}. Drug options for this
+          gene are not curated yet.
+        </p>
+      )}
+    </div>
+  );
+}
+
+function NoTrialGeneGroup({ option }: { option: GeneDrugOption }) {
+  return (
+    <section className="trial-group no-trial-group">
+      <div className="group-heading">
+        <span className="group-icon">↗</span>
+        <h4>
+          Requires HER2 positive and {option.gene} {option.profile_status}
+        </h4>
+        <span>0 trials</span>
+      </div>
+      <div className="empty-state">
+        <h3>No matching clinical trials found for {option.gene}.</h3>
+        <p>{option.trial_note}</p>
+        <div className="drug-list">
+          <span className="eyebrow">
+            DRUG TARGET · {option.drug_class.toUpperCase()}
+          </span>
+          <span>
+            <DrugNames option={option} />
+          </span>
+        </div>
+        <p className="fine-print">Note: {option.drug_footnote}</p>
+      </div>
+    </section>
+  );
+}
+
 function GenePanel({
   gene,
   data,
@@ -302,6 +399,7 @@ function GenePanel({
       ) : (
         <p className="notice">Model output is not available for this gene.</p>
       )}
+      <GeneDrugsSection gene={gene.gene} data={data} />
       <div className="notice">
         <strong>Atlas mapping is being built.</strong> Cohort associations and
         the two related-gene result groups are not available yet. These are
@@ -832,6 +930,24 @@ export default function Home() {
                           )
                         );
                       })}
+                      {filter === "all" &&
+                        (data.gene_drugs ?? [])
+                          .filter(
+                            (option) =>
+                              option.trials.length === 0 &&
+                              (!term ||
+                                [
+                                  option.gene,
+                                  option.drug_class,
+                                  ...option.drugs.map((d) => d.drug),
+                                ].some((s) => s.toLowerCase().includes(term))),
+                          )
+                          .map((option) => (
+                            <NoTrialGeneGroup
+                              key={option.gene}
+                              option={option}
+                            />
+                          ))}
                       {trials.length === 0 && (
                         <div className="empty-state">
                           <h3>No trials to show.</h3>

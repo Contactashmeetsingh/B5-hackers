@@ -109,6 +109,18 @@ export interface ApiErrorDetail {
   stage?: string;
   run?: string;
 }
+export interface GeneDrugOption {
+  gene: string;
+  association: string;
+  profile_status: string;
+  drug_class: string;
+  drugs: { drug: string; aliases: string[] }[];
+  drug_footnote: string;
+  trials: string[];
+  trial_note: string;
+  paper_ids: string[];
+  source: string;
+}
 export interface ResearchData {
   profile: Profile;
   meta: Meta;
@@ -117,4 +129,5 @@ export interface ResearchData {
   papers: Paper[];
   genes: GeneCandidate[];
   contexts: GenomicContext[];
+  gene_drugs?: GeneDrugOption[];
 }

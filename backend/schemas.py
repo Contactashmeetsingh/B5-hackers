@@ -83,6 +83,26 @@ class DrugTarget(_Row):
     source: str
 
 
+class GeneDrug(_Row):
+    drug: str
+    aliases: list[str] = Field(default_factory=list)
+
+
+class GeneDrugOption(_Row):
+    """Curated drugs and trial status for one HER2-associated gene (data/input/gene_drug_options.json)."""
+
+    gene: str
+    association: str = ""                 # how the gene relates to HER2, in plain words
+    profile_status: str = ""              # the alteration this entry is about, e.g. "amplified"
+    drug_class: str = ""
+    drugs: list[GeneDrug] = Field(default_factory=list)
+    drug_footnote: str = ""               # what the drugs actually act on, approval, evidence level
+    trials: list[str] = Field(default_factory=list)  # NCT IDs of trials for this gene (empty = none found)
+    trial_note: str = ""
+    paper_ids: list[str] = Field(default_factory=list)
+    source: str
+
+
 class GeneTerm(_Row):
     """A clinical word that stands for one or more genes in trial text, e.g. "ER" -> ESR1."""
 

@@ -1,0 +1,18 @@
+[
+  {
+    "gene": "PSMD3",
+    "association": "Co-amplified with ERBB2 on 17q12 and binds HER2, protecting it from degradation (PMID 31013812). Over-expressed vs normal breast tissue in 88.5% of ERBB2-amplified TCGA tumors.",
+    "profile_status": "amplified",
+    "drug_class": "Proteasome inhibitors",
+    "drugs": [
+      {"drug": "bortezomib", "aliases": ["Velcade"]},
+      {"drug": "carfilzomib", "aliases": ["Kyprolis"]},
+      {"drug": "ixazomib", "aliases": ["Ninlaro"]}
+    ],
+    "drug_footnote": "These drugs inhibit the 26S proteasome, of which PSMD3 is a subunit (19S cap); they do not bind PSMD3 itself. Approved for myeloma and lymphoma, not breast cancer. HER2+ breast cancer evidence is from cell lines only (PMID 29069787).",
+    "trials": [],
+    "trial_note": "No trial in the trial database requires or targets PSMD3, and no proteasome-inhibitor trial was found in the Keenable searches.",
+    "paper_ids": ["31013812", "29069787", "34572038", "23253899"],
+    "source": "keenable search, papers checked against PubMed (2026-11-14); see keenable/psmd3_keenable_evidence.csv"
+  }
+]

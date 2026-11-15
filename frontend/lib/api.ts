@@ -1,6 +1,7 @@
 import type {
   ApiErrorDetail,
   GeneCandidate,
+  GeneDrugOption,
   GeneDetail,
   Health,
   Meta,
@@ -51,6 +52,7 @@ export const getGene = (gene: string) =>
 export const getPapers = () => get<Paper[]>("/api/papers");
 export const getMeta = () => get<Meta>("/api/meta");
 export const getHealth = () => get<Health>("/api/health");
+export const getGeneDrugs = () => get<GeneDrugOption[]>("/api/gene-drugs");
 
 export async function loadResearch(): Promise<{
   data: ResearchData;
@@ -101,6 +103,8 @@ export async function loadResearch(): Promise<{
   );
   if (details.some((result) => result.status === "rejected"))
     notices.push("Some genomic model details are unavailable.");
+  // Curated drug options are optional: an older API without the endpoint just shows none.
+  const geneDrugs = await getGeneDrugs().catch(() => [] as GeneDrugOption[]);
   return {
     source: "Connected research API",
     notices,
@@ -126,6 +130,7 @@ export async function loadResearch(): Promise<{
           ? [result.value.genomic_context]
           : [],
       ),
+      gene_drugs: geneDrugs,
     },
   };
 }
