@@ -18,35 +18,8 @@ Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast
 
 ## How it works
 
-```mermaid
-<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/3ff51c27-dfac-4f7a-b2f9-9e69e2fe0709" />
+<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/c6d19239-32f9-443d-9e29-85b84f0aa475" />
 
-
-The two results are shown separately and never merged into one number. **There is no scoring system**: trials are grouped by simple rules (for example "requires both HER2 and PIK3CA"), not ranked by a score.
-
-## Three kinds of evidence
-
-Every result is labeled with where it came from, so nothing exploratory looks validated.
-
-| Label | What it means | Where it comes from |
-|---|---|---|
-| **Research-paper evidence** | A published paper reports the link | Keenable search, checked against PubMed |
-| **Model prediction** | A DNA model computed it from sequence. Exploratory. | Genomic Intelligence |
-| **Dataset-supported association** | Seen in patient cohort data | TCGA Pan-Cancer Atlas (breast cancer) |
-
-Two limits to keep in mind: the DNA models read the reference genome, so they cannot see a patient's own amplification or mutation; and the atlas describes a cohort, not an individual.
-
-## Run it
-
-You need Python 3.11 and [`uv`](https://docs.astral.sh/uv/). Everything runs offline from the committed data; no API keys are needed.
-
-```bash
-[ -d .venv ] || uv venv --python 3.11 .venv
-uv pip install --python .venv/bin/python -r requirements.txt
-
-.venv/bin/python -m pytest tests -q            # smoke tests
-.venv/bin/python -m backend.pipeline.run       # run the pipeline from the caches
-.venv/bin/uvicorn backend.app.main:app         # API at http://localhost:8000/docs
 ```
 
 What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
