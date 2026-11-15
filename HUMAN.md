@@ -146,3 +146,6 @@ Contactashmeetsingh changed the frontend assignment to a fast, polished, saved-d
 Run `cd frontend && npm ci && npm run dev`. The visual design remains ivory/plum/coral with the original animated DNA-inspired artwork.
 
 - **Plan B readability update (2026-11-14):** enlarged body text to roughly 17–22px and small labels to 14px, strengthened text contrast, and expanded controls. Responsive sections stack earlier to retain readability. Production build and browser smoke checks pass, including 320/390/768px widths.
+
+- **PSMD3 follow-up (2026-11-14):** added real saved promoter/chromatin readouts, functional HER2 paper evidence, and a separately sourced drug-research extension for user-specified bortezomib and carfilzomib. A five-minute review timer gates only the drug cards and persists across reloads; no live model or ChatGPT call. Official labels, preclinical HER2 cell-line findings, and the ASH myeloma abstract are distinguished from model outputs and clinical trial matches. Neither drug is presented as a proven direct PSMD3 inhibitor or a treatment recommendation. No backend changes.
+  Verified production build, 300-second unlock and reload persistence using a browser virtual clock, invalid timer state, both drug cards, existing trial flows, 320/390/768px layouts, no research API requests, and no runtime errors.

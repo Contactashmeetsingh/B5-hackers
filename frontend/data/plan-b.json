@@ -2208,7 +2208,41 @@
       "primary": false
     }
   ],
+  "psmd3_lead": {
+    "papers": [
+      {
+        "id": "23253899",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23253899/",
+        "title": "The HER2 amplicon includes several genes required for the growth and survival of HER2 positive breast cancer cells",
+        "year": "2012",
+        "kind": "Functional (genetic)",
+        "context": "HER2+ breast cancer cells, 71 tumors (aCGH)",
+        "summary": "Co-silencing these co-amplified 17q12 genes together with HER2 adds to the loss of cell viability"
+      }
+    ],
+    "trial_mentions": 0
+  },
   "genomic": {
+    "PSMD3": {
+      "rank": "1",
+      "gene": "PSMD3",
+      "tier": "high",
+      "dna_context_score": "0.9881",
+      "promoter_probability": "0.9763",
+      "chromatin_calls": "56",
+      "DNase": "8",
+      "H3K27ac": "5",
+      "Pol2": "7",
+      "CTCF": "6",
+      "H3K27me3": "4",
+      "Other": "18",
+      "literature_evidence": "functional",
+      "promoter_model": "g0-promoter-2000bp",
+      "chromatin_model": "g0-deepsea",
+      "promoter_request_id": "3966ec5d-94cb-4a65-8305-d6048ce0fa24",
+      "chromatin_request_id": "ad682647-08cf-4301-8636-e9df543a6c94",
+      "retrieved": "2026-11-14"
+    },
     "PIK3CA": {
       "rank": "8",
       "gene": "PIK3CA",

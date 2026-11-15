@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import { Helix } from "@/components/helix";
+import { Psmd3Followup } from "@/components/psmd3-followup";
 import data from "@/data/plan-b.json";
 import "./plan-b.css";
 
@@ -328,6 +329,86 @@ function Evidence() {
           </details>
         </article>
       </div>
+    </section>
+  );
+}
+
+function Psmd3Lead() {
+  const model = data.genomic.PSMD3;
+  return (
+    <section
+      className="pb-evidence"
+      aria-label="PSMD3 exploratory research lead"
+    >
+      <div className="pb-section-label">
+        <span className="eyebrow">FOLLOWING THE GENOMIC RESULTS</span>
+        <span>Exploratory research lead</span>
+      </div>
+      <article className="pb-evidence-card">
+        <div className="pb-card-top">
+          <span className="eyebrow">PSMD3 / A QUESTION TO FOLLOW</span>
+          <span className="badge rose">
+            Model prediction + research-paper evidence
+          </span>
+        </div>
+        <h3 style={{ marginTop: 24 }}>A new connection worth investigating.</h3>
+        <p>
+          The saved genomic analysis highlighted PSMD3’s promoter and chromatin
+          activity. The saved literature also places PSMD3 in the HER2
+          co-amplified region and reports a functional contribution to
+          HER2-positive cell survival.
+        </p>
+        <div className="pb-readout-pair">
+          <div>
+            <strong>{model.promoter_probability}</strong>
+            <span>Promoter probability</span>
+          </div>
+          <div>
+            <strong>{model.chromatin_calls}</strong>
+            <span>Chromatin feature calls</span>
+          </div>
+        </div>
+        <div className="pb-expression-note">
+          <strong>A research lead, not an established drug match.</strong>
+          <p>
+            These findings motivate further investigation. They do not establish
+            direct PSMD3–HER2 binding, mutation-specific overexpression, or
+            sensitivity to a myeloma drug. Broad regulatory activity is not
+            evidence of HER2 specificity.
+          </p>
+        </div>
+        <p>
+          {data.psmd3_lead.trial_mentions === 0
+            ? "No PSMD3 mention was found in the titles, biomarker tags, or therapeutic areas of this saved trial snapshot. This is not a claim that no trial exists elsewhere."
+            : `${data.psmd3_lead.trial_mentions} saved trial records mention PSMD3; full criteria need review.`}
+        </p>
+        <details className="pb-source-details">
+          <summary>
+            Trace this research lead <span>Sources +</span>
+          </summary>
+          {data.psmd3_lead.papers.map((paper) => (
+            <article className="pb-paper" key={paper.id}>
+              <div>
+                <span className="badge sage">Functional evidence</span>
+                <span>
+                  {paper.year} · PMID {paper.id}
+                </span>
+              </div>
+              <h4>
+                <Link href={paper.url}>{paper.title}</Link>
+              </h4>
+              <p>{paper.summary}</p>
+              <small>{paper.context}</small>
+            </article>
+          ))}
+          <p>
+            Models: {model.promoter_model} and {model.chromatin_model}. Saved{" "}
+            {model.retrieved}.
+          </p>
+          <Link href={data.sources.genomic_notes}>Saved genomic analysis</Link>
+        </details>
+        <Psmd3Followup />
+      </article>
     </section>
   );
 }
@@ -759,6 +840,7 @@ export default function PlanB() {
                 </details>
               </div>
             )}
+            {mutation && <Psmd3Lead />}
             <p className="pb-research-note">{disclaimer}</p>
           </div>
         </section>

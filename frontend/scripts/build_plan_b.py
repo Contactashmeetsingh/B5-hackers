@@ -42,6 +42,13 @@ matched = [row for row in both if positive.search(row['title']) and re.search(r'
 review = [row for row in both if row not in matched and row['her2_context'] != 'negative']
 excluded = [row for row in both if row['her2_context'] == 'negative']
 
+psmd3_papers = []
+for line in source('keenable/her2_interactors_experimental.md').splitlines():
+    if not line.startswith('| `') or '`PSMD3`' not in line: continue
+    cells = [cell.strip() for cell in line.strip('|').split('|')]
+    match = re.search(r'\[(\d+)\]\(([^)]+)\)', cells[4])
+    psmd3_papers.append({'id': match[1], 'url': match[2], 'title': cells[6], 'year': cells[5], 'kind': cells[1], 'context': cells[3], 'summary': cells[2]})
+
 papers = []
 for line in source('keenable/her2_interactors_experimental.md').splitlines():
     if not line.startswith('| `PIK3CA`'): continue
@@ -61,7 +68,8 @@ payload = {
     'counts': {'screened': len(trials), 'her2_tagged': sum('HER2' in r['markers'] for r in trials), 'baseline': len(baseline), 'both_tagged': len(both), 'matched': len(matched), 'review': len(review), 'excluded': len(excluded)},
     'baseline': baseline, 'personalized': matched, 'review': review, 'excluded': excluded,
     'papers': papers,
-    'genomic': {r['gene']: r for r in genomic if r['gene'] in ('PIK3CA', 'ERBB2')},
+    'psmd3_lead': {'papers': psmd3_papers, 'trial_mentions': sum('PSMD3' in (r['title'] + ' ' + r['biomarker_requirements'] + ' ' + r['therapeutic_area']).upper() for r in trials)},
+    'genomic': {r['gene']: r for r in genomic if r['gene'] in ('PIK3CA', 'ERBB2', 'PSMD3')},
     'sources': {'trials': BASE + trial_path, 'experimental': BASE + 'keenable/her2_interactors_experimental.md', 'literature': BASE + 'keenable/her2_interactors_literature.md', 'genomic': BASE + genomic_path, 'genomic_notes': BASE + 'genomic_intelligence/her2_genes_dna_context_ranking.md'},
 }
 assert len({r['nct_id'] for r in trials}) == len(trials), 'Duplicate trial IDs'

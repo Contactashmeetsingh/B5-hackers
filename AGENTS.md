@@ -15,6 +15,7 @@ Contactashmeetsingh explicitly changed the frontend task to a self-contained sav
 - The main GI table explicitly omits expression predictions: show promoter/chromatin readouts and “overexpression not established,” never relabel them as expression predictions.
 - HER2-negative/low studies are not HER2-positive matches. Marker tags alone do not confirm eligibility. Keep ambiguous and mixed-cohort candidates separate from titles explicitly naming both profile statuses.
 - Preserve evidence labels and the research disclaimer. No treatment recommendations or invented results.
+- PSMD3 follow-up: show saved regulatory readouts and functional literature, followed by a user-requested five-minute app review timer. The curated `frontend/data/psmd3-followup.json` adds primary literature and official labels for user-specified bortezomib and carfilzomib. Keep this provenance distinct from saved model outputs. These drugs inhibit the wider proteasome, not established direct PSMD3 targeting; breast-cancer evidence shown is preclinical. No simulated live analysis or ChatGPT integration.
 
 ## 1. Mission
 

@@ -1,0 +1,32 @@
+{
+  "reviewed": "2026-11-14",
+  "provenance": "Manually curated primary literature and official labels, separate from the saved main-branch genomic outputs. Drugs requested by Contactashmeetsingh.",
+  "drugs": [
+    {
+      "name": "Bortezomib",
+      "mechanism": "Reversibly inhibits proteasome chymotrypsin-like activity; it is not established here as a direct PSMD3 inhibitor.",
+      "context": "Approved for multiple myeloma. The breast-cancer evidence linked below is preclinical cell-line research.",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0eb8daef-18da-43bb-b7c6-38c4c8b5dd80"
+    },
+    {
+      "name": "Carfilzomib",
+      "mechanism": "Irreversibly binds active sites of the 20S proteasome core; PSMD3 belongs to the separate 19S regulatory particle.",
+      "context": "Approved in specified relapsed or refractory multiple-myeloma settings. Included for proteasome context; the bortezomib breast-cell findings do not establish the same result for carfilzomib.",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/202714s036lbl.pdf"
+    }
+  ],
+  "papers": [
+    {
+      "title": "Proteasome Inhibitors Suppress ErbB Family Expression through HSP90-Mediated Lysosomal Degradation",
+      "context": "2019 · HER2+ breast cancer cell lines",
+      "summary": "In cell cultures, proteasome inhibitors including bortezomib reduced proliferation and ErbB-family protein levels, including in lapatinib-resistant models. This supports preclinical follow-up, not demonstrated patient benefit.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6801459/"
+    },
+    {
+      "title": "PSMD3 orchestrates metabolic reprogramming and immunogenic cell death in multiple myeloma",
+      "context": "2025 · ASH conference abstract · preclinical",
+      "summary": "Genetic depletion of PSMD3 impaired myeloma cells, including models resistant to bortezomib or carfilzomib, and suppressed xenograft growth. The study investigated PSMD3 depletion, not direct targeting of PSMD3 by either approved drug.",
+      "url": "https://doi.org/10.1182/blood-2025-3926"
+    }
+  ]
+}

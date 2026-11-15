@@ -1696,3 +1696,87 @@
     font-size: 14px;
   }
 }
+.pb-followup {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid #cbbdc5;
+}
+.pb-followup > h3 {
+  margin-top: 24px;
+}
+.pb-followup p {
+  font-size: 18px;
+  line-height: 1.65;
+}
+.pb-review-clock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin: 28px 0 16px;
+  padding: 28px;
+  border-radius: 20px;
+  background: #efe5eb;
+  color: #452a40;
+}
+.pb-review-clock > div {
+  flex: 1 1 240px;
+}
+.pb-review-clock strong {
+  font-size: 22px;
+}
+.pb-review-clock p {
+  margin: 8px 0 0;
+}
+.pb-clock-digits {
+  font-size: clamp(42px, 6vw, 64px);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+.pb-review-clock progress {
+  width: 100%;
+  height: 8px;
+  accent-color: #65435a;
+}
+.pb-review-clock button {
+  white-space: normal;
+}
+.pb-unlock-status {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.pb-drug-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 28px 0;
+}
+.pb-drug-card {
+  padding: 28px;
+  border: 1px solid #cbbdc5;
+  border-radius: 20px;
+  background: #fcf8f4;
+  min-width: 0;
+}
+.pb-drug-card h4 {
+  font-size: clamp(28px, 3vw, 38px);
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+.pb-followup a {
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.pb-drug-card a {
+  font-size: 17px;
+}
+@media (max-width: 800px) {
+  .pb-drug-grid {
+    grid-template-columns: 1fr;
+  }
+  .pb-review-clock,
+  .pb-drug-card {
+    padding: 20px;
+  }
+}
