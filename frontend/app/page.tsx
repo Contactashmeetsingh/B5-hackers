@@ -357,13 +357,11 @@ export default function PlanB() {
   );
   const scrollToResearch = () => {
     setMenu(false);
-    document
-      .getElementById("research")
-      ?.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-      });
+    document.getElementById("research")?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
   };
   return (
     <div className="plan-b">

@@ -144,3 +144,5 @@ Contactashmeetsingh changed the frontend assignment to a fast, polished, saved-d
 - Production build, TypeScript check, and browser smoke checks pass: both profile flows, search/phase filters, pagination, evidence expansion, 320/390/768px layouts, and zero research API calls.
 
 Run `cd frontend && npm ci && npm run dev`. The visual design remains ivory/plum/coral with the original animated DNA-inspired artwork.
+
+- **Plan B readability update (2026-11-14):** enlarged body text to roughly 17–22px and small labels to 14px, strengthened text contrast, and expanded controls. Responsive sections stack earlier to retain readability. Production build and browser smoke checks pass, including 320/390/768px widths.
