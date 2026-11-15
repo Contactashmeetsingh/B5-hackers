@@ -52,7 +52,6 @@ What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 | PIK3CA | A gene that is often mutated in breast cancer and is linked to resistance to anti-HER2 drugs |
 | Keenable | Web search tool for AI agents, used to find the papers |
 | GI | Genomic Intelligence, whose DNA models we call |
-| Pan-Cancer Atlas | TCGA's dataset of tumor DNA, RNA and protein measurements from patients |
 | Co-amplification | Two genes gaining extra copies together, usually because they sit side by side |
 | TSS | Transcription start site, where a gene's RNA begins |
 | FASTA | A plain text file format for DNA sequences |
