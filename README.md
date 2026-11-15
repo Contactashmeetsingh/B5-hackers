@@ -14,14 +14,25 @@ Give the platform a biomarker profile, **HER2 positive + PIK3CA mutated** breast
 
 > **Research prototype. Not medical advice.** It helps researchers explore; it does not recommend treatment. Following up on the genes it reports is the researcher's job.
 
+## Run the app (branch `main_with_newapp`)
+
+You need Python 3.11+ and Node.js 20.9+. Everything runs offline from the data in this repo; no API keys are needed.
+
+```bash
+git clone -b main_with_newapp https://github.com/Contactashmeetsingh/B5-hackers.git
+cd B5-hackers
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+cd frontend && npm ci && npm run dev      # then open http://127.0.0.1:3000
+```
+
+This branch adds **PSMD3** as a HER2-associated gene: the Trial matches tab shows "Requires HER2 positive and PSMD3 amplified: 0 trials", and the Gene explorer's PSMD3 panel lists proteasome inhibitors (bortezomib, carfilzomib, ixazomib) as drug targets, with a note that they act on the proteasome rather than on PSMD3 itself.
+
 **Where are we?** See [`HUMAN.md`](HUMAN.md), the live progress tracker. The detailed spec for coding agents is [`AGENTS.md`](AGENTS.md).
 
 ## How it works
 
 <img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/c6d19239-32f9-443d-9e29-85b84f0aa475" />
 
-```
-```
 What each command shows today is listed in [`HUMAN.md`](HUMAN.md).
 
 ## What is in this repo
