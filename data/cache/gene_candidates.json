@@ -1,0 +1,456 @@
+[
+  {
+    "source": "mock",
+    "gene": "ERBB2",
+    "ensembl_id": "ENSG00000141736",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "39020378",
+      "30057690",
+      "39062682",
+      "17274834",
+      "19855434",
+      "15568014",
+      "18056992",
+      "34439093",
+      "25881002",
+      "7907978",
+      "23593540",
+      "23253899",
+      "27698002",
+      "28915583",
+      "16322262",
+      "20103628",
+      "21399647",
+      "25892239",
+      "15324695",
+      "23940356",
+      "27358378",
+      "17259984",
+      "16901783",
+      "15156151",
+      "10878805",
+      "40390040",
+      "37258523",
+      "27800032",
+      "39137598",
+      "42323696",
+      "36516931",
+      "32843527",
+      "38837894",
+      "25199759",
+      "30535550",
+      "22172323",
+      "31219154",
+      "30288002",
+      "33947692",
+      "35465733",
+      "39476340",
+      "40454641",
+      "33246021",
+      "42202490",
+      "19633047",
+      "25559805",
+      "26105797",
+      "25800754",
+      "29850984",
+      "36633813",
+      "33213227",
+      "38011835",
+      "31256368",
+      "31091374",
+      "33622114",
+      "42263466",
+      "40845250",
+      "40642892",
+      "39873916",
+      "42496151"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PIK3CA",
+    "ensembl_id": "ENSG00000121879",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "30057690",
+      "15324695",
+      "23940356",
+      "27358378",
+      "42323696",
+      "36516931",
+      "32843527",
+      "38837894",
+      "25199759",
+      "30535550",
+      "22172323",
+      "31219154",
+      "30288002",
+      "33947692",
+      "35465733",
+      "39476340",
+      "40454641",
+      "33246021",
+      "42202490",
+      "19633047",
+      "25559805",
+      "26105797",
+      "29850984",
+      "36633813",
+      "33213227",
+      "31256368",
+      "31091374",
+      "33622114",
+      "42263466",
+      "41143603",
+      "40845250",
+      "40642892",
+      "39873916",
+      "42496151",
+      "39791163"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ERBB3",
+    "ensembl_id": "ENSG00000065361",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "39020378",
+      "30057690",
+      "39062682",
+      "17274834",
+      "15568014",
+      "18056992",
+      "20103628",
+      "39137598"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "HSP90AA1",
+    "ensembl_id": "ENSG00000080824",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "17274834",
+      "19855434",
+      "15568014",
+      "18056992",
+      "34439093",
+      "25881002",
+      "40390040"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "EGFR",
+    "ensembl_id": "ENSG00000146648",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "39062682",
+      "17274834",
+      "39137598"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ESR1",
+    "ensembl_id": "ENSG00000091831",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "39062682",
+      "37258523",
+      "27800032"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "GRB7",
+    "ensembl_id": "ENSG00000141738",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "7907978",
+      "23593540",
+      "23253899"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "IGF1R",
+    "ensembl_id": "ENSG00000140443",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "30057690",
+      "16322262",
+      "20103628"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PTEN",
+    "ensembl_id": "ENSG00000171862",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "21399647",
+      "15324695",
+      "22172323"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "SHC1",
+    "ensembl_id": "ENSG00000160691",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "7907978",
+      "23593540",
+      "15156151"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "SRC",
+    "ensembl_id": "ENSG00000197122",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "21399647",
+      "25892239",
+      "15324695"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ERBB4",
+    "ensembl_id": "ENSG00000178568",
+    "in_targets_dataset": true,
+    "paper_ids": [
+      "39062682",
+      "39137598"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ERBIN",
+    "ensembl_id": "ENSG00000112851",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "10878805",
+      "40390040"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "MUC4",
+    "ensembl_id": "ENSG00000145113",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "27698002",
+      "28915583"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PGR",
+    "ensembl_id": "ENSG00000082175",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "39062682",
+      "27800032"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ATM",
+    "ensembl_id": "ENSG00000149311",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "25881002"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "CDCP1",
+    "ensembl_id": "ENSG00000163814",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "25892239"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "EZR",
+    "ensembl_id": "ENSG00000092820",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "40390040"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "ITGB4",
+    "ensembl_id": "ENSG00000132470",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "16901783"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "JUN",
+    "ensembl_id": "ENSG00000177606",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "16901783"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "MEMO1",
+    "ensembl_id": "ENSG00000162959",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "15156151"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PGAP3",
+    "ensembl_id": "ENSG00000161395",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "23253899"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PSMD3",
+    "ensembl_id": "ENSG00000108344",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "23253899"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "PTPN1",
+    "ensembl_id": "ENSG00000196396",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "17259984"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "SLC9A3R1",
+    "ensembl_id": "ENSG00000109062",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "40390040"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": "NHERF1"
+  },
+  {
+    "source": "mock",
+    "gene": "STARD3",
+    "ensembl_id": "ENSG00000131748",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "23253899"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "STAT3",
+    "ensembl_id": "ENSG00000168610",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "16901783"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "STUB1",
+    "ensembl_id": "ENSG00000103266",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "34439093"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "TNF",
+    "ensembl_id": "ENSG00000232810",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "27698002"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  },
+  {
+    "source": "mock",
+    "gene": "VAV2",
+    "ensembl_id": "ENSG00000160293",
+    "in_targets_dataset": false,
+    "paper_ids": [
+      "23593540"
+    ],
+    "targets_dataset": "pending (drug_targets.json seed used as stand-in)",
+    "approved_symbol": null
+  }
+]

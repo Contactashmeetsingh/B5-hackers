@@ -1,0 +1,530 @@
+{
+  "retrieved": "2026-11-14",
+  "endpoint": "/v1/search/public (keyless)",
+  "site": "pubmed.ncbi.nlm.nih.gov",
+  "max_results": 10,
+  "checked_against": "PubMed efetch (title, year, publication types; abstract read for genes and status, not stored)",
+  "queries": [
+    {
+      "query": "HER2 positive and PIK3CA mutated breast cancer",
+      "hits": 10,
+      "results": [
+        {
+          "paper_id": "42323696",
+          "search_title": "Impact of somatic PIK3CA mutations on clinical outcomes in HER2-positive breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42323696/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "36516931",
+          "search_title": "Predictive and prognostic value of PIK3CA mutations in HER2-positive breast cancer treated with tyrosine kinase inhibitors: A systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36516931/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "32843527",
+          "search_title": "PIK3CA Mutation in the ShortHER Randomized Adjuvant Trial for Patients with Early HER2+ Breast Cancer: Association with Prognosis and Integration with PAM50 Subtype",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32843527/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "23940356",
+          "search_title": "Mutant PIK3CA accelerates HER2-driven transgenic mammary tumors and induces resistance to combinations of anti-HER2 therapies",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23940356/",
+          "genes_in_pubmed_record": [],
+          "outcome": "already in papers.json"
+        },
+        {
+          "paper_id": "38837894",
+          "search_title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "25199759",
+          "search_title": "PIK3CA mutations are associated with lower rates of pathologic complete response to anti-human epidermal growth factor receptor 2 (her2) therapy in primary HER2-overexpressing breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25199759/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "30535550",
+          "search_title": "Genomic alterations associated with HER2+ breast cancer risk and clinical outcome in response to trastuzumab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30535550/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "22172323",
+          "search_title": "PIK3CA mutations, PTEN, and pHER2 expression and impact on outcome in HER2-positive early-stage breast cancer patients treated with adjuvant chemotherapy and trastuzumab",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22172323/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA",
+            "PTEN"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "31219154",
+          "search_title": "The H1047R PIK3CA oncogene induces a senescence-like state, pleiotropy and acute HSP90 dependency in HER2+ mammary epithelial cells",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31219154/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "30288002",
+          "search_title": "Clinico-pathological Features of PIK3CA Mutation in HER2-Positive Breast Cancer of Indian Population",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30288002/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        }
+      ]
+    },
+    {
+      "query": "HER2 positive and PIK3CA mutated breast cancer clinical trial",
+      "hits": 10,
+      "results": [
+        {
+          "paper_id": "33947692",
+          "search_title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "35465733",
+          "search_title": "A phase III trial of alpelisib + trastuzumab ± fulvestrant versus trastuzumab + chemotherapy in HER2+ PIK3CA-mutated breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35465733/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "32843527",
+          "search_title": "PIK3CA Mutation in the ShortHER Randomized Adjuvant Trial for Patients with Early HER2+ Breast Cancer: Association with Prognosis and Integration with PAM50 Subtype",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32843527/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "38837894",
+          "search_title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "42323696",
+          "search_title": "Impact of somatic PIK3CA mutations on clinical outcomes in HER2-positive breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42323696/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "39476340",
+          "search_title": "Inavolisib-Based Therapy in PIK3CA-Mutated Advanced Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39476340/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "40454641",
+          "search_title": "Overall Survival with Inavolisib in PIK3CA-Mutated Advanced Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40454641/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "33246021",
+          "search_title": "Alpelisib plus fulvestrant for PIK3CA-mutated, hormone receptor-positive, human epidermal growth factor receptor-2-negative advanced breast cancer: final overall survival results from SOLAR-1",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33246021/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "42202490",
+          "search_title": "Safety analyses of the INAVO120 randomised phase III trial of inavolisib or placebo with palbociclib–fulvestrant in patients with PIK3CA-mutated, hormone receptor-positive, HER2-negative, endocrine-resistant advanced breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42202490/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "25199759",
+          "search_title": "PIK3CA mutations are associated with lower rates of pathologic complete response to anti-human epidermal growth factor receptor 2 (her2) therapy in primary HER2-overexpressing breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25199759/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        }
+      ]
+    },
+    {
+      "query": "PIK3CA mutation and response to HER2-targeted therapy in breast cancer",
+      "hits": 10,
+      "results": [
+        {
+          "paper_id": "19633047",
+          "search_title": "Association between gain-of-function mutations in PIK3CA and resistance to HER2-targeted agents in HER2-amplified breast cancer cell lines",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19633047/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "36516931",
+          "search_title": "Predictive and prognostic value of PIK3CA mutations in HER2-positive breast cancer treated with tyrosine kinase inhibitors: A systematic review and meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36516931/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "25559805",
+          "search_title": "PIK3CA genotype and treatment decisions in human epidermal growth factor receptor 2-positive breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25559805/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "25199759",
+          "search_title": "PIK3CA mutations are associated with lower rates of pathologic complete response to anti-human epidermal growth factor receptor 2 (her2) therapy in primary HER2-overexpressing breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25199759/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "26105797",
+          "search_title": "The predictive and prognostic role of phosphatase phosphoinositol-3 (PI3) kinase (PIK3CA) mutation in HER2-positive breast cancer receiving HER2-targeted therapy: a meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26105797/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "23940356",
+          "search_title": "Mutant PIK3CA accelerates HER2-driven transgenic mammary tumors and induces resistance to combinations of anti-HER2 therapies",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23940356/",
+          "genes_in_pubmed_record": [],
+          "outcome": "already in papers.json"
+        },
+        {
+          "paper_id": "26105797",
+          "search_title": "The predictive and prognostic role of phosphatase phosphoinositol-3 (PI3) kinase (PIK3CA) mutation in HER2-positive breast cancer receiving HER2-targeted therapy: a meta-analysis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26105797/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "38837894",
+          "search_title": "An Analysis of PIK3CA Hotspot Mutations and Response to Neoadjuvant Therapy in Patients with Breast Cancer from Four Prospective Clinical Trials",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38837894/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "33947692",
+          "search_title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "25800754",
+          "search_title": "Deciphering the role of phosphatidylinositol 3-kinase mutations in human epidermal growth factor receptor 2-positive breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25800754/",
+          "genes_in_pubmed_record": [
+            "ERBB2"
+          ],
+          "outcome": "merged"
+        }
+      ]
+    },
+    {
+      "query": "alpelisib in HER2 positive breast cancer",
+      "hits": 10,
+      "results": [
+        {
+          "paper_id": "29850984",
+          "search_title": "Phase I study of alpelisib (BYL-719) and trastuzumab emtansine (T-DM1) in HER2-positive metastatic breast cancer (MBC) after trastuzumab and taxane therapy",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29850984/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "33947692",
+          "search_title": "A Phase I Study of Alpelisib in Combination with Trastuzumab and LJM716 in Patients with PIK3CA-Mutated HER2-Positive Metastatic Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33947692/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "35465733",
+          "search_title": "A phase III trial of alpelisib + trastuzumab ± fulvestrant versus trastuzumab + chemotherapy in HER2+ PIK3CA-mutated breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35465733/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "36633813",
+          "search_title": "Pharmacokinetics and Pharmacodynamic of Alpelisib",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36633813/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "33213227",
+          "search_title": "A pharmacokinetic evaluation of alpelisib for the treatment of HR+, HER2-negative, PIK3CA-mutated advanced or metastatic breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33213227/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "38011835",
+          "search_title": "A Cohort Study of the Antitumor Efficacy and Toxicity Profile of Alpelisib for Metastatic or Locally Advanced HR+, HER2- Breast Cancer: A Single-Institution Experience",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38011835/",
+          "genes_in_pubmed_record": [
+            "ERBB2"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "31256368",
+          "search_title": "Alpelisib: First Global Approval",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31256368/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "33246021",
+          "search_title": "Alpelisib plus fulvestrant for PIK3CA-mutated, hormone receptor-positive, human epidermal growth factor receptor-2-negative advanced breast cancer: final overall survival results from SOLAR-1",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33246021/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "31091374",
+          "search_title": "Alpelisib for PIK3CA-Mutated, Hormone Receptor-Positive Advanced Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31091374/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "33622114",
+          "search_title": "Alpelisib for the treatment of PIK3CA-mutated, hormone receptor-positive, HER2-negative metastatic breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33622114/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        }
+      ]
+    },
+    {
+      "query": "inavolisib in HER2 positive breast cancer",
+      "hits": 10,
+      "results": [
+        {
+          "paper_id": "42263466",
+          "search_title": "Pharmacologic Features, Clinical Applications, and Drug Safety Evaluation of Inavolisib in the Treatment of Metastatic Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42263466/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "41143603",
+          "search_title": "PI3Kα Inhibitor and Degrader Inavolisib Can Co-opt FGFR2 to Enhance Responses in Patients with PIK3CA-Mutated Solid Tumors and in Preclinical Models",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41143603/",
+          "genes_in_pubmed_record": [
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "39476340",
+          "search_title": "Inavolisib-Based Therapy in PIK3CA-Mutated Advanced Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39476340/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "40845250",
+          "search_title": "US Food and Drug Administration Approval Summary: Inavolisib With Palbociclib and Fulvestrant for Endocrine-Resistant, PIK3CA-Mutated, Hormone Receptor-Positive, Human Epidermal Growth Factor Receptor 2-Negative, Locally Advanced or Metastatic Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40845250/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "40642892",
+          "search_title": "Inavolisib for HR-Positive, HER2-Negative Advanced Breast Cancer: Clinical Trials and Patient Access Implication",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40642892/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "39873916",
+          "search_title": "Inavolisib: First Approval",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39873916/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "40454641",
+          "search_title": "Overall Survival with Inavolisib in PIK3CA-Mutated Advanced Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40454641/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "42202490",
+          "search_title": "Safety analyses of the INAVO120 randomised phase III trial of inavolisib or placebo with palbociclib–fulvestrant in patients with PIK3CA-mutated, hormone receptor-positive, HER2-negative, endocrine-resistant advanced breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42202490/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged (also found by another query)"
+        },
+        {
+          "paper_id": "42496151",
+          "search_title": "Inavolisib: a second-generation PI3Kα inhibitor in HR+/HER2-negative breast cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42496151/",
+          "genes_in_pubmed_record": [
+            "ERBB2",
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        },
+        {
+          "paper_id": "39791163",
+          "search_title": "FDA Approves Inavolisib Combo for PIK3CA-Mutated, HR+ Breast Cancer",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39791163/",
+          "genes_in_pubmed_record": [
+            "PIK3CA"
+          ],
+          "outcome": "merged"
+        }
+      ]
+    }
+  ]
+}

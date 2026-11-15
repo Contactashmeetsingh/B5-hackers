@@ -1,0 +1,253 @@
+{
+  "gene": "PGR",
+  "queried_as": "PGR",
+  "retrieved": "2026-11-14",
+  "server": {
+    "name": "gi-mcp",
+    "version": "0.1.0a26"
+  },
+  "demo_key": true,
+  "models": {
+    "expression": "g0-expression-8192",
+    "promoter": "g0-promoter-2000bp",
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
+  },
+  "locus": {
+    "ensembl_id": "ENSG00000082175",
+    "chrom": "11",
+    "strand": -1,
+    "tss": 101129813,
+    "tss_source": "canonical-transcript",
+    "tss_matches_ensembl": true,
+    "expression_window": "11:101088854-101170773",
+    "tss_window": "11:101128814-101130813",
+    "tss_window_strand": -1,
+    "splice_window": "11:101114814-101129813",
+    "annotation_window": "11:101089813-101169812"
+  },
+  "expression": {
+    "target": {
+      "description": "HER2-positive breast cancer cell line",
+      "log_tpm": 0.6051,
+      "tpm": 0.8315,
+      "scored_window": [
+        13612,
+        67278
+      ],
+      "request_id": "a4d7037f-fba9-4698-8bd9-67051c18f30b"
+    },
+    "reference": {
+      "description": "liver tissue",
+      "log_tpm": 0.9838,
+      "tpm": 1.6747,
+      "scored_window": [
+        13612,
+        67278
+      ],
+      "request_id": "48f840a8-5af2-4503-95bd-8d5e37cfd484"
+    }
+  },
+  "promoter": {
+    "max_probability": 0.8682,
+    "upstream_window_probability": 0.8525,
+    "windows": [
+      {
+        "start": 0,
+        "end": 1000,
+        "probability": 0.8525
+      },
+      {
+        "start": 1000,
+        "end": 2000,
+        "probability": 0.8682
+      }
+    ],
+    "request_id": "7161bbdf-d1e5-4ecd-bc4e-c5fda81dbd4e"
+  },
+  "chromatin": {
+    "threshold": 0.5,
+    "windows": 10,
+    "labels_called_all_cell_types": 209,
+    "on_tissue_cell_types": [
+      "HMEC",
+      "MCF-7",
+      "T-47D"
+    ],
+    "on_tissue_labels_called": 16,
+    "on_tissue_by_feature": {
+      "CTCF": 2,
+      "DNase": 8,
+      "H3K27me3": 1,
+      "Other": 4,
+      "c-Myc": 1
+    },
+    "on_tissue_calls": [
+      {
+        "label_index": 856,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.9947
+      },
+      {
+        "label_index": 131,
+        "cell_type": "HMEC",
+        "feature_type": "CTCF",
+        "treatment": "IFNa4h",
+        "score": 0.8771
+      },
+      {
+        "label_index": 59,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.8273
+      },
+      {
+        "label_index": 106,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.8014
+      },
+      {
+        "label_index": 53,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.7821
+      },
+      {
+        "label_index": 12,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.7542
+      },
+      {
+        "label_index": 493,
+        "cell_type": "MCF-7",
+        "feature_type": "H3K27me3",
+        "treatment": "None",
+        "score": 0.7149
+      },
+      {
+        "label_index": 100,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.7133
+      },
+      {
+        "label_index": 184,
+        "cell_type": "MCF-7",
+        "feature_type": "CTCF",
+        "treatment": "None",
+        "score": 0.7114
+      },
+      {
+        "label_index": 850,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.6764
+      },
+      {
+        "label_index": 6,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "IFNa4h",
+        "score": 0.6522
+      },
+      {
+        "label_index": 839,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.6518
+      },
+      {
+        "label_index": 886,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.5985
+      },
+      {
+        "label_index": 42,
+        "cell_type": "T-47D",
+        "feature_type": "DNase",
+        "treatment": "IFNa4h",
+        "score": 0.5692
+      },
+      {
+        "label_index": 89,
+        "cell_type": "T-47D",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.5426
+      },
+      {
+        "label_index": 340,
+        "cell_type": "HMEC",
+        "feature_type": "c-Myc",
+        "treatment": "IFNa4h",
+        "score": 0.538
+      }
+    ],
+    "request_id": "3c6bbe17-1403-437a-b0fa-d7844be46d1c"
+  },
+  "enhancer": {
+    "dev_score_max": 0.7594,
+    "hk_score_max": -0.0239,
+    "dev_score_mean": -0.4284,
+    "hk_score_mean": -0.6845,
+    "windows": 9,
+    "request_id": "72db1d3c-eb1e-4c49-b9f2-e8049bd89b8e"
+  },
+  "splice": {
+    "junctions_in_window": 3,
+    "junctions_recovered": 3,
+    "recall": 1.0,
+    "sites_called": 3,
+    "precision": 1.0,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 2379,
+        "score": 0.9999
+      },
+      {
+        "type": "donor",
+        "offset": 3806,
+        "score": 0.9999
+      },
+      {
+        "type": "acceptor",
+        "offset": 3655,
+        "score": 0.9999
+      }
+    ],
+    "request_id": "8f3f1c63-e8a0-4bd5-9656-0ca2b8172626"
+  },
+  "annotation": {
+    "transcripts_found": 0,
+    "found_at_tss": false,
+    "confidence": 0.0,
+    "transcript_type": null,
+    "transcript_type_score": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "3eda6dce-e994-46e9-a1cc-c992d6ed4e40"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 0,
+    "found_at_tss": false,
+    "log_tpm": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "39290812-bb84-4cc0-bd3a-3b157b32eccf"
+  }
+}

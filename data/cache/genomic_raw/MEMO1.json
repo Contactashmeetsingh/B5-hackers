@@ -1,0 +1,414 @@
+{
+  "gene": "MEMO1",
+  "queried_as": "MEMO1",
+  "retrieved": "2026-11-14",
+  "server": {
+    "name": "gi-mcp",
+    "version": "0.1.0a26"
+  },
+  "demo_key": true,
+  "models": {
+    "expression": "g0-expression-8192",
+    "promoter": "g0-promoter-2000bp",
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
+  },
+  "locus": {
+    "ensembl_id": "ENSG00000162959",
+    "chrom": "2",
+    "strand": -1,
+    "tss": 32011008,
+    "tss_source": "canonical-transcript",
+    "tss_matches_ensembl": true,
+    "expression_window": "2:31970049-32051968",
+    "tss_window": "2:32010009-32012008",
+    "tss_window_strand": -1,
+    "splice_window": "2:31996009-32011008",
+    "annotation_window": "2:31971008-32051007"
+  },
+  "expression": {
+    "target": {
+      "description": "HER2-positive breast cancer cell line",
+      "log_tpm": 2.9891,
+      "tpm": 18.8686,
+      "scored_window": [
+        11252,
+        69322
+      ],
+      "request_id": "1a0e4184-f1cb-4f68-8c6f-61228e2f814a"
+    },
+    "reference": {
+      "description": "liver tissue",
+      "log_tpm": 3.168,
+      "tpm": 22.7599,
+      "scored_window": [
+        11252,
+        69322
+      ],
+      "request_id": "ee75a56a-85dd-4e8e-9aaf-f9428dbbcb9b"
+    }
+  },
+  "promoter": {
+    "max_probability": 0.9891,
+    "upstream_window_probability": 0.9886,
+    "windows": [
+      {
+        "start": 0,
+        "end": 1000,
+        "probability": 0.9886
+      },
+      {
+        "start": 1000,
+        "end": 2000,
+        "probability": 0.9891
+      }
+    ],
+    "request_id": "b8a15018-bd18-40cd-9b37-ce03db44ed7f"
+  },
+  "chromatin": {
+    "threshold": 0.5,
+    "windows": 10,
+    "labels_called_all_cell_types": 633,
+    "on_tissue_cell_types": [
+      "HMEC",
+      "MCF-7",
+      "T-47D"
+    ],
+    "on_tissue_labels_called": 40,
+    "on_tissue_by_feature": {
+      "CTCF": 4,
+      "DNase": 8,
+      "H3K27ac": 4,
+      "H3K27me3": 3,
+      "H3K4me1": 1,
+      "Other": 11,
+      "Pol2": 7,
+      "c-Myc": 2
+    },
+    "on_tissue_calls": [
+      {
+        "label_index": 850,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.998
+      },
+      {
+        "label_index": 709,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.9961
+      },
+      {
+        "label_index": 487,
+        "cell_type": "HMEC",
+        "feature_type": "H3K27me3",
+        "treatment": "None",
+        "score": 0.9874
+      },
+      {
+        "label_index": 332,
+        "cell_type": "HMEC",
+        "feature_type": "Pol2",
+        "treatment": "None",
+        "score": 0.9873
+      },
+      {
+        "label_index": 53,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.9864
+      },
+      {
+        "label_index": 413,
+        "cell_type": "MCF-7",
+        "feature_type": "H3K27ac",
+        "treatment": "None",
+        "score": 0.9817
+      },
+      {
+        "label_index": 89,
+        "cell_type": "T-47D",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.9812
+      },
+      {
+        "label_index": 231,
+        "cell_type": "MCF-7",
+        "feature_type": "CTCF",
+        "treatment": "None",
+        "score": 0.9774
+      },
+      {
+        "label_index": 762,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.977
+      },
+      {
+        "label_index": 100,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.9765
+      },
+      {
+        "label_index": 12,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.9735
+      },
+      {
+        "label_index": 59,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.9681
+      },
+      {
+        "label_index": 225,
+        "cell_type": "HMEC",
+        "feature_type": "CTCF",
+        "treatment": "None",
+        "score": 0.9672
+      },
+      {
+        "label_index": 244,
+        "cell_type": "MCF-7",
+        "feature_type": "Pol2",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.9669
+      },
+      {
+        "label_index": 839,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.9654
+      },
+      {
+        "label_index": 106,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.9605
+      },
+      {
+        "label_index": 6,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "IFNa4h",
+        "score": 0.9561
+      },
+      {
+        "label_index": 321,
+        "cell_type": "T-47D",
+        "feature_type": "Pol2",
+        "treatment": "None",
+        "score": 0.9547
+      },
+      {
+        "label_index": 493,
+        "cell_type": "MCF-7",
+        "feature_type": "H3K27me3",
+        "treatment": "None",
+        "score": 0.9523
+      },
+      {
+        "label_index": 340,
+        "cell_type": "HMEC",
+        "feature_type": "c-Myc",
+        "treatment": "IFNa4h",
+        "score": 0.9508
+      },
+      {
+        "label_index": 42,
+        "cell_type": "T-47D",
+        "feature_type": "DNase",
+        "treatment": "IFNa4h",
+        "score": 0.9489
+      },
+      {
+        "label_index": 214,
+        "cell_type": "T-47D",
+        "feature_type": "CTCF",
+        "treatment": "None",
+        "score": 0.9469
+      },
+      {
+        "label_index": 184,
+        "cell_type": "MCF-7",
+        "feature_type": "CTCF",
+        "treatment": "None",
+        "score": 0.9467
+      },
+      {
+        "label_index": 615,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "IFNa4h",
+        "score": 0.9397
+      },
+      {
+        "label_index": 407,
+        "cell_type": "HMEC",
+        "feature_type": "H3K27ac",
+        "treatment": "None",
+        "score": 0.9366
+      },
+      {
+        "label_index": 291,
+        "cell_type": "MCF-7",
+        "feature_type": "Pol2",
+        "treatment": "None",
+        "score": 0.925
+      },
+      {
+        "label_index": 668,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.8897
+      },
+      {
+        "label_index": 238,
+        "cell_type": "HMEC",
+        "feature_type": "Pol2",
+        "treatment": "IFNa4h",
+        "score": 0.8833
+      },
+      {
+        "label_index": 621,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.8703
+      },
+      {
+        "label_index": 745,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.8688
+      },
+      {
+        "label_index": 366,
+        "cell_type": "MCF-7",
+        "feature_type": "H3K27ac",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.8086
+      },
+      {
+        "label_index": 285,
+        "cell_type": "HMEC",
+        "feature_type": "Pol2",
+        "treatment": "None",
+        "score": 0.7979
+      },
+      {
+        "label_index": 903,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "IFNa4h",
+        "score": 0.7838
+      },
+      {
+        "label_index": 547,
+        "cell_type": "HMEC",
+        "feature_type": "H3K4me1",
+        "treatment": "None",
+        "score": 0.7831
+      },
+      {
+        "label_index": 396,
+        "cell_type": "T-47D",
+        "feature_type": "H3K27ac",
+        "treatment": "IFNa4h",
+        "score": 0.7805
+      },
+      {
+        "label_index": 440,
+        "cell_type": "HMEC",
+        "feature_type": "H3K27me3",
+        "treatment": "IFNa4h",
+        "score": 0.707
+      },
+      {
+        "label_index": 274,
+        "cell_type": "T-47D",
+        "feature_type": "Pol2",
+        "treatment": "IFNa4h",
+        "score": 0.5839
+      },
+      {
+        "label_index": 856,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.5229
+      },
+      {
+        "label_index": 756,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.5085
+      },
+      {
+        "label_index": 346,
+        "cell_type": "MCF-7",
+        "feature_type": "c-Myc",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.5079
+      }
+    ],
+    "request_id": "c2addc23-455d-440b-9f84-f37d38df069c"
+  },
+  "enhancer": {
+    "dev_score_max": 0.1865,
+    "hk_score_max": 0.7399,
+    "dev_score_mean": -0.6353,
+    "hk_score_mean": -0.5657,
+    "windows": 9,
+    "request_id": "02c1c602-9b73-465f-a1b6-3daa36950b73"
+  },
+  "splice": {
+    "junctions_in_window": 3,
+    "junctions_recovered": 1,
+    "recall": 0.3333,
+    "sites_called": 2,
+    "precision": 0.5,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 821,
+        "score": 0.9881
+      }
+    ],
+    "request_id": "06d201b8-e4a6-470f-97b8-4e885cd7d573"
+  },
+  "annotation": {
+    "transcripts_found": 2,
+    "found_at_tss": true,
+    "confidence": 0.7133,
+    "transcript_type": "mRNA",
+    "transcript_type_score": 0.8653,
+    "distance_to_canonical_tss_bp": -411,
+    "request_id": "0a4f6aa1-8971-465f-a0c8-2a2a5e319dda"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 2,
+    "found_at_tss": true,
+    "log_tpm": 2.7095,
+    "distance_to_canonical_tss_bp": -411,
+    "request_id": "ec7bfaa6-ffed-4405-a184-8414afb3fb93"
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "gene": "MUC4",
+  "queried_as": "MUC4",
+  "retrieved": "2026-11-14",
+  "server": {
+    "name": "gi-mcp",
+    "version": "0.1.0a26"
+  },
+  "demo_key": true,
+  "models": {
+    "expression": "g0-expression-8192",
+    "promoter": "g0-promoter-2000bp",
+    "chromatin": "g0-deepsea",
+    "enhancer": "g0-deepstarr",
+    "splice": "g0-splice-bigbird",
+    "annotation": "g0-annotation"
+  },
+  "locus": {
+    "ensembl_id": "ENSG00000145113",
+    "chrom": "3",
+    "strand": -1,
+    "tss": 195811929,
+    "tss_source": "canonical-transcript",
+    "tss_matches_ensembl": true,
+    "expression_window": "3:195770970-195852889",
+    "tss_window": "3:195810930-195812929",
+    "tss_window_strand": -1,
+    "splice_window": "3:195796930-195811929",
+    "annotation_window": "3:195771929-195851928"
+  },
+  "expression": {
+    "target": {
+      "description": "HER2-positive breast cancer cell line",
+      "log_tpm": 0.8259,
+      "tpm": 1.284,
+      "scored_window": [
+        14605,
+        67736
+      ],
+      "request_id": "674ac8e2-167e-443e-bdc7-811fbbdb5e6d"
+    },
+    "reference": {
+      "description": "liver tissue",
+      "log_tpm": 0.193,
+      "tpm": 0.2129,
+      "scored_window": [
+        14605,
+        67736
+      ],
+      "request_id": "91d5eafd-0ccc-42a4-97c8-243ae211ea67"
+    }
+  },
+  "promoter": {
+    "max_probability": 0.9443,
+    "upstream_window_probability": 0.9443,
+    "windows": [
+      {
+        "start": 0,
+        "end": 1000,
+        "probability": 0.9443
+      },
+      {
+        "start": 1000,
+        "end": 2000,
+        "probability": 0.2316
+      }
+    ],
+    "request_id": "fc75f6a5-8a38-4faa-bfce-8cae00e45f8a"
+  },
+  "chromatin": {
+    "threshold": 0.5,
+    "windows": 10,
+    "labels_called_all_cell_types": 106,
+    "on_tissue_cell_types": [
+      "HMEC",
+      "MCF-7",
+      "T-47D"
+    ],
+    "on_tissue_labels_called": 9,
+    "on_tissue_by_feature": {
+      "DNase": 4,
+      "Other": 5
+    },
+    "on_tissue_calls": [
+      {
+        "label_index": 856,
+        "cell_type": "MCF-7",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.948
+      },
+      {
+        "label_index": 839,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.8646
+      },
+      {
+        "label_index": 53,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.7328
+      },
+      {
+        "label_index": 59,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "None",
+        "score": 0.6932
+      },
+      {
+        "label_index": 12,
+        "cell_type": "MCF-7",
+        "feature_type": "DNase",
+        "treatment": "EtOH_0.02pct",
+        "score": 0.6425
+      },
+      {
+        "label_index": 886,
+        "cell_type": "T-47D",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.5745
+      },
+      {
+        "label_index": 897,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.5636
+      },
+      {
+        "label_index": 6,
+        "cell_type": "HMEC",
+        "feature_type": "DNase",
+        "treatment": "IFNa4h",
+        "score": 0.5114
+      },
+      {
+        "label_index": 850,
+        "cell_type": "HMEC",
+        "feature_type": "Other",
+        "treatment": "None",
+        "score": 0.5005
+      }
+    ],
+    "request_id": "1fdbc1a3-9819-471a-ab6b-57493d2803f3"
+  },
+  "enhancer": {
+    "dev_score_max": 2.2772,
+    "hk_score_max": 1.4952,
+    "dev_score_mean": -0.1041,
+    "hk_score_mean": -0.4949,
+    "windows": 9,
+    "request_id": "0c8ff8e5-c6f5-4d78-a851-098d592fce6d"
+  },
+  "splice": {
+    "junctions_in_window": 1,
+    "junctions_recovered": 1,
+    "recall": 1.0,
+    "sites_called": 2,
+    "precision": 0.5,
+    "recovered": [
+      {
+        "type": "donor",
+        "offset": 193,
+        "score": 0.9999
+      }
+    ],
+    "request_id": "46c5ec14-21ad-4cd6-9033-3b19343d572f"
+  },
+  "annotation": {
+    "transcripts_found": 0,
+    "found_at_tss": false,
+    "confidence": 0.0,
+    "transcript_type": null,
+    "transcript_type_score": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "d9757505-31fa-4bc8-a4d4-80e3bb0d9436"
+  },
+  "composite": {
+    "description": "HER2-positive breast cancer cell line",
+    "genes_found": 0,
+    "found_at_tss": false,
+    "log_tpm": null,
+    "distance_to_canonical_tss_bp": null,
+    "request_id": "64bc3440-9923-4f74-a995-026071358751"
+  }
+}

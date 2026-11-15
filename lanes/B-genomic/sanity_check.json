@@ -1,0 +1,141 @@
+{
+  "contexts": [
+    "HER2-positive breast cancer cell line",
+    "liver tissue"
+  ],
+  "models": {
+    "expression": "g0-expression-8192",
+    "promoter": "g0-promoter-2000bp",
+    "chromatin": "g0-deepsea"
+  },
+  "determinism": {
+    "gene": "ERBB2",
+    "context": "HER2-positive breast cancer cell line",
+    "first": 3.168,
+    "second": 3.168,
+    "identical": true
+  },
+  "tissue_control": {
+    "ALB": {
+      "HER2-positive breast cancer cell line": 0.5176,
+      "liver tissue": 9.6876
+    },
+    "GAPDH": {
+      "HER2-positive breast cancer cell line": 4.4184,
+      "liver tissue": 1.6696
+    },
+    "HBB": {
+      "HER2-positive breast cancer cell line": 0.7414,
+      "liver tissue": 3.5298
+    },
+    "ERBB2": {
+      "HER2-positive breast cancer cell line": 3.168,
+      "liver tissue": 1.8704
+    },
+    "ESR1": {
+      "HER2-positive breast cancer cell line": 0.9074,
+      "liver tissue": 0.3009
+    }
+  },
+  "strand_check": {
+    "STAT3": {
+      "gene_sense_max": 0.9882,
+      "antisense_max": 0.9502
+    },
+    "HSP90AA1": {
+      "gene_sense_max": 0.9844,
+      "antisense_max": 0.9694
+    },
+    "PGAP3": {
+      "gene_sense_max": 0.9485,
+      "antisense_max": 0.8245
+    },
+    "SHC1": {
+      "gene_sense_max": 0.9193,
+      "antisense_max": 0.3368
+    },
+    "EZR": {
+      "gene_sense_max": 0.99,
+      "antisense_max": 0.8613
+    },
+    "JUN": {
+      "gene_sense_max": 0.3121,
+      "antisense_max": 0.4568
+    }
+  },
+  "strand_check_gene_sense_wins": 5,
+  "amplicon": [
+    {
+      "gene_name": "transcript_1",
+      "strand": "+",
+      "tss_genomic": 39665104,
+      "nearest_known_gene": "TCAP",
+      "distance_to_known_tss_bp": -245,
+      "expression": 2.2378
+    },
+    {
+      "gene_name": "transcript_2",
+      "strand": "+",
+      "tss_genomic": 39667891,
+      "nearest_known_gene": "PNMT",
+      "distance_to_known_tss_bp": -562,
+      "expression": 2.4497
+    },
+    {
+      "gene_name": "transcript_3",
+      "strand": "+",
+      "tss_genomic": 39700063,
+      "nearest_known_gene": "ERBB2",
+      "distance_to_known_tss_bp": -1,
+      "expression": 3.0933
+    },
+    {
+      "gene_name": "transcript_4",
+      "strand": "+",
+      "tss_genomic": 39700063,
+      "nearest_known_gene": "ERBB2",
+      "distance_to_known_tss_bp": -1,
+      "expression": 3.0933
+    },
+    {
+      "gene_name": "transcript_5",
+      "strand": "+",
+      "tss_genomic": 39737959,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 21,
+      "expression": 3.183
+    },
+    {
+      "gene_name": "transcript_6",
+      "strand": "+",
+      "tss_genomic": 39738351,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 413,
+      "expression": 3.183
+    },
+    {
+      "gene_name": "transcript_7",
+      "strand": "+",
+      "tss_genomic": 39742291,
+      "nearest_known_gene": "GRB7",
+      "distance_to_known_tss_bp": 4353,
+      "expression": 2.6949
+    },
+    {
+      "gene_name": "transcript_8",
+      "strand": "-",
+      "tss_genomic": 39688039,
+      "nearest_known_gene": "PGAP3",
+      "distance_to_known_tss_bp": -18,
+      "expression": 2.5213
+    },
+    {
+      "gene_name": "transcript_9",
+      "strand": "-",
+      "tss_genomic": 39730524,
+      "nearest_known_gene": "MIEN1",
+      "distance_to_known_tss_bp": -8,
+      "expression": 3.8649
+    }
+  ]
+}

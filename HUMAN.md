@@ -1,107 +1,153 @@
-# HUMAN.md
+# HUMAN.md: live progress tracker
 
-The plan for teammates, in pictures. The detailed spec that coding agents follow is `AGENTS.md`. If you change the plan, change it there too.
+Plain-language status of the personalized medicine platform. Updated after every milestone. For the overview see [`README.md`](README.md); for the technical spec see [`AGENTS.md`](AGENTS.md).
 
-## The pitch in one line
+> **Research prototype. Not medical advice.**
 
-Give us a biomarker (HER2 in breast cancer) and we return a ranked list of clinical trials, with the papers and genomic evidence behind every rank.
+_Last updated: 2026-11-14, end of Task 2. Branch: `platform/personalized-medicine`._
 
-## How it works
+## Progress
+
+- [x] Task 1: Architecture and documentation
+- [x] Task 2: Research papers and clinical trial matching
+- [ ] Task 3: Genomic intelligence and Pan-Cancer Atlas mapping
+- [ ] Task 4: Integration, testing, and functional POC
+
+## Current status
+
+**Approach 1 works end to end.** Starting from the profile (HER2 positive + PIK3CA mutated), the platform searches Keenable for papers, loads the 10 open HER2 trials from the team spreadsheet, and explains, trial by trial, why each one may be relevant, with the papers behind it. There are no scores: trials are grouped into tiers by simple rules. Approach 2 (DNA model → Pan-Cancer Atlas) is next.
+
+## The plan in one picture
 
 ```mermaid
 flowchart TD
-    IN["Input biomarker<br/>Breast · HER2 · gene ERBB2<br/>IHC score ± ISH"]
+    IN["Input: HER2 positive + PIK3CA mutated<br/>+ HER2 DNA sequence"]
 
-    subgraph W1["Way 1: evidence and genomic scoring"]
-        P["1. Keenable<br/>find research papers linking<br/>HER2 to other genes"]
-        G["2. Keenable<br/>gene targets dataset"]
-        C["Candidate genes"]
-        M["3. Genomic Intelligence model<br/>run each gene's region"]
-        S1["Stored per gene:<br/>genomic context + model score"]
-        GS["4. Combined gene score<br/>papers + model"]
-        P --> C
-        G --> C
-        C --> M --> S1 --> GS
-        P -. "literature score" .-> GS
+    subgraph A1["Approach 1: papers → clinical trials (done)"]
+        K["Keenable finds papers<br/>29 hand-checked + 33 new search hits"]
+        T["10 open HER2 trials<br/>(team spreadsheet)"]
+        M["Match + explain, no scores<br/>tiers, reasons, supporting papers"]
+        K --> M
+        T --> M
     end
 
-    subgraph W2["Way 2: clinical trials"]
-        T["5. Hard-coded trial snapshot<br/>for ERBB2 / HER2 breast cancer"]
-        TS["6. Trial likelihood score<br/>trial's extra genes and drugs<br/>vs our gene scores"]
-        T --> TS
+    subgraph A2["Approach 2: DNA model → patient atlas (Task 3)"]
+        G["Genomic Intelligence predicts related genes"]
+        P["Check them in the Pan-Cancer Atlas"]
+        G --> P
     end
 
-    IN --> P
-    IN --> G
+    IN --> K
     IN --> T
-    GS --> TS
-    TS --> D["7. Dashboard<br/>ranked trials + evidence"]
+    IN --> G
+    M --> O1["Potentially relevant trials<br/>trial_matches.json"]
+    P --> O2["Gene associations"]
+    O1 --> API["API"]
+    O2 --> API
+    API --> UI["Frontend visual prototype (built)"]
+
+    classDef done fill:#d4edda,stroke:#2e7d32,color:#000
+    classDef todo fill:#fff3cd,stroke:#b8860b,color:#000
+    class IN,K,T,M,O1,API,UI done
+    class G,P,O2 todo
 ```
 
-## Why two ways
+Green = built and tested. Yellow = still to build.
 
-A trial is almost never about HER2 alone. It adds a second drug, a second target, or extra eligibility genes. Way 1 tells us which genes around HER2 matter most (from papers and from the model). Way 2 uses that to rank trials by how well their "extras" line up with those genes.
+## What Approach 1 found (the actual output)
 
-## The score, in plain words
+| Tier | Trials | Why |
+|---|---|---|
+| **1. Requires HER2 positive and PIK3CA mutated** | NCT05894239 (INAVO122), NCT05306041 (GeparPiPPa), NCT05230810 (tucatinib + alpelisib), NCT05063786 (ALPHABET) | Their criteria ask for both biomarkers. Each tests a drug aimed at PIK3CA (inavolisib or alpelisib). |
+| **2. Requires HER2 positive, plus related genes** | NCT04569747, NCT07506876, NCT07610720, NCT07612215, NCT07683754 (DB-Guide), NCT07616427 (TAYLOR-003) | They require HER2 but do not select on PIK3CA. They also require hormone receptor (ER/PR) status, which our papers discuss alongside HER2 and which the profile does not record, so a researcher must check it. |
 
-```mermaid
-flowchart LR
-    A["Papers supporting a gene"] --> L["Literature score"]
-    B["Genomic Intelligence output"] --> MS["Model score"]
-    L --> CS["Gene score<br/>50% papers, 50% model"]
-    MS --> CS
-    CS --> GM["Genomic match<br/>avg of trial's top 3 matched genes"]
-    E["Does the trial require HER2 status?"] --> BD["Biomarker directness"]
-    GM --> F["Trial score<br/>60% genomic match, 40% directness"]
-    BD --> F
+Every trial comes with the exact criteria line that matched, the drugs it uses and what they target, up to 6 supporting papers (with the total and how many were checked by hand), and a short written explanation. For the four tier-1 trials, 21–24 papers support the extra genes or drugs. Another 14–15 papers are about the same drugs (alpelisib, inavolisib) but in **HER2-negative** disease. Those are listed separately as context, not counted as support.
+
+**Evidence labels.** Paper evidence comes in two kinds: 29 papers checked by hand against PubMed (`reviewed: true`), and 33 new Keenable search hits merged automatically (`reviewed: false`, marked "not yet reviewed"). Every new hit was checked against its PubMed record: the title, year and article type come from PubMed, and its genes are read from the PubMed title and abstract, not from the search page. Trial statuses come from the team spreadsheet (as of 2026-11-14) and must be confirmed on ClinicalTrials.gov.
+
+## Completed (verified)
+
+- **Task 1:** scoring system removed; new input profile; docs rewritten.
+- **Keenable search:** the platform builds 5 plain-language queries from the profile ("HER2 positive and PIK3CA mutated breast cancer", "alpelisib in HER2 positive breast cancer", ...), searches PubMed pages through Keenable without a key, checks every hit against PubMed, and merges new papers behind the hand-checked ones. Every query and what happened to each hit is logged; no abstract text is stored.
+- **Real trials:** the 10 open trials from the team spreadsheet (updated on `main` during this task and merged in) replace the 6 placeholder trials.
+- **Keenable CLI:** installed (v0.5.1). Logging in to your account and adding it to Claude Code is waiting on you (two device codes expired); the pipeline does not need it.
+- **Trial matching:** reads each trial's criteria for HER2 and PIK3CA (required, mentioned, conflicting or absent), finds drugs and their targets, finds related genes (including "ER/PR/HR" → ESR1/PGR), groups trials into tiers and writes the explanation.
+- **API:** `GET /api/trial-matches` serves the result for the frontend.
+- **Tests:** 124 offline tests pass, including 114 eligibility phrasings (104 written by an independent reviewer) and every tier.
+- **Independent review:** four reviewers checked matching accuracy, evidence integrity against PubMed, code bugs and doc consistency. They found real problems: gene tags taken from search snippets, HER2-negative studies counted as support, and HER2 IHC 0/1+/2+ read as positive. All of them were fixed before this milestone was pushed. On the real trials, every tier was already right.
+
+## Working functionality (you can run this now)
+
+| What | Command | What you see |
+|---|---|---|
+| Smoke tests | `.venv/bin/python -m pytest tests -q` | all pass |
+| The pipeline, from saved data | `.venv/bin/python -m backend.pipeline.run` | 62 papers, 30 genes, 10 real trials, 10 trial matches, DNA model output for 30 genes |
+| Trial matching only | `.venv/bin/python -m backend.pipeline.matching` | one line per trial: tier, related genes, drugs, paper count |
+| Fresh Keenable search | `.venv/bin/python -m backend.pipeline.literature --refresh` | searches again and merges new hits (network) |
+| The API | `.venv/bin/uvicorn backend.app.main:app`, then http://localhost:8000/docs | `/api/trial-matches`, `/api/trials`, `/api/papers`, `/api/profile` |
+
+## In progress
+
+Nothing mid-flight. Waiting for a go-ahead on Task 3.
+
+## Remaining work
+
+- **Task 3:** accept a HER2 DNA file (FASTA); run the Genomic Intelligence models on it; list genes found in the sequence and genes whose model profile resembles ERBB2's; attach the Pan-Cancer Atlas values to each; write `gene_associations.json`.
+- **Task 4:** one command that runs both approaches; both results on the API; end-to-end test; final docs with example outputs; integrate the remaining gene-association contract with the shared frontend (built v2 types are updated).
+
+## Blockers and decisions needed
+
+None blocking. Open decisions:
+
+1. **ER/PR status in the profile?** Seven of the 10 trials require hormone receptor status (an eighth names it for one cohort), which the profile does not include. Adding it would let the platform say "fits" rather than "check this".
+2. **Who reviews the 33 new papers?** They are labelled unreviewed; a person could check them and write a one-line summary for each.
+3. **Atlas coverage (Task 3):** the atlas table covers 30 genes; genes outside it will show "not in atlas table".
+
+## Next steps
+
+Task 3: FASTA input → Genomic Intelligence (genes found in the sequence + ERBB2-like model profiles) → Pan-Cancer Atlas lookup → `gene_associations.json` → API endpoint → tests → commit and push.
+
+## How to run
+
+```bash
+[ -d .venv ] || uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python -r requirements.txt
+
+.venv/bin/python -m pytest tests -q
+.venv/bin/python -m backend.pipeline.run
+.venv/bin/uvicorn backend.app.main:app        # then open http://localhost:8000/docs
 ```
 
-Everything is between 0 and 1. The percentages are starting guesses we can tune on demo day.
+No API keys are needed. Everything above runs offline from files saved in the repo, except `literature --refresh`, which searches Keenable.
 
-## What the user sees
+## Frontend visual prototype (2026-11-14)
 
-One page. A biomarker card on top, then a ranked list of trials. Each row has a score bar and gene chips. Click a row to open the evidence: gene scores and the papers behind them. We borrow the layout style of biomarkershealth.com and clintrialfinder.com (clean ranked cards), built with our own code and branding.
+Built at Contactashmeetsingh's explicit request. Original ivory/plum/coral styling inspired by Isomorphic Labs, an animated DNA-inspired illustration, responsive navigation, and an integrated research workspace. No external deployment.
 
-## Who does what
+- Trial matches: current 10-trial output, backend tiers, search/filter, expandable criteria and paper evidence.
+- Gene explorer: 30 literature-derived candidates with saved model readouts and linked papers. Atlas and predicted related-gene groups remain explicitly pending.
+- Paper library: 62 papers, reviewed-only filter, search, source links, review labels.
+- Local snapshot generated through the validated backend store; optional connection to the existing FastAPI API. No fabricated results or scoring system.
+- Verified production build and browser smoke checks: trial expansion/search/filter, gene details, reviewed-paper filtering, keyboard tabs, mobile navigation, no horizontal overflow at 320/390/768px, unavailable-data/retry states, and no browser runtime errors.
 
-Four lanes that only touch each other through JSON files, so nobody blocks anybody.
+Run `cd frontend && npm ci && npm run dev`, then open http://127.0.0.1:3000. The Python `.venv` must be set up first. See `frontend/README.md`. Backend Tasks 3 and 4 remain open.
 
-| Lane | Owns | Done when | Owner |
-|---|---|---|---|
-| A. Literature and targets | Keenable client, stages 1 and 2 | `papers.json` and `gene_candidates.json` hold real results | TBD |
-| B. Genomic model | Genomic Intelligence client, stage 3 | `genomic_context.json` has a context and score per gene | TBD |
-| C. Trials and scoring | Trial snapshot, stages 4 to 6 | `rankings.json` is sorted and explainable | TBD |
-| D. Dashboard | FastAPI endpoints, Next.js UI | Ranked list with evidence drawer runs locally | TBD |
+## Active frontend: Plan B (2026-11-14)
 
-## Order of attack
+Contactashmeetsingh changed the frontend assignment to a fast, polished, saved-data demo. Branch: `frontend/plan-b`. Backend platform work above is preserved.
 
-```mermaid
-flowchart LR
-    H1["Hour 0 to 1<br/>scaffold + mock every stage<br/>fake rankings.json exists"] --> H2["Hour 1 to 3<br/>UI renders mocks<br/>trial snapshot saved"]
-    H2 --> H3["Middle<br/>swap mocks for real<br/>Keenable, then model"]
-    H3 --> H4["Last stretch<br/>tune weights, evidence drawer<br/>rehearse demo"]
-```
+- Source: `origin/main` at `3f9c5be`; prepared data committed in `frontend/data/plan-b.json`.
+- Stage 1: 47 records explicitly listing HER2-positive disease (including labelled mixed cohorts) from 528 CSV records.
+- Stage 2: HER2 + PIK3CA experimental-literature context, promoter probability 0.9889 and 41 chromatin calls, then INAVO122 as the one title explicitly naming both statuses. Twelve uncertain records and 15 opposite-status records are separated.
+- The GI file deliberately excludes expression predictions, so the interface says overexpression is not established. No fabricated expression result.
+- Removed the Python/backend dependency from frontend startup and build; no live service calls or artificial processing delays.
+- Production build, TypeScript check, and browser smoke checks pass: both profile flows, search/phase filters, pagination, evidence expansion, 320/390/768px layouts, and zero research API calls.
 
-The rule: something demoable exists from hour one, and it only gets more real.
+Run `cd frontend && npm ci && npm run dev`. The visual design remains ivory/plum/coral with the original animated DNA-inspired artwork.
 
-## Demo script (90 seconds)
+- **Plan B readability update (2026-11-14):** enlarged body text to roughly 17–22px and small labels to 14px, strengthened text contrast, and expanded controls. Responsive sections stack earlier to retain readability. Production build and browser smoke checks pass, including 320/390/768px widths.
 
-1. "HER2 is tested in every one of the 1,290 breast cases in our dataset. Which trial fits?"
-2. Show the biomarker card, then the ranked trials.
-3. Open the top trial. Point at the gene chips: "these are the genes this trial adds on top of HER2."
-4. Open one gene: papers from Keenable on the left, the Genomic Intelligence score on the right.
-5. Close: "one biomarker today, the same pipeline works for any row in the table."
+- **PSMD3 follow-up (2026-11-14):** added real saved promoter/chromatin readouts, functional HER2 paper evidence, and a separately sourced drug-research extension for user-specified bortezomib and carfilzomib. A five-minute review timer gates only the drug cards and persists across reloads; no live model or ChatGPT call. Official labels, preclinical HER2 cell-line findings, and the ASH myeloma abstract are distinguished from model outputs and clinical trial matches. Neither drug is presented as a proven direct PSMD3 inhibitor or a treatment recommendation. No backend changes.
+  Verified production build, 300-second unlock and reload persistence using a browser virtual clock, invalid timer state, both drug cards, existing trial flows, 320/390/768px layouts, no research API requests, and no runtime errors.
 
-## Decisions we still need
-
-- Keenable: name and web app resolved (https://app.keenable.ai). Still need API access for the client. Lane A cannot start real calls without it.
-- Which Genomic Intelligence task gives us the "likelihood" number, and what high means.
-- Which gene targets dataset we use.
-- Are the 50/50 and 60/40 weights fine for the demo.
-- Lane owners.
-
-## Ground rules
-
-- No invented data. Anything fake is labeled "mock" in the file and in the UI.
-- Keys go in `.env`, never in git.
-- It is a research prototype, not medical advice. The UI says so.
+- **Main integration (2026-11-14):** merged `frontend/plan-b` into the latest `main`, preserving main's saved trial, genomic, and PSMD3 evidence files. Merge had no conflicts. Frontend production build and all 124 offline backend tests passed.
