@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import { Helix } from "@/components/helix";
 import { Psmd3Followup } from "@/components/psmd3-followup";
 import data from "@/data/plan-b.json";
+import followup from "@/data/psmd3-followup.json";
 import "./plan-b.css";
 
 type Trial = (typeof data.baseline)[number];
@@ -338,6 +339,7 @@ function Psmd3Lead() {
   return (
     <section
       className="pb-evidence"
+      id="psmd3"
       aria-label="PSMD3 exploratory research lead"
     >
       <div className="pb-section-label">
@@ -351,12 +353,13 @@ function Psmd3Lead() {
             Model prediction + research-paper evidence
           </span>
         </div>
-        <h3 style={{ marginTop: 24 }}>A new connection worth investigating.</h3>
+        <h3 style={{ marginTop: 24 }}>PSMD3. A new gene to investigate.</h3>
         <p>
           The saved genomic analysis highlighted PSMD3’s promoter and chromatin
-          activity. The saved literature also places PSMD3 in the HER2
-          co-amplified region and reports a functional contribution to
-          HER2-positive cell survival.
+          activity. The saved literature places PSMD3 in the HER2 co-amplified
+          region. The newer Keenable evidence table includes a study reporting
+          PSMD3–HER2 protein interaction and a role in maintaining HER2
+          stability.
         </p>
         <div className="pb-readout-pair">
           <div>
@@ -371,10 +374,10 @@ function Psmd3Lead() {
         <div className="pb-expression-note">
           <strong>A research lead, not an established drug match.</strong>
           <p>
-            These findings motivate further investigation. They do not establish
-            direct PSMD3–HER2 binding, mutation-specific overexpression, or
-            sensitivity to a myeloma drug. Broad regulatory activity is not
-            evidence of HER2 specificity.
+            The protein-interaction finding comes from research-paper evidence,
+            not the genomic model. The saved model readouts do not establish
+            mutation-specific overexpression or sensitivity to a myeloma drug.
+            Broad regulatory activity is not evidence of HER2 specificity.
           </p>
         </div>
         <p>
@@ -382,6 +385,40 @@ function Psmd3Lead() {
             ? "No PSMD3 mention was found in the titles, biomarker tags, or therapeutic areas of this saved trial snapshot. This is not a claim that no trial exists elsewhere."
             : `${data.psmd3_lead.trial_mentions} saved trial records mention PSMD3; full criteria need review.`}
         </p>
+        <article
+          className="pb-expression-report"
+          aria-label="PSMD3 team-reported expression findings"
+        >
+          <div className="pb-card-top">
+            <span className="eyebrow">EXPRESSION FINDINGS</span>
+            <span className="badge amber">Source verification pending</span>
+          </div>
+          <h4>Higher expression reported in HER2+ tumors.</h4>
+          <p>{followup.expression_report.status}</p>
+          <div className="pb-expression-metrics">
+            {followup.expression_report.metrics.map((metric) => (
+              <div key={metric.label}>
+                <strong>{metric.value}</strong>
+                <span>{metric.label}</span>
+              </div>
+            ))}
+          </div>
+          <p>{followup.expression_report.note}</p>
+          <small>{followup.expression_report.attribution}</small>
+        </article>
+        <article className="pb-paper">
+          <div>
+            <span className="badge sage">Research-paper evidence</span>
+            <span>2019 · Physical + functional evidence</span>
+          </div>
+          <h4>
+            <Link href={followup.her2_paper.url}>
+              {followup.her2_paper.title}
+            </Link>
+          </h4>
+          <p>{followup.her2_paper.summary}</p>
+          <small>Saved source: {followup.her2_paper.source}</small>
+        </article>
         <details className="pb-source-details">
           <summary>
             Trace this research lead <span>Sources +</span>
@@ -482,6 +519,9 @@ export default function PlanB() {
             }}
           >
             Personalize
+          </a>
+          <a href="#psmd3" onClick={() => setMenu(false)}>
+            PSMD3 + drugs
           </a>
           <a href="#sources" onClick={() => setMenu(false)}>
             Our evidence
@@ -840,7 +880,7 @@ export default function PlanB() {
                 </details>
               </div>
             )}
-            {mutation && <Psmd3Lead />}
+            <Psmd3Lead />
             <p className="pb-research-note">{disclaimer}</p>
           </div>
         </section>

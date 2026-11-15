@@ -151,3 +151,6 @@ Run `cd frontend && npm ci && npm run dev`. The visual design remains ivory/plum
   Verified production build, 300-second unlock and reload persistence using a browser virtual clock, invalid timer state, both drug cards, existing trial flows, 320/390/768px layouts, no research API requests, and no runtime errors.
 
 - **Main integration (2026-11-14):** merged `frontend/plan-b` into the latest `main`, preserving main's saved trial, genomic, and PSMD3 evidence files. Merge had no conflicts. Frontend production build and all 124 offline backend tests passed.
+
+- **PSMD3 visibility and expression update (2026-11-14):** PSMD3 and both drug cards are now accessible from either profile through a direct navigation link. The timer gates extended literature only. Added the newer Keenable protein-interaction evidence and 2017 cell-line study covering both drugs. User-provided expression estimates are displayed as team-reported with source verification pending; they are not attributed to the genomic model or saved atlas.
+  Verified production build, immediate drug visibility, both profile views, expression attribution, 300-second extended-evidence unlock, and 320/390/768/1440px layouts with no browser runtime errors.

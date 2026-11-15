@@ -11,11 +11,17 @@
     {
       "name": "Carfilzomib",
       "mechanism": "Irreversibly binds active sites of the 20S proteasome core; PSMD3 belongs to the separate 19S regulatory particle.",
-      "context": "Approved in specified relapsed or refractory multiple-myeloma settings. Included for proteasome context; the bortezomib breast-cell findings do not establish the same result for carfilzomib.",
+      "context": "Approved in specified relapsed or refractory multiple-myeloma settings. A 2017 study investigated carfilzomib and bortezomib in HER2+/ER+ breast cancer cell lines, including resistant models.",
       "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/202714s036lbl.pdf"
     }
   ],
   "papers": [
+    {
+      "title": "Proteasome inhibitors prevent bi-directional HER2/estrogen-receptor cross-talk leading to cell death in endocrine and lapatinib-resistant HER2+/ER+ breast cancer cells",
+      "context": "2017 · HER2+/ER+ breast cancer cell lines",
+      "summary": "Bortezomib and carfilzomib disrupted HER2/estrogen-receptor signaling and reduced survival in breast cancer cell models, including resistant lines. PSMD3 was not tested as a direct drug target.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29069787/"
+    },
     {
       "title": "Proteasome Inhibitors Suppress ErbB Family Expression through HSP90-Mediated Lysosomal Degradation",
       "context": "2019 · HER2+ breast cancer cell lines",
@@ -28,5 +34,30 @@
       "summary": "Genetic depletion of PSMD3 impaired myeloma cells, including models resistant to bortezomib or carfilzomib, and suppressed xenograft growth. The study investigated PSMD3 depletion, not direct targeting of PSMD3 by either approved drug.",
       "url": "https://doi.org/10.1182/blood-2025-3926"
     }
-  ]
+  ],
+  "her2_paper": {
+    "title": "Proteasome 26S Subunit, non-ATPase 3 (PSMD3) Regulates Breast Cancer by Stabilizing HER2 from Degradation",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31013812/",
+    "source": "keenable/psmd3_keenable_evidence.csv",
+    "summary": "A 2019 study reports PSMD3–HER2 protein interaction and shows that PSMD3 knockdown destabilizes HER2 and reduces breast cancer cell survival."
+  },
+  "expression_report": {
+    "status": "Team-reported estimates · source verification pending",
+    "attribution": "Jigyasa Arora · team message, 17:08",
+    "metrics": [
+      {
+        "value": "≈50%",
+        "label": "Breast cancers reported overexpressed"
+      },
+      {
+        "value": "≈90%",
+        "label": "HER2+ tumors reported overexpressed"
+      },
+      {
+        "value": "≈10 SD",
+        "label": "Reported mean above normal tissue"
+      }
+    ],
+    "note": "The team also reports that underexpression is rare. These estimates have not been verified against a source dataset. Cohort size, expression threshold, HER2 definition, and normal-tissue reference are still needed. They are not genomic-model outputs or patient-specific predictions."
+  }
 }

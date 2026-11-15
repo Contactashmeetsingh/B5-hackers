@@ -66,6 +66,44 @@ export function Psmd3Followup() {
         review connects the gene to proteasome research and two existing myeloma
         drugs.
       </p>
+      <div className="pb-drug-grid">
+        {evidence.drugs.map((drug) => (
+          <article className="pb-drug-card" key={drug.name}>
+            <span className="eyebrow">APPROVED MYELOMA DRUG</span>
+            <h4>{drug.name}</h4>
+            <span className="badge sage">Proteasome inhibitor</span>
+            <p>{drug.mechanism}</p>
+            <p>{drug.context}</p>
+            <a href={drug.url} target="_blank" rel="noreferrer">
+              Official prescribing information ↗
+            </a>
+          </article>
+        ))}
+      </div>
+      <div className="pb-expression-note">
+        <strong>
+          Shared proteasome biology; direct PSMD3 targeting is not established.
+        </strong>
+        <p>
+          Approved proteasome inhibitors such as bortezomib act on the wider
+          proteasome. Bortezomib has shown activity in HER2-positive breast
+          cancer cell lines in preclinical studies. These findings do not
+          establish clinical benefit in HER2-positive breast cancer or a
+          PSMD3-specific drug match.
+        </p>
+      </div>
+      <p>
+        <a
+          href="https://pubmed.ncbi.nlm.nih.gov/29069787/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Research-paper evidence · 2017 HER2+/ER+ cell-line study ↗
+        </a>
+      </p>
+      <p className="pb-research-note">
+        Research prototype. Not medical advice or a treatment recommendation.
+      </p>
       <div className="pb-review-clock">
         <div>
           <strong>
@@ -74,8 +112,8 @@ export function Psmd3Followup() {
               : "Five-minute review timer"}
           </strong>
           <p>
-            Prepared evidence · no live model run. The timer controls this
-            follow-up only.
+            Prepared evidence · no live model run. The timer unlocks the
+            extended literature review below.
           </p>
         </div>
         {!unlocked && (
@@ -113,40 +151,13 @@ export function Psmd3Followup() {
       )}
       <div role="status" className="pb-unlock-status">
         {unlocked
-          ? "Review complete. Drug research is now available below."
+          ? "Review complete. Extended literature is now available below."
           : deadline !== null
-            ? "Follow-up locked until the review timer finishes. You can continue exploring the trials."
-            : "Start the timer to unlock the prepared drug research."}
+            ? "Extended literature unlocks when the timer finishes. Drug summaries remain available above."
+            : "Start the timer to unlock the extended literature review."}
       </div>
       {unlocked && (
-        <div data-testid="psmd3-drug-results">
-          <div className="pb-drug-grid">
-            {evidence.drugs.map((drug) => (
-              <article className="pb-drug-card" key={drug.name}>
-                <span className="eyebrow">APPROVED MYELOMA DRUG</span>
-                <h4>{drug.name}</h4>
-                <span className="badge sage">Proteasome inhibitor</span>
-                <p>{drug.mechanism}</p>
-                <p>{drug.context}</p>
-                <a href={drug.url} target="_blank" rel="noreferrer">
-                  Official prescribing information ↗
-                </a>
-              </article>
-            ))}
-          </div>
-          <div className="pb-expression-note">
-            <strong>
-              Shared proteasome biology; direct PSMD3 targeting is not
-              established.
-            </strong>
-            <p>
-              Approved proteasome inhibitors such as bortezomib act on the wider
-              proteasome. Bortezomib has shown activity in HER2-positive breast
-              cancer cell lines in the cited preclinical studies. These findings
-              do not establish clinical benefit in HER2-positive breast cancer
-              or a PSMD3-specific drug match.
-            </p>
-          </div>
+        <div data-testid="psmd3-extended-evidence">
           {evidence.papers.map((paper) => (
             <article className="pb-paper" key={paper.url}>
               <div>
